@@ -24,6 +24,9 @@ namespace CoffeeManagementSystem
 
             // Cấu hình TextBox Mật khẩu là PasswordChar để ẩn ký tự
             txtMatKhau.PasswordChar = '●';
+
+            // Gán sự kiện cho checkbox Hiện mật khẩu
+            this.chkHienMatKhau.CheckedChanged += chkHienMatKhau_CheckedChanged;
         }
 
         private void Infor_Load(object sender, EventArgs e)
@@ -63,6 +66,10 @@ namespace CoffeeManagementSystem
                     txtMaNhanVien.Enabled = false;
                     dtpNgayVaoLam.Enabled = false;
                     txtTenDangNhap.Enabled = false;
+
+                    // Mặc định ẩn mật khẩu khi load form
+                    chkHienMatKhau.Checked = false;
+                    txtMatKhau.PasswordChar = '●';
                 }
                 else
                 {
@@ -79,9 +86,30 @@ namespace CoffeeManagementSystem
             }
         }
 
-        //Xử lý sự kiện click nút "Lưu thay đổi".
+        // Xử lý checkbox ẩn/hiện mật khẩu
+        private void chkHienMatKhau_CheckedChanged(object sender, EventArgs e)
+        {
+            // Nếu được tick thì hiện mật khẩu, bỏ tick thì ẩn
+            txtMatKhau.PasswordChar = chkHienMatKhau.Checked ? '\0' : '●';
+        }
+
+        // Xử lý sự kiện click nút "Lưu thay đổi".
         private void btnLuuThayDoi_Click(object sender, EventArgs e)
         {
+            // VALIDATION TẠI FORM
+            if (!IsValidEmail(txtEmail.Text.Trim()))
+            {
+                MessageBox.Show("Email không hợp lệ! Hãy nhập đúng dạng: xxx@mail.com",
+                                "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (!IsValidPhone(txtSoDienThoai.Text.Trim()))
+            {
+                MessageBox.Show("Số điện thoại chỉ chứa số và phải từ 8-12 ký tự!",
+                                "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             // Lấy dữ liệu mới từ các control để tạo đối tượng Nhanvien và Taikhoan
             Nhanvien updatedNhanvien = new Nhanvien
             {
@@ -128,20 +156,6 @@ namespace CoffeeManagementSystem
             catch (Exception ex)
             {
                 MessageBox.Show($"Lỗi khi lưu thay đổi: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            // VALIDATION TẠI FORM
-            if (!IsValidEmail(txtEmail.Text.Trim()))
-            {
-                MessageBox.Show("Email không hợp lệ! Hãy nhập đúng dạng: xxx@mail.com",
-                                "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            if (!IsValidPhone(txtSoDienThoai.Text.Trim()))
-            {
-                MessageBox.Show("Số điện thoại chỉ chứa số và phải từ 8-12 ký tự!",
-                                "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
             }
 
         }
