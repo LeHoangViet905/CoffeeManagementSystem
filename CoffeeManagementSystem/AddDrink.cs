@@ -387,10 +387,5 @@ namespace CoffeeManagementSystem
         {
 
         }
-
-        private void AddDrinkForm_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }
