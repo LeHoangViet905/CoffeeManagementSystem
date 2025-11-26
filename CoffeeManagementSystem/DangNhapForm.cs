@@ -10,8 +10,6 @@ namespace CoffeeManagementSystem
 
         public DangNhapForm()
         {
-            //lò vi sóng đi Việt, đừng ngại
-            //hello Việt
             InitializeComponent();
             _authBLL = new AuthBLL(); // Khởi tạo BLL
 
