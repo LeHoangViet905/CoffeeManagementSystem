@@ -26,7 +26,7 @@ namespace CoffeeManagementSystem
             }
             // phú em
             // 
-            // ALo Việt nam
+            // Tôi muốn ăn cơm 
             // --- Test kết nối đến SQLite ---
             using (SQLiteConnection connection = new SQLiteConnection(connectionString))
             {
