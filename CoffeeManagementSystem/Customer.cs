@@ -155,5 +155,10 @@ namespace CoffeeManagementSystem
                 MessageBox.Show("Lỗi khi mở Form thêm khách hàng: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void guna2Panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

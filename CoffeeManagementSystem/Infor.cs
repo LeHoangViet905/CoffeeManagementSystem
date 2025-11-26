@@ -96,6 +96,20 @@ namespace CoffeeManagementSystem
         // Xử lý sự kiện click nút "Lưu thay đổi".
         private void btnLuuThayDoi_Click(object sender, EventArgs e)
         {
+            // VALIDATION
+            if (!IsValidEmail(txtEmail.Text.Trim()))
+            {
+                MessageBox.Show("Email không hợp lệ! Hãy nhập đúng dạng: xxx@mail.com",
+                                "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (!IsValidPhone(txtSoDienThoai.Text.Trim()))
+            {
+                MessageBox.Show("Số điện thoại chỉ chứa số và phải từ 8-12 ký tự!",
+                                "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             // Lấy dữ liệu mới từ các control để tạo đối tượng Nhanvien và Taikhoan
             Nhanvien updatedNhanvien = new Nhanvien
             {
@@ -142,20 +156,6 @@ namespace CoffeeManagementSystem
             catch (Exception ex)
             {
                 MessageBox.Show($"Lỗi khi lưu thay đổi: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            // VALIDATION TẠI FORM
-            if (!IsValidEmail(txtEmail.Text.Trim()))
-            {
-                MessageBox.Show("Email không hợp lệ! Hãy nhập đúng dạng: xxx@mail.com",
-                                "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            if (!IsValidPhone(txtSoDienThoai.Text.Trim()))
-            {
-                MessageBox.Show("Số điện thoại chỉ chứa số và phải từ 8-12 ký tự!",
-                                "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
             }
 
         }
