@@ -6,6 +6,7 @@ using System.Windows.Forms;
 
 namespace CoffeeManagementSystem
 {
+    //Nghĩa ơi là nghĩa ơi 
     public partial class AddTypeofdrinkForm : Form
     {
         private LoaidouongBLL _loaidouongBLL;
