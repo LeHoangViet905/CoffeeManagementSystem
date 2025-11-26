@@ -182,13 +182,18 @@ namespace CoffeeManagementSystem.BLL
                 throw new Exception($"Lỗi BLL khi lấy báo cáo doanh thu: {ex.Message}", ex);
             }
         }
-        //thêm dashboard cho report
-
+        public DataTable GetDoanhThuTheoLoaiTrongNgay(DateTime day)
+        {
+            return _donhangDAL.GetDoanhThuTheoLoaiTrongNgay(day);
+        }
+        public DataTable GetDoanhThuTheoLoai(DateTime start, DateTime end)
+        {
+            return _donhangDAL.GetDoanhThuTheoLoai(start, end);
+        }
         public DataTable GetRevenueByHour(DateTime date)
         {
             return _donhangDAL.GetRevenueByHour(date);
         }
-
         public int GetOrderCount(DateTime start, DateTime end)
         {
             return _donhangDAL.GetOrderCount(start, end);
