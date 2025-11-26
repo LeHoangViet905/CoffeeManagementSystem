@@ -237,6 +237,32 @@ namespace CoffeeManagementSystem.BLL
                 throw new Exception($"Lỗi nghiệp vụ khi lấy TOP 10 khách hàng có điểm tích lũy cao nhất: {ex.Message}", ex);
             }
         }
+        public string GenerateNextMakhachhang()
+        {
+            List<string> allIDs = _khachhangDAL.GetAllMaKhachhang(); // Lấy tất cả mã KH
+            int nextNumber = 1;
+
+            if (allIDs.Count > 0)
+            {
+                List<int> numbers = new List<int>();
+                foreach (var id in allIDs)
+                {
+                    if (id.StartsWith("NV") && int.TryParse(id.Substring(2), out int n))
+                        numbers.Add(n);
+                }
+                numbers.Sort();
+                for (int i = 1; i <= numbers.Count + 1; i++)
+                {
+                    if (!numbers.Contains(i))
+                    {
+                        nextNumber = i;
+                        break;
+                    }
+                }
+            }
+
+            return "KH" + nextNumber.ToString("D3"); // KH001, NV002 ...
+        }
 
         // Optional: Example for email validation if you need it.
         // private bool IsValidEmail(string email)
