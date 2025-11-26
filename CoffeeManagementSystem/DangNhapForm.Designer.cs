@@ -202,7 +202,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelHinhDangNhap.BackColor = System.Drawing.Color.White;
-            this.panelHinhDangNhap.BackgroundImage = global::CoffeeManagementSystem.Properties.Resources.b7d720d81652965c504ecfb03b9de1da;
+            this.panelHinhDangNhap.BackgroundImage = global::CoffeeManagementSystem.Properties.Resources.coffeeshopLogin;
             this.panelHinhDangNhap.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panelHinhDangNhap.Location = new System.Drawing.Point(0, 0);
             this.panelHinhDangNhap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
