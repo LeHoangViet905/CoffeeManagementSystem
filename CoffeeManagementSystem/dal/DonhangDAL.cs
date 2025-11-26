@@ -452,7 +452,7 @@ namespace CoffeeManagementSystem.DAL
     {
         public DateTime Ngay { get; set; }
         public decimal Tongtien { get; set; }
-    } 
+    }
     //thêm cho report
-        
-} 
+
+}

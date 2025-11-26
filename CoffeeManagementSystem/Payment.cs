@@ -144,6 +144,20 @@ namespace CoffeeManagementSystem
         /// </summary>
         private void XuLyThanhToan(string hinhThucThanhToan)
         {
+            // === RÀNG BUỘC NHẬP TÊN KHÁCH HÀNG (PHÒNG NGỪA) ===
+            string tenKhach = txtKhachHangName.Text.Trim();
+            if (string.IsNullOrEmpty(tenKhach))
+            {
+                MessageBox.Show(
+                    "Vui lòng nhập tên khách hàng trước khi xác nhận thanh toán.",
+                    "Thiếu thông tin khách hàng",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+
+                txtKhachHangName.Focus();
+                Logger.LogWarning("Thử thanh toán nhưng chưa nhập tên khách hàng.");
+                return;
+            }
             Logger.LogInfo($"Bắt đầu xử lý thanh toán. Hình thức: {hinhThucThanhToan}");
 
             try
@@ -351,6 +365,22 @@ namespace CoffeeManagementSystem
         // - Chuyển khoản: hiện QR to giữa màn hình + show nút Xác nhận
         private void btnThanhToan_Click(object sender, EventArgs e)
         {
+            MainForm.PlayClickSound();
+            Logger.LogInfo("Người dùng nhấn nút 'Thanh toán'.");
+
+            // === RÀNG BUỘC NHẬP TÊN KHÁCH HÀNG ===
+            string customerName = txtKhachHangName.Text.Trim();
+            if (string.IsNullOrEmpty(customerName))
+            {
+                MessageBox.Show(
+                    "Vui lòng nhập tên khách hàng trước khi bắt đầu thanh toán.",
+                    "Thiếu thông tin khách hàng",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+
+                txtKhachHangName.Focus();
+                return;
+            }
             Logger.LogInfo("Người dùng nhấn nút 'Thanh toán'.");
 
             string hinhThucThanhToan = HINH_THUC_TIEN_MAT;
@@ -455,6 +485,7 @@ namespace CoffeeManagementSystem
         /// </summary>
         private void btnXacNhanThanhToan_Click(object sender, EventArgs e)
         {
+            MainForm.PlayClickSound();
             if (string.IsNullOrEmpty(_pendingPaymentMethod))
             {
                 MessageBox.Show(
