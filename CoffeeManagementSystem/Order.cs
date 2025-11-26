@@ -4,15 +4,19 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using System.Data;
+using System.IO;
 
 namespace CoffeeManagementSystem
 {
     public partial class OrderForm : Form
     {
+        // 1. Khai báo BLL
+        private DouongBLL _douongBLL;
+        private LoaidouongBLL _loaidouongBLL;
+        private GiadouongBLL _giadouongBLL;
         public string CurrentManhanvien { get; set; }
         public string CurrentTenNhanvien { get; set; }
-
-        private Timer _messageTimer;
 
         private OrderBLL _orderBLL;
 
@@ -21,31 +25,15 @@ namespace CoffeeManagementSystem
             InitializeComponent();
 
             _orderBLL = new OrderBLL(null);
-            if (this.Controls.Find("lblStatusMessage", true).FirstOrDefault() is Label statusLabel)
-            {
-                lblStatusMessage = statusLabel;
-            }
-            else
-            {
-                lblStatusMessage = new Label { Name = "lblStatusMessage", Text = "", AutoSize = true, Location = new Point(10, 10) };
-                this.Controls.Add(lblStatusMessage);
-            }
+            //Khởi tạo BLL
+            _douongBLL = new DouongBLL();
+            _loaidouongBLL = new LoaidouongBLL();
+            _giadouongBLL = new GiadouongBLL();
+            // Gán sự kiện Form_Load (sẽ chạy khi form này được mở)
+            this.Load += new EventHandler(OrderForm_Load);
+            // Gán sự kiện khi người dùng BẤM vào Tab danh mục
+            guna2TabControl1.SelectedIndexChanged += new EventHandler(guna2TabControl1_SelectedIndexChanged);
 
-            _messageTimer = new Timer();
-            _messageTimer.Interval = 3000;
-            _messageTimer.Tick += MessageTimer_Tick;
-
-            dgvDouong.AutoGenerateColumns = false;
-            dgvDouong.AllowUserToAddRows = false;
-            dgvDouong.AllowUserToDeleteRows = false;
-            dgvDouong.EditMode = DataGridViewEditMode.EditProgrammatically;
-
-            // Gán sự kiện
-            this.dgvDouong.CellDoubleClick += new DataGridViewCellEventHandler(dgvDouong_CellDoubleClick);
-            this.btnTaoHoaDon.Click += new EventHandler(btnTaoHoaDon_Click);
-            this.txtTimkiemdouong.TextChanged += new EventHandler(txtTimkiemdouong_TextChanged);
-
-            LoadDanhSachDouong();
         }
 
         public OrderForm(string manhanvien, string tenNhanVien) : this() // Gọi constructor mặc định
@@ -58,194 +46,388 @@ namespace CoffeeManagementSystem
 
         private void OrderForm_Load(object sender, EventArgs e)
         {
-            LoadDanhSachDouong();
+            LoadCategoriesTabs();
+
+            //Gọi hàm tải sản phẩm
+            FlowLayoutPanel allPanel = (FlowLayoutPanel)guna2TabControl1.TabPages[0].Controls[0];
+            LoadProductsBySearch(allPanel, "");
+
         }
 
-        //Tải danh sách đồ uống và hiển thị lên DataGridView.
-        private void LoadDanhSachDouong()
+        //LẤY danh mục từ BLL và TẠO ra các Tab
+        private void LoadCategoriesTabs()
         {
-            try
-            {
-                // Gọi BLL để lấy danh sách đồ uống
-                List<Douong> danhSach = _orderBLL.LoadAllDouongs();
-                dgvDouong.DataSource = null;
-                dgvDouong.DataSource = danhSach;
-                dgvDouong.Refresh();
-                dgvDouong.ClearSelection();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Không thể tải danh sách đồ uống: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
+            guna2TabControl1.TabPages.Clear();
+            TabPage allTab = new TabPage("Tất cả");
+            allTab.Tag = "ALL"; // Đặt Tag đặc biệt
 
-        /// <summary>
-        /// Tải danh sách đồ uống đã lọc và hiển thị lên DataGridView.
-        /// </summary>
-        /// <param name="searchTerm">Từ khóa tìm kiếm.</param>
-        private void LoadFilteredDouongData(string searchTerm)
-        {
-            try
-            {
-                // Gọi BLL để tìm kiếm đồ uống
-                List<Douong> ketQuaHienThi = _orderBLL.SearchDouongs(searchTerm);
+            FlowLayoutPanel flpAll = new FlowLayoutPanel();
+            flpAll.Dock = DockStyle.Fill;
+            flpAll.AutoScroll = true;
+            allTab.Controls.Add(flpAll);
 
-                dgvDouong.DataSource = null;
-                dgvDouong.DataSource = ketQuaHienThi;
-                dgvDouong.Refresh();
-                dgvDouong.ClearSelection();
-            }
-            catch (Exception ex)
+            // Thêm tab "Tất cả" VÀO TRƯỚC
+            guna2TabControl1.TabPages.Add(allTab);
+            // 1. Lấy danh sách loại (Category) từ BLL
+            List<Loaidouong> danhSachLoai = _loaidouongBLL.GetAllLoaidouongs();
+            //Dùng vòng lặp để tạo TabPage cho mỗi loại
+            foreach (Loaidouong loai in danhSachLoai)
             {
-                MessageBox.Show($"Lỗi khi tìm kiếm đồ uống: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // Tạo 1 tab mới, Tên tab là tên loại
+                TabPage newTab = new TabPage(loai.Tenloai);
+
+                // Lưu "Maloai" (ID) vào thuộc tính Tag
+                newTab.Tag = loai.Maloai;
+
+                // Tạo 1 FlowLayoutPanel để chứa sản phẩm
+                FlowLayoutPanel flp = new FlowLayoutPanel();
+                flp.Dock = DockStyle.Fill;
+                flp.AutoScroll = true; // Cho phép cuộn nếu nhiều sản phẩm
+
+                // Thêm FlowLayoutPanel vào BÊN TRONG TabPage
+                newTab.Controls.Add(flp);
+
+                // Thêm TabPage (đã chứa flp) vào TabControl
+                guna2TabControl1.TabPages.Add(newTab);
             }
         }
 
-        private void txtTimkiemdouong_TextChanged(object sender, EventArgs e)
+
+        // TẢI SẢN PHẨM (PRODUCTS)
+
+        // Sự kiện này chạy MỖI KHI user bấm vào 1 tab khác
+        private void guna2TabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string searchTerm = txtTimkiemdouong.Text.Trim();
-            LoadFilteredDouongData(searchTerm);
+            if (guna2TabControl1.SelectedTab == null) return;
+
+            TabPage selectedTab = guna2TabControl1.SelectedTab;
+            FlowLayoutPanel currentFlowPanel = (FlowLayoutPanel)selectedTab.Controls[0];
+            string categoryID = (string)selectedTab.Tag;
+
+            if (categoryID == "ALL")
+            {
+                // Nếu là tab "Tất cả":
+                // 1. Kích hoạt ô tìm kiếm (nếu cần)
+                txtTimKiem.Enabled = true;
+
+                // 2. Tải sản phẩm dựa trên nội dung ô tìm kiếm
+                // (Nếu ô rỗng, searchTerm sẽ là "", nó sẽ tải TẤT CẢ)
+                string searchTerm = txtTimKiem.Text.Trim();
+                LoadProductsBySearch(currentFlowPanel, searchTerm);
+            }
+            else
+            {
+                // Nếu là tab "Cà phê", "Trà"...
+                // 1. Tắt/Xóa ô tìm kiếm
+                txtTimKiem.Enabled = false; // Tắt đi
+                txtTimKiem.Text = "";       // Xóa chữ đi
+
+                // 2. Tải sản phẩm theo loại (hàm này LỌC)
+                LoadProductsIntoPanel(categoryID, currentFlowPanel);
+            }
+        }
+        // Hàm này có nhiệm vụ LẤY sản phẩm từ BLL và TẠO ra các UserControl (ucProductItem)
+
+
+        // -----------------------------------------------------------------
+        // PHẦN 5: THÊM VÀO GIỎ HÀNG (CART)
+        // -----------------------------------------------------------------
+
+        // Sự kiện này chạy MỖI KHI user click vào 1 "ô" sản phẩm
+        private void ucProduct_Click(object sender, EventArgs e)
+        {
+            // 1. 'sender' chính là 'ucProductItem' đã được click
+            ucProductItem clickedItem = (ucProductItem)sender;
+
+            // 2. Lấy data đã lưu trong nó
+            string id = clickedItem.ProductID;
+            string name = clickedItem.ProductName;
+            decimal price = clickedItem.ProductPriceDecimal; // <-- Lấy giá gốc (decimal)
+
+            // 3. Gọi hàm thêm vào giỏ hàng
+            AddProductToOrder(id, name, price);
+
+            // 4. Cập nhật lại tổng tiền
+            UpdateOrderTotal();
         }
 
-        private void dgvLoaidouong_CellClick(object sender, DataGridViewCellEventArgs e)
+        // Hàm xử lý logic giỏ hàng
+        private void AddProductToOrder(string productID, string name, decimal price)
         {
-            if (e.RowIndex >= 0 && e.RowIndex < dgvDouong.Rows.Count - (dgvDouong.AllowUserToAddRows ? 1 : 0))
-            {
-                Loaidouong selectedLoaidouong = dgvDouong.Rows[e.RowIndex].DataBoundItem as Loaidouong;
 
-                if (selectedLoaidouong != null)
+            foreach (DataGridViewRow row in dgvOrder.Rows)
+            {
+                // 1. KIỂM TRA XEM MÓN ĐÃ CÓ TRONG GIỎ (dgvOrder) CHƯA
+                if (row.Cells["colID"].Value != null && row.Cells["colID"].Value.ToString() == productID)
                 {
-                    // Mở AddTypeofdrinkForm ở chế độ chỉnh sửa
-                    AddTypeofdrinkForm detailForm = new AddTypeofdrinkForm(selectedLoaidouong.Maloai);
-                    if (detailForm.ShowDialog() == DialogResult.OK)
-                    {
-                        LoadDanhSachDouong(); // Tải lại danh sách sau khi chỉnh sửa/xóa thành công
-                    }
+                    // 2. ĐÃ CÓ -> TĂNG SỐ LƯỢNG
+                    int currentQty = (int)row.Cells["colQty"].Value;
+                    currentQty++;
+
+                    row.Cells["colQty"].Value = currentQty;
+
+                    // Cập nhật tổng tiền của dòng (SL * Đơn giá)
+                    row.Cells["colTotal"].Value = currentQty * price;
+
+                    // Gọi hàm tính tổng tiền
+                    UpdateOrderTotal();
+                    return; // Xong
                 }
             }
+            object decreaseIcon = "-";
+            object cancelIcon = "X";
+
+            dgvOrder.Rows.Add(new object[] {
+                productID, // colID (ẩn)
+                1,         // colQty (số lượng)
+                name,      // colName (tên)
+                price,     // colPrice (đơn giá - ẩn)
+                price,     // colTotal (thành tiền)
+                decreaseIcon, //colDecrease (nuút -)
+                cancelIcon // colCancel (nút X)
+            });
+
+            // Gọi hàm tính tổng tiền
+            UpdateOrderTotal();
         }
 
-        private void dgvDouong_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        // Hàm cập nhật tổng tiền cuối cùng
+        private void UpdateOrderTotal()
         {
-            // Kiểm tra chỉ số dòng hợp lệ
-            if (e.RowIndex >= 0 && e.RowIndex < dgvDouong.Rows.Count)
+            decimal total = 0;
+
+            foreach (DataGridViewRow row in dgvOrder.Rows)
             {
-                // Lấy đối tượng Douong từ dòng được double-click
-                Douong selectedDoUong = dgvDouong.Rows[e.RowIndex].DataBoundItem as Douong;
-
-                if (selectedDoUong != null)
+                if (row.Cells["colTotal"].Value != null)
                 {
-                    try
-                    {
-                        // Gọi BLL để thêm hoặc cập nhật chi tiết vào danh sách tạm thời của BLL
-                        int totalItems = _orderBLL.AddOrUpdateChiTietHoaDonTamThoi(selectedDoUong);
-
-                        // Hiển thị thông báo chọn thành công
-                        if (lblStatusMessage != null)
-                        {
-                            lblStatusMessage.Text = $"Đã thêm '{selectedDoUong.Tendouong}' vào hóa đơn tạm thời. Tổng số món đã chọn: {totalItems}";
-                            _messageTimer.Stop();
-                            _messageTimer.Start();
-                        }
-                        else
-                        {
-                            MessageBox.Show($"Đã thêm '{selectedDoUong.Tendouong}' vào hóa đơn tạm thời.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show($"Lỗi khi thêm đồ uống vào hóa đơn: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                    total += (decimal)row.Cells["colTotal"].Value;
                 }
             }
+            txtTongTien.Text = total.ToString("N0");
         }
 
-        private void btnTaoHoaDon_Click(object sender, EventArgs e)
+        private void LoadProductsBySearch(FlowLayoutPanel targetPanel, string searchTerm)
         {
-            try
+            // Lấy List<Douong> (đã có giá)
+            List<Douong> searchResults = _giadouongBLL.SearchAllDouongs(searchTerm);
+            if (searchResults == null)
             {
-                // Lấy danh sách chi tiết hóa đơn tạm thời từ BLL để kiểm tra
-                List<Chitietdonhang> currentOrderDetails = _orderBLL.GetTemporaryOrderDetails();
+                // Nếu BLL trả về null, hãy tự tạo 1 list rỗng
+                // để code không bị crash ở vòng lặp foreach
+                searchResults = new List<Douong>();
+            }
+            LoadProductsFromList(searchResults, targetPanel);
+        }
 
-                if (currentOrderDetails.Count == 0)
+        // Hàm này chỉ hiển thị
+        private void LoadProductsFromList(List<Douong> productList, FlowLayoutPanel targetPanel)
+        {
+            targetPanel.Controls.Clear();
+            // Tức là tìm ngay trong 'bin\Debug'
+            string imageFolder = Path.Combine(Application.StartupPath, "Resources");
+
+            foreach (Douong product in productList)
+            {
+                ucProductItem item = new ucProductItem();
+
+                decimal price = product.Giaban; // Lấy từ thuộc tính mới
+
+                item.ProductID = product.Madouong;
+                item.ProductName = product.Tendouong;
+                item.ProductPriceDecimal = price;
+
+                // (Logic tải ảnh từ product.Hinhanh)
+                // === PHẦN TẢI ẢNH ===
+                try
                 {
-                    MessageBox.Show("Vui lòng chọn đồ uống để tạo hóa đơn.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
+                    string imageName = product.Hinhanh;
 
-                // Thông tin nhân viên được truyền qua constructor BLL, không cần kiểm tra lại ở đây
-                if (string.IsNullOrEmpty(_orderBLL.GetCurrentMaNhanVien()))
-                {
-                    MessageBox.Show("Không thể tạo hóa đơn. Thiếu thông tin nhân viên lập hóa đơn.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
-                // Gọi BLL để tạo hóa đơn và lưu chi tiết vào DB
-                bool hoaDonCreated = _orderBLL.CreateNewOrder();
-
-                if (hoaDonCreated)
-                {
-                    // Nếu hóa đơn được tạo thành công trong DB, mở PaymentForm
-                    // Truyền danh sách chi tiết hóa đơn từ BLL để PaymentForm xử lý
-                    PaymentForm hoaDonForm = new PaymentForm(currentOrderDetails, CurrentManhanvien, CurrentTenNhanvien);
-
-                    if (hoaDonForm.ShowDialog() == DialogResult.OK)
+                    if (!string.IsNullOrEmpty(imageName))
                     {
-                        // Nếu hóa đơn được thanh toán/lưu thành công trong PaymentForm,
-                        // yêu cầu BLL xóa danh sách tạm thời và cập nhật lại giao diện
-                        _orderBLL.ClearTemporaryOrderDetails();
-                        if (lblStatusMessage != null)
+                        // Nối đường dẫn: "...\bin\Debug\Resources\espresso.jpg"
+                        string fullPath = Path.Combine(imageFolder, imageName);
+
+                        if (File.Exists(fullPath))
                         {
-                            lblStatusMessage.Text = "Hóa đơn đã được tạo và xử lý thành công!";
-                            _messageTimer.Stop();
-                            _messageTimer.Start();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Hóa đơn đã được tạo và xử lý thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                    }
-                    else
-                    {
-                        // Người dùng hủy hóa đơn, hỏi xem có muốn giữ lại danh sách tạm thời không
-                        if (MessageBox.Show("Bạn có muốn hủy hóa đơn này và xóa các mục đã chọn không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                        {
-                            _orderBLL.ClearTemporaryOrderDetails(); // Yêu cầu BLL xóa
-                            if (lblStatusMessage != null)
-                            {
-                                lblStatusMessage.Text = "Đã hủy hóa đơn tạm thời.";
-                                _messageTimer.Stop();
-                                _messageTimer.Start();
-                            }
-                            else
-                            {
-                                MessageBox.Show("Đã hủy hóa đơn tạm thời.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
+                            // Tải ảnh
+                            item.ProductImage = Image.FromFile(fullPath);
                         }
                     }
                 }
-            }
-            catch (ArgumentException argEx)
-            {
-                MessageBox.Show(argEx.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            catch (InvalidOperationException invOpEx)
-            {
-                MessageBox.Show(invOpEx.Message, "Lỗi thao tác", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Lỗi khi tạo hóa đơn: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Loi tai anh: " + ex.Message);
+                }
+                // === KẾT THÚC PHẦN TẢI ẢNH ===
+
+                item.Click += new EventHandler(ucProduct_Click);
+                targetPanel.Controls.Add(item);
             }
         }
 
-        private void MessageTimer_Tick(object sender, EventArgs e)
+        // Hàm này tải theo loại
+        private void LoadProductsIntoPanel(string categoryID, FlowLayoutPanel targetPanel)
         {
-            if (lblStatusMessage != null)
+            // 1. Lấy TẤT CẢ sản phẩm (đã có giá)
+            List<Douong> allProducts = _giadouongBLL.SearchAllDouongs("");
+
+            // 2. Lọc bằng C#
+            List<Douong> filteredList = allProducts
+                                            .Where(p => p.Maloai == categoryID)
+                                            .ToList();
+
+            // 3. Hiển thị
+            LoadProductsFromList(filteredList, targetPanel);
+        }
+
+        private void dgvOrder_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Đảm bảo user click vào 1 hàng (không phải tiêu đề)
+            if (e.RowIndex < 0) return;
+            DataGridViewRow row = dgvOrder.Rows[e.RowIndex];
+
+            // --- XỬ LÝ NÚT XÓA (X)---
+            if (e.ColumnIndex == dgvOrder.Columns["colCancel"].Index)
             {
-                lblStatusMessage.Text = "";
+                // Xóa hàng
+                dgvOrder.Rows.Remove(row);
             }
-            _messageTimer.Stop();
+
+            else if (e.ColumnIndex == dgvOrder.Columns["colDecrease"].Index)
+            {
+                // 1. Lấy số lượng và đơn giá hiện tại từ các ô
+                int currentQty = (int)row.Cells["colQty"].Value;
+                decimal price = (decimal)row.Cells["colPrice"].Value; // (Lấy từ cột đơn giá ẩn)
+
+                if (currentQty > 1)
+                {
+                    // Nếu > 1, chỉ cần giảm 1
+                    currentQty--;
+                    row.Cells["colQty"].Value = currentQty;
+
+                    // Cập nhật lại tổng tiền cho hàng này
+                    row.Cells["colTotal"].Value = currentQty * price;
+                }
+                else
+                {
+                    // Nếu = 1, xóa luôn hàng đó
+                    dgvOrder.Rows.Remove(row);
+                }
+            }
+            // --- KẾT THÚC PHẦN CODE MỚI ---
+
+            // Cập nhật lại tổng tiền cuối cùng (luôn chạy sau khi Thêm/Xóa)
+            UpdateOrderTotal();
+        }
+
+        private void txtTimKiem_TextChanged(object sender, EventArgs e)
+        {
+            if (guna2TabControl1.SelectedTab.Tag.ToString() != "ALL")
+            {
+                // Nếu user gõ mà đang ở tab khác, tự động nhảy về "Tất cả"
+                guna2TabControl1.SelectedIndex = 0;
+                // (Việc này sẽ tự gọi 'SelectedIndexChanged' và chạy đúng)
+            }
+
+            // 2. Lấy panel và từ khóa
+            FlowLayoutPanel allPanel = (FlowLayoutPanel)guna2TabControl1.TabPages[0].Controls[0];
+            string searchTerm = txtTimKiem.Text.Trim();
+
+            // 3. Gọi hàm Search
+            LoadProductsBySearch(allPanel, searchTerm);
+        }
+
+        private void btnThuTien_Click(object sender, EventArgs e)
+        {
+            // 1. KIỂM TRA NẾU GIỎ HÀNG BỊ TRỐNG
+            if (dgvOrder.Rows.Count == 0 || (dgvOrder.Rows.Count == 1 && dgvOrder.Rows[0].IsNewRow))
+            {
+                MessageBox.Show("Giỏ hàng đang trống, không thể thanh toán.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // 2. CHUYỂN DỮ LIỆU TỪ GIỎ HÀNG (DataGridView) SANG List<Chitietdonhang>
+
+            List<Chitietdonhang> dsChiTiet = new List<Chitietdonhang>();
+
+            foreach (DataGridViewRow row in dgvOrder.Rows)
+            {
+                // Bỏ qua hàng mới (hàng trống) ở cuối DataGridView
+                if (row.IsNewRow) continue;
+                // Tạo một chi tiết mới
+                Chitietdonhang chiTiet = new Chitietdonhang();
+
+                // Lấy dữ liệu từ các cột của dgvOrder
+                chiTiet.Madouong = row.Cells["colID"].Value.ToString();
+                chiTiet.Tendouong = row.Cells["colName"].Value.ToString();
+                chiTiet.Soluong = (int)row.Cells["colQty"].Value;
+                chiTiet.Dongia = (decimal)row.Cells["colPrice"].Value;   // Lấy từ cột đơn giá (ẩn)
+                chiTiet.Thanhtien = (decimal)row.Cells["colTotal"].Value; // Lấy từ cột thành tiền
+                                                                          // chiTiet.Madonhang sẽ được BLL tự tạo
+                                                                          // chiTiet.Ghichu có thể thêm sau (nếu bạn có)
+
+                dsChiTiet.Add(chiTiet);
+            }
+
+            // 3. LẤY THÔNG TIN NHÂN VIÊN
+            string maNV = this.CurrentManhanvien;
+            string tenNV = this.CurrentTenNhanvien;
+
+            // 4. KHỞI TẠO VÀ MỞ PAYMENTFORM
+            PaymentForm paymentForm = new PaymentForm(dsChiTiet, maNV, tenNV);
+
+            // Dùng ShowDialog() để nó "đóng băng" OrderForm
+            // Chờ cho đến khi PaymentForm được đóng lại
+            DialogResult result = paymentForm.ShowDialog();
+
+            // 5. XỬ LÝ KẾT QUẢ SAU KHI THANH TOÁN
+            // (PaymentForm của bạn trả về DialogResult.OK khi thành công)
+            if (result == DialogResult.OK)
+            {
+                // Thanh toán thành công!
+                MessageBox.Show("Thanh toán thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Dọn dẹp giỏ hàng
+                dgvOrder.Rows.Clear();
+
+                // Cập nhật lại tổng tiền (về 0)
+                UpdateOrderTotal();
+
+                // (Tùy chọn: Tải lại tab "Tất cả" để làm mới)
+                OrderForm_Load(null, null); // Hoặc gọi lại hàm tải sản phẩm
+            }
+            // (Nếu DialogResult là Cancel, chúng ta không làm gì cả, 
+            //  người dùng đã tự tắt form Payment)
+        }
+
+        private void btnHuyOrder_Click(object sender, EventArgs e)
+        {
+            // BƯỚC 1: Kiểm tra xem có gì để xóa không
+            if (dgvOrder.Rows.Count == 0 || (dgvOrder.Rows.Count == 1 && dgvOrder.Rows[0].IsNewRow))
+            {
+                // Không có gì trong giỏ hàng, không cần làm gì cả
+                return;
+            }
+
+            // BƯỚC 2: HỎI XÁC NHẬN (Rất quan trọng!)
+            // (Để tránh nhân viên bấm nhầm)
+            DialogResult result = MessageBox.Show(
+                "Bạn có chắc chắn muốn hủy đơn hàng này không?\nTất cả các món đã chọn sẽ bị xóa.",
+                "Xác nhận hủy",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+            );
+
+            // BƯỚC 3: XỬ LÝ NẾU NHẤN "YES"
+            if (result == DialogResult.Yes)
+            {
+                // 1. Xóa tất cả các hàng trong giỏ hàng
+                dgvOrder.Rows.Clear();
+
+                // 2. Cập nhật lại tổng tiền (về 0)
+                UpdateOrderTotal();
+            }
+            // Nếu nhấn "No", không làm gì cả
         }
     }
 }

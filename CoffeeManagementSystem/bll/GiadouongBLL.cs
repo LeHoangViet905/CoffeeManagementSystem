@@ -130,6 +130,15 @@ namespace CoffeeManagementSystem.BLL
             // Logic tạo ID
             return "GIA" + DateTime.Now.ToString("yyyyMMddHHmmssfff");
         }
+        public List<Giadouong> GetAllCurrentPrices()
+        {
+            // BLL chỉ đơn giản là gọi hàm tương ứng của DAL
+            return _giadouongDAL.GetAllCurrentPrices();
+        }
+        public List<Douong> SearchAllDouongs(string searchTerm)
+        {
+            return _giadouongDAL.SearchAllDouongs(searchTerm);
+        }
 
         // Tùy chọn: Thêm các phương thức UpdateGiadouong và DeleteGiadouong nếu có nhu cầu nghiệp vụ.
         // Tuy nhiên, thường thì giá sẽ được thêm mới chứ ít khi cập nhật hoặc xóa trực tiếp.
