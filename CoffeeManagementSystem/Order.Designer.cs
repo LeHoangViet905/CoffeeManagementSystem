@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblDS = new System.Windows.Forms.Label();
             this.lblTimmon = new System.Windows.Forms.Label();
             this.txtTimkiemdouong = new Guna.UI2.WinForms.Guna2TextBox();
@@ -57,9 +57,10 @@
             this.lblDS.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblDS.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDS.ForeColor = System.Drawing.Color.Goldenrod;
-            this.lblDS.Location = new System.Drawing.Point(466, 32);
+            this.lblDS.Location = new System.Drawing.Point(621, 39);
+            this.lblDS.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDS.Name = "lblDS";
-            this.lblDS.Size = new System.Drawing.Size(280, 29);
+            this.lblDS.Size = new System.Drawing.Size(351, 36);
             this.lblDS.TabIndex = 18;
             this.lblDS.Text = "DANH SÁCH ĐỒ UỐNG";
             // 
@@ -70,9 +71,10 @@
             this.lblTimmon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblTimmon.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTimmon.ForeColor = System.Drawing.Color.Brown;
-            this.lblTimmon.Location = new System.Drawing.Point(28, 89);
+            this.lblTimmon.Location = new System.Drawing.Point(37, 110);
+            this.lblTimmon.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTimmon.Name = "lblTimmon";
-            this.lblTimmon.Size = new System.Drawing.Size(127, 29);
+            this.lblTimmon.Size = new System.Drawing.Size(158, 36);
             this.lblTimmon.TabIndex = 20;
             this.lblTimmon.Text = "Tìm món:";
             this.lblTimmon.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -94,13 +96,13 @@
             this.txtTimkiemdouong.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTimkiemdouong.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.txtTimkiemdouong.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtTimkiemdouong.Location = new System.Drawing.Point(163, 86);
-            this.txtTimkiemdouong.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.txtTimkiemdouong.Location = new System.Drawing.Point(217, 106);
+            this.txtTimkiemdouong.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
             this.txtTimkiemdouong.Name = "txtTimkiemdouong";
             this.txtTimkiemdouong.PlaceholderForeColor = System.Drawing.Color.WhiteSmoke;
             this.txtTimkiemdouong.PlaceholderText = "Nhập món ăn cần tìm...";
             this.txtTimkiemdouong.SelectedText = "";
-            this.txtTimkiemdouong.Size = new System.Drawing.Size(367, 35);
+            this.txtTimkiemdouong.Size = new System.Drawing.Size(489, 43);
             this.txtTimkiemdouong.TabIndex = 19;
             // 
             // panel1
@@ -108,27 +110,26 @@
             this.panel1.BackColor = System.Drawing.Color.SeaShell;
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1212, 729);
+            this.panel1.Size = new System.Drawing.Size(1616, 897);
             this.panel1.TabIndex = 2;
             // 
             // dgvDouong
             // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this.dgvDouong.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            this.dgvDouong.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvDouong.BackgroundColor = System.Drawing.Color.SeaShell;
             this.dgvDouong.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.dgvDouong.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
             this.dgvDouong.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.SaddleBrown;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDouong.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.SaddleBrown;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDouong.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvDouong.ColumnHeadersHeight = 35;
             this.dgvDouong.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.dgvDouong.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -137,23 +138,23 @@
             this.Column3,
             this.Column4,
             this.Column5});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvDouong.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvDouong.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgvDouong.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvDouong.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgvDouong.Location = new System.Drawing.Point(0, 142);
-            this.dgvDouong.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvDouong.Location = new System.Drawing.Point(0, 175);
+            this.dgvDouong.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvDouong.Name = "dgvDouong";
             this.dgvDouong.RowHeadersVisible = false;
             this.dgvDouong.RowHeadersWidth = 51;
             this.dgvDouong.RowTemplate.Height = 24;
-            this.dgvDouong.Size = new System.Drawing.Size(1212, 488);
+            this.dgvDouong.Size = new System.Drawing.Size(1616, 600);
             this.dgvDouong.TabIndex = 0;
             this.dgvDouong.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvDouong.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -220,9 +221,9 @@
             this.panel2.Controls.Add(this.txtTimkiemdouong);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1212, 142);
+            this.panel2.Size = new System.Drawing.Size(1616, 175);
             this.panel2.TabIndex = 21;
             // 
             // panel3
@@ -231,23 +232,23 @@
             this.panel3.Controls.Add(this.btnTaoHoaDon);
             this.panel3.Controls.Add(this.lblStatusMessage);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 630);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel3.Location = new System.Drawing.Point(0, 775);
+            this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1212, 99);
+            this.panel3.Size = new System.Drawing.Size(1616, 122);
             this.panel3.TabIndex = 22;
             // 
             // btnTaoHoaDon
             // 
             this.btnTaoHoaDon.BackColor = System.Drawing.Color.Sienna;
-            this.btnTaoHoaDon.Font = new System.Drawing.Font("League Spartan", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTaoHoaDon.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTaoHoaDon.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnTaoHoaDon.Image = global::CoffeeManagementSystem.Properties.Resources.hoadon;
-            this.btnTaoHoaDon.Location = new System.Drawing.Point(1058, 13);
-            this.btnTaoHoaDon.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnTaoHoaDon.Location = new System.Drawing.Point(1411, 16);
+            this.btnTaoHoaDon.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnTaoHoaDon.Name = "btnTaoHoaDon";
-            this.btnTaoHoaDon.Padding = new System.Windows.Forms.Padding(2, 5, 2, 2);
-            this.btnTaoHoaDon.Size = new System.Drawing.Size(143, 75);
+            this.btnTaoHoaDon.Padding = new System.Windows.Forms.Padding(3, 6, 3, 2);
+            this.btnTaoHoaDon.Size = new System.Drawing.Size(191, 92);
             this.btnTaoHoaDon.TabIndex = 17;
             this.btnTaoHoaDon.Text = "Tạo hóa đơn";
             this.btnTaoHoaDon.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -259,26 +260,25 @@
             this.lblStatusMessage.AutoSize = true;
             this.lblStatusMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblStatusMessage.ForeColor = System.Drawing.Color.Red;
-            this.lblStatusMessage.Location = new System.Drawing.Point(30, 24);
-            this.lblStatusMessage.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblStatusMessage.Location = new System.Drawing.Point(40, 30);
             this.lblStatusMessage.Name = "lblStatusMessage";
-            this.lblStatusMessage.Size = new System.Drawing.Size(14, 17);
+            this.lblStatusMessage.Size = new System.Drawing.Size(16, 20);
             this.lblStatusMessage.TabIndex = 16;
             this.lblStatusMessage.Text = "*";
             // 
             // OrderForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SeaShell;
-            this.ClientSize = new System.Drawing.Size(1212, 729);
+            this.ClientSize = new System.Drawing.Size(1616, 897);
             this.Controls.Add(this.dgvDouong);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "OrderForm";
             this.Text = "Order";
             ((System.ComponentModel.ISupportInitialize)(this.dgvDouong)).EndInit();
