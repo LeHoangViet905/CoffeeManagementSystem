@@ -1,5 +1,6 @@
 ﻿using CoffeeManagementSystem.BLL;
 using System;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace CoffeeManagementSystem
@@ -24,9 +25,6 @@ namespace CoffeeManagementSystem
 
             // Cấu hình TextBox Mật khẩu là PasswordChar để ẩn ký tự
             txtMatKhau.PasswordChar = '●';
-
-            // Gán sự kiện cho checkbox Hiện mật khẩu
-            this.chkHienMatKhau.CheckedChanged += chkHienMatKhau_CheckedChanged;
         }
 
         private void Infor_Load(object sender, EventArgs e)
@@ -85,15 +83,12 @@ namespace CoffeeManagementSystem
                 MessageBox.Show($"Lỗi khi tải thông tin cá nhân: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        // Xử lý checkbox ẩn/hiện mật khẩu
         private void chkHienMatKhau_CheckedChanged(object sender, EventArgs e)
         {
-            // Nếu được tick thì hiện mật khẩu, bỏ tick thì ẩn
             txtMatKhau.PasswordChar = chkHienMatKhau.Checked ? '\0' : '●';
         }
 
-        // Xử lý sự kiện click nút "Lưu thay đổi".
+        //Xử lý sự kiện click nút "Lưu thay đổi".
         private void btnLuuThayDoi_Click(object sender, EventArgs e)
         {
             // VALIDATION
@@ -157,22 +152,30 @@ namespace CoffeeManagementSystem
             {
                 MessageBox.Show($"Lỗi khi lưu thay đổi: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
-        private bool IsValidEmail(string email)
+              public bool IsValidEmail(string email)
         {
-            return System.Text.RegularExpressions.Regex.IsMatch(
-                email,
-                @"^[^@\s]+@[^@\s]+\.[^@\s]+$"
-            );
-        }
+            if (string.IsNullOrWhiteSpace(email))
+                return false;
 
-        private bool IsValidPhone(string phone)
+            try
+            {
+                // Regex chuẩn RFC 5322 đơn giản
+                string pattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
+                return Regex.IsMatch(email.Trim(), pattern, RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250));
+            }
+            catch (RegexMatchTimeoutException)
+            {
+                return false;
+            }
+        }
+        public bool IsValidPhone(string phone)
         {
-            return System.Text.RegularExpressions.Regex.IsMatch(
-                phone,
-                @"^[0-9]{8,12}$"
-            );
+            if (string.IsNullOrWhiteSpace(phone))
+                return false;
+
+            string pattern = @"^\d{8,12}$";
+            return Regex.IsMatch(phone.Trim(), pattern);
         }
     }
     }

@@ -28,12 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnClose = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
-            this.btnUpdate = new System.Windows.Forms.Button();
-            this.btnSave = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
-            this.txtDiaChi = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.lblCid = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -47,107 +44,49 @@
             this.txtHoTen = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtSDT = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtEmail = new Guna.UI2.WinForms.Guna2TextBox();
-            this.dateTimePickerNgaySinh = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePickerNgayVaoLam = new System.Windows.Forms.DateTimePicker();
-            this.cbGioiTinh = new System.Windows.Forms.ComboBox();
+            this.guna2ShadowForm1 = new Guna.UI2.WinForms.Guna2ShadowForm(this.components);
+            this.txtDiaChi = new Guna.UI2.WinForms.Guna2TextBox();
+            this.dateTimePickerNgaySinh = new Guna.UI2.WinForms.Guna2DateTimePicker();
+            this.cbGioiTinh = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.dateTimePickerNgayVaoLam = new Guna.UI2.WinForms.Guna2DateTimePicker();
+            this.btnSave = new Guna.UI2.WinForms.Guna2Button();
+            this.btnUpdate = new Guna.UI2.WinForms.Guna2Button();
+            this.btnDelete = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnClose
             // 
-            this.btnClose.BackColor = System.Drawing.Color.Tan;
+            this.btnClose.BackColor = System.Drawing.Color.Firebrick;
             this.btnClose.FlatAppearance.BorderSize = 0;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Image = global::CoffeeManagementSystem.Properties.Resources.close_black;
-            this.btnClose.Location = new System.Drawing.Point(544, 2);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnClose.Location = new System.Drawing.Point(725, 2);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(34, 33);
+            this.btnClose.Size = new System.Drawing.Size(45, 41);
             this.btnClose.TabIndex = 59;
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // btnDelete
-            // 
-            this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDelete.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.btnDelete.FlatAppearance.BorderSize = 0;
-            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.ForeColor = System.Drawing.Color.White;
-            this.btnDelete.Location = new System.Drawing.Point(439, 355);
-            this.btnDelete.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(106, 36);
-            this.btnDelete.TabIndex = 58;
-            this.btnDelete.Text = "Xóa";
-            this.btnDelete.UseVisualStyleBackColor = false;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
-            // btnUpdate
-            // 
-            this.btnUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnUpdate.BackColor = System.Drawing.Color.Goldenrod;
-            this.btnUpdate.FlatAppearance.BorderSize = 0;
-            this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdate.ForeColor = System.Drawing.Color.White;
-            this.btnUpdate.Location = new System.Drawing.Point(288, 355);
-            this.btnUpdate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(106, 36);
-            this.btnUpdate.TabIndex = 57;
-            this.btnUpdate.Text = "Cập nhật";
-            this.btnUpdate.UseVisualStyleBackColor = false;
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
-            // 
-            // btnSave
-            // 
-            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSave.BackColor = System.Drawing.Color.DodgerBlue;
-            this.btnSave.FlatAppearance.BorderSize = 0;
-            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(137, 355);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(106, 36);
-            this.btnSave.TabIndex = 56;
-            this.btnSave.Text = "Lưu";
-            this.btnSave.UseVisualStyleBackColor = false;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(11, 160);
-            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label8.Font = new System.Drawing.Font("SVN-Gilroy Medium", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(12, 178);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(72, 16);
+            this.label8.Size = new System.Drawing.Size(97, 22);
             this.label8.TabIndex = 55;
             this.label8.Text = "Ngày Sinh:";
-            // 
-            // txtDiaChi
-            // 
-            this.txtDiaChi.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDiaChi.Location = new System.Drawing.Point(137, 269);
-            this.txtDiaChi.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.txtDiaChi.Multiline = true;
-            this.txtDiaChi.Name = "txtDiaChi";
-            this.txtDiaChi.Size = new System.Drawing.Size(408, 26);
-            this.txtDiaChi.TabIndex = 54;
-            this.txtDiaChi.UseSystemPasswordChar = true;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(11, 122);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Font = new System.Drawing.Font("SVN-Gilroy Medium", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(12, 131);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(55, 16);
+            this.label4.Size = new System.Drawing.Size(71, 22);
             this.label4.TabIndex = 49;
             this.label4.Text = "Họ Tên:";
             // 
@@ -155,219 +94,312 @@
             // 
             this.lblCid.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblCid.AutoSize = true;
-            this.lblCid.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCid.Location = new System.Drawing.Point(11, 312);
-            this.lblCid.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblCid.Font = new System.Drawing.Font("SVN-Gilroy Medium", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCid.Location = new System.Drawing.Point(12, 365);
             this.lblCid.Name = "lblCid";
-            this.lblCid.Size = new System.Drawing.Size(94, 16);
+            this.lblCid.Size = new System.Drawing.Size(129, 22);
             this.lblCid.TabIndex = 48;
             this.lblCid.Text = "Ngày vào làm:";
-            this.lblCid.Visible = false;
-            this.lblCid.Click += new System.EventHandler(this.lblCid_Click);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(11, 236);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Font = new System.Drawing.Font("SVN-Gilroy Medium", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(12, 271);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(44, 16);
+            this.label3.Size = new System.Drawing.Size(58, 22);
             this.label3.TabIndex = 47;
             this.label3.Text = "Email:";
             // 
             // lblPass
             // 
             this.lblPass.AutoSize = true;
-            this.lblPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPass.Location = new System.Drawing.Point(11, 198);
-            this.lblPass.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblPass.Font = new System.Drawing.Font("SVN-Gilroy Medium", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPass.Location = new System.Drawing.Point(12, 225);
             this.lblPass.Name = "lblPass";
-            this.lblPass.Size = new System.Drawing.Size(88, 16);
+            this.lblPass.Size = new System.Drawing.Size(124, 22);
             this.lblPass.TabIndex = 46;
             this.lblPass.Text = "Số điện thoại:";
             // 
             // lblctype
             // 
             this.lblctype.AutoSize = true;
-            this.lblctype.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblctype.Location = new System.Drawing.Point(11, 274);
-            this.lblctype.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblctype.Font = new System.Drawing.Font("SVN-Gilroy Medium", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblctype.Location = new System.Drawing.Point(12, 318);
             this.lblctype.Name = "lblctype";
-            this.lblctype.Size = new System.Drawing.Size(52, 16);
+            this.lblctype.Size = new System.Drawing.Size(75, 22);
             this.lblctype.TabIndex = 45;
             this.lblctype.Text = "Địa Chỉ:";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(369, 160);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Font = new System.Drawing.Font("SVN-Gilroy Medium", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(489, 178);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(63, 16);
+            this.label5.Size = new System.Drawing.Size(87, 22);
             this.label5.TabIndex = 44;
             this.label5.Text = "Giới Tính:";
             // 
             // lblManv
             // 
             this.lblManv.AutoSize = true;
-            this.lblManv.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblManv.Location = new System.Drawing.Point(11, 84);
-            this.lblManv.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblManv.Font = new System.Drawing.Font("SVN-Gilroy Medium", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblManv.Location = new System.Drawing.Point(12, 84);
             this.lblManv.Name = "lblManv";
-            this.lblManv.Size = new System.Drawing.Size(94, 16);
+            this.lblManv.Size = new System.Drawing.Size(128, 22);
             this.lblManv.TabIndex = 43;
             this.lblManv.Text = "Mã Nhân Viên:";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(0)))), ((int)(((byte)(55)))));
-            this.label1.Location = new System.Drawing.Point(11, 41);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Font = new System.Drawing.Font("SVN-Gilroy", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(252, 2);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(176, 30);
+            this.label1.Size = new System.Drawing.Size(227, 37);
             this.label1.TabIndex = 42;
             this.label1.Text = "Hồ Sơ nhân viên";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.Tan;
+            this.panel1.BackColor = System.Drawing.Color.Firebrick;
             this.panel1.Controls.Add(this.btnClose);
+            this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(580, 37);
+            this.panel1.Size = new System.Drawing.Size(773, 46);
             this.panel1.TabIndex = 41;
             // 
             // txtMaNV
             // 
+            this.txtMaNV.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.txtMaNV.BorderRadius = 15;
             this.txtMaNV.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtMaNV.DefaultText = "";
             this.txtMaNV.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.txtMaNV.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
             this.txtMaNV.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtMaNV.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtMaNV.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtMaNV.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMaNV.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtMaNV.Location = new System.Drawing.Point(137, 79);
-            this.txtMaNV.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.txtMaNV.FocusedState.BorderColor = System.Drawing.Color.Firebrick;
+            this.txtMaNV.Font = new System.Drawing.Font("SVN-Gilroy", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMaNV.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(78)))), ((int)(((byte)(78)))));
+            this.txtMaNV.Location = new System.Drawing.Point(180, 78);
+            this.txtMaNV.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtMaNV.Name = "txtMaNV";
             this.txtMaNV.PlaceholderText = "";
             this.txtMaNV.SelectedText = "";
-            this.txtMaNV.Size = new System.Drawing.Size(408, 26);
+            this.txtMaNV.ShadowDecoration.Depth = 20;
+            this.txtMaNV.Size = new System.Drawing.Size(544, 32);
             this.txtMaNV.TabIndex = 62;
             // 
             // txtHoTen
             // 
+            this.txtHoTen.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.txtHoTen.BorderRadius = 15;
             this.txtHoTen.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtHoTen.DefaultText = "";
             this.txtHoTen.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.txtHoTen.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
             this.txtHoTen.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtHoTen.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtHoTen.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtHoTen.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtHoTen.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtHoTen.Location = new System.Drawing.Point(137, 117);
-            this.txtHoTen.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.txtHoTen.FocusedState.BorderColor = System.Drawing.Color.Firebrick;
+            this.txtHoTen.Font = new System.Drawing.Font("SVN-Gilroy", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtHoTen.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(78)))), ((int)(((byte)(78)))));
+            this.txtHoTen.Location = new System.Drawing.Point(180, 125);
+            this.txtHoTen.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtHoTen.Name = "txtHoTen";
             this.txtHoTen.PlaceholderText = "";
             this.txtHoTen.SelectedText = "";
-            this.txtHoTen.Size = new System.Drawing.Size(408, 26);
+            this.txtHoTen.Size = new System.Drawing.Size(544, 32);
             this.txtHoTen.TabIndex = 65;
             // 
             // txtSDT
             // 
+            this.txtSDT.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.txtSDT.BorderRadius = 15;
             this.txtSDT.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtSDT.DefaultText = "";
             this.txtSDT.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.txtSDT.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
             this.txtSDT.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtSDT.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtSDT.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtSDT.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSDT.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtSDT.Location = new System.Drawing.Point(137, 193);
-            this.txtSDT.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.txtSDT.FocusedState.BorderColor = System.Drawing.Color.Firebrick;
+            this.txtSDT.Font = new System.Drawing.Font("SVN-Gilroy", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSDT.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(78)))), ((int)(((byte)(78)))));
+            this.txtSDT.Location = new System.Drawing.Point(180, 219);
+            this.txtSDT.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtSDT.Name = "txtSDT";
             this.txtSDT.PlaceholderText = "";
             this.txtSDT.SelectedText = "";
-            this.txtSDT.Size = new System.Drawing.Size(408, 26);
+            this.txtSDT.Size = new System.Drawing.Size(544, 32);
             this.txtSDT.TabIndex = 66;
             // 
             // txtEmail
             // 
+            this.txtEmail.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.txtEmail.BorderRadius = 15;
             this.txtEmail.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtEmail.DefaultText = "";
             this.txtEmail.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.txtEmail.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
             this.txtEmail.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtEmail.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtEmail.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmail.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtEmail.Location = new System.Drawing.Point(137, 231);
-            this.txtEmail.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.txtEmail.FocusedState.BorderColor = System.Drawing.Color.Firebrick;
+            this.txtEmail.Font = new System.Drawing.Font("SVN-Gilroy", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEmail.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(78)))), ((int)(((byte)(78)))));
+            this.txtEmail.Location = new System.Drawing.Point(180, 265);
+            this.txtEmail.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.PlaceholderText = "";
             this.txtEmail.SelectedText = "";
-            this.txtEmail.Size = new System.Drawing.Size(408, 26);
+            this.txtEmail.Size = new System.Drawing.Size(544, 32);
             this.txtEmail.TabIndex = 68;
+            // 
+            // txtDiaChi
+            // 
+            this.txtDiaChi.BorderRadius = 15;
+            this.txtDiaChi.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtDiaChi.DefaultText = "";
+            this.txtDiaChi.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtDiaChi.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtDiaChi.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtDiaChi.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtDiaChi.FocusedState.BorderColor = System.Drawing.Color.Firebrick;
+            this.txtDiaChi.Font = new System.Drawing.Font("SVN-Gilroy", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDiaChi.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(78)))), ((int)(((byte)(78)))));
+            this.txtDiaChi.Location = new System.Drawing.Point(180, 311);
+            this.txtDiaChi.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtDiaChi.Name = "txtDiaChi";
+            this.txtDiaChi.PlaceholderText = "";
+            this.txtDiaChi.SelectedText = "";
+            this.txtDiaChi.Size = new System.Drawing.Size(542, 32);
+            this.txtDiaChi.TabIndex = 74;
             // 
             // dateTimePickerNgaySinh
             // 
-            this.dateTimePickerNgaySinh.CustomFormat = "dd/MM/yyyy";
-            this.dateTimePickerNgaySinh.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePickerNgaySinh.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePickerNgaySinh.Location = new System.Drawing.Point(137, 157);
-            this.dateTimePickerNgaySinh.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dateTimePickerNgaySinh.BorderRadius = 15;
+            this.dateTimePickerNgaySinh.Checked = true;
+            this.dateTimePickerNgaySinh.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.dateTimePickerNgaySinh.Font = new System.Drawing.Font("SVN-Gilroy", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePickerNgaySinh.Format = System.Windows.Forms.DateTimePickerFormat.Long;
+            this.dateTimePickerNgaySinh.Location = new System.Drawing.Point(180, 173);
+            this.dateTimePickerNgaySinh.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            this.dateTimePickerNgaySinh.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.dateTimePickerNgaySinh.Name = "dateTimePickerNgaySinh";
-            this.dateTimePickerNgaySinh.Size = new System.Drawing.Size(151, 22);
-            this.dateTimePickerNgaySinh.TabIndex = 69;
-            // 
-            // dateTimePickerNgayVaoLam
-            // 
-            this.dateTimePickerNgayVaoLam.CustomFormat = "dd/MM/yyyy";
-            this.dateTimePickerNgayVaoLam.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePickerNgayVaoLam.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePickerNgayVaoLam.Location = new System.Drawing.Point(137, 309);
-            this.dateTimePickerNgayVaoLam.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.dateTimePickerNgayVaoLam.Name = "dateTimePickerNgayVaoLam";
-            this.dateTimePickerNgayVaoLam.Size = new System.Drawing.Size(151, 22);
-            this.dateTimePickerNgayVaoLam.TabIndex = 72;
+            this.dateTimePickerNgaySinh.Size = new System.Drawing.Size(273, 36);
+            this.dateTimePickerNgaySinh.TabIndex = 75;
+            this.dateTimePickerNgaySinh.Value = new System.DateTime(2025, 11, 23, 18, 30, 34, 126);
             // 
             // cbGioiTinh
             // 
-            this.cbGioiTinh.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbGioiTinh.FormattingEnabled = true;
-            this.cbGioiTinh.Location = new System.Drawing.Point(453, 156);
-            this.cbGioiTinh.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbGioiTinh.BackColor = System.Drawing.Color.Transparent;
+            this.cbGioiTinh.BorderRadius = 15;
+            this.cbGioiTinh.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbGioiTinh.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbGioiTinh.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cbGioiTinh.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cbGioiTinh.Font = new System.Drawing.Font("SVN-Gilroy", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbGioiTinh.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cbGioiTinh.ItemHeight = 30;
+            this.cbGioiTinh.Location = new System.Drawing.Point(582, 164);
             this.cbGioiTinh.Name = "cbGioiTinh";
-            this.cbGioiTinh.Size = new System.Drawing.Size(92, 24);
-            this.cbGioiTinh.TabIndex = 73;
+            this.cbGioiTinh.Size = new System.Drawing.Size(140, 36);
+            this.cbGioiTinh.TabIndex = 76;
+            // 
+            // dateTimePickerNgayVaoLam
+            // 
+            this.dateTimePickerNgayVaoLam.BackColor = System.Drawing.Color.Transparent;
+            this.dateTimePickerNgayVaoLam.BorderRadius = 15;
+            this.dateTimePickerNgayVaoLam.Checked = true;
+            this.dateTimePickerNgayVaoLam.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.dateTimePickerNgayVaoLam.Font = new System.Drawing.Font("SVN-Gilroy", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePickerNgayVaoLam.Format = System.Windows.Forms.DateTimePickerFormat.Long;
+            this.dateTimePickerNgayVaoLam.Location = new System.Drawing.Point(180, 359);
+            this.dateTimePickerNgayVaoLam.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            this.dateTimePickerNgayVaoLam.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
+            this.dateTimePickerNgayVaoLam.Name = "dateTimePickerNgayVaoLam";
+            this.dateTimePickerNgayVaoLam.ShadowDecoration.Color = System.Drawing.Color.Gainsboro;
+            this.dateTimePickerNgayVaoLam.Size = new System.Drawing.Size(273, 35);
+            this.dateTimePickerNgayVaoLam.TabIndex = 77;
+            this.dateTimePickerNgayVaoLam.Value = new System.DateTime(2025, 11, 23, 18, 33, 43, 402);
+            // 
+            // btnSave
+            // 
+            this.btnSave.BorderRadius = 15;
+            this.btnSave.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnSave.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnSave.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnSave.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnSave.FillColor = System.Drawing.Color.Firebrick;
+            this.btnSave.Font = new System.Drawing.Font("SVN-Gilroy Medium", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.ForeColor = System.Drawing.Color.White;
+            this.btnSave.Location = new System.Drawing.Point(180, 418);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(141, 46);
+            this.btnSave.TabIndex = 78;
+            this.btnSave.Text = "Lưu";
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.BorderRadius = 15;
+            this.btnUpdate.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnUpdate.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnUpdate.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnUpdate.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnUpdate.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnUpdate.Font = new System.Drawing.Font("SVN-Gilroy Medium", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdate.ForeColor = System.Drawing.Color.White;
+            this.btnUpdate.Location = new System.Drawing.Point(383, 418);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(147, 46);
+            this.btnUpdate.TabIndex = 79;
+            this.btnUpdate.Text = "Cập nhật";
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.BorderRadius = 15;
+            this.btnDelete.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnDelete.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnDelete.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnDelete.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnDelete.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.btnDelete.Font = new System.Drawing.Font("SVN-Gilroy Medium", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelete.ForeColor = System.Drawing.Color.White;
+            this.btnDelete.Location = new System.Drawing.Point(583, 417);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(141, 47);
+            this.btnDelete.TabIndex = 80;
+            this.btnDelete.Text = "Xóa";
+            // 
+            // guna2BorderlessForm1
+            // 
+            this.guna2BorderlessForm1.BorderRadius = 15;
+            this.guna2BorderlessForm1.ContainerControl = this;
+            this.guna2BorderlessForm1.DockIndicatorTransparencyValue = 0.6D;
+            this.guna2BorderlessForm1.TransparentWhileDrag = true;
             // 
             // FormChiTietNhanvien
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(580, 400);
-            this.Controls.Add(this.cbGioiTinh);
+            this.ClientSize = new System.Drawing.Size(773, 492);
+            this.Controls.Add(this.btnDelete);
+            this.Controls.Add(this.btnUpdate);
+            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.dateTimePickerNgayVaoLam);
+            this.Controls.Add(this.cbGioiTinh);
             this.Controls.Add(this.dateTimePickerNgaySinh);
+            this.Controls.Add(this.txtDiaChi);
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.txtSDT);
             this.Controls.Add(this.txtHoTen);
             this.Controls.Add(this.txtMaNV);
-            this.Controls.Add(this.btnDelete);
-            this.Controls.Add(this.btnUpdate);
-            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.txtDiaChi);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.lblCid);
             this.Controls.Add(this.label3);
@@ -375,14 +407,14 @@
             this.Controls.Add(this.lblctype);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.lblManv);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FormChiTietNhanvien";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "AddUser";
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -390,11 +422,7 @@
 
         #endregion
         private System.Windows.Forms.Button btnClose;
-        public System.Windows.Forms.Button btnDelete;
-        public System.Windows.Forms.Button btnUpdate;
-        public System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Label label8;
-        public System.Windows.Forms.TextBox txtDiaChi;
         private System.Windows.Forms.Label label4;
         public System.Windows.Forms.Label lblCid;
         private System.Windows.Forms.Label label3;
@@ -408,8 +436,14 @@
         private Guna.UI2.WinForms.Guna2TextBox txtHoTen;
         private Guna.UI2.WinForms.Guna2TextBox txtSDT;
         private Guna.UI2.WinForms.Guna2TextBox txtEmail;
-        public System.Windows.Forms.DateTimePicker dateTimePickerNgaySinh;
-        public System.Windows.Forms.DateTimePicker dateTimePickerNgayVaoLam;
-        private System.Windows.Forms.ComboBox cbGioiTinh;
+        private Guna.UI2.WinForms.Guna2ShadowForm guna2ShadowForm1;
+        private Guna.UI2.WinForms.Guna2TextBox txtDiaChi;
+        private Guna.UI2.WinForms.Guna2DateTimePicker dateTimePickerNgaySinh;
+        private Guna.UI2.WinForms.Guna2ComboBox cbGioiTinh;
+        private Guna.UI2.WinForms.Guna2DateTimePicker dateTimePickerNgayVaoLam;
+        private Guna.UI2.WinForms.Guna2Button btnSave;
+        private Guna.UI2.WinForms.Guna2Button btnUpdate;
+        private Guna.UI2.WinForms.Guna2Button btnDelete;
+        private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;
     }
 }
