@@ -283,7 +283,7 @@ namespace CoffeeManagementSystem.BLL
                 List<int> numbers = new List<int>();
                 foreach (var id in allIDs)
                 {
-                    if (id.StartsWith("NV") && int.TryParse(id.Substring(2), out int n))
+                    if (id.StartsWith("KH") && int.TryParse(id.Substring(2), out int n))
                         numbers.Add(n);
                 }
                 numbers.Sort();
