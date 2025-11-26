@@ -426,6 +426,9 @@
     <Content Include="Resources\BaoCao.png" />
     <None Include="Resources\BaoCao1.png" />
     <Content Include="Resources\bestseller.png" />
+    <Content Include="Resources\bill.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\Cam nhạt đơn giản thức uống banner.png" />
     <None Include="Resources\close.png" />
     <None Include="Resources\close_black.png" />
@@ -433,11 +436,17 @@
     <None Include="Resources\CoffeCover1.png" />
     <Content Include="Resources\coffeeshopLogin.jpg" />
     <None Include="Resources\coffeeshopLogin1.jpg" />
+    <Content Include="Resources\delivery-bike.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\DoUong.png" />
     <None Include="Resources\LuongThuong1.png" />
     <None Include="Resources\DoUong1.png" />
     <None Include="Resources\hoadon.png" />
     <Content Include="Resources\espresso.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\house.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\KhachHang.png" />
@@ -464,6 +473,9 @@
     <Content Include="Resources\sua_chua_dau.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\takeaway.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\tiramisu.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -471,6 +483,9 @@
     <None Include="Resources\Thêm tiêu đề.png" />
     <Content Include="Resources\TrangChu.png" />
     <None Include="Resources\TrangChu1.png" />
+    <Content Include="Resources\trash-bin.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\tra_dao_cam_sa.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
