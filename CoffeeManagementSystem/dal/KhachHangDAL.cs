@@ -8,6 +8,7 @@ namespace CoffeeManagementSystem.DAL
 {
     public class KhachhangDAL : BaseDataAccess
     {
+        private readonly string _connectionString = @"DataSource=QuanLyCaPheDatabase.db;Version=3;";
         public KhachhangDAL() : base() { }
 
         /// <summary>
@@ -168,7 +169,7 @@ namespace CoffeeManagementSystem.DAL
                         command.Parameters.AddWithValue("@Hoten", khachhang.Hoten);
                         command.Parameters.AddWithValue("@Sodienthoai", (object)khachhang.Sodienthoai ?? DBNull.Value);
                         command.Parameters.AddWithValue("@Email", (object)khachhang.Email ?? DBNull.Value);
-                        command.Parameters.AddWithValue("@Ngaydangky", khachhang.Ngaydangky.ToString("yyyy-MM-dd HH:mm:ss"));
+                        command.Parameters.AddWithValue("@Ngaydangky", khachhang.Ngaydangky.ToString("yyyy-MM-dd"));
                         command.Parameters.AddWithValue("@Diemtichluy", khachhang.Diemtichluy);
 
                         command.ExecuteNonQuery();
@@ -408,6 +409,23 @@ namespace CoffeeManagementSystem.DAL
                 throw new Exception("Lỗi khi lấy mã khách hàng lớn nhất: " + ex.Message, ex);
             }
             return latestId;
+        }
+        public List<string> GetAllMaKhachhang()
+        {
+            List<string> maList = new List<string>();
+            using (var conn = new SQLiteConnection(_connectionString))
+            {
+                conn.Open();
+                var cmd = new SQLiteCommand("SELECT Makhachhang FROM Khachhang", conn);
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        maList.Add(reader["Makhachhang"].ToString());
+                    }
+                }
+            }
+            return maList;
         }
     }
 }

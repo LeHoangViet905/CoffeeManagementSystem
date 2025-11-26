@@ -24,6 +24,9 @@ namespace CoffeeManagementSystem
 
             // Cấu hình TextBox Mật khẩu là PasswordChar để ẩn ký tự
             txtMatKhau.PasswordChar = '●';
+
+            // Gán sự kiện cho checkbox Hiện mật khẩu
+            this.chkHienMatKhau.CheckedChanged += chkHienMatKhau_CheckedChanged;
         }
 
         private void Infor_Load(object sender, EventArgs e)
@@ -63,6 +66,10 @@ namespace CoffeeManagementSystem
                     txtMaNhanVien.Enabled = false;
                     dtpNgayVaoLam.Enabled = false;
                     txtTenDangNhap.Enabled = false;
+
+                    // Mặc định ẩn mật khẩu khi load form
+                    chkHienMatKhau.Checked = false;
+                    txtMatKhau.PasswordChar = '●';
                 }
                 else
                 {
@@ -79,7 +86,14 @@ namespace CoffeeManagementSystem
             }
         }
 
-        //Xử lý sự kiện click nút "Lưu thay đổi".
+        // Xử lý checkbox ẩn/hiện mật khẩu
+        private void chkHienMatKhau_CheckedChanged(object sender, EventArgs e)
+        {
+            // Nếu được tick thì hiện mật khẩu, bỏ tick thì ẩn
+            txtMatKhau.PasswordChar = chkHienMatKhau.Checked ? '\0' : '●';
+        }
+
+        // Xử lý sự kiện click nút "Lưu thay đổi".
         private void btnLuuThayDoi_Click(object sender, EventArgs e)
         {
             // Lấy dữ liệu mới từ các control để tạo đối tượng Nhanvien và Taikhoan

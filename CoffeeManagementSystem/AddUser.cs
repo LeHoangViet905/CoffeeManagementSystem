@@ -17,16 +17,17 @@ namespace CoffeeManagementSystem
 
             // Hiển thị tất cả các nút
             btnSave.Visible = true;
-            btnUpdate.Visible = true;
-            btnDelete.Visible = true;
+            btnUpdate.Visible = false;
+            btnDelete.Visible = false;
 
             // Điều chỉnh trạng thái Enabled cho chế độ Thêm mới
             btnSave.Enabled = true;
             btnUpdate.Enabled = false; // Không thể cập nhật khi thêm mới
             btnDelete.Enabled = false; // Không thể xóa khi thêm mới
 
-            // Cho phép nhập Mã NV khi thêm mới
-            txtMaNV.Enabled = true;
+            // Tự sinh mã nhân viên
+            txtMaNV.Text = nhanvienBLL.GenerateNextMaNV();
+            txtMaNV.Enabled = false;
 
             // Khởi tạo ComboBox Giới tính
             InitializeGioitinhComboBox();
@@ -110,6 +111,7 @@ namespace CoffeeManagementSystem
         // Sự kiện click nút "Lưu" (cho chế độ Thêm mới)
         private void btnSave_Click(object sender, EventArgs e)
         {
+            MainForm.PlayClickSound();
             Nhanvien newNhanvien = GetNhanvienInfoFromControls();
 
             if (string.IsNullOrEmpty(newNhanvien.Manhanvien) || string.IsNullOrEmpty(newNhanvien.Hoten) || string.IsNullOrEmpty(newNhanvien.Gioitinh) || string.IsNullOrEmpty(newNhanvien.Diachi))
@@ -145,6 +147,7 @@ namespace CoffeeManagementSystem
         // Sự kiện click nút "Cập Nhật" (cho chế độ Sửa)
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            MainForm.PlayClickSound();
             Nhanvien updatedNhanvien = GetNhanvienInfoFromControls();
 
             // Kiểm tra dữ liệu bắt buộc (có thể chuyển logic này sang BLL để tái sử dụng)
@@ -181,6 +184,7 @@ namespace CoffeeManagementSystem
         // Sự kiện click nút "Xóa"
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            MainForm.PlayClickSound();
             if (currentNhanvien == null)
             {
                 MessageBox.Show("Không có nhân viên nào được chọn để xóa.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -219,6 +223,7 @@ namespace CoffeeManagementSystem
         // Sự kiện click nút đóng Form (X) ở góc trên bên phải
         private void btnClose_Click(object sender, EventArgs e)
         {
+            MainForm.PlayClickSound();
             this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
@@ -229,7 +234,7 @@ namespace CoffeeManagementSystem
 
         private void lblCid_Click(object sender, EventArgs e)
         {
-
+            MainForm.PlayClickSound();
         }
     }
 }
