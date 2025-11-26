@@ -365,6 +365,7 @@ namespace CoffeeManagementSystem
         // - Chuyển khoản: hiện QR to giữa màn hình + show nút Xác nhận
         private void btnThanhToan_Click(object sender, EventArgs e)
         {
+            MainForm.PlayClickSound();
             Logger.LogInfo("Người dùng nhấn nút 'Thanh toán'.");
 
             // === RÀNG BUỘC NHẬP TÊN KHÁCH HÀNG ===
@@ -484,6 +485,7 @@ namespace CoffeeManagementSystem
         /// </summary>
         private void btnXacNhanThanhToan_Click(object sender, EventArgs e)
         {
+            MainForm.PlayClickSound();
             if (string.IsNullOrEmpty(_pendingPaymentMethod))
             {
                 MessageBox.Show(
