@@ -10,6 +10,7 @@ namespace CoffeeManagementSystem
 
         public DangNhapForm()
         {
+            //hello Việt
             InitializeComponent();
             _authBLL = new AuthBLL(); // Khởi tạo BLL
 
@@ -17,7 +18,8 @@ namespace CoffeeManagementSystem
             this.btnDangNhap.Click += new EventHandler(this.btnLogin_Click);
 
             // Tùy chọn: Xử lý sự kiện KeyDown trên TextBox mật khẩu để nhấn Enter cũng đăng nhập
-            this.txtMatkhau.KeyDown += new KeyEventHandler(this.txtMatkhau_KeyDown);
+            //Sửa chỗ này nha
+            //this.txtMatkhau.KeyDown += new KeyEventHandler(this.txtMatkhau_KeyDown);
 
             // Đặt PasswordChar mặc định khi khởi tạo
             txtMatkhau.PasswordChar = '●';

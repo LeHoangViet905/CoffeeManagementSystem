@@ -19,6 +19,26 @@ namespace CoffeeManagementSystem.BLL
         private string _tenNhanVienLapHoaDon;
         private string _maHoaDonHienTai;
 
+        private string GenerateNewKhachhangId()
+        {
+            // Lấy mã khách hàng lớn nhất hiện tại từ DAL
+            string lastId = _khachhangDAL.GetLatestKhachhangId();  // dùng hàm bạn đã có trong DAL
+            int nextNumber = 1;
+
+            if (!string.IsNullOrEmpty(lastId) && lastId.StartsWith("KH") && lastId.Length >= 5)
+            {
+                string numberPart = lastId.Substring(2);   // VD: "010" trong "KH010"
+                if (int.TryParse(numberPart, out int num))
+                {
+                    nextNumber = num + 1;
+                }
+            }
+
+            string newId = $"KH{nextNumber:000}";          // KH001, KH002, KH010, KH011,...
+            Logger.LogDebug($"Đã tạo ID khách hàng mới: {newId}.");
+            return newId;
+        }
+
         public string GetManhanvienLapHoaDon()
         {
             return _manhanvienLapHoaDon;
@@ -265,35 +285,33 @@ namespace CoffeeManagementSystem.BLL
 
         public Khachhang AddNewKhachhang(string customerName)
         {
-            // LOG: Bắt đầu thêm khách hàng mới
             Logger.LogInfo($"Bắt đầu thêm khách hàng mới: '{customerName}'.");
+
             if (string.IsNullOrWhiteSpace(customerName))
-            {
-                // LOG: Cảnh báo tên khách hàng trống
-                Logger.LogWarning("Tên khách hàng trống khi cố gắng thêm mới.");
                 throw new ArgumentException("Tên khách hàng không được trống.", nameof(customerName));
-            }
 
             try
             {
                 Khachhang newCustomer = new Khachhang
                 {
-                    Makhachhang = GenerateUniqueKhachhangId(),
+                    Makhachhang = GenerateNewKhachhangId(),   // dùng hàm mới
                     Hoten = customerName,
                     Ngaydangky = DateTime.Now,
-                    Diemtichluy = 0 // Mặc định điểm tích lũy là 0
+                    Diemtichluy = 0
                 };
+
                 _khachhangDAL.AddKhachhang(newCustomer);
-                // LOG: Thêm khách hàng thành công
                 Logger.LogInfo($"Đã thêm mới khách hàng thành công: '{newCustomer.Hoten}' (Mã: {newCustomer.Makhachhang}).");
+
                 return newCustomer;
             }
             catch (Exception ex)
             {
-                // LOG: Lỗi khi thêm khách hàng mới
                 Logger.LogError($"Lỗi khi thêm mới khách hàng '{customerName}'.", ex);
                 throw new Exception($"Không thể thêm mới khách hàng: {ex.Message}", ex);
             }
+
+
         }
     }
 

@@ -13,6 +13,7 @@ namespace CoffeeManagementSystem.DAL // Đặt DAL trong một namespace con đ�
 {
     public class NhanvienDAL : BaseDataAccess // Kế thừa từ lớp BaseDataAccess
     {
+        private readonly string _connectionString = @"DataSource=QuanLyCaPheDatabase.db;Version=3;";
         public NhanvienDAL() : base() // Gọi constructor của lớp base để lấy ConnectionString
         {
         }
@@ -306,6 +307,23 @@ namespace CoffeeManagementSystem.DAL // Đặt DAL trong một namespace con đ�
             cmd.Parameters.AddWithValue("@Sodienthoai", (object)nhanvien.Sodienthoai ?? DBNull.Value);
             cmd.Parameters.AddWithValue("@Email", (object)nhanvien.Email ?? DBNull.Value);
             cmd.Parameters.AddWithValue("@Ngayvaolam", nhanvien.Ngayvaolam.ToString("yyyy-MM-dd HH:mm:ss"));
+        }
+        public List<string> GetAllMaNV()
+        {
+            List<string> maList = new List<string>();
+            using (var conn = new SQLiteConnection(_connectionString))
+            {
+                conn.Open();
+                var cmd = new SQLiteCommand("SELECT Manhanvien FROM Nhanvien", conn);
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        maList.Add(reader["Manhanvien"].ToString());
+                    }
+                }
+            }
+            return maList;
         }
     }
 }

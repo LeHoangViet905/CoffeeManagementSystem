@@ -1,6 +1,7 @@
 ﻿
 
 using CoffeeManagementSystem.BLL; // Đã có sẵn và được giữ nguyên
+using CoffeeManagementSystem.DAL;
 using System;
 using System.Collections.Generic;
 using System.IO;                   // Required for File.Exists
@@ -8,8 +9,10 @@ using System.Windows.Forms;
 
 namespace CoffeeManagementSystem
 {
+   
     public partial class AddDrinkForm : Form
     {
+        //Hello Viet
         // Khởi tạo các đối tượng BLL
         private DouongBLL _douongBLL = new DouongBLL();
         private GiadouongBLL _giadouongBLL = new GiadouongBLL();
@@ -25,7 +28,9 @@ namespace CoffeeManagementSystem
             InitializeComponent();
             _isNewEntry = true;
             this.Text = "Thêm Đồ Uống Mới";
-            txtMadouong.Enabled = true;
+            // Tự sinh mã đồ uống
+            txtMadouong.Text = _douongBLL.GenerateNextMaDU();
+            txtMadouong.Enabled = false;
             LoadLoaiDouongComboBox();
 
             // Gán sự kiện cho các nút
@@ -135,6 +140,7 @@ namespace CoffeeManagementSystem
         /// </summary>
         private void btnSelectImage_Click(object sender, EventArgs e)
         {
+            MainForm.PlayClickSound();
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.gif;*.bmp|All Files|*.*";
             openFileDialog.Title = "Chọn ảnh đồ uống";
@@ -172,21 +178,25 @@ namespace CoffeeManagementSystem
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
+            MainForm.PlayClickSound();
             HandleAddDouong();
         }
 
         private void btnCapNhat_Click(object sender, EventArgs e)
         {
+            MainForm.PlayClickSound();
             HandleUpdateDouong();
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
+            MainForm.PlayClickSound();
             HandleDeleteDouong();
         }
 
         private void button1_Click(object sender, EventArgs e) // Nút Hủy/Đóng
         {
+            MainForm.PlayClickSound();
             this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
@@ -375,7 +385,7 @@ namespace CoffeeManagementSystem
 
         private void lblGia_Click(object sender, EventArgs e)
         {
-
+            MainForm.PlayClickSound();
         }
 
         private void txtGiaBan_TextChanged(object sender, EventArgs e)
@@ -385,7 +395,7 @@ namespace CoffeeManagementSystem
 
         private void btnLuu_Click_1(object sender, EventArgs e)
         {
-
+            MainForm.PlayClickSound();
         }
     }
 }
