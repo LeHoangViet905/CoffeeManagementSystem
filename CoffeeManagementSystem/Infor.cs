@@ -129,6 +129,36 @@ namespace CoffeeManagementSystem
             {
                 MessageBox.Show($"Lỗi khi lưu thay đổi: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            // VALIDATION TẠI FORM
+            if (!IsValidEmail(txtEmail.Text.Trim()))
+            {
+                MessageBox.Show("Email không hợp lệ! Hãy nhập đúng dạng: xxx@mail.com",
+                                "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (!IsValidPhone(txtSoDienThoai.Text.Trim()))
+            {
+                MessageBox.Show("Số điện thoại chỉ chứa số và phải từ 8-12 ký tự!",
+                                "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+        }
+        private bool IsValidEmail(string email)
+        {
+            return System.Text.RegularExpressions.Regex.IsMatch(
+                email,
+                @"^[^@\s]+@[^@\s]+\.[^@\s]+$"
+            );
+        }
+
+        private bool IsValidPhone(string phone)
+        {
+            return System.Text.RegularExpressions.Regex.IsMatch(
+                phone,
+                @"^[0-9]{8,12}$"
+            );
         }
     }
-}
+    }

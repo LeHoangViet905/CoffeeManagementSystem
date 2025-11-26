@@ -59,16 +59,19 @@ namespace CoffeeManagementSystem
 
         private void btnKhachHang_Click(object sender, EventArgs e)
         {
+            MainForm.PlayClickSound();
             LoadFormCon(new CustomerForm());
         }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
+            MainForm.PlayClickSound();
             this.Close();
         }
 
         private void btnOrder_Click(object sender, EventArgs e)
         {
+            MainForm.PlayClickSound();
             // Tạo OrderForm và truyền mã nhân viên, tên nhân viên
             OrderForm orderForm = new OrderForm(_maNhanVienHienTai, _tenNhanVienHienTai);
             LoadFormCon(orderForm);
@@ -76,6 +79,7 @@ namespace CoffeeManagementSystem
 
         private void lblNhanVien_Click(object sender, EventArgs e)
         {
+            MainForm.PlayClickSound();
             // Xử lý sự kiện click cho label nhân viên
         }
 
@@ -91,11 +95,13 @@ namespace CoffeeManagementSystem
 
         private void lblName_Click(object sender, EventArgs e)
         {
+            MainForm.PlayClickSound();
             // Xử lý sự kiện click cho label tên (có thể là tên nhân viên)
         }
 
         private void btnQuanLyTaiKhoan_Click(object sender, EventArgs e)
         {
+            MainForm.PlayClickSound();
             //LoadFormCon(new Account()); // Uncomment nếu bạn có Form Account
         }
 
@@ -106,6 +112,7 @@ namespace CoffeeManagementSystem
 
         private void btnDangXuat_Click(object sender, EventArgs e)
         {
+            MainForm.PlayClickSound();
             this.Hide();
 
             // 2. Tạo một thể hiện mới của DangNhapForm
@@ -118,6 +125,7 @@ namespace CoffeeManagementSystem
 
         private void btnTaiKhoan_Click(object sender, EventArgs e)
         {
+            MainForm.PlayClickSound();
             LoadFormCon(new Infor(_loggedInMaNhanVien));
         }
 

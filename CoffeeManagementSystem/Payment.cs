@@ -168,11 +168,84 @@ namespace CoffeeManagementSystem
                     if (success)
                     {
                         MessageBox.Show("Đơn hàng đã được thanh toán và lưu thành công!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        // LOG: Thông tin khi thanh toán hoàn tất thành công
-                        Logger.LogInfo($"Thanh toán hoàn tất thành công cho hóa đơn: {lblMaHoaDonValue.Text}");
+                    try
+                    {
+                        decimal tongTien = _paymentBLL.CalculateTongTien();
 
-                        // *** THÊM PHẦN IN HÓA ĐƠN Ở ĐÂY ***
-                        DialogResult printConfirm = MessageBox.Show("Bạn có muốn in hóa đơn này không?", "In Hóa Đơn", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        // --- PHÁT ÂM THANH WAV KHÔNG BLOCK ---
+                        try
+                        {
+                            Task.Run(() =>
+                            {
+                                try
+                                {
+                                    using (SoundPlayer player = new SoundPlayer(Properties.Resources.Payment))
+                                    {
+                                        player.Play(); // Play() không chặn
+                                    }
+                                }
+                                catch (Exception soundEx)
+                                {
+                                    Logger.LogError("Không phát được âm thanh WAV: " + soundEx.Message);
+                                }
+                            });
+                        }
+                        catch (Exception taskEx)
+                        {
+                            Logger.LogError("Lỗi khi khởi chạy Task âm thanh: " + taskEx.Message);
+                        }
+
+                        // --- ĐỌC GIỌNG NÓI KHÔNG BLOCK (STA Thread) ---
+                        try
+                        {
+                            Task.Run(() =>
+                            {
+                                try
+                                {
+                                    var t = new Thread(() =>
+                                    {
+                                        try
+                                        {
+                                            using (SpeechSynthesizer synth = new SpeechSynthesizer())
+                                            {
+                                                synth.Rate = 1;
+                                                synth.Volume = 100;
+
+                                                string formattedTien = string.Format("{0:N0}", tongTien);
+                                                synth.Speak($"Ding ding! Successful payment. We have received {formattedTien} Viet Nam Dong!");
+                                            }
+                                        }
+                                        catch (Exception synthEx)
+                                        {
+                                            Logger.LogError("Lỗi khi đọc giọng nói: " + synthEx.Message);
+                                        }
+                                    });
+                                    t.SetApartmentState(ApartmentState.STA);
+                                    t.Start();
+                                }
+                                catch (Exception threadEx)
+                                {
+                                    Logger.LogError("Lỗi khi tạo thread giọng nói STA: " + threadEx.Message);
+                                }
+                            });
+                        }
+                        catch (Exception task2Ex)
+                        {
+                            Logger.LogError("Lỗi khi khởi chạy Task giọng nói: " + task2Ex.Message);
+                        }
+
+                        // --- LOG THANH TOÁN ---
+                        Logger.LogInfo($"Thanh toán hoàn tất thành công cho hóa đơn: {lblMaHoaDonValue.Text}");
+                    }
+                    catch (Exception ex)
+                    {
+                        Logger.LogError("Lỗi tổng thể khi phát âm thanh + đọc giọng: " + ex.Message, ex);
+                    }
+
+
+
+                    // *** THÊM PHẦN IN HÓA ĐƠN Ở ĐÂY ***
+                    DialogResult printConfirm = MessageBox.Show("Bạn có muốn in hóa đơn này không?", "In Hóa Đơn", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                         if (printConfirm == DialogResult.Yes)
                         {
                             printPreviewDialogInvoice.ShowDialog();
@@ -278,6 +351,7 @@ namespace CoffeeManagementSystem
         // - Chuyển khoản: hiện QR to giữa màn hình + show nút Xác nhận
         private void btnThanhToan_Click(object sender, EventArgs e)
         {
+            MainForm.PlayClickSound();
             Logger.LogInfo("Người dùng nhấn nút 'Thanh toán'.");
 
             string hinhThucThanhToan = HINH_THUC_TIEN_MAT;
@@ -382,6 +456,7 @@ namespace CoffeeManagementSystem
         /// </summary>
         private void btnXacNhanThanhToan_Click(object sender, EventArgs e)
         {
+            MainForm.PlayClickSound();
             if (string.IsNullOrEmpty(_pendingPaymentMethod))
             {
                 MessageBox.Show(
