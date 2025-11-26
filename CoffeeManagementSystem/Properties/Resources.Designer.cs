@@ -91,6 +91,15 @@ namespace CoffeeManagementSystem.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream click {
+            get {
+                return ResourceManager.GetStream("click", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap close {
@@ -136,6 +145,16 @@ namespace CoffeeManagementSystem.Properties {
         internal static System.Drawing.Bitmap DoUong {
             get {
                 object obj = ResourceManager.GetObject("DoUong", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap hinhdangnhap {
+            get {
+                object obj = ResourceManager.GetObject("hinhdangnhap", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -196,6 +215,25 @@ namespace CoffeeManagementSystem.Properties {
         internal static System.Drawing.Bitmap NhanVien {
             get {
                 object obj = ResourceManager.GetObject("NhanVien", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Payment {
+            get {
+                return ResourceManager.GetStream("Payment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap qrcode {
+            get {
+                object obj = ResourceManager.GetObject("qrcode", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

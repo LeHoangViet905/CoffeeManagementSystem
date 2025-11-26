@@ -8,6 +8,7 @@ namespace CoffeeManagementSystem.DAL
 {
     public class KhachhangDAL : BaseDataAccess
     {
+        private readonly string _connectionString = @"DataSource=QuanLyCaPheDatabase.db;Version=3;";
         public KhachhangDAL() : base() { }
 
         /// <summary>
@@ -408,6 +409,23 @@ namespace CoffeeManagementSystem.DAL
                 throw new Exception("Lỗi khi lấy mã khách hàng lớn nhất: " + ex.Message, ex);
             }
             return latestId;
+        }
+        public List<string> GetAllMaKhachhang()
+        {
+            List<string> maList = new List<string>();
+            using (var conn = new SQLiteConnection(_connectionString))
+            {
+                conn.Open();
+                var cmd = new SQLiteCommand("SELECT Makhachhang FROM Khachhang", conn);
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        maList.Add(reader["Makhachhang"].ToString());
+                    }
+                }
+            }
+            return maList;
         }
     }
 }

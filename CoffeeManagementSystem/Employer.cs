@@ -44,6 +44,7 @@ namespace CoffeeManagementSystem
         //Thêm mới
         private void btnThem_Click(object sender, EventArgs e)
         {
+            MainForm.PlayClickSound();
             FormChiTietNhanvien formChiTiet = new FormChiTietNhanvien();
             if (formChiTiet.ShowDialog() == DialogResult.OK)
             {
@@ -112,12 +113,13 @@ namespace CoffeeManagementSystem
 
         private void close_Click(object sender, EventArgs e)
         {
+            MainForm.PlayClickSound();
             this.Close();
         }
 
         private void dgvNhanvien_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            MainForm.PlayClickSound();
         }
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
@@ -129,6 +131,7 @@ namespace CoffeeManagementSystem
 
         private void dgvNhanvien_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            MainForm.PlayClickSound();
             if (e.RowIndex >= 0 && e.RowIndex < dgvNhanvien.Rows.Count - (dgvNhanvien.AllowUserToAddRows ? 1 : 0))
             {
                 Nhanvien selectedNhanvien = dgvNhanvien.Rows[e.RowIndex].DataBoundItem as Nhanvien;
@@ -157,14 +160,14 @@ namespace CoffeeManagementSystem
 
         private void tabPageNhanvien_Click(object sender, EventArgs e)
         {
-
+            MainForm.PlayClickSound();
         }
 
 
 
         private void lblSearch_Click(object sender, EventArgs e)
         {
-
+            MainForm.PlayClickSound();
         }
 
 

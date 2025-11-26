@@ -199,5 +199,31 @@ namespace CoffeeManagementSystem.BLL
                 throw new Exception("Lỗi BLL khi tìm kiếm nhân viên: " + ex.Message, ex);
             }
         }
+        public string GenerateNextMaNV()
+        {
+            List<string> allIDs = _nhanvienDAL.GetAllMaNV(); // Lấy tất cả mã NV
+            int nextNumber = 1;
+
+            if (allIDs.Count > 0)
+            {
+                List<int> numbers = new List<int>();
+                foreach (var id in allIDs)
+                {
+                    if (id.StartsWith("NV") && int.TryParse(id.Substring(2), out int n))
+                        numbers.Add(n);
+                }
+                numbers.Sort();
+                for (int i = 1; i <= numbers.Count + 1; i++)
+                {
+                    if (!numbers.Contains(i))
+                    {
+                        nextNumber = i;
+                        break;
+                    }
+                }
+            }
+
+            return "NV" + nextNumber.ToString("D3"); // NV001, NV002 ...
+        }
     }
 }
