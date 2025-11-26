@@ -4,6 +4,10 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Printing; // Thêm namespace này cho PrintDocument
+using System.Media;
+using System.Speech.Synthesis; // ở đầu file
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CoffeeManagementSystem
@@ -161,20 +165,92 @@ namespace CoffeeManagementSystem
 
                 currentSelectedCustomer = customerFromBLL; // Cập nhật khách hàng được chọn sau khi BLL xử lý
 
-                if (success)
-                {
-                    MessageBox.Show("Đơn hàng đã được thanh toán và lưu thành công!", "Thành công",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    // LOG: Thông tin khi thanh toán hoàn tất thành công
-                    Logger.LogInfo($"Thanh toán hoàn tất thành công cho hóa đơn: {lblMaHoaDonValue.Text}");
-
-                    // Hỏi in hóa đơn
-                    DialogResult printConfirm = MessageBox.Show("Bạn có muốn in hóa đơn này không?", "In Hóa Đơn",
-                        MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (printConfirm == DialogResult.Yes)
+                    if (success)
                     {
-                        printPreviewDialogInvoice.ShowDialog();
+                        MessageBox.Show("Đơn hàng đã được thanh toán và lưu thành công!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    try
+                    {
+                        decimal tongTien = _paymentBLL.CalculateTongTien();
+
+                        // --- PHÁT ÂM THANH WAV KHÔNG BLOCK ---
+                        try
+                        {
+                            Task.Run(() =>
+                            {
+                                try
+                                {
+                                    using (SoundPlayer player = new SoundPlayer(Properties.Resources.Payment))
+                                    {
+                                        player.Play(); // Play() không chặn
+                                    }
+                                }
+                                catch (Exception soundEx)
+                                {
+                                    Logger.LogError("Không phát được âm thanh WAV: " + soundEx.Message);
+                                }
+                            });
+                        }
+                        catch (Exception taskEx)
+                        {
+                            Logger.LogError("Lỗi khi khởi chạy Task âm thanh: " + taskEx.Message);
+                        }
+
+                        // --- ĐỌC GIỌNG NÓI KHÔNG BLOCK (STA Thread) ---
+                        try
+                        {
+                            Task.Run(() =>
+                            {
+                                try
+                                {
+                                    var t = new Thread(() =>
+                                    {
+                                        try
+                                        {
+                                            using (SpeechSynthesizer synth = new SpeechSynthesizer())
+                                            {
+                                                synth.Rate = 1;
+                                                synth.Volume = 100;
+
+                                                string formattedTien = string.Format("{0:N0}", tongTien);
+                                                synth.Speak($"Ding ding! Successful payment. We have received {formattedTien} Viet Nam Dong!");
+                                            }
+                                        }
+                                        catch (Exception synthEx)
+                                        {
+                                            Logger.LogError("Lỗi khi đọc giọng nói: " + synthEx.Message);
+                                        }
+                                    });
+                                    t.SetApartmentState(ApartmentState.STA);
+                                    t.Start();
+                                }
+                                catch (Exception threadEx)
+                                {
+                                    Logger.LogError("Lỗi khi tạo thread giọng nói STA: " + threadEx.Message);
+                                }
+                            });
+                        }
+                        catch (Exception task2Ex)
+                        {
+                            Logger.LogError("Lỗi khi khởi chạy Task giọng nói: " + task2Ex.Message);
+                        }
+
+                        // --- LOG THANH TOÁN ---
+                        Logger.LogInfo($"Thanh toán hoàn tất thành công cho hóa đơn: {lblMaHoaDonValue.Text}");
                     }
+                    catch (Exception ex)
+                    {
+                        Logger.LogError("Lỗi tổng thể khi phát âm thanh + đọc giọng: " + ex.Message, ex);
+                    }
+
+
+
+                    // *** THÊM PHẦN IN HÓA ĐƠN Ở ĐÂY ***
+                    DialogResult printConfirm = MessageBox.Show("Bạn có muốn in hóa đơn này không?", "In Hóa Đơn", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        if (printConfirm == DialogResult.Yes)
+                        {
+                            printPreviewDialogInvoice.ShowDialog();
+                        }
+                        // *** KẾT THÚC PHẦN IN HÓA ĐƠN ***
 
                     this.DialogResult = DialogResult.OK;
                     this.Close();
