@@ -4,6 +4,10 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Printing; // Thêm namespace này cho PrintDocument
+using System.Media;
+using System.Speech.Synthesis; // ở đầu file
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CoffeeManagementSystem
@@ -161,20 +165,19 @@ namespace CoffeeManagementSystem
 
                 currentSelectedCustomer = customerFromBLL; // Cập nhật khách hàng được chọn sau khi BLL xử lý
 
-                if (success)
-                {
-                    MessageBox.Show("Đơn hàng đã được thanh toán và lưu thành công!", "Thành công",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    // LOG: Thông tin khi thanh toán hoàn tất thành công
-                    Logger.LogInfo($"Thanh toán hoàn tất thành công cho hóa đơn: {lblMaHoaDonValue.Text}");
-
-                    // Hỏi in hóa đơn
-                    DialogResult printConfirm = MessageBox.Show("Bạn có muốn in hóa đơn này không?", "In Hóa Đơn",
-                        MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (printConfirm == DialogResult.Yes)
+                    if (success)
                     {
-                        printPreviewDialogInvoice.ShowDialog();
-                    }
+                        MessageBox.Show("Đơn hàng đã được thanh toán và lưu thành công!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        // LOG: Thông tin khi thanh toán hoàn tất thành công
+                        Logger.LogInfo($"Thanh toán hoàn tất thành công cho hóa đơn: {lblMaHoaDonValue.Text}");
+
+                        // *** THÊM PHẦN IN HÓA ĐƠN Ở ĐÂY ***
+                        DialogResult printConfirm = MessageBox.Show("Bạn có muốn in hóa đơn này không?", "In Hóa Đơn", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        if (printConfirm == DialogResult.Yes)
+                        {
+                            printPreviewDialogInvoice.ShowDialog();
+                        }
+                        // *** KẾT THÚC PHẦN IN HÓA ĐƠN ***
 
                     this.DialogResult = DialogResult.OK;
                     this.Close();
