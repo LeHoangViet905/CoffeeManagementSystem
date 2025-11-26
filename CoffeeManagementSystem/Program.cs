@@ -16,7 +16,7 @@ namespace CoffeeManagementSystem
         static void Main()
         {
             // Lấy chuỗi kết nối từ App.config
-            string connectionString = ConfigurationManager.ConnectionStrings["SqliteDbConnection"].ConnectionString; 
+            string connectionString = ConfigurationManager.ConnectionStrings["SqliteDbConnection"].ConnectionString;
 
             if (string.IsNullOrEmpty(connectionString))
             {
@@ -24,9 +24,6 @@ namespace CoffeeManagementSystem
                 // Tùy chọn: Thoát ứng dụng nếu không có chuỗi kết nối
                 return;
             }
-            // phú em
-            // 
-            // Tôi muốn ăn cơm 
             // --- Test kết nối đến SQLite ---
             using (SQLiteConnection connection = new SQLiteConnection(connectionString))
             {
