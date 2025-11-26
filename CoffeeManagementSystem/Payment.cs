@@ -14,6 +14,7 @@ namespace CoffeeManagementSystem
 {
     public partial class PaymentForm : Form
     {
+        private static bool _dontShowTransferGuide = false;
         private PaymentBLL _paymentBLL;
         private Khachhang currentSelectedCustomer;
 
@@ -71,8 +72,11 @@ namespace CoffeeManagementSystem
                 picQrCode.Height = 300;
             }
 
-            if (btnXacNhanThanhToan != null)
-                btnXacNhanThanhToan.Visible = false;
+            if (btnThanhToanThanhCong != null)
+                btnThanhToanThanhCong.Visible = false;
+            if (btnThanhToanThatBai != null)
+                btnThanhToanThatBai.Visible = false;
+
 
             _pendingPaymentMethod = null;
 
@@ -367,78 +371,39 @@ namespace CoffeeManagementSystem
         {
             Logger.LogInfo("Người dùng nhấn nút 'Thanh toán'.");
 
-            // === RÀNG BUỘC NHẬP TÊN KHÁCH HÀNG ===
-            string customerName = txtKhachHangName.Text.Trim();
-            if (string.IsNullOrEmpty(customerName))
+            //  BẮT BUỘC CÓ TÊN KHÁCH HÀNG
+            if (string.IsNullOrWhiteSpace(txtKhachHangName.Text))
             {
-                MessageBox.Show(
-                    "Vui lòng nhập tên khách hàng trước khi bắt đầu thanh toán.",
-                    "Thiếu thông tin khách hàng",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
-
-                txtKhachHangName.Focus();
+                MessageBox.Show("Vui lòng nhập tên khách hàng trước khi thanh toán.",
+                                "Thiếu thông tin",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning);
                 return;
             }
-            Logger.LogInfo("Người dùng nhấn nút 'Thanh toán'.");
 
-            string hinhThucThanhToan = HINH_THUC_TIEN_MAT;
-            if (rdbChuyenKhoan != null && rdbChuyenKhoan.Checked)
+            // Xác định hình thức thanh toán
+            _pendingPaymentMethod = rdbChuyenKhoan.Checked ?
+                                    HINH_THUC_CHUYEN_KHOAN :
+                                    HINH_THUC_TIEN_MAT;
+
+            if (_pendingPaymentMethod == HINH_THUC_CHUYEN_KHOAN)
             {
-                hinhThucThanhToan = HINH_THUC_CHUYEN_KHOAN;
-            }
-
-            DialogResult confirmResult = MessageBox.Show(
-                $"Bạn muốn bắt đầu quy trình thanh toán bằng '{hinhThucThanhToan}'?\n" +
-                "Sau khi ĐÃ NHẬN ĐỦ TIỀN từ khách, bạn sẽ nhấn nút 'Xác nhận thanh toán' để hoàn tất.",
-                "Xác nhận bắt đầu thanh toán",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question);
-
-            if (confirmResult == DialogResult.Yes)
-            {
-                _pendingPaymentMethod = hinhThucThanhToan;
-
-                // Với chuyển khoản: hiện QR to giữa màn hình
-                if (hinhThucThanhToan == HINH_THUC_CHUYEN_KHOAN)
-                {
-                    HienQrToGiuaManHinh();
-
-                    MessageBox.Show(
-                        "Vui lòng yêu cầu khách quét mã QR để chuyển khoản.\n" +
-                        "Sau khi đã nhận được tiền, hãy nhấn nút 'Xác nhận thanh toán'.",
-                        "Hướng dẫn thanh toán chuyển khoản",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Information);
-
-                    Logger.LogInfo("Bắt đầu quy trình thanh toán chuyển khoản, hiển thị QR.");
-                }
-                else // Tiền mặt
-                {
-                    if (picQrCode != null)
-                        picQrCode.Visible = false;
-
-                    MessageBox.Show(
-                        "Vui lòng thu TIỀN MẶT từ khách hàng.\n" +
-                        "Sau khi đã nhận đủ tiền, hãy nhấn nút 'Xác nhận thanh toán'.",
-                        "Hướng dẫn thanh toán tiền mặt",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Information);
-
-                    Logger.LogInfo("Bắt đầu quy trình thanh toán tiền mặt.");
-                }
-
-                if (btnXacNhanThanhToan != null)
-                {
-                    btnXacNhanThanhToan.Visible = true;
-                    btnXacNhanThanhToan.BringToFront();
-                }
+                // HIỆN QR TO GIỮA MÀN HÌNH
+                HienQrToGiuaManHinh();
+                ShowChuyenKhoanGuide(); 
             }
             else
             {
-                Logger.LogInfo("Người dùng hủy bắt đầu quy trình thanh toán.");
+                picQrCode.Visible = false;
             }
+
+            // HIỆN 2 NÚT THÀNH CÔNG – THẤT BẠI
+            btnThanhToanThanhCong.Visible = true;
+            btnThanhToanThatBai.Visible = true;
+            btnThanhToanThanhCong.BringToFront();
+            btnThanhToanThatBai.BringToFront();
         }
+
 
         /// <summary>
         /// Xử lý khi chọn radio Tiền mặt.
@@ -480,41 +445,49 @@ namespace CoffeeManagementSystem
         }
 
         /// <summary>
-        /// Nút xác nhận thanh toán (dùng cho CẢ tiền mặt và chuyển khoản).
-        /// </summary>
-        private void btnXacNhanThanhToan_Click(object sender, EventArgs e)
+        // Nút "Thành công" – đã nhận đủ tiền
+        private void btnThanhToanThanhCong_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(_pendingPaymentMethod))
             {
                 MessageBox.Show(
                     "Bạn chưa bắt đầu quy trình thanh toán.\n" +
-                    "Vui lòng nhấn nút 'Thanh toán' trước, sau đó mới xác nhận.",
+                    "Vui lòng nhấn nút 'Thanh toán' trước, sau đó mới bấm 'Thành công'.",
                     "Thông báo",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
                 return;
             }
 
-            string message = _pendingPaymentMethod == HINH_THUC_CHUYEN_KHOAN
-                ? "Bạn đã nhận được tiền CHUYỂN KHOẢN từ khách hàng?"
-                : "Bạn đã nhận đủ tiền TIỀN MẶT từ khách hàng?";
-
-            DialogResult confirmResult = MessageBox.Show(
-                message,
-                "Xác nhận thanh toán",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question);
-
-            if (confirmResult == DialogResult.Yes)
-            {
-                Logger.LogInfo($"Người dùng xác nhận đã nhận được tiền ({_pendingPaymentMethod}).");
-                XuLyThanhToan(_pendingPaymentMethod);
-            }
-            else
-            {
-                Logger.LogInfo($"Người dùng chưa xác nhận nhận tiền ({_pendingPaymentMethod}).");
-            }
+            Logger.LogInfo($"Người dùng xác nhận THANH TOÁN THÀNH CÔNG ({_pendingPaymentMethod}).");
+            XuLyThanhToan(_pendingPaymentMethod);
         }
+
+        // Nút "Thất bại" – không nhận được tiền, chỉ đóng QR và reset trạng thái
+        private void btnThanhToanThatBai_Click(object sender, EventArgs e)
+        {
+            Logger.LogInfo($"Người dùng xác nhận THANH TOÁN THẤT BẠI ({_pendingPaymentMethod ?? "chưa bắt đầu"}).");
+
+            // Ẩn QR nếu đang hiện
+            if (picQrCode != null)
+                picQrCode.Visible = false;
+
+            // Ẩn 2 nút kết quả
+            if (btnThanhToanThanhCong != null)
+                btnThanhToanThanhCong.Visible = false;
+            if (btnThanhToanThatBai != null)
+                btnThanhToanThatBai.Visible = false;
+
+            // Reset trạng thái, phải bấm "Thanh toán" lại
+            _pendingPaymentMethod = null;
+
+            MessageBox.Show(
+                "Thanh toán chưa thành công. Bạn có thể thực hiện lại quy trình thanh toán.",
+                "Thanh toán thất bại",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
+        }
+
 
         /// Xử lý sự kiện Leave của txtKhachHangName.
         private void txtKhachHangName_Leave(object sender, EventArgs e)
@@ -749,6 +722,68 @@ namespace CoffeeManagementSystem
                                 e.MarginBounds.Right - graphics.MeasureString(totalText, subHeaderFont).Width, y);
 
             e.HasMorePages = false; // Đã in hết trên một trang
+        }
+        /// <summary>
+        /// Hiển thị hướng dẫn thanh toán chuyển khoản với checkbox
+        /// "Không hiển thị lại lần sau".
+        /// </summary>
+        private void ShowChuyenKhoanGuide()
+        {
+            if (_dontShowTransferGuide)
+                return; // Đã tắt rồi thì thôi
+
+            using (Form guideForm = new Form())
+            {
+                guideForm.Text = "Hướng dẫn thanh toán chuyển khoản";
+                guideForm.FormBorderStyle = FormBorderStyle.FixedDialog;
+                guideForm.StartPosition = FormStartPosition.CenterParent;
+                guideForm.ClientSize = new Size(420, 200);
+                guideForm.MinimizeBox = false;
+                guideForm.MaximizeBox = false;
+                guideForm.ShowInTaskbar = false;
+
+                // Label hướng dẫn
+                Label lbl = new Label();
+                lbl.AutoSize = false;
+                lbl.Text =
+                    "Vui lòng yêu cầu khách quét mã QR để chuyển khoản." +
+                    Environment.NewLine +
+                    "Nếu đã nhận được tiền, hãy nhấn nút 'Thành công'." +
+                    Environment.NewLine +
+                    "Nếu không nhận được tiền hoặc muốn hủy thanh toán, hãy nhấn nút 'Thất bại'.";
+                lbl.Location = new Point(15, 15);
+                lbl.Size = new Size(390, 80);
+
+                // Checkbox "Không hiển thị lại lần sau"
+                CheckBox chk = new CheckBox();
+                chk.Text = "Không hiển thị lại lần sau";
+                chk.AutoSize = true;
+                chk.Location = new Point(15, 110);
+
+                // Nút OK
+                Button btnOK = new Button();
+                btnOK.Text = "OK";
+                btnOK.DialogResult = DialogResult.OK;
+                btnOK.Size = new Size(80, 30);
+                btnOK.Location = new Point(325, 140);
+                btnOK.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+
+                guideForm.Controls.Add(lbl);
+                guideForm.Controls.Add(chk);
+                guideForm.Controls.Add(btnOK);
+                guideForm.AcceptButton = btnOK;
+
+                if (guideForm.ShowDialog(this) == DialogResult.OK)
+                {
+                    if (chk.Checked)
+                    {
+                        _dontShowTransferGuide = true;
+                        // Nếu muốn lưu luôn cho lần mở app sau thì có thể:
+                        // Properties.Settings.Default.DontShowTransferGuide = true;
+                        // Properties.Settings.Default.Save();
+                    }
+                }
+            }
         }
     }
 
