@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="C:/Users/Ngan/OneDrive - ueh.edu.vn/Ảnh/Tài liệu/Nhom_08/CoffeeManagementSystem/QuanLyCaPheDatabase.db" readonly="0" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><main_tabs open="structure browser pragmas query" current="1"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="100"/><column_width id="3" width="2379"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><table title="Douong" custom_title="0" dock_id="1" table="4,6:mainDouong"/><dock_state state="000000ff00000000fd00000001000000020000024900000213fc0100000001fb000000160064006f0063006b00420072006f00770073006500310100000000000002490000011e00ffffff000002490000000000000004000000040000000800000008fc00000000"/><default_encoding codec=""/><browse_table_settings><table schema="main" name="Chitietdonhang" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_" freeze_columns="0"><sort/><column_widths><column index="1" value="156"/><column index="2" value="68"/><column index="3" value="53"/><column index="4" value="62"/><column index="5" value="70"/><column index="6" value="70"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="Douong" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_" freeze_columns="0"><sort/><column_widths><column index="1" value="66"/><column index="2" value="132"/><column index="3" value="47"/><column index="4" value="300"/><column index="5" value="156"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="Giadouong" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_" freeze_columns="0"><sort/><column_widths><column index="1" value="54"/><column index="2" value="68"/><column index="3" value="62"/><column index="4" value="187"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="Loaidouong" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_" freeze_columns="0"><sort/><column_widths><column index="1" value="46"/><column index="2" value="187"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="Thanhtoan" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_" freeze_columns="0"><sort/><column_widths><column index="1" value="82"/><column index="2" value="75"/><column index="3" value="187"/><column index="4" value="116"/><column index="5" value="101"/><column index="6" value="96"/><column index="7" value="202"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table></browse_table_settings></tab_browse><tab_sql><sql name="SQL 1*">-- Script tạo cấu trúc cơ sở dữ liệu và điền dữ liệu mẫu cho Coffee Management System (SQLite)
+--
+-- File này có thể được chạy bằng các công cụ quản lý SQLite
+-- hoặc được tích hợp trực tiếp vào DatabaseInitializer.cs của bạn.
+
+-- BẬT PRAGMA foreign_keys để đảm bảo khóa ngoại hoạt động đúng
+PRAGMA foreign_keys = ON;
+
+----------------------------------------------------
+-- 0. XÓA DỮ LIỆU CŨ (NẾU CÓ)
+-- (Phải xóa theo thứ tự ngược lại của các liên kết khóa ngoại)
+----------------------------------------------------
+DELETE FROM Thanhtoan;
+DELETE FROM Chitietdonhang;
+DELETE FROM Donhang;
+DELETE FROM Khachhang;
+DELETE FROM Taikhoan;
+DELETE FROM Nhanvien;
+DELETE FROM Giadouong;
+DELETE FROM Douong;
+DELETE FROM Loaidouong;
+
+
+----------------------------------------------------
+-- 1. TẠO CẤU TRÚC BẢNG (SCHEMA)
+-- (Giữ nguyên IF NOT EXISTS để không lỗi nếu bảng đã tồn tại)
+----------------------------------------------------
+
+-- Bảng: Loaidouong (Loại đồ uống)
+CREATE TABLE IF NOT EXISTS Loaidouong (
+    Maloai TEXT PRIMARY KEY,
+    Tenloai TEXT NOT NULL
+);
+
+-- Bảng: Douong (Đồ uống)
+CREATE TABLE IF NOT EXISTS Douong (
+    Madouong TEXT PRIMARY KEY,
+    Tendouong TEXT NOT NULL,
+    Maloai TEXT,
+    Mota TEXT,
+    Hinhanh TEXT,
+    FOREIGN KEY (Maloai) REFERENCES Loaidouong (Maloai) ON DELETE CASCADE
+);
+
+-- Bảng: Giadouong (Giá đồ uống)
+CREATE TABLE IF NOT EXISTS Giadouong (
+    Magia TEXT PRIMARY KEY,
+    Madouong TEXT,
+    Giaban REAL NOT NULL,
+    Thoigianapdung TEXT NOT NULL,
+    FOREIGN KEY (Madouong) REFERENCES Douong (Madouong) ON DELETE CASCADE
+);
+
+-- Bảng: Nhanvien (Nhân viên)
+CREATE TABLE IF NOT EXISTS Nhanvien (
+    Manhanvien TEXT PRIMARY KEY,
+    Hoten TEXT NOT NULL,
+    Ngaysinh TEXT,
+    Gioitinh TEXT,
+    Diachi TEXT,
+    Sodienthoai TEXT,
+    Email TEXT,
+    Ngayvaolam TEXT
+);
+
+-- Bảng: Taikhoan (Tài khoản)
+CREATE TABLE IF NOT EXISTS Taikhoan (
+    Mataikhoan TEXT PRIMARY KEY,
+    Tendangnhap TEXT UNIQUE NOT NULL,
+    Matkhau TEXT NOT NULL,
+    Vaitro TEXT NOT NULL,
+    Manhanvien TEXT UNIQUE,
+    FOREIGN KEY (Manhanvien) REFERENCES Nhanvien (Manhanvien) ON DELETE CASCADE
+);
+
+-- Bảng: Khachhang (Khách hàng)
+CREATE TABLE IF NOT EXISTS Khachhang (
+    Makhachhang TEXT PRIMARY KEY,
+    Hoten TEXT NOT NULL,
+    Sodienthoai TEXT UNIQUE,
+    Email TEXT,
+    Ngaydangky TEXT,
+    Diemtichluy INTEGER DEFAULT 0
+);
+
+-- Bảng: Donhang (Đơn hàng)
+CREATE TABLE IF NOT EXISTS Donhang (
+    Madonhang TEXT PRIMARY KEY,
+    Manhanvien TEXT NOT NULL,
+    Makhachhang TEXT,
+    Thoigiandat TEXT NOT NULL,
+    Trangthaidon TEXT,
+    Tongtien REAL NOT NULL,
+    FOREIGN KEY (Manhanvien) REFERENCES Nhanvien (Manhanvien),
+    FOREIGN KEY (Makhachhang) REFERENCES Khachhang (Makhachhang)
+);
+
+-- Bảng: Chitietdonhang (Chi tiết đơn hàng)
+CREATE TABLE IF NOT EXISTS Chitietdonhang (
+    Madonhang TEXT NOT NULL,
+    Madouong TEXT NOT NULL,
+    Soluong INTEGER NOT NULL,
+    Dongia REAL NOT NULL,
+    Thanhtien REAL NOT NULL,
+    Ghichu TEXT,
+    PRIMARY KEY (Madonhang, Madouong),
+    FOREIGN KEY (Madonhang) REFERENCES Donhang (Madonhang) ON DELETE CASCADE,
+    FOREIGN KEY (Madouong) REFERENCES Douong (Madouong)
+);
+
+-- Bảng: Thanhtoan (Thanh toán)
+CREATE TABLE IF NOT EXISTS Thanhtoan (
+    Mathanhtoan TEXT PRIMARY KEY,
+    Madonhang TEXT UNIQUE NOT NULL,
+    Thoigianthanhtoan TEXT NOT NULL,
+    Hinhthucthanhtoan TEXT,
+    Sotienthanhtoan REAL NOT NULL,
+    Manhanvienthu TEXT NOT NULL,
+    Ghichu TEXT,
+    FOREIGN KEY (Madonhang) REFERENCES Donhang (Madonhang) ON DELETE CASCADE,
+    FOREIGN KEY (Manhanvienthu) REFERENCES Nhanvien (Manhanvien)
+);
+
+----------------------------------------------------
+-- 2. CHÈN DỮ LIỆU MẪU (SAMPLE RECORDS)
+----------------------------------------------------
+-- (Các lệnh INSERT INTO mà tôi đã cung cấp trước đó, giữ nguyên)
+-- ... (Phần này là 10 bản ghi cho mỗi bảng như đã cho ở câu trả lời trước) ...
+INSERT OR IGNORE INTO Loaidouong (Maloai, Tenloai) VALUES
+('LD001', 'Cà phê truyền thống'),
+('LD002', 'Trà hiện đại'),
+('LD003', 'Nước ép trái cây'),
+('LD004', 'Đồ uống đá xay'),
+('LD005', 'Bánh ngọt &amp; Tráng miệng'),
+('LD006', 'Sinh tố'),
+('LD007', 'Sữa chua &amp; Smoothies'),
+('LD008', 'Đồ uống đặc biệt'),
+('LD009', 'Nước giải khát'),
+('LD010', 'Thực phẩm nhẹ');
+
+
+-- Dữ liệu mẫu cho Douong (10 bản ghi)
+INSERT OR IGNORE INTO Douong (Madouong, Tendouong, Maloai, Mota, Hinhanh) VALUES
+('DU001', 'Espresso Đậm Đà', 'LD001', 'Cà phê nguyên chất, hương vị mạnh mẽ.', 'espresso.jpg'),
+('DU002', 'Latte Hạnh Nhân', 'LD001', 'Cà phê sữa béo ngậy với sữa hạnh nhân.', 'latte_hanh_nhan.jpg'),
+('DU003', 'Trà Đào Cam Sả', 'LD002', 'Trà thanh mát với đào, cam tươi, và sả thơm.', 'tra_dao_cam_sa.jpg'),
+('DU004', 'Nước Cam Ép Tươi', 'LD003', '100% cam tươi, không đường.', 'nuoc_cam_ep.jpg'),
+('DU005', 'Bánh Tiramisu Ý', 'LD005', 'Bánh tiramisu chuẩn vị, mềm mịn.', 'tiramisu.jpg'),
+('DU006', 'Sinh Tố Bơ Xanh', 'LD006', 'Sinh tố bơ tươi mát, giàu dinh dưỡng.', 'sinh_to_bo.jpg'),
+('DU007', 'Matcha Đá Xay', 'LD004', 'Matcha đậm đà xay cùng đá và kem.', 'matcha_da_xay.jpg'),
+('DU008', 'Sữa Chua Dâu Tây', 'LD007', 'Sữa chua sánh mịn với dâu tây tươi.', 'sua_chua_dau.jpg'),
+('DU009', 'Americano Nóng', 'LD001', 'Cà phê đen pha loãng với nước nóng.', 'americano.jpg'),
+('DU010', 'Bánh Mì Phô Mai', 'LD010', 'Bánh mì nướng với lớp phô mai béo ngậy.', 'banh_mi_pho_mai.jpg');
+
+
+-- Dữ liệu mẫu cho Giadouong (10 bản ghi - mỗi đồ uống có ít nhất 1 giá, DU001 có giá cập nhật)
+INSERT OR IGNORE INTO Giadouong (Magia, Madouong, Giaban, Thoigianapdung) VALUES
+('GIA001', 'DU001', 30000.0, '2023-01-01 08:00:00.000'),
+('GIA002', 'DU002', 45000.0, '2023-01-01 08:00:00.000'),
+('GIA003', 'DU003', 40000.0, '2023-01-01 08:00:00.000'),
+('GIA004', 'DU004', 35000.0, '2023-01-01 08:00:00.000'),
+('GIA005', 'DU005', 55000.0, '2023-01-01 08:00:00.000'),
+('GIA006', 'DU006', 42000.0, '2023-02-10 10:00:00.000'),
+('GIA007', 'DU007', 52000.0, '2023-03-15 11:30:00.000'),
+('GIA008', 'DU008', 38000.0, '2023-04-20 13:00:00.000'),
+('GIA009', 'DU009', 28000.0, '2023-05-25 09:00:00.000'),
+('GIA010', 'DU010', 30000.0, '2023-06-01 08:00:00.000'),
+('GIA011', 'DU001', 32000.0, '2024-05-01 09:00:00.000'); -- Giá cập nhật cho Espresso
+
+
+-- Dữ liệu mẫu cho Nhanvien (10 bản ghi)
+INSERT OR IGNORE INTO Nhanvien (Manhanvien, Hoten, Ngaysinh, Gioitinh, Diachi, Sodienthoai, Email, Ngayvaolam) VALUES
+('NV001', 'Nguyễn Văn A', '1990-05-15', 'Nam', '123 Đường ABC, Q1, HCM', '0901234567', 'vana@cafe.com', '2022-01-10'),
+('NV002', 'Trần Thị B', '1995-11-20', 'Nữ', '456 Đường XYZ, Q3, HCM', '0912345678', 'thib@cafe.com', '2022-03-01'),
+('NV003', 'Lê Văn C', '1992-07-25', 'Nam', '789 Phố KLN, Q5, HCM', '0923456789', 'vanc@cafe.com', '2022-06-15'),
+('NV004', 'Phạm Thị D', '1998-02-10', 'Nữ', '101 Hẻm MNO, Q7, HCM', '0934567890', 'thid@cafe.com', '2023-01-20'),
+('NV005', 'Hoàng Văn E', '1993-09-01', 'Nam', '202 Ngõ PQR, Q Bình Thạnh, HCM', '0945678901', 'vane@cafe.com', '2023-05-05'),
+('NV006', 'Vũ Thị F', '1991-03-03', 'Nữ', '303 Hẻm STU, Q Gò Vấp, HCM', '0967890123', 'thif@cafe.com', '2023-07-12'),
+('NV007', 'Đinh Văn G', '1994-12-12', 'Nam', '404 Đường VWX, Q Tân Bình, HCM', '0978901234', 'vang@cafe.com', '2024-01-01'),
+('NV008', 'Bùi Thị H', '1996-08-08', 'Nữ', '505 Đường YZA, Q Phú Nhuận, HCM', '0989012345', 'thih@cafe.com', '2024-02-14'),
+('NV009', 'Dương Văn I', '1997-01-20', 'Nam', '606 Hẻm BCD, Q Thủ Đức, HCM', '0990123456', 'vani@cafe.com', '2024-03-20'),
+('NV010', 'Ngô Thị K', '1999-04-30', 'Nữ', '707 Đường EFG, Q Tân Phú, HCM', '0900112233', 'thik@cafe.com', '2024-04-10');
+
+
+-- Dữ liệu mẫu cho Taikhoan (10 bản ghi, đảm bảo liên kết với Nhanvien)
+INSERT OR IGNORE INTO Taikhoan (Mataikhoan, Tendangnhap, Matkhau, Vaitro, Manhanvien) VALUES
+('TK001', 'admin', 'admin123', 'Admin', 'NV001'),
+('TK002', 'nhanvien1', 'nv123', 'NhanVien', 'NV002'),
+('TK003', 'nhanvien2', 'nv123', 'NhanVien', 'NV003'),
+('TK004', 'nhanvien3', 'nv123', 'NhanVien', 'NV004'),
+('TK005', 'nhanvien4', 'nv123', 'NhanVien', 'NV005'),
+('TK006', 'nhanvien5', 'nv123', 'NhanVien', 'NV006'),
+('TK007', 'nhanvien6', 'nv123', 'NhanVien', 'NV007'),
+('TK008', 'nhanvien7', 'nv123', 'NhanVien', 'NV008'),
+('TK009', 'nhanvien8', 'nv123', 'NhanVien', 'NV009'),
+('TK010', 'nhanvien9', 'nv123', 'NhanVien', 'NV010');
+
+
+-- Dữ liệu mẫu cho Khachhang (10 bản ghi)
+INSERT OR IGNORE INTO Khachhang (Makhachhang, Hoten, Sodienthoai, Email, Ngaydangky, Diemtichluy) VALUES
+('KH001', 'Lê Thanh Ngân', '0771112223', 'ngan.le@mail.com', '2023-02-01', 150),
+('KH002', 'Đỗ Mạnh Cường', '0773334445', 'cuong.do@mail.com', '2023-03-10', 80),
+('KH003', 'Bùi Ngọc Lan', '0775556667', 'lan.bui@mail.com', '2023-04-05', 220),
+('KH004', 'Trịnh Bá Quyền', '0777778889', 'quyen.trinh@mail.com', '2023-05-12', 50),
+('KH005', 'Võ Thị Mai', '0779990001', 'mai.vo@mail.com', '2023-06-20', 120),
+('KH006', 'Phan Văn Minh', '0701020304', 'minh.phan@mail.com', '2023-07-01', 300),
+('KH007', 'Đặng Thị Thu', '0705060708', 'thu.dang@mail.com', '2023-08-15', 90),
+('KH008', 'Hoàng Duy Anh', '0709101112', 'duyanh.hoang@mail.com', '2023-09-22', 180),
+('KH009', 'Nguyễn Thị Hoa', '0701314151', 'hoa.nguyen@mail.com', '2023-10-01', 250),
+('KH010', 'Trần Văn Tùng', '0701617181', 'tung.tran@mail.com', '2023-11-11', 70);
+
+
+-- Dữ liệu mẫu cho Donhang (10 bản ghi)
+INSERT OR IGNORE INTO Donhang (Madonhang, Manhanvien, Makhachhang, Thoigiandat, Trangthaidon, Tongtien) VALUES
+('DH001', 'NV001', 'KH001', '2024-05-27 10:30:00.000', 'Đã thanh toán', 77000.0),
+('DH002', 'NV002', NULL, '2024-05-27 14:00:00.000', 'Đã đặt', 40000.0),
+('DH003', 'NV003', 'KH003', '2024-05-28 09:15:00.000', 'Đã thanh toán', 90000.0),
+('DH004', 'NV004', 'KH002', '2024-05-28 11:45:00.000', 'Đã đặt', 35000.0),
+('DH005', 'NV005', 'KH005', '2024-05-28 15:00:00.000', 'Đã thanh toán', 55000.0),
+('DH006', 'NV001', 'KH004', '2024-05-29 08:00:00.000', 'Đã thanh toán', 70000.0),
+('DH007', 'NV002', NULL, '2024-05-29 11:00:00.000', 'Đã đặt', 52000.0),
+('DH008', 'NV006', 'KH006', '2024-05-29 16:30:00.000', 'Đã thanh toán', 115000.0), -- Adjusted to sum of items
+('DH009', 'NV007', 'KH007', '2024-05-30 09:45:00.000', 'Đã thanh toán', 80000.0),
+('DH010', 'NV008', NULL, '2024-05-30 13:10:00.000', 'Đã đặt', 30000.0);
+
+
+-- Dữ liệu mẫu cho Chitietdonhang (liên kết với 10 đơn hàng trên)
+INSERT OR IGNORE INTO Chitietdonhang (Madonhang, Madouong, Soluong, Dongia, Thanhtien, Ghichu) VALUES
+('DH001', 'DU001', 1, 32000.0, 32000.0, NULL),
+('DH001', 'DU002', 1, 45000.0, 45000.0, NULL),
+('DH002', 'DU003', 1, 40000.0, 40000.0, 'Ít đường'),
+('DH003', 'DU002', 2, 45000.0, 90000.0, NULL),
+('DH004', 'DU004', 1, 35000.0, 35000.0, NULL),
+('DH005', 'DU005', 1, 55000.0, 55000.0, NULL),
+('DH006', 'DU004', 2, 35000.0, 70000.0, 'Thêm đá'),
+('DH007', 'DU007', 1, 52000.0, 52000.0, NULL),
+('DH008', 'DU001', 1, 32000.0, 32000.0, NULL),
+('DH008', 'DU005', 1, 55000.0, 55000.0, NULL),
+('DH008', 'DU009', 1, 28000.0, 28000.0, NULL),
+('DH009', 'DU006', 1, 42000.0, 42000.0, NULL),
+('DH009', 'DU008', 1, 38000.0, 38000.0, NULL),
+('DH010', 'DU010', 1, 30000.0, 30000.0, 'Không kem');
+
+
+-- Dữ liệu mẫu cho Thanhtoan (10 bản ghi, đảm bảo liên kết với Donhang)
+INSERT OR IGNORE INTO Thanhtoan (Mathanhtoan, Madonhang, Thoigianthanhtoan, Hinhthucthanhtoan, Sotienthanhtoan, Manhanvienthu, Ghichu) VALUES
+('TT001', 'DH001', '2024-05-27 10:32:00.000', 'Tiền mặt', 77000.0, 'NV001', NULL),
+('TT002', 'DH003', '2024-05-28 09:18:00.000', 'Chuyển khoản', 90000.0, 'NV003', 'Đã chuyển khoản ngân hàng'),
+('TT003', 'DH005', '2024-05-28 15:02:00.000', 'Thẻ', 55000.0, 'NV005', 'Thanh toán qua thẻ Visa'),
+('TT004', 'DH006', '2024-05-29 08:05:00.000', 'Tiền mặt', 70000.0, 'NV001', NULL),
+('TT005', 'DH008', '2024-05-29 16:35:00.000', 'Chuyển khoản', 115000.0, 'NV006', 'Khách trả dư 15k'),
+('TT006', 'DH009', '2024-05-30 09:48:00.000', 'Thẻ', 80000.0, 'NV007', NULL),
+('TT007', 'DH002', '2024-05-27 14:05:00.000', 'Tiền mặt', 40000.0, 'NV002', 'Thanh toán ngay'),
+('TT008', 'DH004', '2024-05-28 11:47:00.000', 'Tiền mặt', 35000.0, 'NV004', NULL),
+('TT009', 'DH007', '2024-05-29 11:03:00.000', 'Chuyển khoản', 52000.0, 'NV002', NULL),
+('TT010', 'DH010', '2024-05-30 13:12:00.000', 'Tiền mặt', 30000.0, 'NV008', 'Khách quen');</sql><current_tab id="0"/></tab_sql></sqlb_project>
