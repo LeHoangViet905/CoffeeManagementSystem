@@ -1,17 +1,17 @@
 ﻿using CoffeeManagementSystem.BLL;
 using CoffeeManagementSystem.DAL;
+using ScottPlot;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
-using System.Drawing.Printing;
-using System.Linq;
-using System.Windows.Forms;
-using ScottPlot;
-using System.Globalization;
-using System.Windows.Forms.DataVisualization.Charting;
+using System.Configuration;
 using System.Data;
 using System.Data.SQLite;
-using System.Configuration;
+using System.Drawing;
+using System.Drawing.Printing;
+using System.Globalization;
+using System.Linq;
+using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace CoffeeManagementSystem
 {
@@ -817,7 +817,7 @@ GROUP BY l.Tenloai";
 
             formsPlotPie.Refresh();
         }
-        
+
 
         private void dtpDashTo_ValueChanged(object sender, EventArgs e)
         {
