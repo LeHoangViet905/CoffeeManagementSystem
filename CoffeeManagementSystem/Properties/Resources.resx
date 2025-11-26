@@ -172,4 +172,10 @@
   <data name="b7d720d81652965c504ecfb03b9de1da" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\b7d720d81652965c504ecfb03b9de1da.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="qrcode" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\qrcode.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="hinhdangnhap" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Thêm tiêu đề.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>
