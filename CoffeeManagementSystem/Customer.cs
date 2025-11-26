@@ -1,7 +1,6 @@
 ﻿using CoffeeManagementSystem.BLL;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Windows.Forms;
 namespace CoffeeManagementSystem
 {
@@ -25,7 +24,7 @@ namespace CoffeeManagementSystem
         // Sự kiện Form Load: Tải dữ liệu khi Form được hiển thị
         private void CustomerForm_Load(object sender, EventArgs e)
         {
-         
+
             LoadDanhSachKhachHang(); // Gọi phương thức tải danh sách ban đầu
         }
 

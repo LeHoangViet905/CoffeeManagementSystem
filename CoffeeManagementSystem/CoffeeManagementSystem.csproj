@@ -258,11 +258,11 @@
     <Compile Include="DangNhapForm.Designer.cs">
       <DependentUpon>DangNhapForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Dashboard.cs">
+    <Compile Include="Trangchu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Dashboard.Designer.cs">
-      <DependentUpon>Dashboard.cs</DependentUpon>
+    <Compile Include="Trangchu.Designer.cs">
+      <DependentUpon>Trangchu.cs</DependentUpon>
     </Compile>
     <Compile Include="DatabaseInitializer.cs" />
     <Compile Include="Drinks.cs">
@@ -335,6 +335,12 @@
     <Compile Include="Report.Designer.cs">
       <DependentUpon>Report.cs</DependentUpon>
     </Compile>
+    <Compile Include="ucProductItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucProductItem.Designer.cs">
+      <DependentUpon>ucProductItem.cs</DependentUpon>
+    </Compile>
     <Compile Include="utilities\Logger.cs" />
     <EmbeddedResource Include="AddDrink.resx">
       <DependentUpon>AddDrink.cs</DependentUpon>
@@ -354,8 +360,8 @@
     <EmbeddedResource Include="DangNhapForm.resx">
       <DependentUpon>DangNhapForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Dashboard.resx">
-      <DependentUpon>Dashboard.cs</DependentUpon>
+    <EmbeddedResource Include="Trangchu.resx">
+      <DependentUpon>Trangchu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Drinks.resx">
       <DependentUpon>Drinks.cs</DependentUpon>
@@ -411,9 +417,18 @@
     </None>
     <None Include="Resources\banner.png" />
     <None Include="Resources\b7d720d81652965c504ecfb03b9de1da.jpg" />
+    <Content Include="Resources\americano.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\banh_mi_pho_mai.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\BaoCao.png" />
     <None Include="Resources\BaoCao1.png" />
     <Content Include="Resources\bestseller.png" />
+    <Content Include="Resources\bill.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\Cam nhạt đơn giản thức uống banner.png" />
     <None Include="Resources\close.png" />
     <None Include="Resources\close_black.png" />
@@ -421,23 +436,59 @@
     <None Include="Resources\CoffeCover1.png" />
     <Content Include="Resources\coffeeshopLogin.jpg" />
     <None Include="Resources\coffeeshopLogin1.jpg" />
+    <Content Include="Resources\delivery-bike.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\DoUong.png" />
     <None Include="Resources\LuongThuong1.png" />
     <None Include="Resources\DoUong1.png" />
     <None Include="Resources\hoadon.png" />
+    <Content Include="Resources\espresso.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\house.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\KhachHang.png" />
     <None Include="Resources\NhanVien1.png" />
     <None Include="Resources\KhachHang1.png" />
     <None Include="Resources\Logout_35px.png" />
     <None Include="Resources\logout.png" />
+    <Content Include="Resources\latte_hanh_nhan.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\LuongThuong.png" />
+    <Content Include="Resources\matcha_da_xay.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\NhanVien.png" />
     <None Include="Resources\TaiKhoan.png" />
     <None Include="Resources\Services_35px.png" />
+    <Content Include="Resources\nuoc_cam_ep.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\sinh_to_bo.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\sua_chua_dau.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\takeaway.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\tiramisu.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="Resources\qrcode.png" />
     <None Include="Resources\Thêm tiêu đề.png" />
     <Content Include="Resources\TrangChu.png" />
     <None Include="Resources\TrangChu1.png" />
+    <Content Include="Resources\trash-bin.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\tra_dao_cam_sa.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\Trắng Xanh Hình Ảnh Hiện Đại Đồng Giá Sale Deal Ưu Đãi Đồ Ăn Thức Uống Banner Ngang.png" />
     <None Include="Resources\Xuat.png" />
     <Content Include="Resources\Đầy Màu Sắc Minh Họa Vui Tươi Hình Ảnh Sale Deal Ưu Đãi Đồ Ăn Thức Uống Banner.png" />
