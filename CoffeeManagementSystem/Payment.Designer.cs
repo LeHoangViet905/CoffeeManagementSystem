@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PaymentForm));
             this.lvwChiTietHoaDon = new System.Windows.Forms.ListView();
             this.STT = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.TenDouong = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -51,7 +50,8 @@
             this.rdbChuyenKhoan = new System.Windows.Forms.RadioButton();
             this.rdbTienMat = new System.Windows.Forms.RadioButton();
             this.picQrCode = new System.Windows.Forms.PictureBox();
-            this.btnXacNhanThanhToan = new System.Windows.Forms.Button();
+            this.btnThanhToanThanhCong = new System.Windows.Forms.Button();
+            this.btnThanhToanThatBai = new System.Windows.Forms.Button();
             this.grpPaymentMethod.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picQrCode)).BeginInit();
             this.SuspendLayout();
@@ -287,8 +287,8 @@
             // picQrCode
             // 
             this.picQrCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picQrCode.ErrorImage = ((System.Drawing.Image)(resources.GetObject("picQrCode.ErrorImage")));
-            this.picQrCode.InitialImage = ((System.Drawing.Image)(resources.GetObject("picQrCode.InitialImage")));
+            this.picQrCode.ErrorImage = null;
+            this.picQrCode.InitialImage = null;
             this.picQrCode.Location = new System.Drawing.Point(230, 98);
             this.picQrCode.Margin = new System.Windows.Forms.Padding(2);
             this.picQrCode.Name = "picQrCode";
@@ -298,18 +298,29 @@
             this.picQrCode.TabStop = false;
             this.picQrCode.Visible = false;
             // 
-            // btnXacNhanThanhToan
+            // btnThanhToanThanhCong
             // 
-            this.btnXacNhanThanhToan.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.btnXacNhanThanhToan.Location = new System.Drawing.Point(279, 349);
-            this.btnXacNhanThanhToan.Margin = new System.Windows.Forms.Padding(2);
-            this.btnXacNhanThanhToan.Name = "btnXacNhanThanhToan";
-            this.btnXacNhanThanhToan.Size = new System.Drawing.Size(126, 28);
-            this.btnXacNhanThanhToan.TabIndex = 33;
-            this.btnXacNhanThanhToan.Text = "Xác nhận thanh toán";
-            this.btnXacNhanThanhToan.UseVisualStyleBackColor = true;
-            this.btnXacNhanThanhToan.Visible = false;
-            this.btnXacNhanThanhToan.Click += new System.EventHandler(this.btnXacNhanThanhToan_Click);
+            this.btnThanhToanThanhCong.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnThanhToanThanhCong.Location = new System.Drawing.Point(230, 349);
+            this.btnThanhToanThanhCong.Name = "btnThanhToanThanhCong";
+            this.btnThanhToanThanhCong.Size = new System.Drawing.Size(110, 28);
+            this.btnThanhToanThanhCong.TabIndex = 33;
+            this.btnThanhToanThanhCong.Text = "Thành công";
+            this.btnThanhToanThanhCong.UseVisualStyleBackColor = true;
+            this.btnThanhToanThanhCong.Visible = false;
+            this.btnThanhToanThanhCong.Click += new System.EventHandler(this.btnThanhToanThanhCong_Click);
+            // 
+            // btnThanhToanThatBai
+            // 
+            this.btnThanhToanThatBai.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnThanhToanThatBai.Location = new System.Drawing.Point(350, 349);
+            this.btnThanhToanThatBai.Name = "btnThanhToanThatBai";
+            this.btnThanhToanThatBai.Size = new System.Drawing.Size(106, 28);
+            this.btnThanhToanThatBai.TabIndex = 34;
+            this.btnThanhToanThatBai.Text = "Thất bại";
+            this.btnThanhToanThatBai.UseVisualStyleBackColor = true;
+            this.btnThanhToanThatBai.Visible = false;
+            this.btnThanhToanThatBai.Click += new System.EventHandler(this.btnThanhToanThatBai_Click);
             // 
             // PaymentForm
             // 
@@ -317,7 +328,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SeaShell;
             this.ClientSize = new System.Drawing.Size(684, 461);
-            this.Controls.Add(this.btnXacNhanThanhToan);
+            this.Controls.Add(this.btnThanhToanThatBai);
+            this.Controls.Add(this.btnThanhToanThanhCong);
             this.Controls.Add(this.picQrCode);
             this.Controls.Add(this.grpPaymentMethod);
             this.Controls.Add(this.txtKhachHangName);
@@ -371,6 +383,8 @@
         private System.Windows.Forms.RadioButton rdbChuyenKhoan;
         private System.Windows.Forms.RadioButton rdbTienMat;
         private System.Windows.Forms.PictureBox picQrCode;
-        private System.Windows.Forms.Button btnXacNhanThanhToan;
+        private System.Windows.Forms.Button btnThanhToanThanhCong;
+        private System.Windows.Forms.Button btnThanhToanThatBai;
+
     }
 }
