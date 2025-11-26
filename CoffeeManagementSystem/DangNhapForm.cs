@@ -17,6 +17,7 @@ namespace CoffeeManagementSystem
             this.btnDangNhap.Click += new EventHandler(this.btnLogin_Click);
 
             // Tùy chọn: Xử lý sự kiện KeyDown trên TextBox mật khẩu để nhấn Enter cũng đăng nhập
+            //Sửa chỗ này nha
             //this.txtMatkhau.KeyDown += new KeyEventHandler(this.txtMatkhau_KeyDown);
 
             // Đặt PasswordChar mặc định khi khởi tạo
