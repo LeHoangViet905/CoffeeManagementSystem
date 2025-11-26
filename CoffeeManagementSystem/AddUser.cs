@@ -17,16 +17,17 @@ namespace CoffeeManagementSystem
 
             // Hiển thị tất cả các nút
             btnSave.Visible = true;
-            btnUpdate.Visible = true;
-            btnDelete.Visible = true;
+            btnUpdate.Visible = false;
+            btnDelete.Visible = false;
 
             // Điều chỉnh trạng thái Enabled cho chế độ Thêm mới
             btnSave.Enabled = true;
             btnUpdate.Enabled = false; // Không thể cập nhật khi thêm mới
             btnDelete.Enabled = false; // Không thể xóa khi thêm mới
 
-            // Cho phép nhập Mã NV khi thêm mới
-            txtMaNV.Enabled = true;
+            // Tự sinh mã nhân viên
+            txtMaNV.Text = nhanvienBLL.GenerateNextMaNV();
+            txtMaNV.Enabled = false;
 
             // Khởi tạo ComboBox Giới tính
             InitializeGioitinhComboBox();

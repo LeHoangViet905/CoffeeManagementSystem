@@ -1,6 +1,7 @@
 ﻿
 
 using CoffeeManagementSystem.BLL; // Đã có sẵn và được giữ nguyên
+using CoffeeManagementSystem.DAL;
 using System;
 using System.Collections.Generic;
 using System.IO;                   // Required for File.Exists
@@ -25,7 +26,9 @@ namespace CoffeeManagementSystem
             InitializeComponent();
             _isNewEntry = true;
             this.Text = "Thêm Đồ Uống Mới";
-            txtMadouong.Enabled = true;
+            // Tự sinh mã đồ uống
+            txtMadouong.Text = _douongBLL.GenerateNextMaDU();
+            txtMadouong.Enabled = false;
             LoadLoaiDouongComboBox();
 
             // Gán sự kiện cho các nút
