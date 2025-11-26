@@ -138,6 +138,7 @@ namespace CoffeeManagementSystem
         /// </summary>
         private void btnSelectImage_Click(object sender, EventArgs e)
         {
+            MainForm.PlayClickSound();
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.gif;*.bmp|All Files|*.*";
             openFileDialog.Title = "Chọn ảnh đồ uống";
@@ -175,21 +176,25 @@ namespace CoffeeManagementSystem
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
+            MainForm.PlayClickSound();
             HandleAddDouong();
         }
 
         private void btnCapNhat_Click(object sender, EventArgs e)
         {
+            MainForm.PlayClickSound();
             HandleUpdateDouong();
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
+            MainForm.PlayClickSound();
             HandleDeleteDouong();
         }
 
         private void button1_Click(object sender, EventArgs e) // Nút Hủy/Đóng
         {
+            MainForm.PlayClickSound();
             this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
@@ -378,7 +383,7 @@ namespace CoffeeManagementSystem
 
         private void lblGia_Click(object sender, EventArgs e)
         {
-
+            MainForm.PlayClickSound();
         }
 
         private void txtGiaBan_TextChanged(object sender, EventArgs e)
@@ -388,7 +393,7 @@ namespace CoffeeManagementSystem
 
         private void btnLuu_Click_1(object sender, EventArgs e)
         {
-
+            MainForm.PlayClickSound();
         }
 
         private void AddDrinkForm_Load(object sender, EventArgs e)

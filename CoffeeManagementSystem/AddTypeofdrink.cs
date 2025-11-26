@@ -69,6 +69,7 @@ namespace CoffeeManagementSystem
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
+            MainForm.PlayClickSound();
             if (!_isNewEntry)
             {
                 MessageBox.Show("Vui lòng sử dụng nút 'Cập nhật' để sửa thông tin.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -110,6 +111,7 @@ namespace CoffeeManagementSystem
 
         private void btnCapNhat_Click(object sender, EventArgs e)
         {
+            MainForm.PlayClickSound();
             if (_isNewEntry)
             {
                 MessageBox.Show("Vui lòng sử dụng nút 'Lưu' để thêm mới.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -152,6 +154,7 @@ namespace CoffeeManagementSystem
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
+            MainForm.PlayClickSound();
             if (_isNewEntry)
             {
                 MessageBox.Show("Không thể xóa khi đang thêm mới.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -195,6 +198,7 @@ namespace CoffeeManagementSystem
 
         private void button1_Click(object sender, EventArgs e)
         {
+            MainForm.PlayClickSound();
             this.Close();
         }
     }
