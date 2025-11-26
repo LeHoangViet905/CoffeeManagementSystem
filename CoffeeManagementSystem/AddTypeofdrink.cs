@@ -6,6 +6,7 @@ using System.Windows.Forms;
 
 namespace CoffeeManagementSystem
 {
+
     public partial class AddTypeofdrinkForm : Form
     {
         private LoaidouongBLL _loaidouongBLL;
@@ -17,8 +18,12 @@ namespace CoffeeManagementSystem
             InitializeComponent();
             _loaidouongBLL = new LoaidouongBLL();
             _isNewEntry = true;
+
             this.Text = "Thêm Loại Đồ Uống Mới";
-            txtMaloai.Enabled = true;
+
+            // Tự sinh mã loại tiếp theo
+            txtMaloai.Text = _loaidouongBLL.GenerateNextMaloai();
+            txtMaloai.Enabled = false; // Không cho sửa mã (cho đẹp & tránh trùng)
 
             btnLuu.Click += btnLuu_Click;
             btnCapNhat.Click += btnCapNhat_Click;
@@ -26,6 +31,7 @@ namespace CoffeeManagementSystem
 
             SetButtonState(true, false, false);
         }
+
 
         public AddTypeofdrinkForm(string maloai)
         {
@@ -69,6 +75,7 @@ namespace CoffeeManagementSystem
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
+            MainForm.PlayClickSound();
             if (!_isNewEntry)
             {
                 MessageBox.Show("Vui lòng sử dụng nút 'Cập nhật' để sửa thông tin.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -110,6 +117,7 @@ namespace CoffeeManagementSystem
 
         private void btnCapNhat_Click(object sender, EventArgs e)
         {
+            MainForm.PlayClickSound();
             if (_isNewEntry)
             {
                 MessageBox.Show("Vui lòng sử dụng nút 'Lưu' để thêm mới.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -152,6 +160,7 @@ namespace CoffeeManagementSystem
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
+            MainForm.PlayClickSound();
             if (_isNewEntry)
             {
                 MessageBox.Show("Không thể xóa khi đang thêm mới.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -195,6 +204,7 @@ namespace CoffeeManagementSystem
 
         private void button1_Click(object sender, EventArgs e)
         {
+            MainForm.PlayClickSound();
             this.Close();
         }
     }

@@ -2,11 +2,47 @@
 using CoffeeManagementSystem.DAL; // Reference to your DAL
 using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace CoffeeManagementSystem.BLL
 {
     public class KhachhangBLL
     {
+        /// <summary>
+        /// Kiểm tra email hợp lệ
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns>true nếu hợp lệ</returns>
+        public bool IsValidEmail(string email)
+        {
+            if (string.IsNullOrWhiteSpace(email))
+                return false;
+
+            try
+            {
+                // Regex chuẩn RFC 5322 đơn giản
+                string pattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
+                return Regex.IsMatch(email.Trim(), pattern, RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250));
+            }
+            catch (RegexMatchTimeoutException)
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Kiểm tra số điện thoại hợp lệ: chỉ chứa số, độ dài 8-12
+        /// </summary>
+        /// <param name="phone"></param>
+        /// <returns>true nếu hợp lệ</returns>
+        public bool IsValidPhone(string phone)
+        {
+            if (string.IsNullOrWhiteSpace(phone))
+                return false;
+
+            string pattern = @"^\d{8,12}$";
+            return Regex.IsMatch(phone.Trim(), pattern);
+        }
         private KhachhangDAL _khachhangDAL;
 
         public KhachhangBLL()
@@ -236,6 +272,32 @@ namespace CoffeeManagementSystem.BLL
             {
                 throw new Exception($"Lỗi nghiệp vụ khi lấy TOP 10 khách hàng có điểm tích lũy cao nhất: {ex.Message}", ex);
             }
+        }
+        public string GenerateNextMakhachhang()
+        {
+            List<string> allIDs = _khachhangDAL.GetAllMaKhachhang(); // Lấy tất cả mã KH
+            int nextNumber = 1;
+
+            if (allIDs.Count > 0)
+            {
+                List<int> numbers = new List<int>();
+                foreach (var id in allIDs)
+                {
+                    if (id.StartsWith("NV") && int.TryParse(id.Substring(2), out int n))
+                        numbers.Add(n);
+                }
+                numbers.Sort();
+                for (int i = 1; i <= numbers.Count + 1; i++)
+                {
+                    if (!numbers.Contains(i))
+                    {
+                        nextNumber = i;
+                        break;
+                    }
+                }
+            }
+
+            return "KH" + nextNumber.ToString("D3"); // KH001, NV002 ...
         }
 
         // Optional: Example for email validation if you need it.

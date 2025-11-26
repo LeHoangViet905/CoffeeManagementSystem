@@ -6,6 +6,7 @@ namespace CoffeeManagementSystem.DAL
 {
     public class DouongDAL : BaseDataAccess
     {
+        private readonly string _connectionString = @"DataSource=QuanLyCaPheDatabase.db;Version=3;";
         private GiadouongDAL giadouongDAL; // Khai báo đối tượng GiadouongDAL
 
         public DouongDAL() : base()
@@ -252,5 +253,23 @@ namespace CoffeeManagementSystem.DAL
                 }
             }
         }
+        public List<string> GetAllMaDU()
+        {
+            List<string> maList = new List<string>();
+            using (var conn = new SQLiteConnection(_connectionString))
+            {
+                conn.Open();
+                var cmd = new SQLiteCommand("SELECT Madouong FROM Douong", conn);
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        maList.Add(reader["Madouong"].ToString());
+                    }
+                }
+            }
+            return maList;
+        }
+
     }
 }

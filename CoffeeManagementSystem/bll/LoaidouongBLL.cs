@@ -11,6 +11,61 @@ namespace CoffeeManagementSystem.BLL
     public class LoaidouongBLL
     {
         private LoaidouongDAL _loaidouongDAL;
+        /// <summary>
+        /// Tạo mã loại đồ uống mới dạng LD001, LD002,... theo thứ tự hiện có.
+        /// Nếu có khoảng trống (ví dụ thiếu LD003) thì sẽ lấp từ số nhỏ nhất.
+        /// </summary>
+        /// <returns>Mã loại đồ uống mới.</returns>
+        /// <exception cref="Exception">Ném lỗi nếu DAL gặp sự cố.</exception>
+        public string GenerateNextMaloai()
+        {
+            try
+            {
+                // Lấy toàn bộ danh sách loại đồ uống hiện có
+                List<Loaidouong> allLoais = _loaidouongDAL.GetAllLoaidouongs();
+
+                int nextNumber = 1;
+
+                if (allLoais != null && allLoais.Count > 0)
+                {
+                    List<int> numbers = new List<int>();
+
+                    foreach (var loai in allLoais)
+                    {
+                        if (!string.IsNullOrWhiteSpace(loai.Maloai) &&
+                            loai.Maloai.StartsWith("LD") &&
+                            int.TryParse(loai.Maloai.Substring(2), out int n))
+                        {
+                            numbers.Add(n);
+                        }
+                    }
+
+                    if (numbers.Count > 0)
+                    {
+                        numbers.Sort();
+
+                        // Tìm số nhỏ nhất còn trống: 1,2,3,... (giống cách bạn làm với MaNV)
+                        int expected = 1;
+                        foreach (var n in numbers)
+                        {
+                            if (n != expected)
+                                break;
+
+                            expected++;
+                        }
+
+                        nextNumber = expected;
+                    }
+                }
+
+                // Ghép thành LD001, LD010,...
+                return "LD" + nextNumber.ToString("D3");
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Lỗi BLL khi sinh mã loại đồ uống mới: {ex.Message}", ex);
+            }
+        }
 
         public LoaidouongBLL()
         {

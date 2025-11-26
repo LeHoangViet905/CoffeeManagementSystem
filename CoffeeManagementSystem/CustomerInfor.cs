@@ -1,4 +1,5 @@
 ﻿using CoffeeManagementSystem.BLL;
+using CoffeeManagementSystem.DAL;
 using System;
 using System.Windows.Forms;
 
@@ -12,6 +13,23 @@ namespace CoffeeManagementSystem
         // Constructor cho chế độ Thêm mới
         public FormChitiet()
         {
+            // VALIDATION TẠI FORM
+            var khBLL = new KhachhangBLL();
+
+            if (!khBLL.IsValidEmail(txtEmail.Text))
+            {
+                MessageBox.Show("Email không hợp lệ! Hãy nhập đúng dạng: xxx@mail.com",
+                                "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (!khBLL.IsValidPhone(txtSDT.Text))
+            {
+                MessageBox.Show("Số điện thoại chỉ chứa số và phải từ 8-12 ký tự!",
+                                "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             InitializeComponent();
             khachhangBLL = new KhachhangBLL();
 
@@ -27,8 +45,9 @@ namespace CoffeeManagementSystem
             btnUpdate.Enabled = false;
             btnDelete.Enabled = false;
 
-            // Cho phép nhập Mã KH khi thêm mới
-            txtMaKH.Enabled = true;
+            // Tự sinh mã khách hàng mới
+            txtMaKH.Text = khachhangBLL.GenerateNextMakhachhang();
+            txtMaKH.Enabled = false;
         }
 
         // Constructor cho chế độ Cập nhật
