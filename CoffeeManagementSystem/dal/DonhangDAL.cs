@@ -232,6 +232,31 @@ namespace CoffeeManagementSystem.DAL
                 }
             }
         }
+        /// <summary>
+        /// Hàm đếm tổng số đơn cho label
+        /// </summary>
+        /// <param name="start"></param>
+        /// <param name="end"></param>
+        /// <returns></returns>
+        public int GetOrderCount(DateTime start, DateTime end)
+        {
+            string query = @"
+        SELECT COUNT(*) 
+        FROM Donhang
+        WHERE Thoigiandat >= @fromDate
+          AND Thoigiandat <  @toDatePlus1";
+
+            using (var conn = new SQLiteConnection(ConnectionString))
+            using (var cmd = new SQLiteCommand(query, conn))
+            {
+                cmd.Parameters.AddWithValue("@fromDate", start.Date);
+                cmd.Parameters.AddWithValue("@toDatePlus1", end.Date.AddDays(1)); // < end+1 ngày
+
+                conn.Open();
+                object result = cmd.ExecuteScalar();
+                return Convert.ToInt32(result);
+            }
+        }
 
         /// <summary>
         /// Searches for orders based on a keyword in Madonhang, Manhanvien, Makhachhang, Trangthaidon columns.
@@ -329,17 +354,82 @@ namespace CoffeeManagementSystem.DAL
             }
             return revenueData;
         }
+        public DataTable GetDoanhThuTheoLoaiTrongNgay(DateTime day)
+        {
+            string sql = @"
+                SELECT l.Tenloai, SUM(ct.Soluong * ct.Dongia) AS DoanhThu
+                FROM Loaidouong l
+                JOIN Douong d       ON d.Maloai     = l.Maloai
+                JOIN Chitietdonhang ct ON ct.Madouong  = d.Madouong
+                JOIN Donhang dh     ON dh.Madonhang = ct.Madonhang
+                WHERE dh.Thoigiandat >= @fromDate
+                  AND dh.Thoigiandat <  @toDatePlus1
+                GROUP BY l.Tenloai;";
+
+            DataTable dt = new DataTable();
+
+            using (var conn = new SQLiteConnection(ConnectionString))
+            using (var cmd = new SQLiteCommand(sql, conn))
+            using (var da = new SQLiteDataAdapter(cmd))
+            {
+                cmd.Parameters.AddWithValue("@fromDate", day.Date);
+                cmd.Parameters.AddWithValue("@toDatePlus1", day.Date.AddDays(1));
+
+                conn.Open();
+                da.Fill(dt);
+            }
+
+            return dt;
+        }
+        /// <summary>
+        /// Hàm lấy doanh thu theo loại đồ uống cho pie chart
+        /// </summary>
+        /// <param name="start"></param>
+        /// <param name="end"></param>
+        /// <returns></returns>
+        public DataTable GetDoanhThuTheoLoai(DateTime start, DateTime end)
+        {
+            string query = @"
+        SELECT l.Tenloai, SUM(ct.Soluong * ct.Dongia) AS Doanhthu
+        FROM Loaidouong l
+        JOIN Douong d ON d.Maloai = l.Maloai
+        JOIN Chitietdonhang ct ON ct.Madouong = d.Madouong
+        JOIN Donhang dh ON dh.Madonhang = ct.Madonhang
+        WHERE dh.Thoigiandat >= @fromDate AND dh.Thoigiandat < @toDatePlus1
+        GROUP BY l.Tenloai";
+
+            var dt = new DataTable();
+
+            using (var conn = new SQLiteConnection(ConnectionString))
+            using (var cmd = new SQLiteCommand(query, conn))
+            using (var da = new SQLiteDataAdapter(cmd))
+            {
+                // dùng BETWEEN dạng [start, end+1) để không bị mất phần giờ
+                cmd.Parameters.AddWithValue("@fromDate", start.Date);
+                cmd.Parameters.AddWithValue("@toDatePlus1", end.Date.AddDays(1));
+
+                conn.Open();
+                da.Fill(dt);
+            }
+
+            return dt;
+        }
+        /// <summary>
+        /// Hàm lấy doanh thu theo giờ dựa trên đơn hàng
+        /// </summary>
+        /// <param name="date"></param>
+        /// <returns></returns>
         public DataTable GetRevenueByHour(DateTime date)
         {
             string query = @"
-    SELECT 
-        strftime('%H', Thoigiandat) AS Gio,
-        SUM(TongTien) AS DoanhThu
-    FROM Donhang
-    WHERE DATE(Thoigiandat) = DATE(@date)
-    GROUP BY strftime('%H', Thoigiandat)
-    ORDER BY Gio;
-";
+        SELECT 
+            strftime('%H', Thoigiandat) AS Gio,
+            SUM(TongTien) AS DoanhThu
+        FROM Donhang
+        WHERE DATE(Thoigiandat) = DATE(@date)
+        GROUP BY strftime('%H', Thoigiandat)
+        ORDER BY Gio;
+    ";
 
             using (var conn = new SQLiteConnection(ConnectionString))
             using (var cmd = new SQLiteCommand(query, conn))
@@ -355,28 +445,9 @@ namespace CoffeeManagementSystem.DAL
             }
         }
 
-        public int GetOrderCount(DateTime start, DateTime end)
-        {
-            string query = @"
-SELECT COUNT(*) 
-FROM Donhang
-WHERE Thoigiandat >= @fromDate
-  AND Thoigiandat <  @toDatePlus1";
-
-            using (var conn = new SQLiteConnection(ConnectionString))
-            using (var cmd = new SQLiteCommand(query, conn))
-            {
-                cmd.Parameters.AddWithValue("@fromDate", start.Date);
-                cmd.Parameters.AddWithValue("@toDatePlus1", end.Date.AddDays(1)); // < end+1 ngày
-
-                conn.Open();
-                object result = cmd.ExecuteScalar();
-                return Convert.ToInt32(result);
-            }
-        }
-
 
     }
+
     public class RevenueReportItem
     {
         public DateTime Ngay { get; set; }
@@ -384,5 +455,4 @@ WHERE Thoigiandat >= @fromDate
     } 
     //thêm cho report
         
-
-    } 
+} 
