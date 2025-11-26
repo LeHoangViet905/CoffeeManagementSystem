@@ -219,7 +219,7 @@ namespace CoffeeManagementSystem
         // Sự kiện click nút đóng Form (X) ở góc trên bên phải
         private void btnClose_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.Cancel;
+
             this.Close();
         }
 
