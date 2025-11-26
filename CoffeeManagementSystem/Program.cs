@@ -24,6 +24,8 @@ namespace CoffeeManagementSystem
                 // Tùy chọn: Thoát ứng dụng nếu không có chuỗi kết nối
                 return;
             }
+
+            // Phú đẹp trai nhất nhóm
             // --- Test kết nối đến SQLite ---
             using (SQLiteConnection connection = new SQLiteConnection(connectionString))
             {
