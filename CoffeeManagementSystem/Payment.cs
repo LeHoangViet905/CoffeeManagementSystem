@@ -17,6 +17,13 @@ namespace CoffeeManagementSystem
         private PrintDocument printDocumentInvoice;
         private PrintPreviewDialog printPreviewDialogInvoice;
 
+        // Hằng số tên hình thức thanh toán
+        private const string HINH_THUC_TIEN_MAT = "Tiền mặt";
+        private const string HINH_THUC_CHUYEN_KHOAN = "Chuyển khoản";
+
+        // Lưu hình thức thanh toán đang chờ xác nhận
+        private string _pendingPaymentMethod = null;
+
         public PaymentForm(List<Chitietdonhang> dsChiTiet, string manhanvien, string tenNhanVien)
         {
             InitializeComponent();
@@ -47,6 +54,23 @@ namespace CoffeeManagementSystem
             SetupListViewColumns();
             LoadChiTietHoaDon();
             TinhTongTien();
+
+            // Thiết lập trạng thái ban đầu cho thanh toán
+            if (rdbTienMat != null)
+                rdbTienMat.Checked = true;
+
+            if (picQrCode != null)
+            {
+                picQrCode.Visible = false;
+                // Có thể set size ban đầu to sẵn
+                picQrCode.Width = 300;
+                picQrCode.Height = 300;
+            }
+
+            if (btnXacNhanThanhToan != null)
+                btnXacNhanThanhToan.Visible = false;
+
+            _pendingPaymentMethod = null;
 
             // LOG: Khi PaymentForm đã tải xong
             Logger.LogInfo("PaymentForm đã tải xong dữ liệu và hiển thị ban đầu.");
@@ -111,116 +135,282 @@ namespace CoffeeManagementSystem
             Logger.LogDebug($"Tổng tiền hiển thị trên UI: {tongTien:N0}");
         }
 
+        /// <summary>
+        /// Hàm chung thực hiện thanh toán theo hình thức truyền vào.
+        /// </summary>
+        private void XuLyThanhToan(string hinhThucThanhToan)
+        {
+            Logger.LogInfo($"Bắt đầu xử lý thanh toán. Hình thức: {hinhThucThanhToan}");
+
+            try
+            {
+                Khachhang customerFromBLL;
+
+                // Lấy mã nhân viên thu ngân từ BLL (đã được truyền khi khởi tạo PaymentBLL)
+                string manhanvienThuNgan = _paymentBLL.GetManhanvienLapHoaDon();
+                string ghiChu = ""; // Mặc định là không có ghi chú
+
+                // Gọi phương thức ProcessPayment với các tham số bổ sung
+                bool success = _paymentBLL.ProcessPayment(
+                    txtKhachHangName.Text.Trim(),
+                    hinhThucThanhToan,
+                    manhanvienThuNgan,
+                    ghiChu,
+                    out customerFromBLL
+                );
+
+                currentSelectedCustomer = customerFromBLL; // Cập nhật khách hàng được chọn sau khi BLL xử lý
+
+                if (success)
+                {
+                    MessageBox.Show("Đơn hàng đã được thanh toán và lưu thành công!", "Thành công",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    // LOG: Thông tin khi thanh toán hoàn tất thành công
+                    Logger.LogInfo($"Thanh toán hoàn tất thành công cho hóa đơn: {lblMaHoaDonValue.Text}");
+
+                    // Hỏi in hóa đơn
+                    DialogResult printConfirm = MessageBox.Show("Bạn có muốn in hóa đơn này không?", "In Hóa Đơn",
+                        MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (printConfirm == DialogResult.Yes)
+                    {
+                        printPreviewDialogInvoice.ShowDialog();
+                    }
+
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
+            }
+            catch (InvalidOperationException ex)
+            {
+                MessageBox.Show(ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                Logger.LogError($"Thanh toán thất bại (lỗi nghiệp vụ): {ex.Message}", ex);
+            }
+            catch (KhachhangNotFoundException ex) // Đây là lỗi bạn đã định nghĩa (nếu có)
+            {
+                Logger.LogError($"Khách hàng '{txtKhachHangName.Text.Trim()}' không tìm thấy khi thanh toán.", ex);
+
+                DialogResult addCustomer = MessageBox.Show(
+                    ex.Message + Environment.NewLine + "Bạn có muốn thêm mới khách hàng này không?",
+                    "Xác nhận thêm khách hàng",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                );
+
+                if (addCustomer == DialogResult.Yes)
+                {
+                    Logger.LogInfo($"Người dùng muốn thêm mới khách hàng: {txtKhachHangName.Text.Trim()}.");
+                    try
+                    {
+                        currentSelectedCustomer = _paymentBLL.AddNewKhachhang(txtKhachHangName.Text.Trim());
+                        MessageBox.Show($"Đã thêm mới khách hàng: {txtKhachHangName.Text.Trim()}.",
+                            "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Logger.LogInfo($"Đã thêm mới khách hàng '{txtKhachHangName.Text.Trim()}' thông qua UI prompt.");
+
+                        // Sau khi thêm khách hàng, thử thanh toán lại với khách hàng vừa được thêm
+                        XuLyThanhToan(hinhThucThanhToan);
+                    }
+                    catch (Exception addEx)
+                    {
+                        MessageBox.Show($"Lỗi khi thêm mới khách hàng: {addEx.Message}", "Lỗi",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Logger.LogError($"Lỗi khi thêm mới khách hàng '{txtKhachHangName.Text.Trim()}' từ UI.", addEx);
+                        ClearCustomerInfo();
+                    }
+                }
+                else
+                {
+                    txtKhachHangName.Text = "";
+                    ClearCustomerInfo();
+                    Logger.LogInfo($"Người dùng từ chối thêm mới khách hàng '{txtKhachHangName.Text.Trim()}'.");
+                }
+            }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show(ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                Logger.LogError($"Thanh toán thất bại (tham số không hợp lệ): {ex.Message}", ex);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi thanh toán đơn hàng: {ex.Message}", "Lỗi",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Logger.LogError($"Lỗi hệ thống không xác định khi thanh toán đơn hàng. Tên khách hàng: '{txtKhachHangName.Text.Trim()}'", ex);
+            }
+        }
+
+        /// <summary>
+        /// Căn giữa QR ra giữa form và cho to lên.
+        /// </summary>
+        private void HienQrToGiuaManHinh()
+        {
+            if (picQrCode == null) return;
+
+            // Kích thước QR đủ to
+            picQrCode.Width = 300;
+            picQrCode.Height = 300;
+
+            // Căn giữa form (theo client size)
+            picQrCode.Left = (this.ClientSize.Width - picQrCode.Width) / 2;
+            picQrCode.Top = (this.ClientSize.Height - picQrCode.Height) / 2;
+
+            // Load ảnh QR giả (nếu có)
+            if (picQrCode.Image == null)
+            {
+                try
+                {
+                    picQrCode.Image = Properties.Resources.qrcode;
+                }
+                catch
+                {
+                    // Nếu không load được ảnh thì vẫn cứ hiển thị khung trống
+                }
+            }
+
+            picQrCode.Visible = true;
+            picQrCode.BringToFront();
+        }
+
         //Xử lý sự kiện click nút "Thanh toán".
+        // Nút này KHÔNG còn xử lý payment luôn nữa, mà chỉ mở quy trình:
+        // - Tiền mặt: yêu cầu thu tiền, show nút Xác nhận
+        // - Chuyển khoản: hiện QR to giữa màn hình + show nút Xác nhận
         private void btnThanhToan_Click(object sender, EventArgs e)
         {
-            // LOG: Thông tin khi người dùng nhấn nút 'Thanh toán'
             Logger.LogInfo("Người dùng nhấn nút 'Thanh toán'.");
 
-            DialogResult confirmResult = MessageBox.Show("Bạn có chắc chắn muốn thanh toán đơn hàng này không?", "Xác nhận thanh toán", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            string hinhThucThanhToan = HINH_THUC_TIEN_MAT;
+            if (rdbChuyenKhoan != null && rdbChuyenKhoan.Checked)
+            {
+                hinhThucThanhToan = HINH_THUC_CHUYEN_KHOAN;
+            }
+
+            DialogResult confirmResult = MessageBox.Show(
+                $"Bạn muốn bắt đầu quy trình thanh toán bằng '{hinhThucThanhToan}'?\n" +
+                "Sau khi ĐÃ NHẬN ĐỦ TIỀN từ khách, bạn sẽ nhấn nút 'Xác nhận thanh toán' để hoàn tất.",
+                "Xác nhận bắt đầu thanh toán",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
 
             if (confirmResult == DialogResult.Yes)
             {
-                // LOG: Thông tin khi người dùng xác nhận thanh toán
-                Logger.LogInfo("Người dùng xác nhận thanh toán.");
-                try
+                _pendingPaymentMethod = hinhThucThanhToan;
+
+                // Với chuyển khoản: hiện QR to giữa màn hình
+                if (hinhThucThanhToan == HINH_THUC_CHUYEN_KHOAN)
                 {
-                    Khachhang customerFromBLL;
+                    HienQrToGiuaManHinh();
 
+                    MessageBox.Show(
+                        "Vui lòng yêu cầu khách quét mã QR để chuyển khoản.\n" +
+                        "Sau khi đã nhận được tiền, hãy nhấn nút 'Xác nhận thanh toán'.",
+                        "Hướng dẫn thanh toán chuyển khoản",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
 
-                    string hinhThucThanhToan = "Tiền mặt"; // Mặc định là "Tiền mặt"
-                    // Lấy mã nhân viên thu ngân từ BLL (đã được truyền khi khởi tạo PaymentBLL)
-                    string manhanvienThuNgan = _paymentBLL.GetManhanvienLapHoaDon();
-                    string ghiChu = ""; // Mặc định là không có ghi chú
-
-                    // Gọi phương thức ProcessPayment với các tham số bổ sung
-                    bool success = _paymentBLL.ProcessPayment(
-                        txtKhachHangName.Text.Trim(),
-                        hinhThucThanhToan,
-                        manhanvienThuNgan,
-                        ghiChu,
-                        out customerFromBLL
-                    );
-                    // *** Kết thúc phần thay đổi ***
-
-                    currentSelectedCustomer = customerFromBLL; // Cập nhật khách hàng được chọn sau khi BLL xử lý
-
-                    if (success)
-                    {
-                        MessageBox.Show("Đơn hàng đã được thanh toán và lưu thành công!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        // LOG: Thông tin khi thanh toán hoàn tất thành công
-                        Logger.LogInfo($"Thanh toán hoàn tất thành công cho hóa đơn: {lblMaHoaDonValue.Text}");
-
-                        // *** THÊM PHẦN IN HÓA ĐƠN Ở ĐÂY ***
-                        DialogResult printConfirm = MessageBox.Show("Bạn có muốn in hóa đơn này không?", "In Hóa Đơn", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                        if (printConfirm == DialogResult.Yes)
-                        {
-                            printPreviewDialogInvoice.ShowDialog();
-                        }
-                        // *** KẾT THÚC PHẦN IN HÓA ĐƠN ***
-
-                        this.DialogResult = DialogResult.OK;
-                        this.Close();
-                    }
+                    Logger.LogInfo("Bắt đầu quy trình thanh toán chuyển khoản, hiển thị QR.");
                 }
-                catch (InvalidOperationException ex)
+                else // Tiền mặt
                 {
-                    MessageBox.Show(ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    Logger.LogError($"Thanh toán thất bại (lỗi nghiệp vụ): {ex.Message}", ex);
-                }
-                catch (KhachhangNotFoundException ex) // Đây là lỗi bạn đã định nghĩa (nếu có)
-                {
-                    Logger.LogError($"Khách hàng '{txtKhachHangName.Text.Trim()}' không tìm thấy khi thanh toán.", ex);
+                    if (picQrCode != null)
+                        picQrCode.Visible = false;
 
-                    DialogResult addCustomer = MessageBox.Show(
-                        ex.Message + Environment.NewLine + "Bạn có muốn thêm mới khách hàng này không?",
-                        "Xác nhận thêm khách hàng",
-                        MessageBoxButtons.YesNo,
-                        MessageBoxIcon.Question
-                    );
+                    MessageBox.Show(
+                        "Vui lòng thu TIỀN MẶT từ khách hàng.\n" +
+                        "Sau khi đã nhận đủ tiền, hãy nhấn nút 'Xác nhận thanh toán'.",
+                        "Hướng dẫn thanh toán tiền mặt",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
 
-                    if (addCustomer == DialogResult.Yes)
-                    {
-                        Logger.LogInfo($"Người dùng muốn thêm mới khách hàng: {txtKhachHangName.Text.Trim()}.");
-                        try
-                        {
-                            currentSelectedCustomer = _paymentBLL.AddNewKhachhang(txtKhachHangName.Text.Trim());
-                            MessageBox.Show($"Đã thêm mới khách hàng: {txtKhachHangName.Text.Trim()}.", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            Logger.LogInfo($"Đã thêm mới khách hàng '{txtKhachHangName.Text.Trim()}' thông qua UI prompt.");
-                            // Sau khi thêm khách hàng, thử thanh toán lại với khách hàng vừa được thêm
-                            // Gọi lại sự kiện click để thanh toán lại với khách hàng mới đã được gán
-                            btnThanhToan_Click(sender, e);
-                        }
-                        catch (Exception addEx)
-                        {
-                            MessageBox.Show($"Lỗi khi thêm mới khách hàng: {addEx.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            Logger.LogError($"Lỗi khi thêm mới khách hàng '{txtKhachHangName.Text.Trim()}' từ UI.", addEx);
-                            ClearCustomerInfo();
-                        }
-                    }
-                    else
-                    {
-                        txtKhachHangName.Text = "";
-                        ClearCustomerInfo();
-                        Logger.LogInfo($"Người dùng từ chối thêm mới khách hàng '{txtKhachHangName.Text.Trim()}'.");
-                    }
+                    Logger.LogInfo("Bắt đầu quy trình thanh toán tiền mặt.");
                 }
-                catch (ArgumentException ex)
+
+                if (btnXacNhanThanhToan != null)
                 {
-                    MessageBox.Show(ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    Logger.LogError($"Thanh toán thất bại (tham số không hợp lệ): {ex.Message}", ex);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Lỗi khi thanh toán đơn hàng: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    Logger.LogError($"Lỗi hệ thống không xác định khi thanh toán đơn hàng. Tên khách hàng: '{txtKhachHangName.Text.Trim()}'", ex);
+                    btnXacNhanThanhToan.Visible = true;
+                    btnXacNhanThanhToan.BringToFront();
                 }
             }
             else
             {
-                Logger.LogInfo("Người dùng hủy thanh toán.");
+                Logger.LogInfo("Người dùng hủy bắt đầu quy trình thanh toán.");
             }
         }
+
+        /// <summary>
+        /// Xử lý khi chọn radio Tiền mặt.
+        /// </summary>
+        private void rdbTienMat_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdbTienMat.Checked)
+            {
+                // Tiền mặt: không cần QR hiển thị sẵn
+                if (picQrCode != null)
+                    picQrCode.Visible = false;
+
+                Logger.LogDebug("Hình thức thanh toán được chọn: Tiền mặt.");
+            }
+        }
+
+        /// <summary>
+        /// Xử lý khi chọn radio Chuyển khoản.
+        /// </summary>
+        private void rdbChuyenKhoan_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdbChuyenKhoan.Checked)
+            {
+                // Chỉ chuẩn bị QR (load ảnh), chưa hiển thị, sẽ hiển thị khi bấm Thanh toán
+                if (picQrCode != null && picQrCode.Image == null)
+                {
+                    try
+                    {
+                        picQrCode.Image = Properties.Resources.qrcode;
+                    }
+                    catch
+                    {
+                        // ignore nếu không có file
+                    }
+                }
+
+                Logger.LogDebug("Hình thức thanh toán được chọn: Chuyển khoản.");
+            }
+        }
+
+        /// <summary>
+        /// Nút xác nhận thanh toán (dùng cho CẢ tiền mặt và chuyển khoản).
+        /// </summary>
+        private void btnXacNhanThanhToan_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(_pendingPaymentMethod))
+            {
+                MessageBox.Show(
+                    "Bạn chưa bắt đầu quy trình thanh toán.\n" +
+                    "Vui lòng nhấn nút 'Thanh toán' trước, sau đó mới xác nhận.",
+                    "Thông báo",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+                return;
+            }
+
+            string message = _pendingPaymentMethod == HINH_THUC_CHUYEN_KHOAN
+                ? "Bạn đã nhận được tiền CHUYỂN KHOẢN từ khách hàng?"
+                : "Bạn đã nhận đủ tiền TIỀN MẶT từ khách hàng?";
+
+            DialogResult confirmResult = MessageBox.Show(
+                message,
+                "Xác nhận thanh toán",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (confirmResult == DialogResult.Yes)
+            {
+                Logger.LogInfo($"Người dùng xác nhận đã nhận được tiền ({_pendingPaymentMethod}).");
+                XuLyThanhToan(_pendingPaymentMethod);
+            }
+            else
+            {
+                Logger.LogInfo($"Người dùng chưa xác nhận nhận tiền ({_pendingPaymentMethod}).");
+            }
+        }
+
         /// Xử lý sự kiện Leave của txtKhachHangName.
         private void txtKhachHangName_Leave(object sender, EventArgs e)
         {
@@ -258,14 +448,16 @@ namespace CoffeeManagementSystem
                         try
                         {
                             currentSelectedCustomer = _paymentBLL.AddNewKhachhang(customerName);
-                            MessageBox.Show($"Đã thêm mới khách hàng: {customerName}", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show($"Đã thêm mới khách hàng: {customerName}", "Thành công",
+                                MessageBoxButtons.OK, MessageBoxIcon.Information);
                             // LOG: Thông tin đã thêm khách hàng thành công
                             Logger.LogInfo($"Đã thêm mới khách hàng '{customerName}'.");
                             // Cập nhật UI nếu cần (ví dụ: hiển thị điểm tích lũy)
                         }
                         catch (Exception addEx)
                         {
-                            MessageBox.Show($"Lỗi khi thêm mới khách hàng: {addEx.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show($"Lỗi khi thêm mới khách hàng: {addEx.Message}", "Lỗi",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
                             // LOG: Lỗi khi thêm khách hàng mới
                             Logger.LogError($"Lỗi khi thêm mới khách hàng '{customerName}'.", addEx);
                             ClearCustomerInfo();
@@ -282,7 +474,8 @@ namespace CoffeeManagementSystem
                 else
                 {
                     currentSelectedCustomer = existingCustomer;
-                    MessageBox.Show($"Khách hàng '{customerName}' đã tồn tại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show($"Khách hàng '{customerName}' đã tồn tại.", "Thông báo",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
                     // LOG: Thông tin khách hàng đã tồn tại và được chọn
                     Logger.LogInfo($"Đã tìm thấy và chọn khách hàng '{customerName}' (Mã: {currentSelectedCustomer.Makhachhang}).");
                     // Cập nhật UI nếu cần (ví dụ: hiển thị điểm tích lũy)
@@ -290,7 +483,8 @@ namespace CoffeeManagementSystem
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Lỗi khi xử lý khách hàng: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Lỗi khi xử lý khách hàng: {ex.Message}", "Lỗi",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                 // LOG: Lỗi khi xử lý khách hàng trong sự kiện Leave
                 Logger.LogError($"Lỗi khi xử lý khách hàng '{customerName}' trong PaymentForm.txtKhachHangName_Leave.", ex);
                 ClearCustomerInfo();
@@ -302,6 +496,7 @@ namespace CoffeeManagementSystem
             currentSelectedCustomer = null;
             Logger.LogDebug("Thông tin khách hàng đã được xóa trên UI.");
         }
+
         private void lblNguoiLapValue_Click(object sender, EventArgs e)
         {
 
