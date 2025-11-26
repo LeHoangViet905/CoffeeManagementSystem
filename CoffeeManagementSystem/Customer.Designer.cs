@@ -143,6 +143,7 @@
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(356, 39);
             this.txtSearch.TabIndex = 21;
+
             // 
             // lblSearch
             // 
@@ -172,24 +173,31 @@
             this.guna2Panel1.TabIndex = 24;
             // 
             // btnAdd
-            // 
-            this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.btnAdd.Visible = true;
+            this.btnAdd.BackColor = System.Drawing.Color.FromArgb(128, 64, 0);
             this.btnAdd.FlatAppearance.BorderSize = 0;
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdd.Font = new System.Drawing.Font("Segoe UI Variable Small", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnAdd.Font = new System.Drawing.Font("Segoe UI Variable Small", 15.75F, System.Drawing.FontStyle.Bold);
+            this.btnAdd.ForeColor = System.Drawing.Color.White;
             this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
             this.btnAdd.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnAdd.Location = new System.Drawing.Point(2212, 30);
-            this.btnAdd.Margin = new System.Windows.Forms.Padding(4);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(189, 135);
-            this.btnAdd.TabIndex = 23;
+            this.btnAdd.Size = new System.Drawing.Size(120, 60);
             this.btnAdd.Text = "Thêm";
             this.btnAdd.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnAdd.UseVisualStyleBackColor = false;
+            this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+
+            // Anchor để bám vào góc trên phải của panel
+            this.btnAdd.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+
+            // Add vào panel
+            this.guna2Panel1.Controls.Add(this.btnAdd);
+
+            // Vị trí bên trong panel (dễ thấy)
+            this.btnAdd.Location = new System.Drawing.Point(this.guna2Panel1.Width - this.btnAdd.Width - 10, 10);
+
             // 
             // guna2BorderlessForm1
             // 

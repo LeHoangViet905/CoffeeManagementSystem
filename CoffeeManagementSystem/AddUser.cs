@@ -224,7 +224,6 @@ namespace CoffeeManagementSystem
         private void btnClose_Click(object sender, EventArgs e)
         {
             MainForm.PlayClickSound();
-            this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
 
