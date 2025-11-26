@@ -1,5 +1,6 @@
 ﻿using CoffeeManagementSystem.BLL;
 using System;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace CoffeeManagementSystem
@@ -152,5 +153,29 @@ namespace CoffeeManagementSystem
                 MessageBox.Show($"Lỗi khi lưu thay đổi: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+              public bool IsValidEmail(string email)
+        {
+            if (string.IsNullOrWhiteSpace(email))
+                return false;
+
+            try
+            {
+                // Regex chuẩn RFC 5322 đơn giản
+                string pattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
+                return Regex.IsMatch(email.Trim(), pattern, RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250));
+            }
+            catch (RegexMatchTimeoutException)
+            {
+                return false;
+            }
+        }
+        public bool IsValidPhone(string phone)
+        {
+            if (string.IsNullOrWhiteSpace(phone))
+                return false;
+
+            string pattern = @"^\d{8,12}$";
+            return Regex.IsMatch(phone.Trim(), pattern);
+        }
     }
-}
+    }
