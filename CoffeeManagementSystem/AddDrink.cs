@@ -9,8 +9,10 @@ using System.Windows.Forms;
 
 namespace CoffeeManagementSystem
 {
+   
     public partial class AddDrinkForm : Form
     {
+        //Hello Viet
         // Khởi tạo các đối tượng BLL
         private DouongBLL _douongBLL = new DouongBLL();
         private GiadouongBLL _giadouongBLL = new GiadouongBLL();

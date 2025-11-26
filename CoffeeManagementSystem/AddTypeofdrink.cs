@@ -6,6 +6,7 @@ using System.Windows.Forms;
 
 namespace CoffeeManagementSystem
 {
+
     public partial class AddTypeofdrinkForm : Form
     {
         private LoaidouongBLL _loaidouongBLL;
@@ -17,8 +18,12 @@ namespace CoffeeManagementSystem
             InitializeComponent();
             _loaidouongBLL = new LoaidouongBLL();
             _isNewEntry = true;
+
             this.Text = "Thêm Loại Đồ Uống Mới";
-            txtMaloai.Enabled = true;
+
+            // Tự sinh mã loại tiếp theo
+            txtMaloai.Text = _loaidouongBLL.GenerateNextMaloai();
+            txtMaloai.Enabled = false; // Không cho sửa mã (cho đẹp & tránh trùng)
 
             btnLuu.Click += btnLuu_Click;
             btnCapNhat.Click += btnCapNhat_Click;
@@ -26,6 +31,7 @@ namespace CoffeeManagementSystem
 
             SetButtonState(true, false, false);
         }
+
 
         public AddTypeofdrinkForm(string maloai)
         {
