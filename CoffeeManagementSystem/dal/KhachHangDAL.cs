@@ -168,7 +168,7 @@ namespace CoffeeManagementSystem.DAL
                         command.Parameters.AddWithValue("@Hoten", khachhang.Hoten);
                         command.Parameters.AddWithValue("@Sodienthoai", (object)khachhang.Sodienthoai ?? DBNull.Value);
                         command.Parameters.AddWithValue("@Email", (object)khachhang.Email ?? DBNull.Value);
-                        command.Parameters.AddWithValue("@Ngaydangky", khachhang.Ngaydangky.ToString("yyyy-MM-dd HH:mm:ss"));
+                        command.Parameters.AddWithValue("@Ngaydangky", khachhang.Ngaydangky.ToString("yyyy-MM-dd"));
                         command.Parameters.AddWithValue("@Diemtichluy", khachhang.Diemtichluy);
 
                         command.ExecuteNonQuery();
