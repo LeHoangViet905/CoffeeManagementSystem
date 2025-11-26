@@ -96,7 +96,7 @@ namespace CoffeeManagementSystem
         // Xử lý sự kiện click nút "Lưu thay đổi".
         private void btnLuuThayDoi_Click(object sender, EventArgs e)
         {
-            // VALIDATION TẠI FORM
+            // VALIDATION
             if (!IsValidEmail(txtEmail.Text.Trim()))
             {
                 MessageBox.Show("Email không hợp lệ! Hãy nhập đúng dạng: xxx@mail.com",

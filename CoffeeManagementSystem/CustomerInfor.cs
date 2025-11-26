@@ -148,7 +148,7 @@ namespace CoffeeManagementSystem
         // Sự kiện click nút "Cập Nhật" (cho chế độ Sửa)
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            // VALIDATION TẠI FORM
+            // VALIDATION
             var khBLL = new KhachhangBLL();
 
             if (!khBLL.IsValidEmail(txtEmail.Text))

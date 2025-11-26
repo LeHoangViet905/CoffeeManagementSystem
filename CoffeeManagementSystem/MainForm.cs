@@ -126,7 +126,7 @@ namespace CoffeeManagementSystem
 
         private void panelMain_Paint(object sender, PaintEventArgs e)
         {
-        
+
         }
 
         private void guna2GradientPanel1_Paint(object sender, PaintEventArgs e)
