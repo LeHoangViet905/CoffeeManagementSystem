@@ -198,5 +198,31 @@ namespace CoffeeManagementSystem.BLL
                 throw new InvalidOperationException($"Lỗi nghiệp vụ khi xóa đồ uống: {ex.Message}", ex);
             }
         }
+        public string GenerateNextMaDU()
+        {
+            List<string> allIDs = _douongDAL.GetAllMaDU(); // Lấy tất cả mã DU
+            int nextNumber = 1;
+
+            if (allIDs.Count > 0)
+            {
+                List<int> numbers = new List<int>();
+                foreach (var id in allIDs)
+                {
+                    if (id.StartsWith("DU") && int.TryParse(id.Substring(2), out int n))
+                        numbers.Add(n);
+                }
+                numbers.Sort();
+                for (int i = 1; i <= numbers.Count + 1; i++)
+                {
+                    if (!numbers.Contains(i))
+                    {
+                        nextNumber = i;
+                        break;
+                    }
+                }
+            }
+
+            return "DU" + nextNumber.ToString("D3"); // DU001, DU002 ...
+        }
     }
 }

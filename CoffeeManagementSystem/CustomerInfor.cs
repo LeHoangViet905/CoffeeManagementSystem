@@ -1,4 +1,5 @@
 ﻿using CoffeeManagementSystem.BLL;
+using CoffeeManagementSystem.DAL;
 using System;
 using System.Windows.Forms;
 
@@ -27,8 +28,9 @@ namespace CoffeeManagementSystem
             btnUpdate.Enabled = false;
             btnDelete.Enabled = false;
 
-            // Cho phép nhập Mã KH khi thêm mới
-            txtMaKH.Enabled = true;
+            // Tự sinh mã khách hàng mới
+            txtMaKH.Text = khachhangBLL.GenerateNextMakhachhang();
+            txtMaKH.Enabled = false;
         }
 
         // Constructor cho chế độ Cập nhật

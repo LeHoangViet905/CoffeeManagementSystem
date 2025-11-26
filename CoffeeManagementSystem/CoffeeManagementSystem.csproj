@@ -184,6 +184,7 @@
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
+    <Reference Include="System.Speech" />
     <Reference Include="System.Web" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
@@ -434,6 +435,7 @@
     <None Include="Resources\TaiKhoan.png" />
     <None Include="Resources\Services_35px.png" />
     <None Include="Resources\qrcode.png" />
+    <None Include="Resources\Thêm tiêu đề.png" />
     <Content Include="Resources\TrangChu.png" />
     <None Include="Resources\TrangChu1.png" />
     <Content Include="Resources\Trắng Xanh Hình Ảnh Hiện Đại Đồng Giá Sale Deal Ưu Đãi Đồ Ăn Thức Uống Banner Ngang.png" />
@@ -451,6 +453,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="font\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

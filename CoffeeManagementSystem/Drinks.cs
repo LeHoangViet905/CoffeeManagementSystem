@@ -85,6 +85,7 @@ namespace CoffeeManagementSystem
         //Xử lý sự kiện click nút "Thêm mới" loại đồ uống.
         private void btnThem_Click(object sender, EventArgs e)
         {
+            MainForm.PlayClickSound();
             // Mở AddTypeofdrinkForm ở chế độ thêm mới. Form này cũng sẽ tương tác với BLL.
             AddTypeofdrinkForm detailForm = new AddTypeofdrinkForm();
             if (detailForm.ShowDialog() == DialogResult.OK)
@@ -96,6 +97,7 @@ namespace CoffeeManagementSystem
         //Xử lý sự kiện click vào dòng DataGridView loại đồ uống để mở form chi tiết.
         private void dgvLoaidouong_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            MainForm.PlayClickSound();
             if (e.RowIndex >= 0 && e.RowIndex < dgvLoaidouong.Rows.Count - (dgvLoaidouong.AllowUserToAddRows ? 1 : 0))
             {
                 // Lấy đối tượng Loaidouong từ dòng được click
@@ -148,6 +150,7 @@ namespace CoffeeManagementSystem
         //Xử lý sự kiện click nút "Thêm mới" đồ uống.
         private void btnAddDouong_Click(object sender, EventArgs e)
         {
+            MainForm.PlayClickSound();
             AddDrinkForm detailForm = new AddDrinkForm();
             if (detailForm.ShowDialog() == DialogResult.OK)
             {
@@ -157,6 +160,7 @@ namespace CoffeeManagementSystem
         //Xử lý sự kiện click vào dòng DataGridView đồ uống để mở form chi tiết.       
         private void dgvDouong_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            MainForm.PlayClickSound();
             if (e.RowIndex >= 0 && e.RowIndex < dgvDouong.Rows.Count - (dgvDouong.AllowUserToAddRows ? 1 : 0))
             {
                 // Lấy đối tượng Douong từ dòng được click
