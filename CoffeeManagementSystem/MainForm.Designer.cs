@@ -55,9 +55,10 @@
             this.lblName.BackColor = System.Drawing.Color.Transparent;
             this.lblName.Font = new System.Drawing.Font("Segoe UI Variable Display", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblName.ForeColor = System.Drawing.Color.White;
-            this.lblName.Location = new System.Drawing.Point(6, 171);
+            this.lblName.Location = new System.Drawing.Point(5, 142);
+            this.lblName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(188, 81);
+            this.lblName.Size = new System.Drawing.Size(157, 68);
             this.lblName.TabIndex = 18;
             this.lblName.Text = "Tên người dùng";
             this.lblName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -69,9 +70,10 @@
             this.lblQuanLy.BackColor = System.Drawing.Color.Transparent;
             this.lblQuanLy.Font = new System.Drawing.Font("Segoe UI Variable Display", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblQuanLy.ForeColor = System.Drawing.Color.White;
-            this.lblQuanLy.Location = new System.Drawing.Point(63, 132);
+            this.lblQuanLy.Location = new System.Drawing.Point(52, 110);
+            this.lblQuanLy.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblQuanLy.Name = "lblQuanLy";
-            this.lblQuanLy.Size = new System.Drawing.Size(69, 24);
+            this.lblQuanLy.Size = new System.Drawing.Size(58, 20);
             this.lblQuanLy.TabIndex = 17;
             this.lblQuanLy.Text = "Quản lý";
             this.lblQuanLy.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -84,7 +86,7 @@
             this.panelMain.Location = new System.Drawing.Point(0, 0);
             this.panelMain.Margin = new System.Windows.Forms.Padding(0);
             this.panelMain.Name = "panelMain";
-            this.panelMain.Size = new System.Drawing.Size(1819, 1094);
+            this.panelMain.Size = new System.Drawing.Size(1440, 879);
             this.panelMain.TabIndex = 19;
             this.panelMain.Paint += new System.Windows.Forms.PaintEventHandler(this.panelMain_Paint);
             // 
@@ -113,9 +115,9 @@
             // splitContainerNavBar.Panel2
             // 
             this.splitContainerNavBar.Panel2.Controls.Add(this.panelMain);
-            this.splitContainerNavBar.Size = new System.Drawing.Size(2025, 1094);
-            this.splitContainerNavBar.SplitterDistance = 200;
-            this.splitContainerNavBar.SplitterWidth = 6;
+            this.splitContainerNavBar.Size = new System.Drawing.Size(1603, 879);
+            this.splitContainerNavBar.SplitterDistance = 158;
+            this.splitContainerNavBar.SplitterWidth = 5;
             this.splitContainerNavBar.TabIndex = 20;
             // 
             // btnLogout
@@ -134,9 +136,10 @@
             this.btnLogout.Image = global::CoffeeManagementSystem.Properties.Resources.logout;
             this.btnLogout.ImageOffset = new System.Drawing.Point(-3, 0);
             this.btnLogout.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnLogout.Location = new System.Drawing.Point(0, 998);
+            this.btnLogout.Location = new System.Drawing.Point(0, 832);
+            this.btnLogout.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(200, 96);
+            this.btnLogout.Size = new System.Drawing.Size(167, 80);
             this.btnLogout.TabIndex = 20;
             this.btnLogout.Text = "Đăng xuất";
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
@@ -156,9 +159,10 @@
             this.btnTaiKhoan.HoverState.ForeColor = System.Drawing.Color.White;
             this.btnTaiKhoan.Image = global::CoffeeManagementSystem.Properties.Resources.TaiKhoan;
             this.btnTaiKhoan.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnTaiKhoan.Location = new System.Drawing.Point(21, 830);
+            this.btnTaiKhoan.Location = new System.Drawing.Point(18, 692);
+            this.btnTaiKhoan.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnTaiKhoan.Name = "btnTaiKhoan";
-            this.btnTaiKhoan.Size = new System.Drawing.Size(151, 96);
+            this.btnTaiKhoan.Size = new System.Drawing.Size(126, 80);
             this.btnTaiKhoan.TabIndex = 19;
             this.btnTaiKhoan.Text = "Quản lý tài khoản";
             this.btnTaiKhoan.Click += new System.EventHandler(this.btnTaiKhoan_Click);
@@ -179,9 +183,10 @@
             this.btnReport.Image = global::CoffeeManagementSystem.Properties.Resources.BaoCao;
             this.btnReport.ImageOffset = new System.Drawing.Point(0, -15);
             this.btnReport.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnReport.Location = new System.Drawing.Point(30, 714);
+            this.btnReport.Location = new System.Drawing.Point(25, 595);
+            this.btnReport.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnReport.Name = "btnReport";
-            this.btnReport.Size = new System.Drawing.Size(122, 96);
+            this.btnReport.Size = new System.Drawing.Size(102, 80);
             this.btnReport.TabIndex = 16;
             this.btnReport.Text = "Báo Cáo";
             this.btnReport.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -208,10 +213,10 @@
             this.btnTrangChu.Image = global::CoffeeManagementSystem.Properties.Resources.TrangChu;
             this.btnTrangChu.ImageOffset = new System.Drawing.Point(0, -15);
             this.btnTrangChu.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnTrangChu.Location = new System.Drawing.Point(21, 283);
+            this.btnTrangChu.Location = new System.Drawing.Point(18, 236);
             this.btnTrangChu.Margin = new System.Windows.Forms.Padding(0);
             this.btnTrangChu.Name = "btnTrangChu";
-            this.btnTrangChu.Size = new System.Drawing.Size(160, 94);
+            this.btnTrangChu.Size = new System.Drawing.Size(133, 78);
             this.btnTrangChu.TabIndex = 10;
             this.btnTrangChu.Text = "Trang Chủ";
             this.btnTrangChu.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -237,9 +242,10 @@
             this.btnKhachHang.Image = global::CoffeeManagementSystem.Properties.Resources.KhachHang;
             this.btnKhachHang.ImageOffset = new System.Drawing.Point(0, -15);
             this.btnKhachHang.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnKhachHang.Location = new System.Drawing.Point(12, 380);
+            this.btnKhachHang.Location = new System.Drawing.Point(10, 317);
+            this.btnKhachHang.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnKhachHang.Name = "btnKhachHang";
-            this.btnKhachHang.Size = new System.Drawing.Size(172, 96);
+            this.btnKhachHang.Size = new System.Drawing.Size(143, 80);
             this.btnKhachHang.TabIndex = 11;
             this.btnKhachHang.Text = "Khách Hàng";
             this.btnKhachHang.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -250,10 +256,11 @@
             // 
             this.guna2CirclePictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("guna2CirclePictureBox1.Image")));
             this.guna2CirclePictureBox1.ImageRotate = 0F;
-            this.guna2CirclePictureBox1.Location = new System.Drawing.Point(51, 32);
+            this.guna2CirclePictureBox1.Location = new System.Drawing.Point(42, 27);
+            this.guna2CirclePictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.guna2CirclePictureBox1.Name = "guna2CirclePictureBox1";
             this.guna2CirclePictureBox1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.guna2CirclePictureBox1.Size = new System.Drawing.Size(98, 98);
+            this.guna2CirclePictureBox1.Size = new System.Drawing.Size(82, 82);
             this.guna2CirclePictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.guna2CirclePictureBox1.TabIndex = 13;
             this.guna2CirclePictureBox1.TabStop = false;
@@ -275,9 +282,10 @@
             this.btnEmployer.Image = global::CoffeeManagementSystem.Properties.Resources.NhanVien;
             this.btnEmployer.ImageOffset = new System.Drawing.Point(0, -15);
             this.btnEmployer.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnEmployer.Location = new System.Drawing.Point(21, 496);
+            this.btnEmployer.Location = new System.Drawing.Point(18, 413);
+            this.btnEmployer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnEmployer.Name = "btnEmployer";
-            this.btnEmployer.Size = new System.Drawing.Size(156, 87);
+            this.btnEmployer.Size = new System.Drawing.Size(130, 72);
             this.btnEmployer.TabIndex = 14;
             this.btnEmployer.Text = "Nhân Viên";
             this.btnEmployer.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -300,9 +308,10 @@
             this.btnMenu.Image = global::CoffeeManagementSystem.Properties.Resources.DoUong;
             this.btnMenu.ImageOffset = new System.Drawing.Point(0, -15);
             this.btnMenu.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnMenu.Location = new System.Drawing.Point(30, 605);
+            this.btnMenu.Location = new System.Drawing.Point(25, 504);
+            this.btnMenu.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnMenu.Name = "btnMenu";
-            this.btnMenu.Size = new System.Drawing.Size(134, 88);
+            this.btnMenu.Size = new System.Drawing.Size(112, 73);
             this.btnMenu.TabIndex = 13;
             this.btnMenu.Text = "Đồ uống";
             this.btnMenu.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -318,16 +327,18 @@
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(144F, 144F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(2025, 1094);
+            this.ClientSize = new System.Drawing.Size(1603, 879);
             this.Controls.Add(this.splitContainerNavBar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(872, 528);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MinimumSize = new System.Drawing.Size(730, 448);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Coffee Management System";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.splitContainerNavBar.Panel1.ResumeLayout(false);
             this.splitContainerNavBar.Panel1.PerformLayout();
