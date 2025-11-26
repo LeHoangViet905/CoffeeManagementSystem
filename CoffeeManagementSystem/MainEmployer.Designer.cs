@@ -318,6 +318,7 @@
             this.Name = "MainEmployer";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Coffee Management System";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.splitContainerNavBar.Panel1.ResumeLayout(false);
             this.splitContainerNavBar.Panel1.PerformLayout();

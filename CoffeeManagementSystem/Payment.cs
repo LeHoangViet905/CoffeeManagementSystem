@@ -14,6 +14,7 @@ namespace CoffeeManagementSystem
 {
     public partial class PaymentForm : Form
     {
+        private static bool _dontShowTransferGuide = false;
         private PaymentBLL _paymentBLL;
         private Khachhang currentSelectedCustomer;
 
@@ -71,8 +72,11 @@ namespace CoffeeManagementSystem
                 picQrCode.Height = 300;
             }
 
-            if (btnXacNhanThanhToan != null)
-                btnXacNhanThanhToan.Visible = false;
+            if (btnThanhToanThanhCong != null)
+                btnThanhToanThanhCong.Visible = false;
+            if (btnThanhToanThatBai != null)
+                btnThanhToanThatBai.Visible = false;
+
 
             _pendingPaymentMethod = null;
 
@@ -326,7 +330,144 @@ namespace CoffeeManagementSystem
                 Logger.LogError($"Lỗi hệ thống không xác định khi thanh toán đơn hàng. Tên khách hàng: '{txtKhachHangName.Text.Trim()}'", ex);
             }
         }
+        /// <summary>
+        /// Hiển thị form thanh toán bằng TIỀN MẶT.
+        /// Trả về true nếu thanh toán thành công, false nếu thất bại hoặc hủy.
+        /// </summary>
+        private bool ShowCashPaymentDialog()
+        {
+            decimal tongTien = _paymentBLL.CalculateTongTien();
 
+            Form cashForm = new Form
+            {
+                Text = "Thanh toán tiền mặt",
+                FormBorderStyle = FormBorderStyle.FixedDialog,
+                StartPosition = FormStartPosition.CenterParent,
+                ClientSize = new Size(420, 190),
+                MinimizeBox = false,
+                MaximizeBox = false,
+                ShowInTaskbar = false
+            };
+
+            // Tổng tiền
+            Label lblTong = new Label
+            {
+                AutoSize = true,
+                Text = "Tổng cần thu: " + tongTien.ToString("N0") + " VND",
+                Location = new Point(20, 20)
+            };
+
+            // Khách đưa
+            Label lblKhachDua = new Label
+            {
+                AutoSize = true,
+                Text = "Khách đưa:",
+                Location = new Point(20, 55)
+            };
+
+            TextBox txtKhachDua = new TextBox
+            {
+                Location = new Point(110, 52),
+                Width = 150
+            };
+
+            // Trạng thái: Khách thừa / thiếu
+            Label lblTrangThai = new Label
+            {
+                AutoSize = true,
+                Text = "Khách thừa: 0 VND",
+                Location = new Point(20, 90),
+                ForeColor = Color.Green
+            };
+
+            // Cập nhật trạng thái khi gõ
+            txtKhachDua.TextChanged += (s, e) =>
+            {
+                decimal khachDua;
+                if (decimal.TryParse(txtKhachDua.Text.Replace(".", "").Replace(",", ""), out khachDua))
+                {
+                    decimal chenhLech = khachDua - tongTien;
+                    if (chenhLech >= 0)
+                    {
+                        lblTrangThai.Text = "Khách thừa: " + chenhLech.ToString("N0") + " VND";
+                        lblTrangThai.ForeColor = Color.Green;
+                    }
+                    else
+                    {
+                        lblTrangThai.Text = "Khách thiếu: " + Math.Abs(chenhLech).ToString("N0") + " VND";
+                        lblTrangThai.ForeColor = Color.Red;
+                    }
+                }
+                else
+                {
+                    lblTrangThai.Text = "Khách thừa: 0 VND";
+                    lblTrangThai.ForeColor = Color.Green;
+                }
+            };
+
+            bool result = false;   // sẽ trả về
+
+            // Nút THÀNH CÔNG
+            Button btnThanhCong = new Button
+            {
+                Text = "Thành công",
+                Size = new Size(110, 30),
+                Location = new Point(220, 130)
+            };
+
+            btnThanhCong.Click += (s, e) =>
+            {
+                decimal khachDua;
+                if (!decimal.TryParse(txtKhachDua.Text.Replace(".", "").Replace(",", ""), out khachDua))
+                {
+                    MessageBox.Show("Vui lòng nhập số tiền hợp lệ.", "Lỗi",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtKhachDua.Focus();
+                    return;
+                }
+
+                if (khachDua < tongTien)
+                {
+                    // Thiếu tiền thì KHÔNG cho thanh toán, chỉ để label báo đỏ
+                    lblTrangThai.Text = "Khách thiếu: " +
+                                        (tongTien - khachDua).ToString("N0") + " VND";
+                    lblTrangThai.ForeColor = Color.Red;
+                    return;
+                }
+
+                Logger.LogInfo(
+                    $"Tiền mặt: khách đưa {khachDua:N0}, tổng {tongTien:N0}, thối lại {(khachDua - tongTien):N0}.");
+
+                result = true;                 // cho thanh toán
+                cashForm.Close();
+            };
+
+            // Nút THẤT BẠI
+            Button btnThatBai = new Button
+            {
+                Text = "Thất bại",
+                Size = new Size(110, 30),
+                Location = new Point(90, 130)
+            };
+
+            btnThatBai.Click += (s, e) =>
+            {
+                Logger.LogInfo("Thu ngân chọn THANH TOÁN TIỀN MẶT THẤT BẠI.");
+
+                cashForm.Close();              // đóng form nhập tiền
+                ShowThanhToanThatBaiMessage(); // 👈 hiện popup giống chuyển khoản
+            };
+
+            cashForm.Controls.Add(lblTong);
+            cashForm.Controls.Add(lblKhachDua);
+            cashForm.Controls.Add(txtKhachDua);
+            cashForm.Controls.Add(lblTrangThai);
+            cashForm.Controls.Add(btnThanhCong);
+            cashForm.Controls.Add(btnThatBai);
+
+            cashForm.ShowDialog(this);
+            return result;
+        }
         /// <summary>
         /// Căn giữa QR ra giữa form và cho to lên.
         /// </summary>
@@ -365,81 +506,50 @@ namespace CoffeeManagementSystem
         // - Chuyển khoản: hiện QR to giữa màn hình + show nút Xác nhận
         private void btnThanhToan_Click(object sender, EventArgs e)
         {
-            MainForm.PlayClickSound();
             Logger.LogInfo("Người dùng nhấn nút 'Thanh toán'.");
 
-            // === RÀNG BUỘC NHẬP TÊN KHÁCH HÀNG ===
-            string customerName = txtKhachHangName.Text.Trim();
-            if (string.IsNullOrEmpty(customerName))
+            //  BẮT BUỘC CÓ TÊN KHÁCH HÀNG
+            if (string.IsNullOrWhiteSpace(txtKhachHangName.Text))
             {
-                MessageBox.Show(
-                    "Vui lòng nhập tên khách hàng trước khi bắt đầu thanh toán.",
-                    "Thiếu thông tin khách hàng",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
-
-                txtKhachHangName.Focus();
+                MessageBox.Show("Vui lòng nhập tên khách hàng trước khi thanh toán.",
+                                "Thiếu thông tin",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning);
                 return;
             }
-            Logger.LogInfo("Người dùng nhấn nút 'Thanh toán'.");
 
-            string hinhThucThanhToan = HINH_THUC_TIEN_MAT;
-            if (rdbChuyenKhoan != null && rdbChuyenKhoan.Checked)
+            // Nếu chọn CHUYỂN KHOẢN → giữ flow QR + 2 nút ngoài form như bạn đã làm
+            if (rdbChuyenKhoan.Checked)
             {
-                hinhThucThanhToan = HINH_THUC_CHUYEN_KHOAN;
+                _pendingPaymentMethod = HINH_THUC_CHUYEN_KHOAN;
+
+                HienQrToGiuaManHinh();
+                ShowChuyenKhoanGuide();
+
+                // hiện 2 nút Thành công / Thất bại ngoài form chính
+                btnThanhToanThanhCong.Visible = true;
+                btnThanhToanThatBai.Visible = true;
+                btnThanhToanThanhCong.BringToFront();
+                btnThanhToanThatBai.BringToFront();
+
+                return;
             }
 
-            DialogResult confirmResult = MessageBox.Show(
-                $"Bạn muốn bắt đầu quy trình thanh toán bằng '{hinhThucThanhToan}'?\n" +
-                "Sau khi ĐÃ NHẬN ĐỦ TIỀN từ khách, bạn sẽ nhấn nút 'Xác nhận thanh toán' để hoàn tất.",
-                "Xác nhận bắt đầu thanh toán",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question);
+            // Ngược lại là TIỀN MẶT → dùng form riêng
+            _pendingPaymentMethod = HINH_THUC_TIEN_MAT;
 
-            if (confirmResult == DialogResult.Yes)
+            if (ShowCashPaymentDialog())
             {
-                _pendingPaymentMethod = hinhThucThanhToan;
-
-                // Với chuyển khoản: hiện QR to giữa màn hình
-                if (hinhThucThanhToan == HINH_THUC_CHUYEN_KHOAN)
-                {
-                    HienQrToGiuaManHinh();
-
-                    MessageBox.Show(
-                        "Vui lòng yêu cầu khách quét mã QR để chuyển khoản.\n" +
-                        "Sau khi đã nhận được tiền, hãy nhấn nút 'Xác nhận thanh toán'.",
-                        "Hướng dẫn thanh toán chuyển khoản",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Information);
-
-                    Logger.LogInfo("Bắt đầu quy trình thanh toán chuyển khoản, hiển thị QR.");
-                }
-                else // Tiền mặt
-                {
-                    if (picQrCode != null)
-                        picQrCode.Visible = false;
-
-                    MessageBox.Show(
-                        "Vui lòng thu TIỀN MẶT từ khách hàng.\n" +
-                        "Sau khi đã nhận đủ tiền, hãy nhấn nút 'Xác nhận thanh toán'.",
-                        "Hướng dẫn thanh toán tiền mặt",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Information);
-
-                    Logger.LogInfo("Bắt đầu quy trình thanh toán tiền mặt.");
-                }
-
-                if (btnXacNhanThanhToan != null)
-                {
-                    btnXacNhanThanhToan.Visible = true;
-                    btnXacNhanThanhToan.BringToFront();
-                }
+                // Người dùng bấm "Thành công" và tiền ĐỦ → thanh toán luôn
+                XuLyThanhToan(HINH_THUC_TIEN_MAT);
             }
             else
             {
-                Logger.LogInfo("Người dùng hủy bắt đầu quy trình thanh toán.");
+                Logger.LogInfo("Thanh toán tiền mặt chưa hoàn tất (hủy hoặc khách đưa thiếu).");
             }
         }
+
+
 
         /// <summary>
         /// Xử lý khi chọn radio Tiền mặt.
@@ -481,42 +591,58 @@ namespace CoffeeManagementSystem
         }
 
         /// <summary>
-        /// Nút xác nhận thanh toán (dùng cho CẢ tiền mặt và chuyển khoản).
-        /// </summary>
-        private void btnXacNhanThanhToan_Click(object sender, EventArgs e)
+        // Nút "Thành công" – đã nhận đủ tiền
+        private void btnThanhToanThanhCong_Click(object sender, EventArgs e)
         {
             MainForm.PlayClickSound();
             if (string.IsNullOrEmpty(_pendingPaymentMethod))
             {
                 MessageBox.Show(
                     "Bạn chưa bắt đầu quy trình thanh toán.\n" +
-                    "Vui lòng nhấn nút 'Thanh toán' trước, sau đó mới xác nhận.",
+                    "Vui lòng nhấn nút 'Thanh toán' trước, sau đó mới bấm 'Thành công'.",
                     "Thông báo",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
                 return;
             }
 
-            string message = _pendingPaymentMethod == HINH_THUC_CHUYEN_KHOAN
-                ? "Bạn đã nhận được tiền CHUYỂN KHOẢN từ khách hàng?"
-                : "Bạn đã nhận đủ tiền TIỀN MẶT từ khách hàng?";
-
-            DialogResult confirmResult = MessageBox.Show(
-                message,
-                "Xác nhận thanh toán",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question);
-
-            if (confirmResult == DialogResult.Yes)
-            {
-                Logger.LogInfo($"Người dùng xác nhận đã nhận được tiền ({_pendingPaymentMethod}).");
-                XuLyThanhToan(_pendingPaymentMethod);
-            }
-            else
-            {
-                Logger.LogInfo($"Người dùng chưa xác nhận nhận tiền ({_pendingPaymentMethod}).");
-            }
+            Logger.LogInfo($"Người dùng xác nhận THANH TOÁN THÀNH CÔNG ({_pendingPaymentMethod}).");
+            XuLyThanhToan(_pendingPaymentMethod);
         }
+        // Hiển thị thông báo thanh toán thất bại dùng chung
+        private void ShowThanhToanThatBaiMessage()
+        {
+            MessageBox.Show(
+                "Thanh toán chưa thành công. Bạn có thể thực hiện lại quy trình thanh toán.",
+                "Thanh toán thất bại",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
+        }
+        // Nút "Thất bại" – không nhận được tiền, chỉ đóng QR và reset trạng thái
+        private void btnThanhToanThatBai_Click(object sender, EventArgs e)
+        {
+            Logger.LogInfo($"Người dùng xác nhận THANH TOÁN THẤT BẠI ({_pendingPaymentMethod ?? "chưa bắt đầu"}).");
+
+            // Ẩn QR nếu đang hiện
+            if (picQrCode != null)
+                picQrCode.Visible = false;
+
+            // Ẩn 2 nút kết quả
+            if (btnThanhToanThanhCong != null)
+                btnThanhToanThanhCong.Visible = false;
+            if (btnThanhToanThatBai != null)
+                btnThanhToanThatBai.Visible = false;
+
+            // Reset trạng thái, phải bấm "Thanh toán" lại
+            _pendingPaymentMethod = null;
+
+            // Reset trạng thái, phải bấm "Thanh toán" lại
+            _pendingPaymentMethod = null;
+
+            // Dùng chung popup thất bại
+            ShowThanhToanThatBaiMessage();
+        }
+
 
         /// Xử lý sự kiện Leave của txtKhachHangName.
         private void txtKhachHangName_Leave(object sender, EventArgs e)
@@ -751,6 +877,205 @@ namespace CoffeeManagementSystem
                                 e.MarginBounds.Right - graphics.MeasureString(totalText, subHeaderFont).Width, y);
 
             e.HasMorePages = false; // Đã in hết trên một trang
+        }
+        /// <summary>
+        /// Hiển thị hướng dẫn thanh toán chuyển khoản với checkbox
+        /// "Không hiển thị lại lần sau".
+        /// </summary>
+        private void ShowChuyenKhoanGuide()
+        {
+            if (_dontShowTransferGuide)
+                return; // Đã tắt rồi thì thôi
+
+            using (Form guideForm = new Form())
+            {
+                guideForm.Text = "Hướng dẫn thanh toán chuyển khoản";
+                guideForm.FormBorderStyle = FormBorderStyle.FixedDialog;
+                guideForm.StartPosition = FormStartPosition.CenterParent;
+                guideForm.ClientSize = new Size(420, 200);
+                guideForm.MinimizeBox = false;
+                guideForm.MaximizeBox = false;
+                guideForm.ShowInTaskbar = false;
+
+                // Label hướng dẫn
+                Label lbl = new Label();
+                lbl.AutoSize = false;
+                lbl.Text =
+                    "Vui lòng yêu cầu khách quét mã QR để chuyển khoản." +
+                    Environment.NewLine +
+                    "Nếu đã nhận được tiền, hãy nhấn nút 'Thành công'." +
+                    Environment.NewLine +
+                    "Nếu không nhận được tiền hoặc muốn hủy thanh toán, hãy nhấn nút 'Thất bại'.";
+                lbl.Location = new Point(15, 15);
+                lbl.Size = new Size(390, 80);
+
+                // Checkbox "Không hiển thị lại lần sau"
+                CheckBox chk = new CheckBox();
+                chk.Text = "Không hiển thị lại lần sau";
+                chk.AutoSize = true;
+                chk.Location = new Point(15, 110);
+
+                // Nút OK
+                Button btnOK = new Button();
+                btnOK.Text = "OK";
+                btnOK.DialogResult = DialogResult.OK;
+                btnOK.Size = new Size(80, 30);
+                btnOK.Location = new Point(325, 140);
+                btnOK.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+
+                guideForm.Controls.Add(lbl);
+                guideForm.Controls.Add(chk);
+                guideForm.Controls.Add(btnOK);
+                guideForm.AcceptButton = btnOK;
+
+                if (guideForm.ShowDialog(this) == DialogResult.OK)
+                {
+                    if (chk.Checked)
+                    {
+                        _dontShowTransferGuide = true;
+                        // Nếu muốn lưu luôn cho lần mở app sau thì có thể:
+                        // Properties.Settings.Default.DontShowTransferGuide = true;
+                        // Properties.Settings.Default.Save();
+                    }
+                }
+            }
+        }
+        /// <summary>
+        /// Popup nhập TIỀN MẶT khách đưa, tự tính tiền thừa.
+        /// Trả về true nếu thanh toán thành công, false nếu hủy.
+        /// </summary>
+        private bool ShowTienMatDialog()
+        {
+            decimal tongTien;
+            if (!decimal.TryParse(txtTongThanhTienValue.Text.Replace(".", "").Replace(",", ""), out tongTien))
+            {
+                MessageBox.Show("Không đọc được tổng tiền.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            using (Form cashForm = new Form())
+            {
+                cashForm.Text = "Thanh toán tiền mặt";
+                cashForm.FormBorderStyle = FormBorderStyle.FixedDialog;
+                cashForm.StartPosition = FormStartPosition.CenterParent;
+                cashForm.ClientSize = new Size(380, 190);
+                cashForm.MinimizeBox = false;
+                cashForm.MaximizeBox = false;
+                cashForm.ShowInTaskbar = false;
+
+                // Label tổng tiền
+                Label lblTong = new Label
+                {
+                    AutoSize = false,
+                    Text = "Tổng cần thu: " + tongTien.ToString("N0") + " VND",
+                    Location = new Point(15, 15),
+                    Size = new Size(340, 25),
+                    Font = new Font("Segoe UI", 10, FontStyle.Bold)
+                };
+
+                // Label + TextBox tiền khách đưa
+                Label lblKhachDua = new Label
+                {
+                    AutoSize = true,
+                    Text = "Tiền khách đưa:",
+                    Location = new Point(15, 55)
+                };
+
+                TextBox txtKhachDua = new TextBox
+                {
+                    Location = new Point(140, 52),
+                    Size = new Size(180, 23)
+                };
+
+                // Label tiền thừa
+                Label lblTienThua = new Label
+                {
+                    AutoSize = false,
+                    Text = "Tiền thừa: 0 VND",
+                    Location = new Point(15, 90),
+                    Size = new Size(340, 25)
+                };
+
+                // Cập nhật tiền thừa khi gõ
+                txtKhachDua.TextChanged += (s, e) =>
+                {
+                    decimal khachDua;
+                    if (decimal.TryParse(txtKhachDua.Text.Replace(".", "").Replace(",", ""), out khachDua))
+                    {
+                        decimal thoiLai = khachDua - tongTien;
+                        lblTienThua.Text = "Tiền thừa: " + Math.Max(thoiLai, 0).ToString("N0") + " VND";
+                    }
+                    else
+                    {
+                        lblTienThua.Text = "Tiền thừa: 0 VND";
+                    }
+                };
+
+                // Nút Thanh toán
+                Button btnOK = new Button
+                {
+                    Text = "Thanh toán",
+                    DialogResult = DialogResult.OK,
+                    Size = new Size(100, 30),
+                    Location = new Point(220, 130)
+                };
+
+                // Nút Hủy
+                Button btnCancel = new Button
+                {
+                    Text = "Hủy",
+                    DialogResult = DialogResult.Cancel,
+                    Size = new Size(80, 30),
+                    Location = new Point(110, 130)
+                };
+
+                cashForm.Controls.Add(lblTong);
+                cashForm.Controls.Add(lblKhachDua);
+                cashForm.Controls.Add(txtKhachDua);
+                cashForm.Controls.Add(lblTienThua);
+                cashForm.Controls.Add(btnOK);
+                cashForm.Controls.Add(btnCancel);
+
+                cashForm.AcceptButton = btnOK;
+                cashForm.CancelButton = btnCancel;
+
+                if (cashForm.ShowDialog(this) == DialogResult.OK)
+                {
+                    decimal khachDua;
+
+                    // Đọc lại số tiền khách đưa từ textbox trên cashForm
+                    if (!decimal.TryParse(txtKhachDua.Text.Replace(".", "").Replace(",", ""), out khachDua))
+                    {
+                        MessageBox.Show("Vui lòng nhập số tiền hợp lệ.",
+                                        "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return false;
+                    }
+
+                    // TÍNH TIỀN THỪA / KIỂM TRA THIẾU
+                    decimal thoiLai = khachDua - tongTien;
+
+                    if (thoiLai < 0)
+                    {
+
+                        /// Hiển thị khách thiếu bao nhiêu
+                        lblTienThua.Text = "Khách thiếu: " + Math.Abs(thoiLai).ToString("N0") + " VND";
+
+                        // Dùng chung thông báo thất bại
+                        ShowThanhToanThatBaiMessage();
+
+                        return false; // ❌ PHẢI TRẢ VỀ false, KHÔNG ĐƯỢC return;
+                    }
+
+                    // Đủ tiền → hiển thị tiền thừa và cho phép thanh toán tiếp
+                    lblTienThua.Text = "Tiền thừa: " + thoiLai.ToString("N0") + " VND";
+
+                    Logger.LogInfo($"Tiền mặt: khách đưa {khachDua:N0}, tổng {tongTien:N0}, thối lại {thoiLai:N0}.");
+
+                    return true;
+                }
+
+                return false; // Người dùng bấm Hủy
+            }
         }
     }
 
