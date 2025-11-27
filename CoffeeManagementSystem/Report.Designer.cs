@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -100,10 +99,7 @@
             this.chartDashboard = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.dtpDashTo = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.dtpDashFrom = new Guna.UI2.WinForms.Guna2DateTimePicker();
-            this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
             this.sqLiteCommandBuilder1 = new System.Data.SQLite.SQLiteCommandBuilder();
-            this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.tabPage6 = new System.Windows.Forms.TabPage();
             this.panel1.SuspendLayout();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductSales)).BeginInit();
@@ -152,7 +148,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 34);
             this.tabPage3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1608, 832);
+            this.tabPage3.Size = new System.Drawing.Size(1608, 817);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "BestSeller";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -196,7 +192,7 @@
             this.dgvProductSales.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.dgvProductSales.RowHeadersVisible = false;
             this.dgvProductSales.RowHeadersWidth = 51;
-            this.dgvProductSales.Size = new System.Drawing.Size(1608, 754);
+            this.dgvProductSales.Size = new System.Drawing.Size(1608, 739);
             this.dgvProductSales.TabIndex = 6;
             this.dgvProductSales.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductSales_CellContentClick);
             // 
@@ -296,8 +292,9 @@
             this.dtpProductSalesEndDate.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dtpProductSalesEndDate.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.dtpProductSalesEndDate.Name = "dtpProductSalesEndDate";
-            this.dtpProductSalesEndDate.Size = new System.Drawing.Size(188, 49);
+            this.dtpProductSalesEndDate.Size = new System.Drawing.Size(190, 42);
             this.dtpProductSalesEndDate.TabIndex = 33;
+            this.dtpProductSalesEndDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.dtpProductSalesEndDate.Value = new System.DateTime(2025, 11, 24, 11, 27, 58, 651);
             this.dtpProductSalesEndDate.ValueChanged += new System.EventHandler(this.dtpProductSalesEndDate_ValueChanged);
             // 
@@ -315,8 +312,9 @@
             this.dtpProductSalesStartDate.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dtpProductSalesStartDate.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.dtpProductSalesStartDate.Name = "dtpProductSalesStartDate";
-            this.dtpProductSalesStartDate.Size = new System.Drawing.Size(178, 49);
+            this.dtpProductSalesStartDate.Size = new System.Drawing.Size(190, 42);
             this.dtpProductSalesStartDate.TabIndex = 32;
+            this.dtpProductSalesStartDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.dtpProductSalesStartDate.Value = new System.DateTime(2025, 11, 24, 11, 27, 58, 651);
             this.dtpProductSalesStartDate.ValueChanged += new System.EventHandler(this.dtpProductSalesStartDate_ValueChanged);
             // 
@@ -369,7 +367,7 @@
             this.tabPage2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage2.Size = new System.Drawing.Size(1608, 832);
+            this.tabPage2.Size = new System.Drawing.Size(1608, 817);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Doanh Thu";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -414,7 +412,7 @@
             this.dgvRevenue.Name = "dgvRevenue";
             this.dgvRevenue.RowHeadersVisible = false;
             this.dgvRevenue.RowHeadersWidth = 51;
-            this.dgvRevenue.Size = new System.Drawing.Size(1602, 749);
+            this.dgvRevenue.Size = new System.Drawing.Size(1602, 734);
             this.dgvRevenue.TabIndex = 5;
             // 
             // dataGridViewTextBoxColumn1
@@ -504,8 +502,9 @@
             this.dtpRevenueEndDate.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dtpRevenueEndDate.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.dtpRevenueEndDate.Name = "dtpRevenueEndDate";
-            this.dtpRevenueEndDate.Size = new System.Drawing.Size(178, 42);
+            this.dtpRevenueEndDate.Size = new System.Drawing.Size(190, 42);
             this.dtpRevenueEndDate.TabIndex = 29;
+            this.dtpRevenueEndDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.dtpRevenueEndDate.Value = new System.DateTime(2025, 11, 24, 11, 27, 58, 651);
             // 
             // btnPrintDoanhThu
@@ -542,8 +541,9 @@
             this.dtpRevenueStartDate.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dtpRevenueStartDate.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.dtpRevenueStartDate.Name = "dtpRevenueStartDate";
-            this.dtpRevenueStartDate.Size = new System.Drawing.Size(178, 42);
+            this.dtpRevenueStartDate.Size = new System.Drawing.Size(190, 42);
             this.dtpRevenueStartDate.TabIndex = 28;
+            this.dtpRevenueStartDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.dtpRevenueStartDate.Value = new System.DateTime(2025, 11, 24, 11, 27, 58, 651);
             // 
             // label3
@@ -713,8 +713,9 @@
             this.dtToTopSelling.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dtToTopSelling.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.dtToTopSelling.Name = "dtToTopSelling";
-            this.dtToTopSelling.Size = new System.Drawing.Size(178, 42);
+            this.dtToTopSelling.Size = new System.Drawing.Size(190, 42);
             this.dtToTopSelling.TabIndex = 33;
+            this.dtToTopSelling.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.dtToTopSelling.Value = new System.DateTime(2025, 11, 24, 11, 27, 58, 651);
             // 
             // dtFromTopSelling
@@ -731,8 +732,9 @@
             this.dtFromTopSelling.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dtFromTopSelling.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.dtFromTopSelling.Name = "dtFromTopSelling";
-            this.dtFromTopSelling.Size = new System.Drawing.Size(178, 42);
+            this.dtFromTopSelling.Size = new System.Drawing.Size(190, 42);
             this.dtFromTopSelling.TabIndex = 32;
+            this.dtFromTopSelling.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.dtFromTopSelling.Value = new System.DateTime(2025, 11, 24, 11, 27, 58, 651);
             // 
             // label7
@@ -759,8 +761,6 @@
             this.tabControlReports.Controls.Add(this.tabPage2);
             this.tabControlReports.Controls.Add(this.tabPage3);
             this.tabControlReports.Controls.Add(this.tabPage4);
-            this.tabControlReports.Controls.Add(this.tabPage5);
-            this.tabControlReports.Controls.Add(this.tabPage6);
             this.tabControlReports.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControlReports.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabControlReports.ItemSize = new System.Drawing.Size(180, 30);
@@ -784,7 +784,7 @@
             this.tabPage4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage4.Size = new System.Drawing.Size(1608, 832);
+            this.tabPage4.Size = new System.Drawing.Size(1608, 817);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Dashboard";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -973,36 +973,10 @@
             this.dtpDashFrom.Value = new System.DateTime(2025, 11, 24, 0, 29, 34, 894);
             this.dtpDashFrom.ValueChanged += new System.EventHandler(this.dtpDashFrom_ValueChanged);
             // 
-            // guna2BorderlessForm1
-            // 
-            this.guna2BorderlessForm1.ContainerControl = this;
-            this.guna2BorderlessForm1.DockIndicatorTransparencyValue = 0.6D;
-            this.guna2BorderlessForm1.TransparentWhileDrag = true;
-            // 
             // sqLiteCommandBuilder1
             // 
             this.sqLiteCommandBuilder1.DataAdapter = null;
             this.sqLiteCommandBuilder1.QuoteSuffix = "]";
-            // 
-            // tabPage5
-            // 
-            this.tabPage5.Location = new System.Drawing.Point(4, 34);
-            this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(1608, 817);
-            this.tabPage5.TabIndex = 4;
-            this.tabPage5.Text = "tabPage5";
-            this.tabPage5.UseVisualStyleBackColor = true;
-            // 
-            // tabPage6
-            // 
-            this.tabPage6.Location = new System.Drawing.Point(4, 34);
-            this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(1608, 817);
-            this.tabPage6.TabIndex = 5;
-            this.tabPage6.Text = "tabPage6";
-            this.tabPage6.UseVisualStyleBackColor = true;
             // 
             // ReportForm
             // 
@@ -1069,7 +1043,6 @@
         private Guna.UI2.WinForms.Guna2HtmlLabel lblDashAOV;
         private Guna.UI2.WinForms.Guna2HtmlLabel lblDashTotalOrders;
         private Guna.UI2.WinForms.Guna2HtmlLabel lblDashRevenue;
-        private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel2;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
         private Guna.UI2.WinForms.Guna2DateTimePicker dtpDashTo;
@@ -1107,7 +1080,5 @@
         private Guna.UI2.WinForms.Guna2DateTimePicker dtFromTopSelling;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TabPage tabPage5;
-        private System.Windows.Forms.TabPage tabPage6;
     }
 }
