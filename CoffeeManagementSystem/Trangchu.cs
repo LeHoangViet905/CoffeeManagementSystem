@@ -20,6 +20,7 @@ namespace CoffeeManagementSystem
             formsPlotPieNgay.Configuration.ScrollWheelZoom = false;
             formsPlotPieNgay.Configuration.RightClickDragZoom = false;
             formsPlotPieNgay.Configuration.MiddleClickAutoAxis = false;
+            dtpNgay.Value=DateTime.Today;
         }
 
         private void DashboardForm_Load(object sender, EventArgs e)
