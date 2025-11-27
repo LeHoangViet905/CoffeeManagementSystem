@@ -429,6 +429,7 @@
     <Content Include="Resources\bill.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\bo-nhan-dien-thuong-hieu-ueh-5.jpg" />
     <Content Include="Resources\Cam nhạt đơn giản thức uống banner.png" />
     <None Include="Resources\close.png" />
     <None Include="Resources\close_black.png" />
@@ -467,6 +468,7 @@
     <Content Include="Resources\nuoc_cam_ep.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\Rectangle 20.png" />
     <Content Include="Resources\sinh_to_bo.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
