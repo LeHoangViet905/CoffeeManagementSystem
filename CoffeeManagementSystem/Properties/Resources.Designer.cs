@@ -91,6 +91,16 @@ namespace CoffeeManagementSystem.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap bo_nhan_dien_thuong_hieu_ueh_5 {
+            get {
+                object obj = ResourceManager.GetObject("bo_nhan_dien_thuong_hieu_ueh_5", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
         internal static System.IO.UnmanagedMemoryStream click {
@@ -234,6 +244,16 @@ namespace CoffeeManagementSystem.Properties {
         internal static System.Drawing.Bitmap qrcode {
             get {
                 object obj = ResourceManager.GetObject("qrcode", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Rectangle_20 {
+            get {
+                object obj = ResourceManager.GetObject("Rectangle_20", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
