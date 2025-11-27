@@ -16,6 +16,7 @@ namespace CoffeeManagementSystem
         {
             InitializeComponent();
             LoadFormCon(new DashboardForm());
+            SetSidebarActiveColor(btnTrangChu);
         }
 
         // Constructor MỚI để nhận thông tin nhân viên từ DangNhapForm
@@ -63,16 +64,6 @@ namespace CoffeeManagementSystem
         {
 
         }
-
-        private void add1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void guna2GradientPanel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
         private void btnKhachHang_Click(object sender, EventArgs e)
         {
             SetSidebarActiveColor(btnKhachHang);
@@ -114,26 +105,7 @@ namespace CoffeeManagementSystem
             LoadFormCon(new ReportForm());
         }
 
-        private void btnSalary_Click(object sender, EventArgs e)
-        {
-            PlayClickSound();
-        }
-
-        private void lblQuanLy_Click(object sender, EventArgs e)
-        {
-            PlayClickSound();
-        }
-
-        private void panelMain_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void guna2GradientPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
+      
         private void lblName_Click(object sender, EventArgs e)
         {
             PlayClickSound();
@@ -141,7 +113,7 @@ namespace CoffeeManagementSystem
 
         private void btnTaiKhoan_Click(object sender, EventArgs e)
         {
-            SetSidebarActiveColor(btnReport);
+            SetSidebarActiveColor(btnTaiKhoan);
             PlayClickSound();
             LoadFormCon(new Infor(_loggedInMaNhanVien));
         }

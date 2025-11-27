@@ -83,7 +83,7 @@
             this.lblQuanLy.TabIndex = 17;
             this.lblQuanLy.Text = "Quản lý";
             this.lblQuanLy.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblQuanLy.Click += new System.EventHandler(this.lblQuanLy_Click);
+
             // 
             // panelMain
             // 
@@ -94,7 +94,6 @@
             this.panelMain.Name = "panelMain";
             this.panelMain.Size = new System.Drawing.Size(1520, 881);
             this.panelMain.TabIndex = 19;
-            this.panelMain.Paint += new System.Windows.Forms.PaintEventHandler(this.panelMain_Paint);
             // 
             // splitContainerNavBar
             // 
