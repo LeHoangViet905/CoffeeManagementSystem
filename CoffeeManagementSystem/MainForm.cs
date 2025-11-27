@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Guna.UI2.WinForms;
+using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace CoffeeManagementSystem
@@ -71,21 +73,16 @@ namespace CoffeeManagementSystem
         {
 
         }
-
-        private void btnTrangChu_Click(object sender, EventArgs e)
-        {
-            PlayClickSound();
-            LoadFormCon(new DashboardForm());
-        }
-
         private void btnKhachHang_Click(object sender, EventArgs e)
         {
+            SetSidebarActiveColor(btnKhachHang);
             PlayClickSound();
             LoadFormCon(new CustomerForm());
         }
 
         private void btnEmployer_Click(object sender, EventArgs e)
         {
+            SetSidebarActiveColor(btnEmployer);
             PlayClickSound();
             LoadFormCon(new EmployerForm());
         }
@@ -98,18 +95,21 @@ namespace CoffeeManagementSystem
 
         private void btnTrangChu_Click_1(object sender, EventArgs e)
         {
+            SetSidebarActiveColor(btnTrangChu);
             PlayClickSound();
             LoadFormCon(new DashboardForm());
         }
 
         private void btnMenu_Click(object sender, EventArgs e)
         {
+            SetSidebarActiveColor(btnMenu);
             PlayClickSound();
             LoadFormCon(new DrinkForm());
         }
 
         private void btnReport_Click(object sender, EventArgs e)
         {
+            SetSidebarActiveColor(btnReport);
             PlayClickSound();
             LoadFormCon(new ReportForm());
         }
@@ -141,6 +141,7 @@ namespace CoffeeManagementSystem
 
         private void btnTaiKhoan_Click(object sender, EventArgs e)
         {
+            SetSidebarActiveColor(btnReport);
             PlayClickSound();
             LoadFormCon(new Infor(_loggedInMaNhanVien));
         }
@@ -158,6 +159,44 @@ namespace CoffeeManagementSystem
             // 3. Hiển thị DangNhapForm
             loginForm.Show();
             this.Close();
+        }
+
+        // Màu gốc và màu đậm
+        private readonly Color baseColor = Color.FromArgb(224, 167, 167);
+        private readonly Color activeColor = Color.FromArgb(164, 107, 107);   // đậm hơn 1 chút
+
+        private void ResetMenuColor()
+        {
+            // tất cả nút sidebar đều là Guna2GradientButton
+            btnTrangChu.FillColor = baseColor;
+            btnTrangChu.FillColor2 = baseColor;
+
+            btnKhachHang.FillColor = baseColor;
+            btnKhachHang.FillColor2 = baseColor;
+
+            btnEmployer.FillColor = baseColor;
+            btnEmployer.FillColor2 = baseColor;
+
+            btnMenu.FillColor = baseColor;
+            btnMenu.FillColor2 = baseColor;
+
+            btnReport.FillColor = baseColor;
+            btnReport.FillColor2 = baseColor;
+
+            btnTaiKhoan.FillColor = baseColor;
+            btnTaiKhoan.FillColor2 = baseColor;
+
+            btnLogout.FillColor = baseColor;
+            btnLogout.FillColor2 = baseColor;
+        }
+
+        // Nút đang được chọn
+        private void SetSidebarActiveColor(Guna2GradientButton activeButton)
+        {
+            ResetMenuColor();
+
+            activeButton.FillColor = activeColor;
+            activeButton.FillColor2 = activeColor;
         }
 
     }

@@ -207,7 +207,6 @@
             this.btnTrangChu.Animated = true;
             this.btnTrangChu.BackColor = System.Drawing.Color.Transparent;
             this.btnTrangChu.BorderColor = System.Drawing.Color.Empty;
-            this.btnTrangChu.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
             this.btnTrangChu.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnTrangChu.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnTrangChu.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
