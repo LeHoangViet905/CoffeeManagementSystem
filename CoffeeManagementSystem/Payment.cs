@@ -38,7 +38,6 @@ namespace CoffeeManagementSystem
 
             this.Load += PaymentForm_Load;
             this.btnThanhToan.Click += btnThanhToan_Click;
-            this.txtKhachHangName.Leave += txtKhachHangName_Leave;
 
             // Khởi tạo PrintDocument và PrintPreviewDialog
             printDocumentInvoice = new PrintDocument();
