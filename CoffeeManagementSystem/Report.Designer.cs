@@ -57,7 +57,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.guna2ResizeBox1 = new Guna.UI2.WinForms.Guna2ResizeBox();
             this.dgvRevenue = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -161,14 +160,14 @@
             this.dgvProductSales.AllowUserToResizeRows = false;
             this.dgvProductSales.BackgroundColor = System.Drawing.Color.White;
             this.dgvProductSales.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.Firebrick;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvProductSales.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Firebrick;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvProductSales.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvProductSales.ColumnHeadersHeight = 35;
             this.dgvProductSales.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvProductSales.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -182,14 +181,14 @@
             this.dgvProductSales.Location = new System.Drawing.Point(0, 78);
             this.dgvProductSales.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvProductSales.Name = "dgvProductSales";
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvProductSales.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvProductSales.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvProductSales.RowHeadersVisible = false;
             this.dgvProductSales.RowHeadersWidth = 51;
             this.dgvProductSales.Size = new System.Drawing.Size(1608, 739);
@@ -214,8 +213,8 @@
             // dataGridViewTextBoxColumn6
             // 
             this.dataGridViewTextBoxColumn6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.dataGridViewTextBoxColumn6.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.dataGridViewTextBoxColumn6.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewTextBoxColumn6.HeaderText = "Giá";
             this.dataGridViewTextBoxColumn6.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
@@ -360,7 +359,6 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.guna2ResizeBox1);
             this.tabPage2.Controls.Add(this.dgvRevenue);
             this.tabPage2.Controls.Add(this.panel3);
             this.tabPage2.Location = new System.Drawing.Point(4, 34);
@@ -372,16 +370,6 @@
             this.tabPage2.Text = "Doanh Thu";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // guna2ResizeBox1
-            // 
-            this.guna2ResizeBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.guna2ResizeBox1.ForeColor = System.Drawing.Color.Black;
-            this.guna2ResizeBox1.Location = new System.Drawing.Point(707, 123);
-            this.guna2ResizeBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.guna2ResizeBox1.Name = "guna2ResizeBox1";
-            this.guna2ResizeBox1.Size = new System.Drawing.Size(282, 30);
-            this.guna2ResizeBox1.TabIndex = 27;
-            // 
             // dgvRevenue
             // 
             this.dgvRevenue.AllowUserToAddRows = false;
@@ -391,14 +379,14 @@
             this.dgvRevenue.BackgroundColor = System.Drawing.Color.White;
             this.dgvRevenue.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
             this.dgvRevenue.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.Firebrick;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvRevenue.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Firebrick;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvRevenue.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvRevenue.ColumnHeadersHeight = 50;
             this.dgvRevenue.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvRevenue.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -584,14 +572,14 @@
             this.dgvPotentialCustomers.AllowUserToResizeRows = false;
             this.dgvPotentialCustomers.BackgroundColor = System.Drawing.Color.White;
             this.dgvPotentialCustomers.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.Firebrick;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPotentialCustomers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Firebrick;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPotentialCustomers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvPotentialCustomers.ColumnHeadersHeight = 100;
             this.dgvPotentialCustomers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvPotentialCustomers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -609,6 +597,7 @@
             this.dgvPotentialCustomers.Name = "dgvPotentialCustomers";
             this.dgvPotentialCustomers.RowHeadersVisible = false;
             this.dgvPotentialCustomers.RowHeadersWidth = 51;
+            this.dgvPotentialCustomers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPotentialCustomers.Size = new System.Drawing.Size(1602, 740);
             this.dgvPotentialCustomers.TabIndex = 4;
             // 
@@ -899,17 +888,17 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.chartRevenueByHour.BorderlineColor = System.Drawing.Color.Firebrick;
             this.chartRevenueByHour.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            chartArea3.Name = "ChartArea1";
-            this.chartRevenueByHour.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.chartRevenueByHour.Legends.Add(legend3);
+            chartArea1.Name = "ChartArea1";
+            this.chartRevenueByHour.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chartRevenueByHour.Legends.Add(legend1);
             this.chartRevenueByHour.Location = new System.Drawing.Point(39, 458);
             this.chartRevenueByHour.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chartRevenueByHour.Name = "chartRevenueByHour";
-            series3.ChartArea = "ChartArea1";
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            this.chartRevenueByHour.Series.Add(series3);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chartRevenueByHour.Series.Add(series1);
             this.chartRevenueByHour.Size = new System.Drawing.Size(596, 354);
             this.chartRevenueByHour.TabIndex = 3;
             this.chartRevenueByHour.Text = "chart2";
@@ -921,18 +910,18 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.chartDashboard.BorderlineColor = System.Drawing.Color.Firebrick;
             this.chartDashboard.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            chartArea4.Name = "ChartArea1";
-            this.chartDashboard.ChartAreas.Add(chartArea4);
-            legend4.Name = "Legend1";
-            this.chartDashboard.Legends.Add(legend4);
+            chartArea2.Name = "ChartArea1";
+            this.chartDashboard.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chartDashboard.Legends.Add(legend2);
             this.chartDashboard.Location = new System.Drawing.Point(41, 95);
             this.chartDashboard.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chartDashboard.Name = "chartDashboard";
             this.chartDashboard.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Fire;
-            series4.ChartArea = "ChartArea1";
-            series4.Legend = "Legend1";
-            series4.Name = "Series1";
-            this.chartDashboard.Series.Add(series4);
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chartDashboard.Series.Add(series2);
             this.chartDashboard.Size = new System.Drawing.Size(594, 338);
             this.chartDashboard.TabIndex = 2;
             this.chartDashboard.Text = "chart1";
@@ -1049,7 +1038,6 @@
         private Guna.UI2.WinForms.Guna2DateTimePicker dtpDashFrom;
         private Guna.UI2.WinForms.Guna2GroupBox Bieudotron;
         private ScottPlot.FormsPlot formsPlotPie;
-        private Guna.UI2.WinForms.Guna2ResizeBox guna2ResizeBox1;
         private Guna.UI2.WinForms.Guna2Button btnPrintDoanhThu;
         private Guna.UI2.WinForms.Guna2DateTimePicker dtpRevenueEndDate;
         private Guna.UI2.WinForms.Guna2DateTimePicker dtpRevenueStartDate;
