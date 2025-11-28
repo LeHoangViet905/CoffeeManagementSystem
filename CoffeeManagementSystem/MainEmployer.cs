@@ -128,7 +128,17 @@ namespace CoffeeManagementSystem
             MainForm.PlayClickSound();
             LoadFormCon(new Infor(_loggedInMaNhanVien));
         }
+        private void btnLichSuDonHang_Click(object sender, EventArgs e)
+        {
+            MainForm.PlayClickSound();
 
+            // Nếu bạn muốn form lịch sử cũng biết mã & tên nhân viên hiện tại:
+            OrderHistoryForm historyForm = new OrderHistoryForm(_maNhanVienHienTai, _tenNhanVienHienTai);
 
+            // Nếu chưa cần dùng thông tin nhân viên trong form lịch sử:
+            // OrderHistoryForm historyForm = new OrderHistoryForm();
+
+            LoadFormCon(historyForm);
+        }
     }
 }

@@ -46,6 +46,7 @@
             this.guna2ControlBox1 = new Guna.UI2.WinForms.Guna2ControlBox();
             this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
             this.guna2ShadowForm1 = new Guna.UI2.WinForms.Guna2ShadowForm(this.components);
+            this.btnLichSuDonHang = new Guna.UI2.WinForms.Guna2GradientButton();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerNavBar)).BeginInit();
             this.splitContainerNavBar.Panel1.SuspendLayout();
             this.splitContainerNavBar.Panel2.SuspendLayout();
@@ -72,6 +73,8 @@
             this.splitContainerNavBar.Panel1.Controls.Add(this.lblNhanVien);
             this.splitContainerNavBar.Panel1.Controls.Add(this.btnKhachHang);
             this.splitContainerNavBar.Panel1.Controls.Add(this.guna2CirclePictureBox2);
+            this.splitContainerNavBar.Panel1.Controls.Add(this.btnLichSuDonHang);
+
             // 
             // splitContainerNavBar.Panel2
             // 
@@ -147,7 +150,7 @@
             this.btnTaiKhoan.HoverState.ForeColor = System.Drawing.Color.White;
             this.btnTaiKhoan.Image = global::CoffeeManagementSystem.Properties.Resources.TaiKhoan;
             this.btnTaiKhoan.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnTaiKhoan.Location = new System.Drawing.Point(10, 434);
+            this.btnTaiKhoan.Location = new System.Drawing.Point(10, 520);
             this.btnTaiKhoan.Margin = new System.Windows.Forms.Padding(2);
             this.btnTaiKhoan.Name = "btnTaiKhoan";
             this.btnTaiKhoan.Size = new System.Drawing.Size(150, 80);
@@ -201,7 +204,7 @@
             this.btnKhachHang.Image = global::CoffeeManagementSystem.Properties.Resources.KhachHang;
             this.btnKhachHang.ImageOffset = new System.Drawing.Point(0, -15);
             this.btnKhachHang.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnKhachHang.Location = new System.Drawing.Point(10, 334);
+            this.btnKhachHang.Location = new System.Drawing.Point(10, 427);
             this.btnKhachHang.Margin = new System.Windows.Forms.Padding(2);
             this.btnKhachHang.Name = "btnKhachHang";
             this.btnKhachHang.Size = new System.Drawing.Size(150, 80);
@@ -210,6 +213,33 @@
             this.btnKhachHang.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnKhachHang.TextOffset = new System.Drawing.Point(6, 10);
             this.btnKhachHang.Click += new System.EventHandler(this.btnKhachHang_Click);
+            // 
+            // btnLichSuDonHang
+            // 
+            this.btnLichSuDonHang.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnLichSuDonHang.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnLichSuDonHang.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnLichSuDonHang.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnLichSuDonHang.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnLichSuDonHang.FillColor = System.Drawing.Color.Empty;
+            this.btnLichSuDonHang.FillColor2 = System.Drawing.Color.Empty;
+            this.btnLichSuDonHang.Font = new System.Drawing.Font("SVN-Gilroy Medium", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLichSuDonHang.ForeColor = System.Drawing.Color.White;
+            this.btnLichSuDonHang.HoverState.Font = new System.Drawing.Font("Segoe UI Variable Display", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLichSuDonHang.HoverState.ForeColor = System.Drawing.Color.White;
+            this.btnLichSuDonHang.Image = global::CoffeeManagementSystem.Properties.Resources.History;
+            this.btnLichSuDonHang.ImageOffset = new System.Drawing.Point(0, -15);
+            this.btnLichSuDonHang.ImageSize = new System.Drawing.Size(25, 25);
+            this.btnLichSuDonHang.Location = new System.Drawing.Point(10, 334);
+            this.btnLichSuDonHang.Margin = new System.Windows.Forms.Padding(2);
+            this.btnLichSuDonHang.Name = "btnLichSuDonHang";
+            this.btnLichSuDonHang.Size = new System.Drawing.Size(150, 80);
+            this.btnLichSuDonHang.TabIndex = 21;
+            this.btnLichSuDonHang.Text = "Lịch sử đơn hàng";
+            this.btnLichSuDonHang.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnLichSuDonHang.TextOffset = new System.Drawing.Point(6, 10);
+            this.btnLichSuDonHang.Click += new System.EventHandler(this.btnLichSuDonHang_Click);
+
             // 
             // guna2CirclePictureBox2
             // 
@@ -329,7 +359,6 @@
             this.pnlTitleBar.ResumeLayout(false);
             this.pnlTitleBar.PerformLayout();
             this.ResumeLayout(false);
-
         }
 
         #endregion
@@ -350,5 +379,6 @@
         private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;
         private Guna.UI2.WinForms.Guna2ShadowForm guna2ShadowForm1;
         private System.Windows.Forms.Label label1;
+        private Guna.UI2.WinForms.Guna2GradientButton btnLichSuDonHang;
     }
 }

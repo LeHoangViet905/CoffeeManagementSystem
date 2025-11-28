@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CoffeeManagementSystem.CoffeeManagementSystem;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SQLite;
@@ -444,15 +445,109 @@ namespace CoffeeManagementSystem.DAL
                 }
             }
         }
+        public List<OrderHistoryItem> GetOrderHistory(DateTime fromDate, DateTime toDate)
+        {
+            List<OrderHistoryItem> list = new List<OrderHistoryItem>();
 
+            using (SQLiteConnection connection = new SQLiteConnection(ConnectionString))
+            {
+                try
+                {
+                    connection.Open();
 
+                    string sql = @"
+                SELECT 
+                    dh.Madonhang,
+                    dh.Thoigiandat,
+                    COALESCE(kh.Hoten, 'Khách lẻ') AS TenKhachhang,
+                    dh.Tongtien,
+                    dh.Trangthaidon,
+                    COALESCE(tt.Hinhthucthanhtoan, '') AS HinhThucThanhToan
+                FROM Donhang dh
+                LEFT JOIN Khachhang kh ON kh.Makhachhang = dh.Makhachhang
+                LEFT JOIN Thanhtoan tt ON tt.Madonhang   = dh.Madonhang
+                WHERE dh.Thoigiandat >= @fromDate 
+                  AND dh.Thoigiandat <  @toDatePlus1
+                ORDER BY dh.Thoigiandat DESC;";
+
+                    using (SQLiteCommand command = new SQLiteCommand(sql, connection))
+                    {
+                        command.Parameters.AddWithValue("@fromDate", fromDate.Date);
+                        command.Parameters.AddWithValue("@toDatePlus1", toDate.Date.AddDays(1));
+
+                        using (SQLiteDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                var item = new OrderHistoryItem
+                                {
+                                    Madonhang = reader["Madonhang"].ToString(),
+                                    Thoigiandat = DateTime.Parse(reader["Thoigiandat"].ToString()),
+                                    TenKhachhang = reader["TenKhachhang"].ToString(),
+                                    Tongtien = reader["Tongtien"] != DBNull.Value
+                                                         ? Convert.ToDecimal(reader["Tongtien"]) : 0m,
+                                    Trangthaidon = reader["Trangthaidon"].ToString(),
+                                    HinhThucThanhToan = reader["HinhThucThanhToan"].ToString()
+                                };
+
+                                list.Add(item);
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception($"Lỗi DAL khi lấy lịch sử đơn hàng: {ex.Message}", ex);
+                }
+            }
+
+            return list;
+        }
+        public List<OrderDetailLine> GetOrderDetail(string madonhang)
+        {
+            var list = new List<OrderDetailLine>();
+
+            string sql = @"
+                SELECT 
+                    ct.Madouong,
+                    d.Tendouong,
+                    ct.Soluong,
+                    ct.Dongia,
+                    ct.Thanhtien
+                FROM Chitietdonhang ct
+                JOIN Douong d ON d.Madouong = ct.Madouong
+                WHERE ct.Madonhang = @Madonhang";
+
+            using (var conn = new SQLiteConnection(ConnectionString))
+            using (var cmd = new SQLiteCommand(sql, conn))
+            {
+                cmd.Parameters.AddWithValue("@Madonhang", madonhang);
+
+                conn.Open();
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        var line = new OrderDetailLine
+                        {
+                            Madouong = reader["Madouong"].ToString(),
+                            Tendouong = reader["Tendouong"].ToString(),
+                            Soluong = Convert.ToInt32(reader["Soluong"]),
+                            Dongia = Convert.ToDecimal(reader["Dongia"]),
+                            Thanhtien = Convert.ToDecimal(reader["Thanhtien"])
+                        };
+                        list.Add(line);
+                    }
+                }
+            }
+
+            return list;
+        }
     }
-
     public class RevenueReportItem
     {
         public DateTime Ngay { get; set; }
         public decimal Tongtien { get; set; }
     }
-    //thêm cho report
 
 }
