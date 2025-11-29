@@ -217,8 +217,9 @@ namespace CoffeeManagementSystem
             try
             {
                 // --- THIẾT LẬP THẲNG TRONG CODE ---
-                string apiKey = "YOUR_API_KEY"; //Trước khi chạy bỏ dấu ngoặc ()trên (.) //
-                string senderEmail = "lebao062005@gmail.com";
+                var apiKey = "";
+                if (string.IsNullOrEmpty(apiKey)) ;
+                    string senderEmail = "lebao062005@gmail.com";
                 string managerEmail = "baole.bit@gmail.com";
 
                 await SendPasswordChangeRequest(_loggedInManhanvien, newPassword, apiKey, senderEmail, managerEmail);
