@@ -217,7 +217,7 @@ namespace CoffeeManagementSystem
             try
             {
                 // --- THIẾT LẬP THẲNG TRONG CODE ---
-                string apiKey = "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";
+                string apiKey = "SG(.)kGDmgeMQT7azqSTp_9krpA.uLiGHxvpUKcihEq_3jSzXpp91zHRmIvC2cpWUYBBCy0"; //Trước khi chạy bỏ dấu ngoặc ()trên (.)
                 string senderEmail = "lebao062005@gmail.com";
                 string managerEmail = "baole.bit@gmail.com";
 
