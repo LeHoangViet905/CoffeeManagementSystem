@@ -20,6 +20,8 @@ namespace CoffeeManagementSystem
             formsPlotPieNgay.Configuration.ScrollWheelZoom = false;
             formsPlotPieNgay.Configuration.RightClickDragZoom = false;
             formsPlotPieNgay.Configuration.MiddleClickAutoAxis = false;
+            //Set ngày mặc định cho dateTimePicker
+            dtpNgay.Value = DateTime.Today;
         }
 
         private void DashboardForm_Load(object sender, EventArgs e)
@@ -93,6 +95,31 @@ namespace CoffeeManagementSystem
             formsPlotPieNgay.Plot.Legend();
 
             formsPlotPieNgay.Refresh();
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void lblPieTitle1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void formsPlotPieNgay_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chartHour_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
