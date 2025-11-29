@@ -29,18 +29,20 @@ namespace CoffeeManagementSystem
             this.formsPlotPieNgay = new ScottPlot.FormsPlot();
             this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.dtpNgay = new Guna.UI2.WinForms.Guna2DateTimePicker();
-            this.lblQuote = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panelQuote = new System.Windows.Forms.Panel();
             this.panelFooter = new System.Windows.Forms.Panel();
             this.pictureUEH = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureRectangle20 = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblQuote = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.chartHour)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.panelQuote.SuspendLayout();
             this.panelFooter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureUEH)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureRectangle20)).BeginInit();
             this.SuspendLayout();
             // 
@@ -53,7 +55,7 @@ namespace CoffeeManagementSystem
             this.chartHour.Dock = System.Windows.Forms.DockStyle.Fill;
             legend1.Name = "Legend1";
             this.chartHour.Legends.Add(legend1);
-            this.chartHour.Location = new System.Drawing.Point(20, 591);
+            this.chartHour.Location = new System.Drawing.Point(20, 580);
             this.chartHour.Margin = new System.Windows.Forms.Padding(20, 10, 10, 20);
             this.chartHour.Name = "chartHour";
             this.chartHour.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Pastel;
@@ -61,7 +63,7 @@ namespace CoffeeManagementSystem
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             this.chartHour.Series.Add(series1);
-            this.chartHour.Size = new System.Drawing.Size(1138, 446);
+            this.chartHour.Size = new System.Drawing.Size(1138, 436);
             this.chartHour.TabIndex = 11;
             this.chartHour.Text = "chart1";
             this.chartHour.Click += new System.EventHandler(this.chartHour_Click);
@@ -77,10 +79,10 @@ namespace CoffeeManagementSystem
             // 
             this.formsPlotPieNgay.BackColor = System.Drawing.Color.White;
             this.formsPlotPieNgay.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.formsPlotPieNgay.Location = new System.Drawing.Point(1178, 591);
+            this.formsPlotPieNgay.Location = new System.Drawing.Point(1178, 580);
             this.formsPlotPieNgay.Margin = new System.Windows.Forms.Padding(10, 10, 20, 20);
             this.formsPlotPieNgay.Name = "formsPlotPieNgay";
-            this.formsPlotPieNgay.Size = new System.Drawing.Size(600, 446);
+            this.formsPlotPieNgay.Size = new System.Drawing.Size(600, 436);
             this.formsPlotPieNgay.TabIndex = 7;
             this.formsPlotPieNgay.Load += new System.EventHandler(this.formsPlotPieNgay_Load);
             // 
@@ -107,31 +109,6 @@ namespace CoffeeManagementSystem
             this.dtpNgay.Value = new System.DateTime(2025, 11, 24, 0, 0, 0, 0);
             this.dtpNgay.ValueChanged += new System.EventHandler(this.dtpNgay_ValueChanged);
             // 
-            // lblQuote
-            // 
-            this.lblQuote.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblQuote.Font = new System.Drawing.Font("SVN-Gilroy Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblQuote.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.lblQuote.Location = new System.Drawing.Point(0, 70);
-            this.lblQuote.Name = "lblQuote";
-            this.lblQuote.Padding = new System.Windows.Forms.Padding(20, 10, 20, 10);
-            this.lblQuote.Size = new System.Drawing.Size(1136, 336);
-            this.lblQuote.TabIndex = 0;
-            this.lblQuote.Text = resources.GetString("lblQuote.Text");
-            // 
-            // label1
-            // 
-            this.label1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label1.Font = new System.Drawing.Font("SVN-Gilroy Heavy", 26F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Firebrick;
-            this.label1.Location = new System.Drawing.Point(0, 0);
-            this.label1.Name = "label1";
-            this.label1.Padding = new System.Windows.Forms.Padding(20, 0, 20, 0);
-            this.label1.Size = new System.Drawing.Size(1136, 70);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "“Chúc bạn có một ngày làm việc vui vẻ”";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.BackColor = System.Drawing.Color.FloralWhite;
@@ -139,15 +116,17 @@ namespace CoffeeManagementSystem
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 65F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
             this.tableLayoutPanel1.Controls.Add(this.panelQuote, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.pictureRectangle20, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.chartHour, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.formsPlotPieNgay, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.pictureBox1, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.pictureRectangle20, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 55F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1798, 1057);
             this.tableLayoutPanel1.TabIndex = 12;
             // 
@@ -162,7 +141,7 @@ namespace CoffeeManagementSystem
             this.panelQuote.Location = new System.Drawing.Point(20, 20);
             this.panelQuote.Margin = new System.Windows.Forms.Padding(20, 20, 10, 10);
             this.panelQuote.Name = "panelQuote";
-            this.panelQuote.Size = new System.Drawing.Size(1138, 551);
+            this.panelQuote.Size = new System.Drawing.Size(1138, 540);
             this.panelQuote.TabIndex = 0;
             // 
             // panelFooter
@@ -171,7 +150,7 @@ namespace CoffeeManagementSystem
             this.panelFooter.Controls.Add(this.pictureUEH);
             this.panelFooter.Controls.Add(this.dtpNgay);
             this.panelFooter.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelFooter.Location = new System.Drawing.Point(0, 406);
+            this.panelFooter.Location = new System.Drawing.Point(0, 395);
             this.panelFooter.Name = "panelFooter";
             this.panelFooter.Padding = new System.Windows.Forms.Padding(20, 5, 20, 10);
             this.panelFooter.Size = new System.Drawing.Size(1136, 143);
@@ -188,6 +167,14 @@ namespace CoffeeManagementSystem
             this.pictureUEH.TabIndex = 0;
             this.pictureUEH.TabStop = false;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(3, 1039);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(100, 15);
+            this.pictureBox1.TabIndex = 12;
+            this.pictureBox1.TabStop = false;
+            // 
             // pictureRectangle20
             // 
             this.pictureRectangle20.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -195,10 +182,36 @@ namespace CoffeeManagementSystem
             this.pictureRectangle20.Location = new System.Drawing.Point(1178, 20);
             this.pictureRectangle20.Margin = new System.Windows.Forms.Padding(10, 20, 20, 10);
             this.pictureRectangle20.Name = "pictureRectangle20";
-            this.pictureRectangle20.Size = new System.Drawing.Size(600, 551);
+            this.pictureRectangle20.Size = new System.Drawing.Size(600, 540);
             this.pictureRectangle20.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureRectangle20.TabIndex = 1;
             this.pictureRectangle20.TabStop = false;
+            // 
+            // label1
+            // 
+            this.label1.BackColor = System.Drawing.Color.Firebrick;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label1.Font = new System.Drawing.Font("SVN-Gilroy Heavy", 26F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(0, 0);
+            this.label1.Name = "label1";
+            this.label1.Padding = new System.Windows.Forms.Padding(20, 0, 20, 0);
+            this.label1.Size = new System.Drawing.Size(1136, 70);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "“Chúc bạn có một ngày làm việc vui vẻ”";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblQuote
+            // 
+            this.lblQuote.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblQuote.Font = new System.Drawing.Font("SVN-Gilroy Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblQuote.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.lblQuote.Location = new System.Drawing.Point(0, 70);
+            this.lblQuote.Name = "lblQuote";
+            this.lblQuote.Padding = new System.Windows.Forms.Padding(20, 10, 20, 10);
+            this.lblQuote.Size = new System.Drawing.Size(1136, 325);
+            this.lblQuote.TabIndex = 0;
+            this.lblQuote.Text = resources.GetString("lblQuote.Text");
             // 
             // DashboardForm
             // 
@@ -217,6 +230,7 @@ namespace CoffeeManagementSystem
             this.panelQuote.ResumeLayout(false);
             this.panelFooter.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureUEH)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureRectangle20)).EndInit();
             this.ResumeLayout(false);
 
@@ -230,8 +244,6 @@ namespace CoffeeManagementSystem
 
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;
         private Guna.UI2.WinForms.Guna2DateTimePicker dtpNgay;
-        private System.Windows.Forms.Label lblQuote;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartHour;
         private System.Windows.Forms.Label lblPieTitle1;
         private ScottPlot.FormsPlot formsPlotPieNgay;
@@ -241,6 +253,8 @@ namespace CoffeeManagementSystem
         private System.Windows.Forms.Panel panelFooter;
         private System.Windows.Forms.PictureBox pictureUEH;
         private System.Windows.Forms.PictureBox pictureRectangle20;
-
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label lblQuote;
+        private System.Windows.Forms.Label label1;
     }
 }

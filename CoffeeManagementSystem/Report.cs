@@ -697,15 +697,15 @@ namespace CoffeeManagementSystem
                 // 1. Doanh thu
                 var revenue = _reportBLL.GetRevenueReport(start, end);
                 decimal totalRevenue = revenue.Sum(x => x.Tongtien);
-                lblDashRevenue.Text = $"Tổng doanh thu: {totalRevenue:N0} VNĐ";
+                lblDashRevenue.Text = $"{totalRevenue:N0} VNĐ";
 
                 // 2. Tổng số đơn trong khoảng ngày
                 int totalOrders = _donhangBLL.GetOrderCount(start, end);
-                lblDashTotalOrders.Text = $"Tổng số đơn: {totalOrders:N0}";
+                lblDashTotalOrders.Text = $"{totalOrders:N0}";
 
                 // 3. Giá trị đơn trung bình (AOV)
                 decimal aov = totalOrders > 0 ? totalRevenue / totalOrders : 0m;
-                lblDashAOV.Text = $"Giá trị đơn trung bình: {aov:N0} VNĐ";
+                lblDashAOV.Text = $"{aov:N0} VNĐ";
 
                 // 4. Load biểu đồ nếu có
                 LoadChart(start, end);
@@ -927,6 +927,21 @@ GROUP BY l.Tenloai";
         }
 
         private void lblTotalPrice_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblDashRevenueTitle_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblDashRevenue_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Bieudotron_Click(object sender, EventArgs e)
         {
 
         }

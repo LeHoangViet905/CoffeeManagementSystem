@@ -406,6 +406,7 @@
     <Compile Include="bll\OrderBLL.cs" />
     <Compile Include="bll\PaymentBLL.cs" />
     <Compile Include="bll\ReportBLL.cs" />
+    <Compile Include="bll\TuyChonBLL.cs" />
     <Compile Include="Customer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -435,6 +436,30 @@
     </Compile>
     <Compile Include="DangNhapForm.Designer.cs">
       <DependentUpon>DangNhapForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NoteForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NoteForm.Designer.cs">
+      <DependentUpon>NoteForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OptionManagerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OptionManagerForm.Designer.cs">
+      <DependentUpon>OptionManagerForm.cs</DependentUpon>
+    <Compile Include="model\OrderhistoryItem.cs" />
+    <Compile Include="OrderDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OrderDetailForm.Designer.cs">
+      <DependentUpon>OrderDetailForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OrderHistoryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OrderHistoryForm.Designer.cs">
+      <DependentUpon>OrderHistoryForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Trangchu.cs">
       <SubType>Form</SubType>
@@ -513,6 +538,7 @@
     <Compile Include="Report.Designer.cs">
       <DependentUpon>Report.cs</DependentUpon>
     </Compile>
+    <Compile Include="TuyChonDAL.cs" />
     <Compile Include="ucProductItem.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -537,6 +563,17 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DangNhapForm.resx">
       <DependentUpon>DangNhapForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NoteForm.resx">
+      <DependentUpon>NoteForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OptionManagerForm.resx">
+      <DependentUpon>OptionManagerForm.cs</DependentUpon>
+    <EmbeddedResource Include="OrderDetailForm.resx">
+      <DependentUpon>OrderDetailForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OrderHistoryForm.resx">
+      <DependentUpon>OrderHistoryForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Trangchu.resx">
       <DependentUpon>Trangchu.cs</DependentUpon>
@@ -625,6 +662,7 @@
     <Content Include="Resources\espresso.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\History.png" />
     <Content Include="Resources\house.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -656,11 +694,16 @@
     <Content Include="Resources\takeaway.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\Thiết kế chưa có tên %2811%29.png" />
+    <None Include="Resources\Thiết kế chưa có tên %2812%29.png" />
+    <None Include="Resources\Thiết kế chưa có tên %2813%29 1.png" />
+    <None Include="Resources\Thiết kế chưa có tên %2815%29.png" />
     <Content Include="Resources\tiramisu.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Resources\qrcode.png" />
     <None Include="Resources\Thêm tiêu đề.png" />
+    <None Include="Resources\tl.png" />
     <Content Include="Resources\TrangChu.png" />
     <None Include="Resources\TrangChu1.png" />
     <Content Include="Resources\trash-bin.png">

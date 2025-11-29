@@ -73,7 +73,7 @@ namespace CoffeeManagementSystem
 
             if (dt.Rows.Count == 0)
             {
-                formsPlotPieNgay.Plot.Title($"Không có dữ liệu ngày {day:dd/MM/yyyy}");
+                formsPlotPieNgay.Plot.Title($"Doanh thu theo loại đồ uống ngày {day:dd/MM/yyyy}");
                 formsPlotPieNgay.Refresh();
                 return;
             }

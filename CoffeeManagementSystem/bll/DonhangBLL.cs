@@ -1,4 +1,5 @@
-﻿using CoffeeManagementSystem.DAL; // Tham chiếu đến tầng DAL
+﻿using CoffeeManagementSystem.CoffeeManagementSystem;
+using CoffeeManagementSystem.DAL; // Tham chiếu đến tầng DAL
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -194,10 +195,31 @@ namespace CoffeeManagementSystem.BLL
         {
             return _donhangDAL.GetRevenueByHour(date);
         }
+        public List<OrderHistoryItem> GetOrderHistory(DateTime from, DateTime to)
+        {
+            // có thể kiểm tra from <= to nếu muốn
+            if (from > to)
+                throw new ArgumentException("Ngày bắt đầu không được lớn hơn ngày kết thúc.");
+
+            return _donhangDAL.GetOrderHistory(from, to);
+        }
         public int GetOrderCount(DateTime start, DateTime end)
         {
             return _donhangDAL.GetOrderCount(start, end);
         }
+        public List<OrderDetailLine> GetOrderDetail(string madonhang)
+        {
+            if (string.IsNullOrWhiteSpace(madonhang))
+                throw new ArgumentException("Mã đơn hàng không được để trống.", nameof(madonhang));
 
+            try
+            {
+                return _donhangDAL.GetOrderDetail(madonhang);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Lỗi BLL khi lấy chi tiết đơn hàng: {ex.Message}", ex);
+            }
+        }
     }
 }

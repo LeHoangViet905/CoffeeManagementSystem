@@ -172,6 +172,16 @@ namespace CoffeeManagementSystem.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap History {
+            get {
+                object obj = ResourceManager.GetObject("History", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap hoadon {
             get {
                 object obj = ResourceManager.GetObject("hoadon", resourceCulture);
@@ -185,6 +195,16 @@ namespace CoffeeManagementSystem.Properties {
         internal static System.Drawing.Bitmap KhachHang {
             get {
                 object obj = ResourceManager.GetObject("KhachHang", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap lichsu {
+            get {
+                object obj = ResourceManager.GetObject("lichsu", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
