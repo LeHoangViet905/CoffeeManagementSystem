@@ -110,11 +110,19 @@ namespace CoffeeManagementSystem
                     txtGiaBan.Text = _currentDouong.CurrentGia.ToString();
 
                     txtMota.Text = _currentDouong.Mota;
-
-                    if (!string.IsNullOrEmpty(_currentDouong.Hinhanh) && File.Exists(_currentDouong.Hinhanh))
+                    if (!string.IsNullOrEmpty(_currentDouong.Hinhanh))
                     {
-                        pbHinhanh.ImageLocation = _currentDouong.Hinhanh;
-                        _selectedImagePath = _currentDouong.Hinhanh;
+                        string fullPath = Path.Combine(ImageConfig.DrinkImageFolder, _currentDouong.Hinhanh);
+                        if (File.Exists(fullPath))
+                        {
+                            pbHinhanh.ImageLocation = fullPath;
+                            _selectedImagePath = _currentDouong.Hinhanh; // tên file
+                        }
+                        else
+                        {
+                            pbHinhanh.Image = null;
+                            _selectedImagePath = "";
+                        }
                     }
                     else
                     {
@@ -141,14 +149,31 @@ namespace CoffeeManagementSystem
         private void btnSelectImage_Click(object sender, EventArgs e)
         {
             MainForm.PlayClickSound();
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.gif;*.bmp|All Files|*.*";
-            openFileDialog.Title = "Chọn ảnh đồ uống";
-
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
-                _selectedImagePath = openFileDialog.FileName;
-                pbHinhanh.ImageLocation = _selectedImagePath;
+                openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.gif;*.bmp|All Files|*.*";
+                openFileDialog.Title = "Chọn ảnh đồ uống";
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string sourcePath = openFileDialog.FileName;
+                    string ext = Path.GetExtension(sourcePath);
+
+                    // Đặt tên file theo mã đồ uống cho dễ quản lý
+                    string fileName = txtMadouong.Text.Trim() + ext;
+
+                    // Đường dẫn đích trong thư mục Resources chung
+                    string destPath = Path.Combine(ImageConfig.DrinkImageFolder, fileName);
+
+                    // Copy ảnh vào thư mục Resources (ghi đè nếu đã có)
+                    File.Copy(sourcePath, destPath, true);
+
+                    // CHỈ LƯU TÊN FILE vào DB (rất quan trọng)
+                    _selectedImagePath = fileName;
+
+                    // Hiển thị lên PictureBox
+                    pbHinhanh.ImageLocation = destPath;
+                }
             }
         }
 
@@ -237,8 +262,9 @@ namespace CoffeeManagementSystem
                     Tendouong = txtTendouong.Text.Trim(),
                     Maloai = cbLoaiDouong.SelectedValue.ToString(),
                     Mota = txtMota.Text.Trim(),
-                    Hinhanh = _selectedImagePath
+                    Hinhanh = _selectedImagePath   // chỉ còn là tên file, ví dụ "DU001.jpg"
                 };
+
 
                 // Gọi DouongBLL để thêm đồ uống
                 _douongBLL.AddDouong(newDouong);
@@ -300,7 +326,7 @@ namespace CoffeeManagementSystem
             _currentDouong.Tendouong = txtTendouong.Text.Trim();
             _currentDouong.Maloai = cbLoaiDouong.SelectedValue.ToString();
             _currentDouong.Mota = txtMota.Text.Trim();
-            _currentDouong.Hinhanh = _selectedImagePath;
+            _currentDouong.Hinhanh = _selectedImagePath; // tên file
 
             try
             {
@@ -396,6 +422,21 @@ namespace CoffeeManagementSystem
         private void btnLuu_Click_1(object sender, EventArgs e)
         {
             MainForm.PlayClickSound();
+        }
+        public static class ImageConfig
+        {
+            // Thư mục ảnh dùng chung cho đồ uống
+            public static readonly string DrinkImageFolder =
+                Path.Combine(Application.StartupPath, "Resources");
+
+            static ImageConfig()
+            {
+                // Đảm bảo thư mục tồn tại
+                if (!Directory.Exists(DrinkImageFolder))
+                {
+                    Directory.CreateDirectory(DrinkImageFolder);
+                }
+            }
         }
     }
 }

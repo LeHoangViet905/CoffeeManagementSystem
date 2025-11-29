@@ -6,6 +6,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using static CoffeeManagementSystem.AddDrinkForm;
 
 namespace CoffeeManagementSystem
 {
@@ -223,40 +224,35 @@ namespace CoffeeManagementSystem
         private void LoadProductsFromList(List<Douong> productList, FlowLayoutPanel targetPanel)
         {
             targetPanel.Controls.Clear();
-            // Tức là tìm ngay trong 'bin\Debug'
-            string imageFolder = Path.Combine(Application.StartupPath, "Resources");
 
             foreach (Douong product in productList)
             {
                 ucProductItem item = new ucProductItem();
 
-                decimal price = product.Giaban; // Lấy từ thuộc tính mới
+                decimal price = product.Giaban;
 
                 item.ProductID = product.Madouong;
                 item.ProductName = product.Tendouong;
                 item.ProductPriceDecimal = price;
 
-                // (Logic tải ảnh từ product.Hinhanh)
                 // === PHẦN TẢI ẢNH ===
                 try
                 {
-                    string imageName = product.Hinhanh;
+                    string imageName = product.Hinhanh; // giờ chỉ là "DU001.jpg"
 
                     if (!string.IsNullOrEmpty(imageName))
                     {
-                        // Nối đường dẫn: "...\bin\Debug\Resources\espresso.jpg"
-                        string fullPath = Path.Combine(imageFolder, imageName);
+                        string fullPath = Path.Combine(ImageConfig.DrinkImageFolder, imageName);
 
                         if (File.Exists(fullPath))
                         {
-                            // Tải ảnh
                             item.ProductImage = Image.FromFile(fullPath);
                         }
                     }
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine("Loi tai anh: " + ex.Message);
+                    Console.WriteLine("Lỗi tải ảnh: " + ex.Message);
                 }
                 // === KẾT THÚC PHẦN TẢI ẢNH ===
 
