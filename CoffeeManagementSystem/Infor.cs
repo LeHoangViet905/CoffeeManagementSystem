@@ -220,6 +220,9 @@ namespace CoffeeManagementSystem
                 var apiKey = "";
                 if (string.IsNullOrEmpty(apiKey)) ;
                     string senderEmail = "lebao062005@gmail.com";
+                var apiKey = ApiConfig.SendGridApiKey;
+                if (string.IsNullOrEmpty(apiKey)) ;
+                    string senderEmail = "lebao062005@gmail.com";
                 string managerEmail = "baole.bit@gmail.com";
 
                 await SendPasswordChangeRequest(_loggedInManhanvien, newPassword, apiKey, senderEmail, managerEmail);
