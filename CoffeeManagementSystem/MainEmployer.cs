@@ -21,7 +21,6 @@ namespace CoffeeManagementSystem
 
             // Mặc định mở màn hình Đặt đồ uống
             LoadFormCon(new OrderForm());
-            SetSidebarActiveColor(btnOrder);
         }
 
         // Constructor nhận thông tin nhân viên từ DangNhapForm
@@ -92,7 +91,6 @@ namespace CoffeeManagementSystem
 
         private void btnKhachHang_Click(object sender, EventArgs e)
         {
-            SetSidebarActiveColor(btnKhachHang);
             MainForm.PlayClickSound();
             LoadFormCon(new CustomerForm());
         }
@@ -105,7 +103,6 @@ namespace CoffeeManagementSystem
 
         private void btnOrder_Click(object sender, EventArgs e)
         {
-            SetSidebarActiveColor(btnOrder);
             MainForm.PlayClickSound();
 
             // Nếu có thông tin nhân viên thì truyền, không thì dùng constructor mặc định
@@ -132,7 +129,6 @@ namespace CoffeeManagementSystem
 
         private void btnTaiKhoan_Click(object sender, EventArgs e)
         {
-            SetSidebarActiveColor(btnTaiKhoan);
             MainForm.PlayClickSound();
             LoadFormCon(new Infor(_loggedInMaNhanVien));
         }
