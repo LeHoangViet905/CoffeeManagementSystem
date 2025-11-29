@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Guna.UI2.WinForms;
+using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace CoffeeManagementSystem
@@ -13,7 +15,8 @@ namespace CoffeeManagementSystem
         public MainEmployer()
         {
             InitializeComponent();
-            LoadFormCon(new DashboardForm());
+            LoadFormCon(new OrderForm());
+            SetSidebarActiveColor(btnOrder);
         }
 
         // Constructor MỚI để nhận thông tin nhân viên từ DangNhapForm
@@ -47,18 +50,9 @@ namespace CoffeeManagementSystem
         {
         }
 
-        private void add1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void guna2GradientPanel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void btnKhachHang_Click(object sender, EventArgs e)
         {
+            SetSidebarActiveColor(btnKhachHang);
             MainForm.PlayClickSound();
             LoadFormCon(new CustomerForm());
         }
@@ -71,6 +65,7 @@ namespace CoffeeManagementSystem
 
         private void btnOrder_Click(object sender, EventArgs e)
         {
+            SetSidebarActiveColor(btnOrder);
             MainForm.PlayClickSound();
             // Tạo OrderForm và truyền mã nhân viên, tên nhân viên
             OrderForm orderForm = new OrderForm(_maNhanVienHienTai, _tenNhanVienHienTai);
@@ -81,33 +76,6 @@ namespace CoffeeManagementSystem
         {
             MainForm.PlayClickSound();
             // Xử lý sự kiện click cho label nhân viên
-        }
-
-        private void panelMain_Paint(object sender, PaintEventArgs e)
-        {
-            // Sự kiện vẽ cho panelMain
-        }
-
-        private void guna2GradientPanel1_Paint(object sender, PaintEventArgs e)
-        {
-            // Sự kiện vẽ cho guna2GradientPanel1
-        }
-
-        private void lblName_Click(object sender, EventArgs e)
-        {
-            MainForm.PlayClickSound();
-            // Xử lý sự kiện click cho label tên (có thể là tên nhân viên)
-        }
-
-        private void btnQuanLyTaiKhoan_Click(object sender, EventArgs e)
-        {
-            MainForm.PlayClickSound();
-            //LoadFormCon(new Account()); // Uncomment nếu bạn có Form Account
-        }
-
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-            // Sự kiện vẽ cho panel2
         }
 
         private void btnDangXuat_Click(object sender, EventArgs e)
@@ -125,6 +93,7 @@ namespace CoffeeManagementSystem
 
         private void btnTaiKhoan_Click(object sender, EventArgs e)
         {
+            SetSidebarActiveColor(btnTaiKhoan);
             MainForm.PlayClickSound();
             LoadFormCon(new Infor(_loggedInMaNhanVien));
         }
