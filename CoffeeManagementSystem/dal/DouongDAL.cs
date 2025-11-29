@@ -271,5 +271,66 @@ namespace CoffeeManagementSystem.DAL
             return maList;
         }
 
+        public void ImportDouongs(List<Douong> douongs)
+        {
+            using (SQLiteConnection connection = new SQLiteConnection(ConnectionString))
+            {
+                connection.Open();
+                using (var transaction = connection.BeginTransaction())
+                {
+                    try
+                    {
+                        foreach (var d in douongs)
+                        {
+                            // Kiểm tra xem đã tồn tại chưa
+                            string checkSql = "SELECT COUNT(1) FROM Douong WHERE Madouong = @Madouong";
+                            using (var cmdCheck = new SQLiteCommand(checkSql, connection, transaction))
+                            {
+                                cmdCheck.Parameters.AddWithValue("@Madouong", d.Madouong);
+                                long count = (long)cmdCheck.ExecuteScalar();
+
+                                if (count > 0)
+                                {
+                                    // Update nếu tồn tại
+                                    string updateSql = "UPDATE Douong SET Tendouong=@Tendouong, Maloai=@Maloai, Mota=@Mota, Hinhanh=@Hinhanh WHERE Madouong=@Madouong";
+                                    using (var cmdUpdate = new SQLiteCommand(updateSql, connection, transaction))
+                                    {
+                                        cmdUpdate.Parameters.AddWithValue("@Tendouong", d.Tendouong);
+                                        cmdUpdate.Parameters.AddWithValue("@Maloai", d.Maloai);
+                                        cmdUpdate.Parameters.AddWithValue("@Mota", (object)d.Mota ?? DBNull.Value);
+                                        cmdUpdate.Parameters.AddWithValue("@Hinhanh", (object)d.Hinhanh ?? DBNull.Value);
+                                        cmdUpdate.Parameters.AddWithValue("@Madouong", d.Madouong);
+                                        cmdUpdate.ExecuteNonQuery();
+                                    }
+                                }
+                                else
+                                {
+                                    // Insert nếu chưa tồn tại
+                                    string insertSql = "INSERT INTO Douong (Madouong, Tendouong, Maloai, Mota, Hinhanh) VALUES (@Madouong, @Tendouong, @Maloai, @Mota, @Hinhanh)";
+                                    using (var cmdInsert = new SQLiteCommand(insertSql, connection, transaction))
+                                    {
+                                        cmdInsert.Parameters.AddWithValue("@Madouong", d.Madouong);
+                                        cmdInsert.Parameters.AddWithValue("@Tendouong", d.Tendouong);
+                                        cmdInsert.Parameters.AddWithValue("@Maloai", d.Maloai);
+                                        cmdInsert.Parameters.AddWithValue("@Mota", (object)d.Mota ?? DBNull.Value);
+                                        cmdInsert.Parameters.AddWithValue("@Hinhanh", (object)d.Hinhanh ?? DBNull.Value);
+                                        cmdInsert.ExecuteNonQuery();
+                                    }
+                                }
+                            }
+                        }
+
+                        transaction.Commit();
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        throw new Exception("Lỗi DAL khi import nhiều đồ uống: " + ex.Message, ex);
+                    }
+                }
+            }
+        }
+
+
     }
 }

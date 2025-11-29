@@ -224,5 +224,32 @@ namespace CoffeeManagementSystem.BLL
 
             return "DU" + nextNumber.ToString("D3"); // DU001, DU002 ...
         }
+        public  string GenerateNextMaDUInMemory(HashSet<string> usedMa)
+        {
+            int max = 0;
+            foreach (var ma in usedMa)
+            {
+                if (ma.Length <= 2) continue;
+                if (int.TryParse(ma.Substring(2), out int n))
+                {
+                    if (n > max) max = n;
+                }
+            }
+            return "DU" + (max + 1).ToString("D3"); // DU001, DU002,...
+        }
+
+        public void ImportDouongs(List<Douong> douongs)
+        {
+            if (douongs == null || douongs.Count == 0)
+                throw new ArgumentException("Danh sách đồ uống rỗng.", nameof(douongs));
+
+            _douongDAL.ImportDouongs(douongs);
+        }
+        public List<string> GetAllMaDU()
+        {
+            return _douongDAL.GetAllMaDU(); // chỉ gọi 1 lần
+        }
+
+
     }
 }

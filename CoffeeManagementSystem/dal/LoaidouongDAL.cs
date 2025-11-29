@@ -10,6 +10,7 @@ namespace CoffeeManagementSystem.DAL
 {
     public class LoaidouongDAL : BaseDataAccess
     {
+        private readonly string _connectionString = @"DataSource=QuanLyCaPheDatabase.db;Version=3;";
         public LoaidouongDAL() : base() { }
 
         /// <summary>
@@ -214,5 +215,78 @@ namespace CoffeeManagementSystem.DAL
             }
             return loaidouongs;
         }
+        public void ImportLoaidouongs(List<Loaidouong> loaidouongs)
+        {
+            using (SQLiteConnection connection = new SQLiteConnection(ConnectionString))
+            {
+                connection.Open();
+                using (var transaction = connection.BeginTransaction())
+                {
+                    try
+                    {
+                        foreach (var a in loaidouongs)
+                        {
+                            // Kiểm tra xem đã tồn tại chưa
+                            string checkSql = "SELECT COUNT(1) FROM Loaidouong WHERE Maloai = @Maloai";
+                            using (var cmdCheck = new SQLiteCommand(checkSql, connection, transaction))
+                            {
+                                cmdCheck.Parameters.AddWithValue("@Maloai", a.Maloai);
+                                long count = (long)cmdCheck.ExecuteScalar();
+
+                                if (count > 0)
+                                {
+                                    // Update nếu tồn tại
+                                    string updateSql = "UPDATE Loaidouong SET Tenloai=@Tenloai WHERE Maloai=@Maloai";
+                                    using (var cmdUpdate = new SQLiteCommand(updateSql, connection, transaction))
+                                    {
+                                        cmdUpdate.Parameters.AddWithValue("@Tenloai", a.Tenloai);
+
+                                        cmdUpdate.Parameters.AddWithValue("@Maloai", a.Maloai);
+                                        cmdUpdate.ExecuteNonQuery();
+                                    }
+                                }
+                                else
+                                {
+                                    // Insert nếu chưa tồn tại
+                                    string insertSql = "INSERT INTO Loaidouong (Maloai, Tenloai) VALUES (@Maloai, @Tenloai)";
+                                    using (var cmdInsert = new SQLiteCommand(insertSql, connection, transaction))
+                                    {
+                                        cmdInsert.Parameters.AddWithValue("@Tenloai", a.Tenloai);
+
+                                        cmdInsert.Parameters.AddWithValue("@Maloai", a.Maloai);
+                                        cmdInsert.ExecuteNonQuery();
+                                    }
+                                }
+                            }
+                        }
+
+                        transaction.Commit();
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        throw new Exception("Lỗi DAL khi import nhiều loại đồ uống: " + ex.Message, ex);
+                    }
+                }
+            }
+        }
+            public List<string> GetAllMaLD()
+        {
+            List<string> maList = new List<string>();
+            using (var conn = new SQLiteConnection(_connectionString))
+            {
+                conn.Open();
+                var cmd = new SQLiteCommand("SELECT Maloai FROM Loaidouong", conn);
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        maList.Add(reader["Maloai"].ToString());
+                    }
+                }
+            }
+            return maList;
+        }
+        }
     }
-}
+

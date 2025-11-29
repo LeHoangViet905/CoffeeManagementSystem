@@ -3,6 +3,7 @@ using CoffeeManagementSystem.DAL; // Reference to your DAL
 using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using System.Windows.Forms;
 
 namespace CoffeeManagementSystem.BLL
 {
@@ -125,44 +126,49 @@ namespace CoffeeManagementSystem.BLL
         /// <exception cref="Exception">Thrown if an unexpected error occurs during addition.</exception>
         public void AddKhachhang(Khachhang khachhang)
         {
-            // Basic validation
-            if (khachhang == null)
-            {
-                throw new ArgumentNullException(nameof(khachhang), "Đối tượng khách hàng không được để trống.");
-            }
-            if (string.IsNullOrWhiteSpace(khachhang.Makhachhang))
-            {
-                throw new ArgumentException("Mã khách hàng không được để trống.", nameof(khachhang.Makhachhang));
-            }
-            if (string.IsNullOrWhiteSpace(khachhang.Hoten))
-            {
-                throw new ArgumentException("Họ tên khách hàng không được để trống.", nameof(khachhang.Hoten));
-            }
-            // Add more specific validations if needed, e.g., phone number format, email format
-            // if (!string.IsNullOrEmpty(khachhang.Email) && !IsValidEmail(khachhang.Email))
-            // {
-            //     throw new ArgumentException("Địa chỉ email không hợp lệ.", nameof(khachhang.Email));
-            // }
-
             try
             {
-                // Check if customer with the same ID already exists (business rule)
+                // Basic validation
+                if (khachhang == null)
+                {
+                    throw new ArgumentNullException(nameof(khachhang), "Đối tượng khách hàng không được để trống.");
+                }
+                if (string.IsNullOrWhiteSpace(khachhang.Makhachhang))
+                {
+                    throw new ArgumentException("Mã khách hàng không được để trống.", nameof(khachhang.Makhachhang));
+                }
+                if (string.IsNullOrWhiteSpace(khachhang.Hoten))
+                {
+                    throw new ArgumentException("Họ tên khách hàng không được để trống.", nameof(khachhang.Hoten));
+                }
+                // Add more specific validations if needed, e.g., phone number format, email format
+                // if (!string.IsNullOrEmpty(khachhang.Email) && !IsValidEmail(khachhang.Email))
+                // {
+                //     throw new ArgumentException("Địa chỉ email không hợp lệ.", nameof(khachhang.Email));
+                // }
+
+                // Chỉ check trùng Mã khách hàng
                 if (_khachhangDAL.GetKhachhangById(khachhang.Makhachhang) != null)
                 {
-                    throw new InvalidOperationException($"Khách hàng với mã '{khachhang.Makhachhang}' đã tồn tại.");
+                    MessageBox.Show($"Khách hàng với mã '{khachhang.Makhachhang}' đã tồn tại.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
                 }
 
                 _khachhangDAL.AddKhachhang(khachhang);
-            }
-            catch (InvalidOperationException)
-            {
-                throw; // Re-throw specific business rule exception
+
+                MessageBox.Show("Thêm khách hàng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Nếu muốn kiểm tra tên trùng, chỉ để cảnh báo, không ảnh hưởng việc lưu
+                if (_khachhangDAL.GetKhachhangByName(khachhang.Hoten) != null)
+                {
+                    MessageBox.Show("Tên khách hàng đã tồn tại trong hệ thống (chỉ để cảnh báo).", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
             catch (Exception ex)
             {
-                throw new Exception($"Lỗi nghiệp vụ khi thêm khách hàng '{khachhang.Hoten}': {ex.Message}", ex);
+                MessageBox.Show($"Lỗi khi thêm khách hàng: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
+}
 
         /// <summary>
         /// Updates the information of a customer.

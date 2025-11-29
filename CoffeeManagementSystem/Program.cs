@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OfficeOpenXml;
+using System;
 using System.Configuration;
 using System.Data.SQLite;
 using System.IO;
@@ -14,6 +15,9 @@ namespace CoffeeManagementSystem
         [STAThread]
         static void Main()
         {
+
+            ExcelPackage.License.SetNonCommercialPersonal("Anonymous");
+
             // Lấy chuỗi kết nối từ App.config
             string connectionString = ConfigurationManager.ConnectionStrings["SqliteDbConnection"].ConnectionString;
 

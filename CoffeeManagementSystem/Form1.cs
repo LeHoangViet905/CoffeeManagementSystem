@@ -8,5 +8,10 @@ namespace CoffeeManagementSystem
         {
             InitializeComponent();
         }
+
+        private void guna2Button1_Click(object sender, System.EventArgs e)
+        {
+
+        }
     }
 }

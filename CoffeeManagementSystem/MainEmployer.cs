@@ -15,8 +15,7 @@ namespace CoffeeManagementSystem
         public MainEmployer()
         {
             InitializeComponent();
-            LoadFormCon(new OrderForm());
-            SetSidebarActiveColor(btnOrder);
+            LoadFormCon(new DashboardForm());
         }
 
         // Constructor MỚI để nhận thông tin nhân viên từ DangNhapForm
@@ -49,6 +48,14 @@ namespace CoffeeManagementSystem
         private void MainForm_Load(object sender, EventArgs e) // Tên method nên là MainEmployer_Load để đúng với tên Form
         {
         }
+        private void btnOrder_Click(object sender, EventArgs e)
+        {
+            SetSidebarActiveColor(btnOrder);
+            MainForm.PlayClickSound();
+            // Tạo OrderForm và truyền mã nhân viên, tên nhân viên
+            OrderForm orderForm = new OrderForm(_maNhanVienHienTai, _tenNhanVienHienTai);
+            LoadFormCon(orderForm);
+        }
 
         private void btnKhachHang_Click(object sender, EventArgs e)
         {
@@ -61,15 +68,6 @@ namespace CoffeeManagementSystem
         {
             MainForm.PlayClickSound();
             this.Close();
-        }
-
-        private void btnOrder_Click(object sender, EventArgs e)
-        {
-            SetSidebarActiveColor(btnOrder);
-            MainForm.PlayClickSound();
-            // Tạo OrderForm và truyền mã nhân viên, tên nhân viên
-            OrderForm orderForm = new OrderForm(_maNhanVienHienTai, _tenNhanVienHienTai);
-            LoadFormCon(orderForm);
         }
 
         private void lblNhanVien_Click(object sender, EventArgs e)

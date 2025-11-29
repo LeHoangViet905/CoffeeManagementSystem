@@ -19,37 +19,44 @@ namespace CoffeeManagementSystem.BLL
         private string _tenNhanVienLapHoaDon;
         private string _maHoaDonHienTai;
 
-        private string GenerateNewKhachhangId()
+        public string GenerateNextMakhachhang()
         {
-            // Lấy mã khách hàng lớn nhất hiện tại từ DAL
-            string lastId = _khachhangDAL.GetLatestKhachhangId();  // dùng hàm bạn đã có trong DAL
+            List<string> allIDs = _khachhangDAL.GetAllMaKhachhang(); // Lấy tất cả mã KH
             int nextNumber = 1;
 
-            if (!string.IsNullOrEmpty(lastId) && lastId.StartsWith("KH") && lastId.Length >= 5)
+            if (allIDs.Count > 0)
             {
-                string numberPart = lastId.Substring(2);   // VD: "010" trong "KH010"
-                if (int.TryParse(numberPart, out int num))
+                List<int> numbers = new List<int>();
+                foreach (var id in allIDs)
                 {
-                    nextNumber = num + 1;
+                    if (id.StartsWith("KH") && int.TryParse(id.Substring(2), out int n))
+                        numbers.Add(n);
+                }
+                numbers.Sort();
+                for (int i = 1; i <= numbers.Count + 1; i++)
+                {
+                    if (!numbers.Contains(i))
+                    {
+                        nextNumber = i;
+                        break;
+                    }
                 }
             }
 
-            string newId = $"KH{nextNumber:000}";          // KH001, KH002, KH010, KH011,...
-            Logger.LogDebug($"Đã tạo ID khách hàng mới: {newId}.");
-            return newId;
+            return "KH" + nextNumber.ToString("D3"); // KH001, NV002 ...
         }
 
         public string GetManhanvienLapHoaDon()
         {
             return _manhanvienLapHoaDon;
         }
-        public PaymentBLL(List<Chitietdonhang> dsChiTiet, string manhanvien, string tenNhanVien)
+        public PaymentBLL(List<Chitietdonhang> dsChiTiet, string _maNhanVienHienTai, string _tenNhanVienHienTai)
         {
             Logger.LogInfo("Bắt đầu khởi tạo PaymentBLL.");
 
             _dsChiTietHoaDon = dsChiTiet ?? throw new ArgumentNullException(nameof(dsChiTiet), "Danh sách chi tiết hóa đơn không được null.");
-            _manhanvienLapHoaDon = manhanvien ?? throw new ArgumentNullException(nameof(manhanvien), "Mã nhân viên không được null.");
-            _tenNhanVienLapHoaDon = tenNhanVien ?? throw new ArgumentNullException(nameof(tenNhanVien), "Tên nhân viên không được null.");
+            _manhanvienLapHoaDon = _maNhanVienHienTai ?? throw new ArgumentNullException(nameof(_maNhanVienHienTai), "Mã nhân viên không được null.");
+            _tenNhanVienLapHoaDon = _tenNhanVienHienTai ?? throw new ArgumentNullException(nameof(_tenNhanVienHienTai), "Tên nhân viên không được null.");
 
             _donhangDAL = new DonhangDAL();
             _chitietdonhangDAL = new ChitietdonhangDAL();
@@ -294,7 +301,7 @@ namespace CoffeeManagementSystem.BLL
             {
                 Khachhang newCustomer = new Khachhang
                 {
-                    Makhachhang = GenerateNewKhachhangId(),   // dùng hàm mới
+                    Makhachhang = GenerateNextMakhachhang(),   // dùng hàm mới
                     Hoten = customerName,
                     Ngaydangky = DateTime.Now,
                     Diemtichluy = 0
