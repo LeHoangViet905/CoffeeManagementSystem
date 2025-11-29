@@ -31,12 +31,13 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainEmployer));
             this.splitContainerNavBar = new System.Windows.Forms.SplitContainer();
-            this.btnOrder = new Guna.UI2.WinForms.Guna2GradientButton();
             this.btnDangXuat = new Guna.UI2.WinForms.Guna2GradientButton();
             this.btnTaiKhoan = new Guna.UI2.WinForms.Guna2GradientButton();
+            this.btnKhachHang = new Guna.UI2.WinForms.Guna2GradientButton();
+            this.btnLichSuDonHang = new Guna.UI2.WinForms.Guna2GradientButton();
+            this.btnOrder = new Guna.UI2.WinForms.Guna2GradientButton();
             this.lblName = new System.Windows.Forms.Label();
             this.lblNhanVien = new System.Windows.Forms.Label();
-            this.btnKhachHang = new Guna.UI2.WinForms.Guna2GradientButton();
             this.guna2CirclePictureBox2 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             this.panelMain = new System.Windows.Forms.Panel();
             this.pnlTitleBar = new Guna.UI2.WinForms.Guna2Panel();
@@ -56,7 +57,7 @@
             // splitContainerNavBar
             // 
             this.splitContainerNavBar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerNavBar.Location = new System.Drawing.Point(0, 36);
+            this.splitContainerNavBar.Location = new System.Drawing.Point(0, 24);
             this.splitContainerNavBar.Margin = new System.Windows.Forms.Padding(0);
             this.splitContainerNavBar.Name = "splitContainerNavBar";
             // 
@@ -64,47 +65,22 @@
             // 
             this.splitContainerNavBar.Panel1.BackColor = System.Drawing.Color.Firebrick;
             this.splitContainerNavBar.Panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.splitContainerNavBar.Panel1.Controls.Add(this.btnOrder);
             this.splitContainerNavBar.Panel1.Controls.Add(this.btnDangXuat);
             this.splitContainerNavBar.Panel1.Controls.Add(this.btnTaiKhoan);
+            this.splitContainerNavBar.Panel1.Controls.Add(this.btnKhachHang);
+            this.splitContainerNavBar.Panel1.Controls.Add(this.btnLichSuDonHang);
+            this.splitContainerNavBar.Panel1.Controls.Add(this.btnOrder);
             this.splitContainerNavBar.Panel1.Controls.Add(this.lblName);
             this.splitContainerNavBar.Panel1.Controls.Add(this.lblNhanVien);
-            this.splitContainerNavBar.Panel1.Controls.Add(this.btnKhachHang);
             this.splitContainerNavBar.Panel1.Controls.Add(this.guna2CirclePictureBox2);
             // 
             // splitContainerNavBar.Panel2
             // 
             this.splitContainerNavBar.Panel2.Controls.Add(this.panelMain);
-            this.splitContainerNavBar.Size = new System.Drawing.Size(2026, 1057);
-            this.splitContainerNavBar.SplitterDistance = 202;
+            this.splitContainerNavBar.Size = new System.Drawing.Size(924, 501);
+            this.splitContainerNavBar.SplitterDistance = 130;
             this.splitContainerNavBar.SplitterWidth = 1;
             this.splitContainerNavBar.TabIndex = 21;
-            // 
-            // btnOrder
-            // 
-            this.btnOrder.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnOrder.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnOrder.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnOrder.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnOrder.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnOrder.FillColor = System.Drawing.Color.Empty;
-            this.btnOrder.FillColor2 = System.Drawing.Color.Empty;
-            this.btnOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOrder.ForeColor = System.Drawing.Color.White;
-            this.btnOrder.HoverState.Font = new System.Drawing.Font("Segoe UI Variable Display", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOrder.HoverState.ForeColor = System.Drawing.Color.White;
-            this.btnOrder.Image = global::CoffeeManagementSystem.Properties.Resources.DoUong;
-            this.btnOrder.ImageOffset = new System.Drawing.Point(2, -15);
-            this.btnOrder.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnOrder.Location = new System.Drawing.Point(0, 289);
-            this.btnOrder.Margin = new System.Windows.Forms.Padding(2);
-            this.btnOrder.Name = "btnOrder";
-            this.btnOrder.Size = new System.Drawing.Size(203, 89);
-            this.btnOrder.TabIndex = 13;
-            this.btnOrder.Text = "Đặt đồ uống";
-            this.btnOrder.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnOrder.TextOffset = new System.Drawing.Point(17, 10);
-            this.btnOrder.Click += new System.EventHandler(this.btnOrder_Click);
             // 
             // btnDangXuat
             // 
@@ -123,10 +99,10 @@
             this.btnDangXuat.Image = global::CoffeeManagementSystem.Properties.Resources.logout;
             this.btnDangXuat.ImageOffset = new System.Drawing.Point(-3, 0);
             this.btnDangXuat.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnDangXuat.Location = new System.Drawing.Point(0, 961);
-            this.btnDangXuat.Margin = new System.Windows.Forms.Padding(2);
+            this.btnDangXuat.Location = new System.Drawing.Point(0, 441);
+            this.btnDangXuat.Margin = new System.Windows.Forms.Padding(1);
             this.btnDangXuat.Name = "btnDangXuat";
-            this.btnDangXuat.Size = new System.Drawing.Size(202, 96);
+            this.btnDangXuat.Size = new System.Drawing.Size(130, 60);
             this.btnDangXuat.TabIndex = 20;
             this.btnDangXuat.Text = "Đăng xuất";
             this.btnDangXuat.Click += new System.EventHandler(this.btnDangXuat_Click);
@@ -140,47 +116,22 @@
             this.btnTaiKhoan.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnTaiKhoan.FillColor = System.Drawing.Color.Empty;
             this.btnTaiKhoan.FillColor2 = System.Drawing.Color.Empty;
-            this.btnTaiKhoan.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTaiKhoan.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Bold);
             this.btnTaiKhoan.ForeColor = System.Drawing.Color.White;
-            this.btnTaiKhoan.HoverState.Font = new System.Drawing.Font("Segoe UI Variable Display", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTaiKhoan.HoverState.Font = new System.Drawing.Font("Segoe UI Variable Display", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnTaiKhoan.HoverState.ForeColor = System.Drawing.Color.White;
             this.btnTaiKhoan.Image = global::CoffeeManagementSystem.Properties.Resources.TaiKhoan;
+            this.btnTaiKhoan.ImageOffset = new System.Drawing.Point(0, -10);
             this.btnTaiKhoan.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnTaiKhoan.Location = new System.Drawing.Point(18, 516);
-            this.btnTaiKhoan.Margin = new System.Windows.Forms.Padding(2);
+            this.btnTaiKhoan.Location = new System.Drawing.Point(0, 380);
+            this.btnTaiKhoan.Margin = new System.Windows.Forms.Padding(0);
             this.btnTaiKhoan.Name = "btnTaiKhoan";
-            this.btnTaiKhoan.Size = new System.Drawing.Size(198, 96);
+            this.btnTaiKhoan.Size = new System.Drawing.Size(200, 60);
             this.btnTaiKhoan.TabIndex = 19;
             this.btnTaiKhoan.Text = "Quản lý tài khoản";
+            this.btnTaiKhoan.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnTaiKhoan.TextOffset = new System.Drawing.Point(0, 10);
             this.btnTaiKhoan.Click += new System.EventHandler(this.btnTaiKhoan_Click);
-            // 
-            // lblName
-            // 
-            this.lblName.BackColor = System.Drawing.Color.Transparent;
-            this.lblName.Font = new System.Drawing.Font("Segoe UI Variable Display", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblName.ForeColor = System.Drawing.Color.White;
-            this.lblName.Location = new System.Drawing.Point(2, 143);
-            this.lblName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(214, 82);
-            this.lblName.TabIndex = 18;
-            this.lblName.Text = "Tên người dùng";
-            this.lblName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblNhanVien
-            // 
-            this.lblNhanVien.AutoSize = true;
-            this.lblNhanVien.BackColor = System.Drawing.Color.Transparent;
-            this.lblNhanVien.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNhanVien.ForeColor = System.Drawing.Color.White;
-            this.lblNhanVien.Location = new System.Drawing.Point(56, 121);
-            this.lblNhanVien.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblNhanVien.Name = "lblNhanVien";
-            this.lblNhanVien.Size = new System.Drawing.Size(100, 22);
-            this.lblNhanVien.TabIndex = 17;
-            this.lblNhanVien.Text = "Nhân viên";
-            this.lblNhanVien.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblNhanVien.Click += new System.EventHandler(this.lblNhanVien_Click);
             // 
             // btnKhachHang
             // 
@@ -193,32 +144,112 @@
             this.btnKhachHang.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnKhachHang.FillColor = System.Drawing.Color.Empty;
             this.btnKhachHang.FillColor2 = System.Drawing.Color.Empty;
-            this.btnKhachHang.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnKhachHang.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Bold);
             this.btnKhachHang.ForeColor = System.Drawing.Color.White;
-            this.btnKhachHang.HoverState.Font = new System.Drawing.Font("Segoe UI Variable Display", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnKhachHang.HoverState.Font = new System.Drawing.Font("Segoe UI Variable Display", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnKhachHang.HoverState.ForeColor = System.Drawing.Color.White;
             this.btnKhachHang.Image = global::CoffeeManagementSystem.Properties.Resources.KhachHang;
-            this.btnKhachHang.ImageOffset = new System.Drawing.Point(2, -15);
+            this.btnKhachHang.ImageOffset = new System.Drawing.Point(0, -10);
             this.btnKhachHang.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnKhachHang.Location = new System.Drawing.Point(0, 401);
-            this.btnKhachHang.Margin = new System.Windows.Forms.Padding(2);
+            this.btnKhachHang.Location = new System.Drawing.Point(0, 320);
+            this.btnKhachHang.Margin = new System.Windows.Forms.Padding(0);
             this.btnKhachHang.Name = "btnKhachHang";
-            this.btnKhachHang.Size = new System.Drawing.Size(203, 96);
+            this.btnKhachHang.Size = new System.Drawing.Size(200, 60);
             this.btnKhachHang.TabIndex = 11;
-            this.btnKhachHang.Text = "Khách Hàng";
+            this.btnKhachHang.Text = "Khách hàng";
             this.btnKhachHang.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnKhachHang.TextOffset = new System.Drawing.Point(18, 10);
+            this.btnKhachHang.TextOffset = new System.Drawing.Point(0, 10);
             this.btnKhachHang.Click += new System.EventHandler(this.btnKhachHang_Click);
+            // 
+            // btnLichSuDonHang
+            // 
+            this.btnLichSuDonHang.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnLichSuDonHang.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnLichSuDonHang.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnLichSuDonHang.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnLichSuDonHang.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnLichSuDonHang.FillColor = System.Drawing.Color.Empty;
+            this.btnLichSuDonHang.FillColor2 = System.Drawing.Color.Empty;
+            this.btnLichSuDonHang.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Bold);
+            this.btnLichSuDonHang.ForeColor = System.Drawing.Color.White;
+            this.btnLichSuDonHang.HoverState.Font = new System.Drawing.Font("Segoe UI Variable Display", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnLichSuDonHang.HoverState.ForeColor = System.Drawing.Color.White;
+            this.btnLichSuDonHang.Image = global::CoffeeManagementSystem.Properties.Resources.History;
+            this.btnLichSuDonHang.ImageOffset = new System.Drawing.Point(0, -10);
+            this.btnLichSuDonHang.ImageSize = new System.Drawing.Size(25, 25);
+            this.btnLichSuDonHang.Location = new System.Drawing.Point(0, 260);
+            this.btnLichSuDonHang.Margin = new System.Windows.Forms.Padding(0);
+            this.btnLichSuDonHang.Name = "btnLichSuDonHang";
+            this.btnLichSuDonHang.Size = new System.Drawing.Size(200, 60);
+            this.btnLichSuDonHang.TabIndex = 21;
+            this.btnLichSuDonHang.Text = "Lịch sử đơn hàng";
+            this.btnLichSuDonHang.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnLichSuDonHang.TextOffset = new System.Drawing.Point(0, 10);
+            this.btnLichSuDonHang.Click += new System.EventHandler(this.btnLichSuDonHang_Click);
+            // 
+            // btnOrder
+            // 
+            this.btnOrder.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnOrder.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnOrder.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnOrder.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnOrder.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnOrder.FillColor = System.Drawing.Color.Empty;
+            this.btnOrder.FillColor2 = System.Drawing.Color.Empty;
+            this.btnOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Bold);
+            this.btnOrder.ForeColor = System.Drawing.Color.White;
+            this.btnOrder.HoverState.Font = new System.Drawing.Font("Segoe UI Variable Display", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnOrder.HoverState.ForeColor = System.Drawing.Color.White;
+            this.btnOrder.Image = global::CoffeeManagementSystem.Properties.Resources.DoUong;
+            this.btnOrder.ImageOffset = new System.Drawing.Point(0, -10);
+            this.btnOrder.ImageSize = new System.Drawing.Size(25, 25);
+            this.btnOrder.Location = new System.Drawing.Point(0, 200);
+            this.btnOrder.Margin = new System.Windows.Forms.Padding(0);
+            this.btnOrder.Name = "btnOrder";
+            this.btnOrder.Size = new System.Drawing.Size(200, 60);
+            this.btnOrder.TabIndex = 13;
+            this.btnOrder.Text = "Đặt đồ uống";
+            this.btnOrder.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnOrder.TextOffset = new System.Drawing.Point(0, 10);
+            this.btnOrder.Click += new System.EventHandler(this.btnOrder_Click);
+            // 
+            // lblName
+            // 
+            this.lblName.BackColor = System.Drawing.Color.Transparent;
+            this.lblName.Font = new System.Drawing.Font("Segoe UI Variable Display", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblName.ForeColor = System.Drawing.Color.White;
+            this.lblName.Location = new System.Drawing.Point(0, 145);
+            this.lblName.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(200, 40);
+            this.lblName.TabIndex = 18;
+            this.lblName.Text = "Tên người dùng";
+            this.lblName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblNhanVien
+            // 
+            this.lblNhanVien.AutoSize = true;
+            this.lblNhanVien.BackColor = System.Drawing.Color.Transparent;
+            this.lblNhanVien.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNhanVien.ForeColor = System.Drawing.Color.White;
+            this.lblNhanVien.Location = new System.Drawing.Point(60, 125);
+            this.lblNhanVien.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.lblNhanVien.Name = "lblNhanVien";
+            this.lblNhanVien.Size = new System.Drawing.Size(71, 15);
+            this.lblNhanVien.TabIndex = 17;
+            this.lblNhanVien.Text = "Nhân viên";
+            this.lblNhanVien.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblNhanVien.Click += new System.EventHandler(this.lblNhanVien_Click);
             // 
             // guna2CirclePictureBox2
             // 
             this.guna2CirclePictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("guna2CirclePictureBox2.Image")));
             this.guna2CirclePictureBox2.ImageRotate = 0F;
-            this.guna2CirclePictureBox2.Location = new System.Drawing.Point(58, 22);
-            this.guna2CirclePictureBox2.Margin = new System.Windows.Forms.Padding(2);
+            this.guna2CirclePictureBox2.Location = new System.Drawing.Point(50, 20);
+            this.guna2CirclePictureBox2.Margin = new System.Windows.Forms.Padding(1);
             this.guna2CirclePictureBox2.Name = "guna2CirclePictureBox2";
             this.guna2CirclePictureBox2.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.guna2CirclePictureBox2.Size = new System.Drawing.Size(97, 97);
+            this.guna2CirclePictureBox2.Size = new System.Drawing.Size(100, 100);
             this.guna2CirclePictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.guna2CirclePictureBox2.TabIndex = 13;
             this.guna2CirclePictureBox2.TabStop = false;
@@ -228,9 +259,8 @@
             this.panelMain.BackColor = System.Drawing.Color.FloralWhite;
             this.panelMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelMain.Location = new System.Drawing.Point(0, 0);
-            this.panelMain.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelMain.Name = "panelMain";
-            this.panelMain.Size = new System.Drawing.Size(1823, 1057);
+            this.panelMain.Size = new System.Drawing.Size(793, 501);
             this.panelMain.TabIndex = 0;
             // 
             // pnlTitleBar
@@ -243,19 +273,17 @@
             this.pnlTitleBar.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlTitleBar.FillColor = System.Drawing.Color.SeaShell;
             this.pnlTitleBar.Location = new System.Drawing.Point(0, 0);
-            this.pnlTitleBar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnlTitleBar.Name = "pnlTitleBar";
-            this.pnlTitleBar.Size = new System.Drawing.Size(2026, 36);
+            this.pnlTitleBar.Size = new System.Drawing.Size(924, 24);
             this.pnlTitleBar.TabIndex = 22;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(14, 6);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(9, 4);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(282, 25);
+            this.label1.Size = new System.Drawing.Size(187, 17);
             this.label1.TabIndex = 6;
             this.label1.Text = "Ứng dụng quản lý quán cafe";
             // 
@@ -268,10 +296,9 @@
             this.guna2ControlBox3.HoverState.FillColor = System.Drawing.Color.DimGray;
             this.guna2ControlBox3.HoverState.IconColor = System.Drawing.Color.White;
             this.guna2ControlBox3.IconColor = System.Drawing.Color.White;
-            this.guna2ControlBox3.Location = new System.Drawing.Point(1900, 0);
-            this.guna2ControlBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2ControlBox3.Location = new System.Drawing.Point(840, 0);
             this.guna2ControlBox3.Name = "guna2ControlBox3";
-            this.guna2ControlBox3.Size = new System.Drawing.Size(42, 36);
+            this.guna2ControlBox3.Size = new System.Drawing.Size(28, 24);
             this.guna2ControlBox3.TabIndex = 5;
             // 
             // guna2ControlBox2
@@ -283,10 +310,9 @@
             this.guna2ControlBox2.HoverState.FillColor = System.Drawing.Color.DimGray;
             this.guna2ControlBox2.HoverState.IconColor = System.Drawing.Color.White;
             this.guna2ControlBox2.IconColor = System.Drawing.Color.White;
-            this.guna2ControlBox2.Location = new System.Drawing.Point(1942, 0);
-            this.guna2ControlBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2ControlBox2.Location = new System.Drawing.Point(868, 0);
             this.guna2ControlBox2.Name = "guna2ControlBox2";
-            this.guna2ControlBox2.Size = new System.Drawing.Size(42, 36);
+            this.guna2ControlBox2.Size = new System.Drawing.Size(28, 24);
             this.guna2ControlBox2.TabIndex = 4;
             // 
             // guna2ControlBox1
@@ -296,29 +322,28 @@
             this.guna2ControlBox1.HoverState.FillColor = System.Drawing.Color.DimGray;
             this.guna2ControlBox1.HoverState.IconColor = System.Drawing.Color.White;
             this.guna2ControlBox1.IconColor = System.Drawing.Color.White;
-            this.guna2ControlBox1.Location = new System.Drawing.Point(1984, 0);
-            this.guna2ControlBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2ControlBox1.Location = new System.Drawing.Point(896, 0);
             this.guna2ControlBox1.Name = "guna2ControlBox1";
-            this.guna2ControlBox1.Size = new System.Drawing.Size(42, 36);
+            this.guna2ControlBox1.Size = new System.Drawing.Size(28, 24);
             this.guna2ControlBox1.TabIndex = 3;
             // 
             // MainEmployer
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(144F, 144F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(2026, 1093);
+            this.ClientSize = new System.Drawing.Size(924, 525);
             this.Controls.Add(this.splitContainerNavBar);
             this.Controls.Add(this.pnlTitleBar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2);
-            this.MaximumSize = new System.Drawing.Size(2875, 1603);
-            this.MinimumSize = new System.Drawing.Size(878, 539);
+            this.Margin = new System.Windows.Forms.Padding(1);
+            this.MaximumSize = new System.Drawing.Size(1917, 1069);
+            this.MinimumSize = new System.Drawing.Size(585, 359);
             this.Name = "MainEmployer";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Coffee Management System";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.MainForm_Load);
+            this.Load += new System.EventHandler(this.MainEmployer_Load);
             this.splitContainerNavBar.Panel1.ResumeLayout(false);
             this.splitContainerNavBar.Panel1.PerformLayout();
             this.splitContainerNavBar.Panel2.ResumeLayout(false);
@@ -348,5 +373,6 @@
         private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox1;
         private Guna.UI2.WinForms.Guna2ShadowForm guna2ShadowForm1;
         private System.Windows.Forms.Label label1;
+        private Guna.UI2.WinForms.Guna2GradientButton btnLichSuDonHang;
     }
 }
