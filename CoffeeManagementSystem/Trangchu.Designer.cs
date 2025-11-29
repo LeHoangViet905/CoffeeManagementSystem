@@ -202,6 +202,7 @@ namespace CoffeeManagementSystem
             // 
             // pictureRectangle20
             // 
+            this.pictureRectangle20.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureRectangle20.Image = global::CoffeeManagementSystem.Properties.Resources.Rectangle_20;
             this.pictureRectangle20.Location = new System.Drawing.Point(1178, 20);
             this.pictureRectangle20.Margin = new System.Windows.Forms.Padding(10, 20, 20, 10);

@@ -940,5 +940,10 @@ GROUP BY l.Tenloai";
         {
 
         }
+
+        private void Bieudotron_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
