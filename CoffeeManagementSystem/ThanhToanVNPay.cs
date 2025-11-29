@@ -96,7 +96,7 @@ namespace CoffeeManagementSystem
 
                     if (code == "00")
                     {
-                        MessageBox.Show("Thanh toán thành công!\nMã giao dịch: " + transNo);
+                        //MessageBox.Show("Thanh toán thành công!\nMã giao dịch: " + transNo);
                         this.DialogResult = DialogResult.OK;
                         this.Close();
                     }

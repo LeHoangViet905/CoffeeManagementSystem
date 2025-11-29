@@ -542,6 +542,7 @@ namespace CoffeeManagementSystem
                         // VNPay báo thành công (vnp_ResponseCode == "00")
                         XuLyThanhToan(HINH_THUC_CHUYEN_KHOAN);
                         Logger.LogInfo("Thanh toán VNPay thành công.");
+                        return;
                     }
                     else
                     {
