@@ -45,13 +45,6 @@
             this.txtTongTien = new Guna.UI2.WinForms.Guna2TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.dgvOrder = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.colID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDecrease = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.colCancel = new System.Windows.Forms.DataGridViewButtonColumn();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -81,6 +74,14 @@
             this.flowPanelNGK = new System.Windows.Forms.FlowLayoutPanel();
             this.tabPage10 = new System.Windows.Forms.TabPage();
             this.flowPanelTPN = new System.Windows.Forms.FlowLayoutPanel();
+            this.colID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDecrease = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.colCancel = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.colNote = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelSidebar.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrder)).BeginInit();
@@ -436,7 +437,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("SVN-Gilroy Medium", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(14, 15);
+            this.label1.Location = new System.Drawing.Point(9, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(62, 22);
             this.label1.TabIndex = 0;
@@ -729,6 +730,92 @@
             this.flowPanelTPN.Size = new System.Drawing.Size(1078, 839);
             this.flowPanelTPN.TabIndex = 0;
             // 
+            // colID
+            // 
+            this.colID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.colID.HeaderText = "ID";
+            this.colID.MinimumWidth = 6;
+            this.colID.Name = "colID";
+            this.colID.ReadOnly = true;
+            this.colID.Visible = false;
+            this.colID.Width = 10;
+            // 
+            // colQty
+            // 
+            this.colQty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.colQty.HeaderText = "SL";
+            this.colQty.MinimumWidth = 6;
+            this.colQty.Name = "colQty";
+            this.colQty.ReadOnly = true;
+            this.colQty.Width = 40;
+            // 
+            // colName
+            // 
+            this.colName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.colName.DefaultCellStyle = dataGridViewCellStyle3;
+            this.colName.FillWeight = 111.5385F;
+            this.colName.HeaderText = "Tên món";
+            this.colName.MinimumWidth = 6;
+            this.colName.Name = "colName";
+            this.colName.ReadOnly = true;
+            // 
+            // colPrice
+            // 
+            this.colPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.colPrice.HeaderText = "Đơn giá";
+            this.colPrice.MinimumWidth = 6;
+            this.colPrice.Name = "colPrice";
+            this.colPrice.ReadOnly = true;
+            this.colPrice.Visible = false;
+            this.colPrice.Width = 10;
+            // 
+            // colTotal
+            // 
+            this.colTotal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle4.Format = "N0";
+            this.colTotal.DefaultCellStyle = dataGridViewCellStyle4;
+            this.colTotal.FillWeight = 111.5385F;
+            this.colTotal.HeaderText = "Thành tiền";
+            this.colTotal.MinimumWidth = 6;
+            this.colTotal.Name = "colTotal";
+            this.colTotal.ReadOnly = true;
+            this.colTotal.Width = 80;
+            // 
+            // colDecrease
+            // 
+            this.colDecrease.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.colDecrease.HeaderText = "-";
+            this.colDecrease.MinimumWidth = 6;
+            this.colDecrease.Name = "colDecrease";
+            this.colDecrease.ReadOnly = true;
+            this.colDecrease.Text = "-";
+            this.colDecrease.UseColumnTextForButtonValue = true;
+            this.colDecrease.Width = 30;
+            // 
+            // colCancel
+            // 
+            this.colCancel.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
+            this.colCancel.DefaultCellStyle = dataGridViewCellStyle5;
+            this.colCancel.FillWeight = 76.92308F;
+            this.colCancel.HeaderText = "X";
+            this.colCancel.MinimumWidth = 6;
+            this.colCancel.Name = "colCancel";
+            this.colCancel.ReadOnly = true;
+            this.colCancel.Text = "X";
+            this.colCancel.UseColumnTextForButtonValue = true;
+            this.colCancel.Width = 30;
+            // 
+            // colNote
+            // 
+            this.colNote.HeaderText = "Ghi chú";
+            this.colNote.MinimumWidth = 6;
+            this.colNote.Name = "colNote";
+            this.colNote.ReadOnly = true;
+            this.colNote.Visible = false;
+            // 
             // OrderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -815,5 +902,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colTotal;
         private System.Windows.Forms.DataGridViewButtonColumn colDecrease;
         private System.Windows.Forms.DataGridViewButtonColumn colCancel;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colNote;
     }
 }

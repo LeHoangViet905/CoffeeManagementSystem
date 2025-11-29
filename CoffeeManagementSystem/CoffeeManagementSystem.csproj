@@ -228,6 +228,7 @@
     <Compile Include="bll\OrderBLL.cs" />
     <Compile Include="bll\PaymentBLL.cs" />
     <Compile Include="bll\ReportBLL.cs" />
+    <Compile Include="bll\TuyChonBLL.cs" />
     <Compile Include="Customer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -257,6 +258,18 @@
     </Compile>
     <Compile Include="DangNhapForm.Designer.cs">
       <DependentUpon>DangNhapForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NoteForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NoteForm.Designer.cs">
+      <DependentUpon>NoteForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OptionManagerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OptionManagerForm.Designer.cs">
+      <DependentUpon>OptionManagerForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Trangchu.cs">
       <SubType>Form</SubType>
@@ -335,6 +348,7 @@
     <Compile Include="Report.Designer.cs">
       <DependentUpon>Report.cs</DependentUpon>
     </Compile>
+    <Compile Include="TuyChonDAL.cs" />
     <Compile Include="ucProductItem.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -359,6 +373,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DangNhapForm.resx">
       <DependentUpon>DangNhapForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NoteForm.resx">
+      <DependentUpon>NoteForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OptionManagerForm.resx">
+      <DependentUpon>OptionManagerForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Trangchu.resx">
       <DependentUpon>Trangchu.cs</DependentUpon>
