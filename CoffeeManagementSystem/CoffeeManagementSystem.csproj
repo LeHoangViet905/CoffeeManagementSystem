@@ -525,11 +525,13 @@
     <None Include="Resources\Thiết kế chưa có tên %2811%29.png" />
     <None Include="Resources\Thiết kế chưa có tên %2812%29.png" />
     <None Include="Resources\Thiết kế chưa có tên %2813%29 1.png" />
+    <None Include="Resources\Thiết kế chưa có tên %2815%29.png" />
     <Content Include="Resources\tiramisu.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Resources\qrcode.png" />
     <None Include="Resources\Thêm tiêu đề.png" />
+    <None Include="Resources\tl.png" />
     <Content Include="Resources\TrangChu.png" />
     <None Include="Resources\TrangChu1.png" />
     <Content Include="Resources\trash-bin.png">
