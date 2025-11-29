@@ -869,6 +869,8 @@
             this.Bieudotron.Padding = new System.Windows.Forms.Padding(5);
             this.Bieudotron.Size = new System.Drawing.Size(987, 922);
             this.Bieudotron.TabIndex = 10;
+            this.Bieudotron.Text = "Biểu đồ tròn tỷ trọng đóng góp từng loại đồ uống ";
+            this.Bieudotron.Click += new System.EventHandler(this.Bieudotron_Click);
             // 
             // tableLayoutPanelRight
             // 
@@ -907,6 +909,8 @@
             // panelRevenueBox
             // 
             this.panelRevenueBox.BorderRadius = 10;
+            this.panelRevenueBox.Controls.Add(this.lblDashRevenue);
+            this.panelRevenueBox.Controls.Add(this.lblDashRevenueTitle);
             this.panelRevenueBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelRevenueBox.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.panelRevenueBox.Location = new System.Drawing.Point(10, 10);
@@ -914,19 +918,6 @@
             this.panelRevenueBox.Name = "panelRevenueBox";
             this.panelRevenueBox.Size = new System.Drawing.Size(305, 120);
             this.panelRevenueBox.TabIndex = 0;
-            // 
-            // lblDashRevenueTitle
-            // 
-            this.lblDashRevenueTitle.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblDashRevenueTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F,
-                ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
-            this.lblDashRevenueTitle.ForeColor = System.Drawing.Color.White;
-            this.lblDashRevenueTitle.Location = new System.Drawing.Point(0, 0);
-            this.lblDashRevenueTitle.Name = "lblDashRevenueTitle";
-            this.lblDashRevenueTitle.Size = new System.Drawing.Size(305, 40);
-            this.lblDashRevenueTitle.TabIndex = 0;
-            this.lblDashRevenueTitle.Text = "Tổng doanh thu:";
-            this.lblDashRevenueTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblDashRevenue
             // 
@@ -941,14 +932,24 @@
             this.lblDashRevenue.TabIndex = 4;
             this.lblDashRevenue.Text = "0 VND";
             this.lblDashRevenue.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            // add controls vào panel
-            this.panelRevenueBox.Controls.Add(this.lblDashRevenue);
-            this.panelRevenueBox.Controls.Add(this.lblDashRevenueTitle);
-
-            //
+            // 
+            // lblDashRevenueTitle
+            // 
+            this.lblDashRevenueTitle.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblDashRevenueTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.lblDashRevenueTitle.ForeColor = System.Drawing.Color.White;
+            this.lblDashRevenueTitle.Location = new System.Drawing.Point(0, 0);
+            this.lblDashRevenueTitle.Name = "lblDashRevenueTitle";
+            this.lblDashRevenueTitle.Size = new System.Drawing.Size(305, 40);
+            this.lblDashRevenueTitle.TabIndex = 0;
+            this.lblDashRevenueTitle.Text = "Tổng doanh thu:";
+            this.lblDashRevenueTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // panelTotalOrdersBox
-            //
+            // 
             this.panelTotalOrdersBox.BorderRadius = 10;
+            this.panelTotalOrdersBox.Controls.Add(this.lblDashTotalOrders);
+            this.panelTotalOrdersBox.Controls.Add(this.lblDashTotalOrdersTitle);
             this.panelTotalOrdersBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelTotalOrdersBox.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.panelTotalOrdersBox.Location = new System.Drawing.Point(335, 10);
@@ -956,19 +957,6 @@
             this.panelTotalOrdersBox.Name = "panelTotalOrdersBox";
             this.panelTotalOrdersBox.Size = new System.Drawing.Size(305, 120);
             this.panelTotalOrdersBox.TabIndex = 1;
-            // 
-            // lblDashTotalOrdersTitle
-            // 
-            this.lblDashTotalOrdersTitle.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblDashTotalOrdersTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F,
-                ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
-            this.lblDashTotalOrdersTitle.ForeColor = System.Drawing.Color.White;
-            this.lblDashTotalOrdersTitle.Location = new System.Drawing.Point(0, 0);
-            this.lblDashTotalOrdersTitle.Name = "lblDashTotalOrdersTitle";
-            this.lblDashTotalOrdersTitle.Size = new System.Drawing.Size(305, 40);
-            this.lblDashTotalOrdersTitle.TabIndex = 0;
-            this.lblDashTotalOrdersTitle.Text = "Tổng số đơn:";
-            this.lblDashTotalOrdersTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblDashTotalOrders
             // 
@@ -983,14 +971,24 @@
             this.lblDashTotalOrders.TabIndex = 5;
             this.lblDashTotalOrders.Text = "0 đơn";
             this.lblDashTotalOrders.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            // add controls
-            this.panelTotalOrdersBox.Controls.Add(this.lblDashTotalOrders);
-            this.panelTotalOrdersBox.Controls.Add(this.lblDashTotalOrdersTitle);
-
-            //
+            // 
+            // lblDashTotalOrdersTitle
+            // 
+            this.lblDashTotalOrdersTitle.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblDashTotalOrdersTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.lblDashTotalOrdersTitle.ForeColor = System.Drawing.Color.White;
+            this.lblDashTotalOrdersTitle.Location = new System.Drawing.Point(0, 0);
+            this.lblDashTotalOrdersTitle.Name = "lblDashTotalOrdersTitle";
+            this.lblDashTotalOrdersTitle.Size = new System.Drawing.Size(305, 40);
+            this.lblDashTotalOrdersTitle.TabIndex = 0;
+            this.lblDashTotalOrdersTitle.Text = "Tổng số đơn:";
+            this.lblDashTotalOrdersTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // panelAOVBox
-            //
+            // 
             this.panelAOVBox.BorderRadius = 10;
+            this.panelAOVBox.Controls.Add(this.lblDashAOV);
+            this.panelAOVBox.Controls.Add(this.lblDashAOVTitle);
             this.panelAOVBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelAOVBox.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.panelAOVBox.Location = new System.Drawing.Point(660, 10);
@@ -998,37 +996,6 @@
             this.panelAOVBox.Name = "panelAOVBox";
             this.panelAOVBox.Size = new System.Drawing.Size(307, 120);
             this.panelAOVBox.TabIndex = 2;
-            // 
-            // lblDashAOVTitle
-            // 
-            this.lblDashAOVTitle.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblDashAOVTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F,
-                ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
-            this.lblDashAOVTitle.ForeColor = System.Drawing.Color.White;
-            this.lblDashAOVTitle.Location = new System.Drawing.Point(0, 0);
-            this.lblDashAOVTitle.Name = "lblDashAOVTitle";
-            this.lblDashAOVTitle.Size = new System.Drawing.Size(307, 40);
-            this.lblDashAOVTitle.TabIndex = 0;
-            this.lblDashAOVTitle.Text = "Giá trị đơn hàng trung bình:";
-            this.lblDashAOVTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblDashAOV
-            // 
-            this.lblDashAOV.AutoSize = false;
-            this.lblDashAOV.BackColor = System.Drawing.Color.Transparent;
-            this.lblDashAOV.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblDashAOV.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold);
-            this.lblDashAOV.ForeColor = System.Drawing.Color.White;
-            this.lblDashAOV.Location = new System.Drawing.Point(0, 40);
-            this.lblDashAOV.Name = "lblDashAOV";
-            this.lblDashAOV.Size = new System.Drawing.Size(307, 80);
-            this.lblDashAOV.TabIndex = 6;
-            this.lblDashAOV.Text = "0 VND";
-            this.lblDashAOV.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            // add controls
-            this.panelAOVBox.Controls.Add(this.lblDashAOV);
-            this.panelAOVBox.Controls.Add(this.lblDashAOVTitle);
-
             // 
             // lblDashAOV
             // 
@@ -1059,9 +1026,10 @@
             // formsPlotPie
             // 
             this.formsPlotPie.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.formsPlotPie.Location = new System.Drawing.Point(3, 143);
+            this.formsPlotPie.Location = new System.Drawing.Point(5, 144);
+            this.formsPlotPie.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.formsPlotPie.Name = "formsPlotPie";
-            this.formsPlotPie.Size = new System.Drawing.Size(971, 726);
+            this.formsPlotPie.Size = new System.Drawing.Size(967, 724);
             this.formsPlotPie.TabIndex = 9;
             this.formsPlotPie.Load += new System.EventHandler(this.formsPlotPie_Load);
             // 
