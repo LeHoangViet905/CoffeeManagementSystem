@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Guna.UI2.WinForms;
+using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace CoffeeManagementSystem
@@ -61,23 +63,6 @@ namespace CoffeeManagementSystem
         {
 
         }
-
-        private void add1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void guna2GradientPanel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void btnTrangChu_Click(object sender, EventArgs e)
-        {
-            PlayClickSound();
-            LoadFormCon(new DashboardForm());
-        }
-
         private void btnKhachHang_Click(object sender, EventArgs e)
         {
             PlayClickSound();
@@ -114,26 +99,7 @@ namespace CoffeeManagementSystem
             LoadFormCon(new ReportForm());
         }
 
-        private void btnSalary_Click(object sender, EventArgs e)
-        {
-            PlayClickSound();
-        }
-
-        private void lblQuanLy_Click(object sender, EventArgs e)
-        {
-            PlayClickSound();
-        }
-
-        private void panelMain_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void guna2GradientPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
+      
         private void lblName_Click(object sender, EventArgs e)
         {
             PlayClickSound();
@@ -159,6 +125,5 @@ namespace CoffeeManagementSystem
             loginForm.Show();
             this.Close();
         }
-
     }
 }
