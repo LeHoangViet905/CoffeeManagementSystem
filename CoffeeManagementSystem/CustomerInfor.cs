@@ -1,6 +1,7 @@
 ﻿using CoffeeManagementSystem.BLL;
 using CoffeeManagementSystem.DAL;
 using System;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace CoffeeManagementSystem
@@ -112,7 +113,7 @@ namespace CoffeeManagementSystem
 
             if (!khBLL.IsValidPhone(txtSDT.Text))
             {
-                MessageBox.Show("Số điện thoại chỉ chứa số và phải từ 8-12 ký tự!",
+                MessageBox.Show("Số điện thoại chỉ chứa số và phải 10 ký tự!",
                                 "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
@@ -160,7 +161,7 @@ namespace CoffeeManagementSystem
 
             if (!khBLL.IsValidPhone(txtSDT.Text))
             {
-                MessageBox.Show("Số điện thoại chỉ chứa số và phải từ 8-12 ký tự!",
+                MessageBox.Show("Số điện thoại chỉ chứa số và phải 10 ký tự!",
                                 "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
@@ -231,6 +232,30 @@ namespace CoffeeManagementSystem
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+        public bool IsValidEmail(string email)
+        {
+            if (string.IsNullOrWhiteSpace(email))
+                return false;
+
+            try
+            {
+                // Regex chuẩn RFC 5322 đơn giản
+                string pattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
+                return Regex.IsMatch(email.Trim(), pattern, RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250));
+            }
+            catch (RegexMatchTimeoutException)
+            {
+                return false;
+            }
+        }
+        public bool IsValidPhone(string phone)
+        {
+            if (string.IsNullOrWhiteSpace(phone))
+                return false;
+
+            string pattern = @"^\d{10}$";
+            return Regex.IsMatch(phone.Trim(), pattern);
         }
     }
 }
