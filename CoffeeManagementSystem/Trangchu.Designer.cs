@@ -35,12 +35,14 @@ namespace CoffeeManagementSystem
             this.panelQuote = new System.Windows.Forms.Panel();
             this.panelFooter = new System.Windows.Forms.Panel();
             this.pictureUEH = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureRectangle20 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.chartHour)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.panelQuote.SuspendLayout();
             this.panelFooter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureUEH)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureRectangle20)).BeginInit();
             this.SuspendLayout();
             // 
@@ -53,7 +55,7 @@ namespace CoffeeManagementSystem
             this.chartHour.Dock = System.Windows.Forms.DockStyle.Fill;
             legend1.Name = "Legend1";
             this.chartHour.Legends.Add(legend1);
-            this.chartHour.Location = new System.Drawing.Point(20, 591);
+            this.chartHour.Location = new System.Drawing.Point(20, 580);
             this.chartHour.Margin = new System.Windows.Forms.Padding(20, 10, 10, 20);
             this.chartHour.Name = "chartHour";
             this.chartHour.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Pastel;
@@ -61,7 +63,7 @@ namespace CoffeeManagementSystem
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             this.chartHour.Series.Add(series1);
-            this.chartHour.Size = new System.Drawing.Size(1138, 446);
+            this.chartHour.Size = new System.Drawing.Size(1138, 436);
             this.chartHour.TabIndex = 11;
             this.chartHour.Text = "chart1";
             this.chartHour.Click += new System.EventHandler(this.chartHour_Click);
@@ -77,10 +79,10 @@ namespace CoffeeManagementSystem
             // 
             this.formsPlotPieNgay.BackColor = System.Drawing.Color.White;
             this.formsPlotPieNgay.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.formsPlotPieNgay.Location = new System.Drawing.Point(1178, 591);
+            this.formsPlotPieNgay.Location = new System.Drawing.Point(1178, 580);
             this.formsPlotPieNgay.Margin = new System.Windows.Forms.Padding(10, 10, 20, 20);
             this.formsPlotPieNgay.Name = "formsPlotPieNgay";
-            this.formsPlotPieNgay.Size = new System.Drawing.Size(600, 446);
+            this.formsPlotPieNgay.Size = new System.Drawing.Size(600, 436);
             this.formsPlotPieNgay.TabIndex = 7;
             this.formsPlotPieNgay.Load += new System.EventHandler(this.formsPlotPieNgay_Load);
             // 
@@ -115,7 +117,7 @@ namespace CoffeeManagementSystem
             this.lblQuote.Location = new System.Drawing.Point(0, 70);
             this.lblQuote.Name = "lblQuote";
             this.lblQuote.Padding = new System.Windows.Forms.Padding(20, 10, 20, 10);
-            this.lblQuote.Size = new System.Drawing.Size(1136, 336);
+            this.lblQuote.Size = new System.Drawing.Size(1136, 325);
             this.lblQuote.TabIndex = 0;
             this.lblQuote.Text = resources.GetString("lblQuote.Text");
             // 
@@ -139,15 +141,17 @@ namespace CoffeeManagementSystem
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 65F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
             this.tableLayoutPanel1.Controls.Add(this.panelQuote, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.pictureRectangle20, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.chartHour, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.formsPlotPieNgay, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.pictureBox1, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.pictureRectangle20, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 55F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1798, 1057);
             this.tableLayoutPanel1.TabIndex = 12;
             // 
@@ -162,7 +166,7 @@ namespace CoffeeManagementSystem
             this.panelQuote.Location = new System.Drawing.Point(20, 20);
             this.panelQuote.Margin = new System.Windows.Forms.Padding(20, 20, 10, 10);
             this.panelQuote.Name = "panelQuote";
-            this.panelQuote.Size = new System.Drawing.Size(1138, 551);
+            this.panelQuote.Size = new System.Drawing.Size(1138, 540);
             this.panelQuote.TabIndex = 0;
             // 
             // panelFooter
@@ -171,7 +175,7 @@ namespace CoffeeManagementSystem
             this.panelFooter.Controls.Add(this.pictureUEH);
             this.panelFooter.Controls.Add(this.dtpNgay);
             this.panelFooter.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelFooter.Location = new System.Drawing.Point(0, 406);
+            this.panelFooter.Location = new System.Drawing.Point(0, 395);
             this.panelFooter.Name = "panelFooter";
             this.panelFooter.Padding = new System.Windows.Forms.Padding(20, 5, 20, 10);
             this.panelFooter.Size = new System.Drawing.Size(1136, 143);
@@ -188,14 +192,21 @@ namespace CoffeeManagementSystem
             this.pictureUEH.TabIndex = 0;
             this.pictureUEH.TabStop = false;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(3, 1039);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(100, 15);
+            this.pictureBox1.TabIndex = 12;
+            this.pictureBox1.TabStop = false;
+            // 
             // pictureRectangle20
             // 
-            this.pictureRectangle20.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureRectangle20.Image = global::CoffeeManagementSystem.Properties.Resources.Rectangle_20;
             this.pictureRectangle20.Location = new System.Drawing.Point(1178, 20);
             this.pictureRectangle20.Margin = new System.Windows.Forms.Padding(10, 20, 20, 10);
             this.pictureRectangle20.Name = "pictureRectangle20";
-            this.pictureRectangle20.Size = new System.Drawing.Size(600, 551);
+            this.pictureRectangle20.Size = new System.Drawing.Size(600, 540);
             this.pictureRectangle20.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureRectangle20.TabIndex = 1;
             this.pictureRectangle20.TabStop = false;
@@ -217,6 +228,7 @@ namespace CoffeeManagementSystem
             this.panelQuote.ResumeLayout(false);
             this.panelFooter.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureUEH)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureRectangle20)).EndInit();
             this.ResumeLayout(false);
 
@@ -241,6 +253,6 @@ namespace CoffeeManagementSystem
         private System.Windows.Forms.Panel panelFooter;
         private System.Windows.Forms.PictureBox pictureUEH;
         private System.Windows.Forms.PictureBox pictureRectangle20;
-
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
