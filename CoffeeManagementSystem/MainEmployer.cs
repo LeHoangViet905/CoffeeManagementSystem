@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Guna.UI2.WinForms;
+using System;
 using System.Windows.Forms;
 
 namespace CoffeeManagementSystem
@@ -9,23 +10,24 @@ namespace CoffeeManagementSystem
         private string _maNhanVienHienTai;
         private string _tenNhanVienHienTai;
 
-        // Constructor mặc định (đã có sẵn)
+        // Constructor mặc định (dùng cho Designer)
         public MainEmployer()
         {
             InitializeComponent();
-            LoadFormCon(new DashboardForm());
+
+            // Mặc định mở màn hình Đặt đồ uống
+            LoadFormCon(new OrderForm());
         }
 
-        // Constructor MỚI để nhận thông tin nhân viên từ DangNhapForm
+        // Constructor nhận thông tin nhân viên từ DangNhapForm
         public MainEmployer(string maNhanVien, string tenNhanVien) : this()
         {
             _loggedInMaNhanVien = maNhanVien;
             _maNhanVienHienTai = maNhanVien;
             _tenNhanVienHienTai = tenNhanVien;
+
             if (lblName != null)
-            {
                 lblName.Text = tenNhanVien;
-            }
         }
 
         private void LoadFormCon(Form formCon)
@@ -43,18 +45,26 @@ namespace CoffeeManagementSystem
             formCon.Show();
         }
 
-        private void MainForm_Load(object sender, EventArgs e) // Tên method nên là MainEmployer_Load để đúng với tên Form
+        // Sự kiện Load khớp với Designer
+        private void MainEmployer_Load(object sender, EventArgs e)
         {
+            // hiện tại chưa cần làm gì thêm
         }
 
-        private void add1_Load(object sender, EventArgs e)
+        private void btnOrder_Click(object sender, EventArgs e)
         {
+            MainForm.PlayClickSound();
 
-        }
-
-        private void guna2GradientPanel2_Paint(object sender, PaintEventArgs e)
-        {
-
+            // Nếu đã có thông tin nhân viên thì truyền vào OrderForm
+            if (!string.IsNullOrEmpty(_maNhanVienHienTai) &&
+                !string.IsNullOrEmpty(_tenNhanVienHienTai))
+            {
+                LoadFormCon(new OrderForm(_maNhanVienHienTai, _tenNhanVienHienTai));
+            }
+            else
+            {
+                LoadFormCon(new OrderForm());
+            }
         }
 
         private void btnKhachHang_Click(object sender, EventArgs e)
@@ -63,72 +73,50 @@ namespace CoffeeManagementSystem
             LoadFormCon(new CustomerForm());
         }
 
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            MainForm.PlayClickSound();
-            this.Close();
-        }
-
-        private void btnOrder_Click(object sender, EventArgs e)
-        {
-            MainForm.PlayClickSound();
-            // Tạo OrderForm và truyền mã nhân viên, tên nhân viên
-            OrderForm orderForm = new OrderForm(_maNhanVienHienTai, _tenNhanVienHienTai);
-            LoadFormCon(orderForm);
-        }
-
-        private void lblNhanVien_Click(object sender, EventArgs e)
-        {
-            MainForm.PlayClickSound();
-            // Xử lý sự kiện click cho label nhân viên
-        }
-
-        private void panelMain_Paint(object sender, PaintEventArgs e)
-        {
-            // Sự kiện vẽ cho panelMain
-        }
-
-        private void guna2GradientPanel1_Paint(object sender, PaintEventArgs e)
-        {
-            // Sự kiện vẽ cho guna2GradientPanel1
-        }
-
-        private void lblName_Click(object sender, EventArgs e)
-        {
-            MainForm.PlayClickSound();
-            // Xử lý sự kiện click cho label tên (có thể là tên nhân viên)
-        }
-
-        private void btnQuanLyTaiKhoan_Click(object sender, EventArgs e)
-        {
-            MainForm.PlayClickSound();
-            //LoadFormCon(new Account()); // Uncomment nếu bạn có Form Account
-        }
-
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-            // Sự kiện vẽ cho panel2
-        }
-
-        private void btnDangXuat_Click(object sender, EventArgs e)
-        {
-            MainForm.PlayClickSound();
-            this.Hide();
-
-            // 2. Tạo một thể hiện mới của DangNhapForm
-            DangNhapForm loginForm = new DangNhapForm();
-
-            // 3. Hiển thị DangNhapForm
-            loginForm.Show();
-            this.Close();
-        }
-
         private void btnTaiKhoan_Click(object sender, EventArgs e)
         {
             MainForm.PlayClickSound();
             LoadFormCon(new Infor(_loggedInMaNhanVien));
         }
 
+        private void btnDangXuat_Click(object sender, EventArgs e)
+        {
+            MainForm.PlayClickSound();
 
+            this.Hide();
+            DangNhapForm loginForm = new DangNhapForm();
+            loginForm.Show();
+            this.Close();
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            MainForm.PlayClickSound();
+            this.Close();
+        }
+
+        private void lblNhanVien_Click(object sender, EventArgs e)
+        {
+            MainForm.PlayClickSound();
+            // Nếu sau này muốn mở form thông tin nhân viên thì xử lý thêm ở đây
+        }
+
+        private void btnLichSuDonHang_Click_1(object sender, EventArgs e)
+        {
+            MainForm.PlayClickSound();
+
+            Form frm;
+            if (!string.IsNullOrEmpty(_maNhanVienHienTai) &&
+                !string.IsNullOrEmpty(_tenNhanVienHienTai))
+            {
+                frm = new OrderHistoryForm(_maNhanVienHienTai, _tenNhanVienHienTai);
+            }
+            else
+            {
+                frm = new OrderHistoryForm();
+            }
+
+            LoadFormCon(frm);
+        }
     }
 }

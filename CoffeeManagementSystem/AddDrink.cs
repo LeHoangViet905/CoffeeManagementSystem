@@ -32,6 +32,9 @@ namespace CoffeeManagementSystem
             txtMadouong.Text = _douongBLL.GenerateNextMaDU();
             txtMadouong.Enabled = false;
             LoadLoaiDouongComboBox();
+            cbLoaiDouong.SelectedIndex = 0;   // CHỌN MỤC ĐẦU TIÊN
+            cbLoaiDouong.SelectedIndexChanged += cbLoaiDouong_SelectedIndexChanged;
+
 
             // Gán sự kiện cho các nút
             btnLuu.Click += btnLuu_Click;
@@ -56,6 +59,9 @@ namespace CoffeeManagementSystem
             this.Text = "Chi Tiết Đồ Uống";
             txtMadouong.Enabled = false;
             LoadLoaiDouongComboBox();
+            cbLoaiDouong.SelectedIndex = 0;
+            cbLoaiDouong.SelectedIndexChanged += cbLoaiDouong_SelectedIndexChanged;
+
 
             // Gán sự kiện cho các nút
             btnLuu.Click += btnLuu_Click;
@@ -63,12 +69,156 @@ namespace CoffeeManagementSystem
             btnXoa.Click += btnXoa_Click;
             btnSelectImage.Click += btnSelectImage_Click;
             button1.Click += button1_Click; // Nút Hủy/Đóng
+            pbHinhanh.Image = null;
+            _selectedImagePath = "";
+            SetButtonState(true, false, false);
+            // Gán sự kiện cho các nút
+            btnLuu.Click += btnLuu_Click;
+            btnCapNhat.Click += btnCapNhat_Click;
+            btnXoa.Click += btnXoa_Click;
+            btnSelectImage.Click += btnSelectImage_Click;
+            button1.Click += button1_Click; // Nút Hủy/Đóng
+
 
             LoadDouongDetails(madouong);
 
             // Đặt trạng thái nút ban đầu cho chế độ chỉnh sửa
             SetButtonState(false, true, true);
         }
+        private void cbLoaiDouong_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // 1. Chỉ chạy khi đang Thêm Mới. Nếu chưa chọn gì thì thoát.
+            if (cbLoaiDouong.SelectedItem == null) return;
+            try
+            {
+                // --- Lấy thông tin loại được chọn ---
+                dynamic selectedItem = cbLoaiDouong.SelectedItem;
+                string tenLoai = selectedItem.Tenloai;
+                string tenLoaiLower = tenLoai.ToLower();
+
+                // --- PHẦN 1: Tự động sinh Mã Đồ Uống ---
+                txtMadouong.Text = GenerateNextMadouong();
+
+                // --- PHẦN 2: Thiết lập dữ liệu gợi ý ---
+                string suggestName = "";
+                string suggestDesc = "";
+                decimal suggestPrice = 0;
+
+                // Logic gợi ý (Giữ nguyên như cũ)
+                if (tenLoaiLower.Contains("cà phê"))
+                {
+                    suggestName = "Cà Phê Sữa Đá";
+                    suggestPrice = 29000;
+                    suggestDesc = "Hương vị cà phê đậm đà quyện cùng sữa đặc ngọt ngào.";
+                }
+                else if (tenLoaiLower.Contains("trà"))
+                {
+                    suggestName = "Trà Đào Cam Sả";
+                    suggestPrice = 35000;
+                    suggestDesc = "Vị thanh mát của trà kết hợp đào giòn và hương sả.";
+                }
+                else if (tenLoaiLower.Contains("nước ép"))
+                {
+                    suggestName = "Nước Ép Cam Tươi";
+                    suggestPrice = 40000;
+                    suggestDesc = "100% cam tươi nguyên chất, bổ sung vitamin C.";
+                }
+                else if (tenLoaiLower.Contains("đá xay"))
+                {
+                    suggestName = "Matcha Đá Xay";
+                    suggestPrice = 45000;
+                    suggestDesc = "Bột matcha Nhật Bản xay nhuyễn cùng đá và kem tươi.";
+                }
+                else if (tenLoaiLower.Contains("bánh"))
+                {
+                    suggestName = "Bánh Tiramisu";
+                    suggestPrice = 35000;
+                    suggestDesc = "Bánh mềm mịn với lớp kem phô mai béo ngậy.";
+                }
+                else if (tenLoaiLower.Contains("sinh tố"))
+                {
+                    suggestName = "Sinh Tố Bơ";
+                    suggestPrice = 42000;
+                    suggestDesc = "Bơ sáp dẻo mịn xay cùng sữa đặc béo ngậy.";
+                }
+                else if (tenLoaiLower.Contains("sữa chua") || tenLoaiLower.Contains("smoothies"))
+                {
+                    suggestName = "Sữa Chua Trái Cây";
+                    suggestPrice = 42000;
+                    suggestDesc = "Sữa chua lên men tự nhiên kết hợp trái cây tươi.";
+                }
+                else if (tenLoaiLower.Contains("đặc biệt"))
+                {
+                    suggestName = "Signature Coffee";
+                    suggestPrice = 55000;
+                    suggestDesc = "Công thức độc quyền chỉ có tại quán.";
+                }
+                else if (tenLoaiLower.Contains("giải khát"))
+                {
+                    suggestName = "Coca Cola";
+                    suggestPrice = 20000;
+                    suggestDesc = "Nước ngọt có gas giải khát tức thì.";
+                }
+                else if (tenLoaiLower.Contains("thực phẩm") || tenLoaiLower.Contains("nhẹ"))
+                {
+                    suggestName = "Khô Gà Lá Chanh";
+                    suggestPrice = 25000;
+                    suggestDesc = "Món ăn vặt giòn tan, vị cay nhẹ hương lá chanh.";
+                }
+                else
+                {
+                    suggestName = tenLoai + " Mới";
+                    suggestPrice = 30000;
+                    suggestDesc = "Mô tả đang cập nhật...";
+                }
+
+                // --- PHẦN QUAN TRỌNG NHẤT: GÁN DỮ LIỆU (XÓA ĐIỀU KIỆN IF) ---
+
+                // 1. Luôn cập nhật Giá
+                txtGiaBan.Text = suggestPrice.ToString("N0");
+
+                // 2. Luôn cập nhật Tên (Đè lên tên cũ bất kể có chữ hay chưa)
+                txtTendouong.Text = suggestName;
+
+                // 3. Luôn cập nhật Mô tả (Đè lên mô tả cũ)
+                txtMota.Text = suggestDesc;
+            }
+            catch (Exception)
+            {
+                // Bỏ qua lỗi
+            }
+        }
+        private string GenerateNextMadouong()
+        {
+            string prefix = "DU";
+            try
+            {
+                // Lấy danh sách đồ uống hiện có từ BLL
+                List<Douong> allDrinks = _douongBLL.GetAllDouongs();
+
+                if (allDrinks == null || allDrinks.Count == 0) return prefix + "001";
+
+                int maxNumber = 0;
+                foreach (var drink in allDrinks)
+                {
+                    if (drink.Madouong.StartsWith(prefix))
+                    {
+                        string numberPart = drink.Madouong.Substring(prefix.Length);
+                        if (int.TryParse(numberPart, out int number))
+                        {
+                            if (number > maxNumber) maxNumber = number;
+                        }
+                    }
+                }
+                return prefix + (maxNumber + 1).ToString("D3");
+            }
+            catch
+            {
+                return prefix + new Random().Next(100, 999).ToString();
+            }
+        }
+
+
 
         /// <summary>
         /// Tải danh sách loại đồ uống vào ComboBox.
@@ -110,11 +260,19 @@ namespace CoffeeManagementSystem
                     txtGiaBan.Text = _currentDouong.CurrentGia.ToString();
 
                     txtMota.Text = _currentDouong.Mota;
-
-                    if (!string.IsNullOrEmpty(_currentDouong.Hinhanh) && File.Exists(_currentDouong.Hinhanh))
+                    if (!string.IsNullOrEmpty(_currentDouong.Hinhanh))
                     {
-                        pbHinhanh.ImageLocation = _currentDouong.Hinhanh;
-                        _selectedImagePath = _currentDouong.Hinhanh;
+                        string fullPath = Path.Combine(ImageConfig.DrinkImageFolder, _currentDouong.Hinhanh);
+                        if (File.Exists(fullPath))
+                        {
+                            pbHinhanh.ImageLocation = fullPath;
+                            _selectedImagePath = _currentDouong.Hinhanh; // tên file
+                        }
+                        else
+                        {
+                            pbHinhanh.Image = null;
+                            _selectedImagePath = "";
+                        }
                     }
                     else
                     {
@@ -141,14 +299,31 @@ namespace CoffeeManagementSystem
         private void btnSelectImage_Click(object sender, EventArgs e)
         {
             MainForm.PlayClickSound();
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.gif;*.bmp|All Files|*.*";
-            openFileDialog.Title = "Chọn ảnh đồ uống";
-
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
-                _selectedImagePath = openFileDialog.FileName;
-                pbHinhanh.ImageLocation = _selectedImagePath;
+                openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.gif;*.bmp|All Files|*.*";
+                openFileDialog.Title = "Chọn ảnh đồ uống";
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string sourcePath = openFileDialog.FileName;
+                    string ext = Path.GetExtension(sourcePath);
+
+                    // Đặt tên file theo mã đồ uống cho dễ quản lý
+                    string fileName = txtMadouong.Text.Trim() + ext;
+
+                    // Đường dẫn đích trong thư mục Resources chung
+                    string destPath = Path.Combine(ImageConfig.DrinkImageFolder, fileName);
+
+                    // Copy ảnh vào thư mục Resources (ghi đè nếu đã có)
+                    File.Copy(sourcePath, destPath, true);
+
+                    // CHỈ LƯU TÊN FILE vào DB (rất quan trọng)
+                    _selectedImagePath = fileName;
+
+                    // Hiển thị lên PictureBox
+                    pbHinhanh.ImageLocation = destPath;
+                }
             }
         }
 
@@ -237,8 +412,9 @@ namespace CoffeeManagementSystem
                     Tendouong = txtTendouong.Text.Trim(),
                     Maloai = cbLoaiDouong.SelectedValue.ToString(),
                     Mota = txtMota.Text.Trim(),
-                    Hinhanh = _selectedImagePath
+                    Hinhanh = _selectedImagePath   // chỉ còn là tên file, ví dụ "DU001.jpg"
                 };
+
 
                 // Gọi DouongBLL để thêm đồ uống
                 _douongBLL.AddDouong(newDouong);
@@ -300,7 +476,7 @@ namespace CoffeeManagementSystem
             _currentDouong.Tendouong = txtTendouong.Text.Trim();
             _currentDouong.Maloai = cbLoaiDouong.SelectedValue.ToString();
             _currentDouong.Mota = txtMota.Text.Trim();
-            _currentDouong.Hinhanh = _selectedImagePath;
+            _currentDouong.Hinhanh = _selectedImagePath; // tên file
 
             try
             {
@@ -396,6 +572,21 @@ namespace CoffeeManagementSystem
         private void btnLuu_Click_1(object sender, EventArgs e)
         {
             MainForm.PlayClickSound();
+        }
+        public static class ImageConfig
+        {
+            // Thư mục ảnh dùng chung cho đồ uống
+            public static readonly string DrinkImageFolder =
+                Path.Combine(Application.StartupPath, "Resources");
+
+            static ImageConfig()
+            {
+                // Đảm bảo thư mục tồn tại
+                if (!Directory.Exists(DrinkImageFolder))
+                {
+                    Directory.CreateDirectory(DrinkImageFolder);
+                }
+            }
         }
     }
 }

@@ -42,7 +42,6 @@
             this.guna2CirclePictureBox1 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             this.btnEmployer = new Guna.UI2.WinForms.Guna2GradientButton();
             this.btnMenu = new Guna.UI2.WinForms.Guna2GradientButton();
-            this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
             this.pnlTitleBar = new Guna.UI2.WinForms.Guna2Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.guna2ControlBox3 = new Guna.UI2.WinForms.Guna2ControlBox();
@@ -60,9 +59,9 @@
             // lblName
             // 
             this.lblName.BackColor = System.Drawing.Color.Transparent;
-            this.lblName.Font = new System.Drawing.Font("SVN-Gilroy SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblName.ForeColor = System.Drawing.Color.White;
-            this.lblName.Location = new System.Drawing.Point(11, 120);
+            this.lblName.Location = new System.Drawing.Point(5, 120);
             this.lblName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(156, 68);
@@ -75,16 +74,15 @@
             // 
             this.lblQuanLy.AutoSize = true;
             this.lblQuanLy.BackColor = System.Drawing.Color.Transparent;
-            this.lblQuanLy.Font = new System.Drawing.Font("SVN-Gilroy", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblQuanLy.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblQuanLy.ForeColor = System.Drawing.Color.White;
-            this.lblQuanLy.Location = new System.Drawing.Point(62, 100);
+            this.lblQuanLy.Location = new System.Drawing.Point(49, 102);
             this.lblQuanLy.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblQuanLy.Name = "lblQuanLy";
-            this.lblQuanLy.Size = new System.Drawing.Size(62, 20);
+            this.lblQuanLy.Size = new System.Drawing.Size(58, 18);
             this.lblQuanLy.TabIndex = 17;
             this.lblQuanLy.Text = "Quản lý";
             this.lblQuanLy.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblQuanLy.Click += new System.EventHandler(this.lblQuanLy_Click);
             // 
             // panelMain
             // 
@@ -93,9 +91,8 @@
             this.panelMain.Location = new System.Drawing.Point(0, 0);
             this.panelMain.Margin = new System.Windows.Forms.Padding(0);
             this.panelMain.Name = "panelMain";
-            this.panelMain.Size = new System.Drawing.Size(1520, 881);
+            this.panelMain.Size = new System.Drawing.Size(1458, 881);
             this.panelMain.TabIndex = 19;
-            this.panelMain.Paint += new System.Windows.Forms.PaintEventHandler(this.panelMain_Paint);
             // 
             // splitContainerNavBar
             // 
@@ -106,7 +103,7 @@
             // 
             // splitContainerNavBar.Panel1
             // 
-            this.splitContainerNavBar.Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(167)))), ((int)(((byte)(167)))));
+            this.splitContainerNavBar.Panel1.BackColor = System.Drawing.Color.Firebrick;
             this.splitContainerNavBar.Panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.splitContainerNavBar.Panel1.Controls.Add(this.btnLogout);
             this.splitContainerNavBar.Panel1.Controls.Add(this.btnTaiKhoan);
@@ -122,8 +119,8 @@
             // splitContainerNavBar.Panel2
             // 
             this.splitContainerNavBar.Panel2.Controls.Add(this.panelMain);
-            this.splitContainerNavBar.Size = new System.Drawing.Size(1688, 881);
-            this.splitContainerNavBar.SplitterDistance = 163;
+            this.splitContainerNavBar.Size = new System.Drawing.Size(1618, 881);
+            this.splitContainerNavBar.SplitterDistance = 155;
             this.splitContainerNavBar.SplitterWidth = 5;
             this.splitContainerNavBar.TabIndex = 20;
             // 
@@ -137,9 +134,9 @@
             this.btnLogout.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btnLogout.FillColor = System.Drawing.Color.Empty;
             this.btnLogout.FillColor2 = System.Drawing.Color.Empty;
-            this.btnLogout.Font = new System.Drawing.Font("SVN-Gilroy", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogout.ForeColor = System.Drawing.Color.White;
-            this.btnLogout.HoverState.Font = new System.Drawing.Font("SVN-Gilroy SemiBold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogout.HoverState.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogout.HoverState.ForeColor = System.Drawing.Color.White;
             this.btnLogout.Image = global::CoffeeManagementSystem.Properties.Resources.logout;
             this.btnLogout.ImageOffset = new System.Drawing.Point(-3, 0);
@@ -147,7 +144,7 @@
             this.btnLogout.Location = new System.Drawing.Point(0, 801);
             this.btnLogout.Margin = new System.Windows.Forms.Padding(2);
             this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(163, 80);
+            this.btnLogout.Size = new System.Drawing.Size(155, 80);
             this.btnLogout.TabIndex = 20;
             this.btnLogout.Text = "Đăng xuất";
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
@@ -161,11 +158,12 @@
             this.btnTaiKhoan.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnTaiKhoan.FillColor = System.Drawing.Color.Empty;
             this.btnTaiKhoan.FillColor2 = System.Drawing.Color.Empty;
-            this.btnTaiKhoan.Font = new System.Drawing.Font("SVN-Gilroy", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTaiKhoan.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTaiKhoan.ForeColor = System.Drawing.Color.White;
-            this.btnTaiKhoan.HoverState.Font = new System.Drawing.Font("SVN-Gilroy SemiBold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTaiKhoan.HoverState.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTaiKhoan.HoverState.ForeColor = System.Drawing.Color.White;
             this.btnTaiKhoan.Image = global::CoffeeManagementSystem.Properties.Resources.TaiKhoan;
+            this.btnTaiKhoan.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnTaiKhoan.ImageSize = new System.Drawing.Size(25, 25);
             this.btnTaiKhoan.Location = new System.Drawing.Point(2, 660);
             this.btnTaiKhoan.Margin = new System.Windows.Forms.Padding(2);
@@ -185,9 +183,9 @@
             this.btnReport.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnReport.FillColor = System.Drawing.Color.Empty;
             this.btnReport.FillColor2 = System.Drawing.Color.Empty;
-            this.btnReport.Font = new System.Drawing.Font("SVN-Gilroy", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReport.ForeColor = System.Drawing.Color.White;
-            this.btnReport.HoverState.Font = new System.Drawing.Font("SVN-Gilroy SemiBold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReport.HoverState.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReport.HoverState.ForeColor = System.Drawing.Color.White;
             this.btnReport.Image = global::CoffeeManagementSystem.Properties.Resources.BaoCao;
             this.btnReport.ImageOffset = new System.Drawing.Point(0, -15);
@@ -207,7 +205,6 @@
             this.btnTrangChu.Animated = true;
             this.btnTrangChu.BackColor = System.Drawing.Color.Transparent;
             this.btnTrangChu.BorderColor = System.Drawing.Color.Empty;
-            this.btnTrangChu.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
             this.btnTrangChu.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnTrangChu.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnTrangChu.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -215,9 +212,9 @@
             this.btnTrangChu.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnTrangChu.FillColor = System.Drawing.Color.Empty;
             this.btnTrangChu.FillColor2 = System.Drawing.Color.Empty;
-            this.btnTrangChu.Font = new System.Drawing.Font("SVN-Gilroy", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTrangChu.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTrangChu.ForeColor = System.Drawing.Color.White;
-            this.btnTrangChu.HoverState.Font = new System.Drawing.Font("SVN-Gilroy SemiBold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTrangChu.HoverState.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTrangChu.HoverState.ForeColor = System.Drawing.Color.White;
             this.btnTrangChu.Image = global::CoffeeManagementSystem.Properties.Resources.TrangChu;
             this.btnTrangChu.ImageOffset = new System.Drawing.Point(5, -15);
@@ -244,9 +241,9 @@
             this.btnKhachHang.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnKhachHang.FillColor = System.Drawing.Color.Empty;
             this.btnKhachHang.FillColor2 = System.Drawing.Color.Empty;
-            this.btnKhachHang.Font = new System.Drawing.Font("SVN-Gilroy", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnKhachHang.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnKhachHang.ForeColor = System.Drawing.Color.White;
-            this.btnKhachHang.HoverState.Font = new System.Drawing.Font("SVN-Gilroy SemiBold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnKhachHang.HoverState.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnKhachHang.HoverState.ForeColor = System.Drawing.Color.White;
             this.btnKhachHang.Image = global::CoffeeManagementSystem.Properties.Resources.KhachHang;
             this.btnKhachHang.ImageOffset = new System.Drawing.Point(3, -15);
@@ -265,7 +262,7 @@
             // 
             this.guna2CirclePictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("guna2CirclePictureBox1.Image")));
             this.guna2CirclePictureBox1.ImageRotate = 0F;
-            this.guna2CirclePictureBox1.Location = new System.Drawing.Point(53, 17);
+            this.guna2CirclePictureBox1.Location = new System.Drawing.Point(41, 18);
             this.guna2CirclePictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.guna2CirclePictureBox1.Name = "guna2CirclePictureBox1";
             this.guna2CirclePictureBox1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
@@ -284,9 +281,9 @@
             this.btnEmployer.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnEmployer.FillColor = System.Drawing.Color.Empty;
             this.btnEmployer.FillColor2 = System.Drawing.Color.Empty;
-            this.btnEmployer.Font = new System.Drawing.Font("SVN-Gilroy", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEmployer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEmployer.ForeColor = System.Drawing.Color.White;
-            this.btnEmployer.HoverState.Font = new System.Drawing.Font("SVN-Gilroy SemiBold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEmployer.HoverState.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEmployer.HoverState.ForeColor = System.Drawing.Color.White;
             this.btnEmployer.Image = global::CoffeeManagementSystem.Properties.Resources.NhanVien;
             this.btnEmployer.ImageOffset = new System.Drawing.Point(3, -15);
@@ -310,9 +307,9 @@
             this.btnMenu.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnMenu.FillColor = System.Drawing.Color.Empty;
             this.btnMenu.FillColor2 = System.Drawing.Color.Empty;
-            this.btnMenu.Font = new System.Drawing.Font("SVN-Gilroy", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMenu.ForeColor = System.Drawing.Color.White;
-            this.btnMenu.HoverState.Font = new System.Drawing.Font("SVN-Gilroy SemiBold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMenu.HoverState.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMenu.HoverState.ForeColor = System.Drawing.Color.White;
             this.btnMenu.Image = global::CoffeeManagementSystem.Properties.Resources.DoUong;
             this.btnMenu.ImageOffset = new System.Drawing.Point(0, -15);
@@ -327,12 +324,6 @@
             this.btnMenu.TextOffset = new System.Drawing.Point(23, 10);
             this.btnMenu.Click += new System.EventHandler(this.btnMenu_Click);
             // 
-            // guna2BorderlessForm1
-            // 
-            this.guna2BorderlessForm1.ContainerControl = this;
-            this.guna2BorderlessForm1.DockIndicatorTransparencyValue = 0.6D;
-            this.guna2BorderlessForm1.TransparentWhileDrag = true;
-            // 
             // pnlTitleBar
             // 
             this.pnlTitleBar.BackColor = System.Drawing.Color.SeaShell;
@@ -343,17 +334,18 @@
             this.pnlTitleBar.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlTitleBar.FillColor = System.Drawing.Color.SeaShell;
             this.pnlTitleBar.Location = new System.Drawing.Point(0, 0);
+            this.pnlTitleBar.Margin = new System.Windows.Forms.Padding(4);
             this.pnlTitleBar.Name = "pnlTitleBar";
-            this.pnlTitleBar.Size = new System.Drawing.Size(1688, 30);
+            this.pnlTitleBar.Size = new System.Drawing.Size(1618, 30);
             this.pnlTitleBar.TabIndex = 24;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("SVN-Gilroy", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(12, 5);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(229, 22);
+            this.label1.Size = new System.Drawing.Size(216, 20);
             this.label1.TabIndex = 6;
             this.label1.Text = "Ứng dụng quản lý quán cafe";
             // 
@@ -366,7 +358,8 @@
             this.guna2ControlBox3.HoverState.FillColor = System.Drawing.Color.DimGray;
             this.guna2ControlBox3.HoverState.IconColor = System.Drawing.Color.White;
             this.guna2ControlBox3.IconColor = System.Drawing.Color.White;
-            this.guna2ControlBox3.Location = new System.Drawing.Point(1583, 0);
+            this.guna2ControlBox3.Location = new System.Drawing.Point(1900, 0);
+            this.guna2ControlBox3.Margin = new System.Windows.Forms.Padding(4);
             this.guna2ControlBox3.Name = "guna2ControlBox3";
             this.guna2ControlBox3.Size = new System.Drawing.Size(35, 30);
             this.guna2ControlBox3.TabIndex = 5;
@@ -380,7 +373,8 @@
             this.guna2ControlBox2.HoverState.FillColor = System.Drawing.Color.DimGray;
             this.guna2ControlBox2.HoverState.IconColor = System.Drawing.Color.White;
             this.guna2ControlBox2.IconColor = System.Drawing.Color.White;
-            this.guna2ControlBox2.Location = new System.Drawing.Point(1618, 0);
+            this.guna2ControlBox2.Location = new System.Drawing.Point(1942, 0);
+            this.guna2ControlBox2.Margin = new System.Windows.Forms.Padding(4);
             this.guna2ControlBox2.Name = "guna2ControlBox2";
             this.guna2ControlBox2.Size = new System.Drawing.Size(35, 30);
             this.guna2ControlBox2.TabIndex = 4;
@@ -392,7 +386,8 @@
             this.guna2ControlBox1.HoverState.FillColor = System.Drawing.Color.DimGray;
             this.guna2ControlBox1.HoverState.IconColor = System.Drawing.Color.White;
             this.guna2ControlBox1.IconColor = System.Drawing.Color.White;
-            this.guna2ControlBox1.Location = new System.Drawing.Point(1653, 0);
+            this.guna2ControlBox1.Location = new System.Drawing.Point(1984, 0);
+            this.guna2ControlBox1.Margin = new System.Windows.Forms.Padding(4);
             this.guna2ControlBox1.Name = "guna2ControlBox1";
             this.guna2ControlBox1.Size = new System.Drawing.Size(35, 30);
             this.guna2ControlBox1.TabIndex = 3;
@@ -406,7 +401,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(1688, 911);
+            this.ClientSize = new System.Drawing.Size(1618, 911);
             this.Controls.Add(this.splitContainerNavBar);
             this.Controls.Add(this.pnlTitleBar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -444,7 +439,6 @@
         private System.Windows.Forms.SplitContainer splitContainerNavBar;
         private Guna.UI2.WinForms.Guna2GradientButton btnTaiKhoan;
         private Guna.UI2.WinForms.Guna2GradientButton btnLogout;
-        private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;
         private Guna.UI2.WinForms.Guna2Panel pnlTitleBar;
         private System.Windows.Forms.Label label1;
         private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox3;
