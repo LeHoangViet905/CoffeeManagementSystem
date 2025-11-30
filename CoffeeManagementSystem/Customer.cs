@@ -300,5 +300,16 @@ namespace CoffeeManagementSystem
                 MessageBox.Show("Lỗi khi import: " + ex.Message);
             }
         }
+
+        private void btnThemloaidouong_Click(object sender, EventArgs e)
+        {
+            MainForm.PlayClickSound();
+            // Mở AddTypeofdrinkForm ở chế độ thêm mới. Form này cũng sẽ tương tác với BLL.
+            FormChitiet detailForm = new FormChitiet();
+            if (detailForm.ShowDialog() == DialogResult.OK)
+            {
+                LoadDanhSachKhachHang(); // Tải lại danh sách sau khi thêm mới thành công
+            }
+        }
     }
 }
