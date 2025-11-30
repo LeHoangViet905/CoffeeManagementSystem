@@ -305,13 +305,18 @@
 		  <DependentUpon>OptionManagerForm.cs</DependentUpon>
 	  </Compile>
 	  <Compile Include="model\OrderhistoryItem.cs" />
-	  <Compile Include="OrderDetailForm.cs">
-		  <SubType>Form</SubType>
-	  </Compile>
-	  <SubType>Form</SubType>
-<Compile Include="OrderDetailForm.Designer.cs">
-  <DependentUpon>OrderDetailForm.cs</DependentUpon>
-</Compile>
+	      <Compile Include="model\OrderhistoryItem.cs" />
+    <Compile Include="OrderDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OrderDetailForm.Designer.cs">
+      <DependentUpon>OrderDetailForm.cs</DependentUpon>
+    </Compile>
+
+    <Compile Include="OrderHistoryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+
 
     <Compile Include="OrderHistoryForm.cs">
       <SubType>Form</SubType>
