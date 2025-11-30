@@ -54,7 +54,7 @@ namespace CoffeeManagementSystem
             this.colTongTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colHinhThucThanhToan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colTrangThai = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
+            //this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
             this.panelHeader.SuspendLayout();
             this.panelFilter.SuspendLayout();
             this.guna2ShadowPanelSummary.SuspendLayout();
