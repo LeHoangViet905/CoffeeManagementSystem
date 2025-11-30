@@ -325,5 +325,70 @@ namespace CoffeeManagementSystem.DAL // Đặt DAL trong một namespace con đ�
             }
             return maList;
         }
+        public void ImportNhanviens(List<Nhanvien> nhanviens)
+        {
+            using (SQLiteConnection connection = new SQLiteConnection(ConnectionString))
+            {
+                connection.Open();
+                using (var transaction = connection.BeginTransaction())
+                {
+                    try
+                    {
+                        foreach (var n in nhanviens)
+                        {
+                            // Kiểm tra xem đã tồn tại chưa
+                            string checkSql = "SELECT COUNT(1) FROM Nhanvien WHERE Manhanvien = @Manhanvien";
+                            using (var cmdCheck = new SQLiteCommand(checkSql, connection, transaction))
+                            {
+                                cmdCheck.Parameters.AddWithValue("@Manhanvien", n.Manhanvien);
+                                long count = (long)cmdCheck.ExecuteScalar();
+
+                                if (count > 0)
+                                {
+                                    // Update nếu tồn tại
+                                    string updateSql = "UPDATE Nhanvien SET Hoten = @Hoten,Ngaysinh = @Ngaysinh,Gioitinh = @Gioitinh,Diachi = @Diachi,Sodienthoai = @Sodienthoai,Email = @Email,Ngayvaolam = @Ngayvaolam";
+                                    using (var cmdUpdate = new SQLiteCommand(updateSql, connection, transaction))
+                                    {
+                                        cmdUpdate.Parameters.AddWithValue("@Manhanvien", n.Manhanvien);
+                                        cmdUpdate.Parameters.AddWithValue("@Hoten", n.Hoten);
+                                        cmdUpdate.Parameters.AddWithValue("@Ngaysinh", n.Ngaysinh);
+                                        cmdUpdate.Parameters.AddWithValue("@Gioitinh", n.Gioitinh);
+                                        cmdUpdate.Parameters.AddWithValue("@Diachi", n.Diachi);
+                                        cmdUpdate.Parameters.AddWithValue("@Sodienthoai", n.Sodienthoai);
+                                        cmdUpdate.Parameters.AddWithValue("@Email", n.Email);
+                                        cmdUpdate.Parameters.AddWithValue("@Ngayvaolam", n.Ngayvaolam);
+                                        cmdUpdate.ExecuteNonQuery();
+                                    }
+                                }
+                                else
+                                {
+                                    // Insert nếu chưa tồn tại
+                                    string insertSql = "INSERT INTO Douong (Madouong, Tendouong, Maloai, Mota, Hinhanh) VALUES (@Madouong, @Tendouong, @Maloai, @Mota, @Hinhanh)";
+                                    using (var cmdInsert = new SQLiteCommand(insertSql, connection, transaction))
+                                    {
+                                        cmdInsert.Parameters.AddWithValue("@Manhanvien", n.Manhanvien);
+                                        cmdInsert.Parameters.AddWithValue("@Hoten", n.Hoten);
+                                        cmdInsert.Parameters.AddWithValue("@Ngaysinh", n.Ngaysinh);
+                                        cmdInsert.Parameters.AddWithValue("@Gioitinh", n.Gioitinh);
+                                        cmdInsert.Parameters.AddWithValue("@Diachi", n.Diachi);
+                                        cmdInsert.Parameters.AddWithValue("@Sodienthoai", n.Sodienthoai);
+                                        cmdInsert.Parameters.AddWithValue("@Email", n.Email);
+                                        cmdInsert.Parameters.AddWithValue("@Ngayvaolam", n.Ngayvaolam);
+                                        cmdInsert.ExecuteNonQuery();
+                                    }
+                                }
+                            }
+                        }
+
+                        transaction.Commit();
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        throw new Exception("Lỗi DAL khi import nhiều nhân viên: " + ex.Message, ex);
+                    }
+                }
+            }
+        }
     }
 }

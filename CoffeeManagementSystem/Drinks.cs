@@ -179,7 +179,7 @@ namespace CoffeeManagementSystem
                 }
             }
         }
-        private void LoadGridDoUong()
+        public void LoadGridDoUong()
         {
             try
             {
@@ -192,7 +192,7 @@ namespace CoffeeManagementSystem
                 MessageBox.Show("Lỗi khi load dữ liệu: " + ex.Message);
             }
         }
-        private void LoadGridLoaiDoUong()
+        public void LoadGridLoaiDoUong()
         {
             try
             {
@@ -313,31 +313,29 @@ namespace CoffeeManagementSystem
 
                 list.Add(d);
             }
-        }
+                if (list.Count == 0)
+                {
+                    MessageBox.Show("Không có dữ liệu hợp lệ để import.");
+                    return;
+                }
+
+                try
+                {
+                    _douongBLL.ImportDouongs(list);
+                    MessageBox.Show("Import thành công " + list.Count + " dòng.");
+                    LoadGridDoUong();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi khi import: " + ex.Message);
+                }
+            }
 
         private void btnThemloaidouong_Click(object sender, EventArgs e)
         {
 
         }
-
-            if (list.Count == 0)
-            {
-                MessageBox.Show("Không có dữ liệu hợp lệ để import.");
-                return;
-            }
-
-            try
-            {
-                _douongBLL.ImportDouongs(list);
-                MessageBox.Show("Import thành công " + list.Count + " dòng.");
-                LoadGridDoUong();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi khi import: " + ex.Message);
-            }
-        }
-        private void button1_Click_1(object sender, EventArgs e)
+        private void button3_Click(object sender, EventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Filter = "Excel Files|*.xlsx;*.xls|CSV Files|*.csv";
@@ -407,6 +405,5 @@ namespace CoffeeManagementSystem
                 MessageBox.Show("Lỗi khi import: " + ex.Message);
             }
         }
-
     }
 }
