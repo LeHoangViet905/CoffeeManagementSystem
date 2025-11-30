@@ -48,6 +48,7 @@
             this.guna2ControlBox2 = new Guna.UI2.WinForms.Guna2ControlBox();
             this.guna2ControlBox1 = new Guna.UI2.WinForms.Guna2ControlBox();
             this.guna2ShadowForm1 = new Guna.UI2.WinForms.Guna2ShadowForm(this.components);
+            this.btnOptionManager = new Guna.UI2.WinForms.Guna2GradientButton();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerNavBar)).BeginInit();
             this.splitContainerNavBar.Panel1.SuspendLayout();
             this.splitContainerNavBar.Panel2.SuspendLayout();
@@ -105,6 +106,7 @@
             // 
             this.splitContainerNavBar.Panel1.BackColor = System.Drawing.Color.Firebrick;
             this.splitContainerNavBar.Panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.splitContainerNavBar.Panel1.Controls.Add(this.btnOptionManager);
             this.splitContainerNavBar.Panel1.Controls.Add(this.btnLogout);
             this.splitContainerNavBar.Panel1.Controls.Add(this.btnTaiKhoan);
             this.splitContainerNavBar.Panel1.Controls.Add(this.lblName);
@@ -165,7 +167,7 @@
             this.btnTaiKhoan.Image = global::CoffeeManagementSystem.Properties.Resources.TaiKhoan;
             this.btnTaiKhoan.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnTaiKhoan.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnTaiKhoan.Location = new System.Drawing.Point(2, 660);
+            this.btnTaiKhoan.Location = new System.Drawing.Point(2, 592);
             this.btnTaiKhoan.Margin = new System.Windows.Forms.Padding(2);
             this.btnTaiKhoan.Name = "btnTaiKhoan";
             this.btnTaiKhoan.Size = new System.Drawing.Size(150, 80);
@@ -190,7 +192,7 @@
             this.btnReport.Image = global::CoffeeManagementSystem.Properties.Resources.BaoCao;
             this.btnReport.ImageOffset = new System.Drawing.Point(0, -15);
             this.btnReport.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnReport.Location = new System.Drawing.Point(0, 566);
+            this.btnReport.Location = new System.Drawing.Point(-5, 508);
             this.btnReport.Margin = new System.Windows.Forms.Padding(2);
             this.btnReport.Name = "btnReport";
             this.btnReport.Size = new System.Drawing.Size(161, 80);
@@ -248,7 +250,7 @@
             this.btnKhachHang.Image = global::CoffeeManagementSystem.Properties.Resources.KhachHang;
             this.btnKhachHang.ImageOffset = new System.Drawing.Point(3, -15);
             this.btnKhachHang.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnKhachHang.Location = new System.Drawing.Point(-2, 289);
+            this.btnKhachHang.Location = new System.Drawing.Point(-5, 270);
             this.btnKhachHang.Margin = new System.Windows.Forms.Padding(2);
             this.btnKhachHang.Name = "btnKhachHang";
             this.btnKhachHang.Size = new System.Drawing.Size(163, 80);
@@ -288,7 +290,7 @@
             this.btnEmployer.Image = global::CoffeeManagementSystem.Properties.Resources.NhanVien;
             this.btnEmployer.ImageOffset = new System.Drawing.Point(3, -15);
             this.btnEmployer.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnEmployer.Location = new System.Drawing.Point(-2, 383);
+            this.btnEmployer.Location = new System.Drawing.Point(-5, 354);
             this.btnEmployer.Margin = new System.Windows.Forms.Padding(2);
             this.btnEmployer.Name = "btnEmployer";
             this.btnEmployer.Size = new System.Drawing.Size(163, 72);
@@ -314,7 +316,7 @@
             this.btnMenu.Image = global::CoffeeManagementSystem.Properties.Resources.DoUong;
             this.btnMenu.ImageOffset = new System.Drawing.Point(0, -15);
             this.btnMenu.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnMenu.Location = new System.Drawing.Point(0, 478);
+            this.btnMenu.Location = new System.Drawing.Point(-5, 430);
             this.btnMenu.Margin = new System.Windows.Forms.Padding(2);
             this.btnMenu.Name = "btnMenu";
             this.btnMenu.Size = new System.Drawing.Size(163, 74);
@@ -358,7 +360,7 @@
             this.guna2ControlBox3.HoverState.FillColor = System.Drawing.Color.DimGray;
             this.guna2ControlBox3.HoverState.IconColor = System.Drawing.Color.White;
             this.guna2ControlBox3.IconColor = System.Drawing.Color.White;
-            this.guna2ControlBox3.Location = new System.Drawing.Point(1900, 0);
+            this.guna2ControlBox3.Location = new System.Drawing.Point(1513, 0);
             this.guna2ControlBox3.Margin = new System.Windows.Forms.Padding(4);
             this.guna2ControlBox3.Name = "guna2ControlBox3";
             this.guna2ControlBox3.Size = new System.Drawing.Size(35, 30);
@@ -373,7 +375,7 @@
             this.guna2ControlBox2.HoverState.FillColor = System.Drawing.Color.DimGray;
             this.guna2ControlBox2.HoverState.IconColor = System.Drawing.Color.White;
             this.guna2ControlBox2.IconColor = System.Drawing.Color.White;
-            this.guna2ControlBox2.Location = new System.Drawing.Point(1942, 0);
+            this.guna2ControlBox2.Location = new System.Drawing.Point(1548, 0);
             this.guna2ControlBox2.Margin = new System.Windows.Forms.Padding(4);
             this.guna2ControlBox2.Name = "guna2ControlBox2";
             this.guna2ControlBox2.Size = new System.Drawing.Size(35, 30);
@@ -386,7 +388,7 @@
             this.guna2ControlBox1.HoverState.FillColor = System.Drawing.Color.DimGray;
             this.guna2ControlBox1.HoverState.IconColor = System.Drawing.Color.White;
             this.guna2ControlBox1.IconColor = System.Drawing.Color.White;
-            this.guna2ControlBox1.Location = new System.Drawing.Point(1984, 0);
+            this.guna2ControlBox1.Location = new System.Drawing.Point(1583, 0);
             this.guna2ControlBox1.Margin = new System.Windows.Forms.Padding(4);
             this.guna2ControlBox1.Name = "guna2ControlBox1";
             this.guna2ControlBox1.Size = new System.Drawing.Size(35, 30);
@@ -396,6 +398,33 @@
             // 
             this.guna2ShadowForm1.BorderRadius = 20;
             this.guna2ShadowForm1.TargetForm = this;
+            // 
+            // btnOptionManager
+            // 
+            this.btnOptionManager.BorderColor = System.Drawing.Color.Empty;
+            this.btnOptionManager.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnOptionManager.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnOptionManager.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnOptionManager.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnOptionManager.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnOptionManager.FillColor = System.Drawing.Color.Empty;
+            this.btnOptionManager.FillColor2 = System.Drawing.Color.Empty;
+            this.btnOptionManager.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOptionManager.ForeColor = System.Drawing.Color.White;
+            this.btnOptionManager.HoverState.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOptionManager.HoverState.ForeColor = System.Drawing.Color.White;
+            this.btnOptionManager.Image = global::CoffeeManagementSystem.Properties.Resources.NhanVien;
+            this.btnOptionManager.ImageOffset = new System.Drawing.Point(3, -15);
+            this.btnOptionManager.ImageSize = new System.Drawing.Size(25, 25);
+            this.btnOptionManager.Location = new System.Drawing.Point(-8, 686);
+            this.btnOptionManager.Margin = new System.Windows.Forms.Padding(2);
+            this.btnOptionManager.Name = "btnOptionManager";
+            this.btnOptionManager.Size = new System.Drawing.Size(163, 72);
+            this.btnOptionManager.TabIndex = 21;
+            this.btnOptionManager.Text = "Quản lý chi tiết";
+            this.btnOptionManager.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnOptionManager.TextOffset = new System.Drawing.Point(22, 10);
+            this.btnOptionManager.Click += new System.EventHandler(this.btnOptionManager_Click);
             // 
             // MainForm
             // 
@@ -445,5 +474,6 @@
         private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox2;
         private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox1;
         private Guna.UI2.WinForms.Guna2ShadowForm guna2ShadowForm1;
+        private Guna.UI2.WinForms.Guna2GradientButton btnOptionManager;
     }
 }

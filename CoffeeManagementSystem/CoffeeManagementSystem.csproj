@@ -283,6 +283,7 @@
     <Compile Include="DangNhapForm.Designer.cs">
       <DependentUpon>DangNhapForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="model\CartItem.cs" />
     <Compile Include="model\OrderhistoryItem.cs" />
     <Compile Include="OrderDetailForm.cs">
       <SubType>Form</SubType>

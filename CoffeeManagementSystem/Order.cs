@@ -192,18 +192,30 @@ namespace CoffeeManagementSystem
             UpdateOrderTotal();
         }
 
-        // Hàm cập nhật tổng tiền cuối cùng
         private void UpdateOrderTotal()
         {
             decimal total = 0;
 
             foreach (DataGridViewRow row in dgvOrder.Rows)
             {
-                if (row.Cells["colTotal"].Value != null)
+                // 1. Bỏ qua dòng trống (dòng mới) ở cuối bảng
+                if (row.IsNewRow) continue;
+
+                // 2. Kiểm tra null và rỗng
+                if (row.Cells["colTotal"].Value != null &&
+                    !string.IsNullOrEmpty(row.Cells["colTotal"].Value.ToString()))
                 {
-                    total += (decimal)row.Cells["colTotal"].Value;
+                    // 3. SỬA LỖI Ở ĐÂY: Dùng Convert.ToDecimal thay vì (decimal)
+                    try
+                    {
+                        total += Convert.ToDecimal(row.Cells["colTotal"].Value);
+                    }
+                    catch
+                    {
+                    }
                 }
             }
+
             txtTongTien.Text = total.ToString("N0");
         }
 
@@ -278,103 +290,102 @@ namespace CoffeeManagementSystem
 
         private void dgvOrder_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            // 1. Kiểm tra click hợp lệ
+            // Đảm bảo user click vào 1 hàng (không phải tiêu đề)
             if (e.RowIndex < 0 || dgvOrder.Rows[e.RowIndex].IsNewRow) return;
-
             DataGridViewRow row = dgvOrder.Rows[e.RowIndex];
 
-            // --- CASE A: NÚT XÓA (X) ---
+            // --- XỬ LÝ NÚT XÓA (X)---
             if (e.ColumnIndex == dgvOrder.Columns["colCancel"].Index)
             {
+                // Xóa hàng
                 dgvOrder.Rows.Remove(row);
+                UpdateOrderTotal();
             }
-            // --- CASE B: NÚT GIẢM (-) ---
+
             else if (e.ColumnIndex == dgvOrder.Columns["colDecrease"].Index)
             {
+                // 1. Lấy số lượng và đơn giá hiện tại từ các ô
                 int currentQty = (int)row.Cells["colQty"].Value;
-                decimal price = (decimal)row.Cells["colPrice"].Value;
+                decimal price = (decimal)row.Cells["colPrice"].Value; // (Lấy từ cột đơn giá ẩn)
 
                 if (currentQty > 1)
                 {
+                    // Nếu > 1, chỉ cần giảm 1
                     currentQty--;
                     row.Cells["colQty"].Value = currentQty;
+
+                    // Cập nhật lại tổng tiền cho hàng này
                     row.Cells["colTotal"].Value = currentQty * price;
                 }
                 else
                 {
+                    // Nếu = 1, xóa luôn hàng đó
                     dgvOrder.Rows.Remove(row);
                 }
+                UpdateOrderTotal();
             }
-            // --- CASE C: CLICK VÀO TÊN MÓN ĐỂ SỬA OPTION (Mới thêm) ---
+
+            // --- CASE C: CLICK VÀO TÊN MÓN ĐỂ SỬA ---
             else if (e.ColumnIndex == dgvOrder.Columns["colName"].Index)
             {
                 // 1. Lấy thông tin hiện tại
                 string maMon = row.Cells["colID"].Value.ToString();
-                string ghiChuHienTai = "";
 
-                // Kiểm tra null cho ô ghi chú
+                // Lấy ghi chú cũ từ cột ẩn (nếu có)
+                string ghiChuHienTai = "";
                 if (row.Cells["colNote"].Value != null)
                     ghiChuHienTai = row.Cells["colNote"].Value.ToString();
 
-                // Lấy tên gốc của món (để không bị dính cái ghi chú cũ vào tên)
-                string tenMonGoc;
-                if (row.Cells["colName"].Tag != null)
-                {
-                    tenMonGoc = row.Cells["colName"].Tag.ToString();
-                }
-                else
-                {
-                    // Lần đầu chưa có Tag thì lấy giá trị hiện tại làm tên gốc
-                    tenMonGoc = row.Cells["colName"].Value.ToString();
-                    row.Cells["colName"].Tag = tenMonGoc; // Lưu lại ngay để dùng lần sau
-                }
+                // Lấy tên gốc từ Tag (để tránh lấy nhầm tên kèm ghi chú cũ)
+                string tenMonGoc = row.Cells["colName"].Tag?.ToString();
+                if (string.IsNullOrEmpty(tenMonGoc))
+                    tenMonGoc = row.Cells["colName"].Value.ToString().Split('\n')[0].Trim();
 
-                // 2. Mở NoteForm (Popup)
-                // (Sử dụng Constructor mới: chỉ truyền Ghi chú cũ và Mã món)
+                // 2. Mở NoteForm
+                // (Dùng Constructor nhận Ghi chú cũ và Mã món để load option)
                 NoteForm noteForm = new NoteForm(ghiChuHienTai, maMon);
 
-                // Hiệu ứng làm mờ nền (Optional)
                 this.Opacity = 0.9;
                 DialogResult result = noteForm.ShowDialog();
                 this.Opacity = 1;
 
-                // 3. Nhận kết quả và Cập nhật Grid
+                // 3. Nhận kết quả và Cập nhật lại chính dòng đó (Không xóa đi thêm lại)
                 if (result == DialogResult.OK)
                 {
-                    // A. Cập nhật ghi chú ẩn
-                    row.Cells["colNote"].Value = noteForm.ReturnNote;
+                    // A. Cập nhật Ghi chú ẩn
+                    string ghiChuMoi = noteForm.ReturnNote;
+                    row.Cells["colNote"].Value = ghiChuMoi;
 
-                    // B. Cập nhật hiển thị (Tên + Xuống dòng + Ghi chú)
-                    if (!string.IsNullOrEmpty(noteForm.ReturnNote))
+                    // B. Cập nhật Hiển thị Tên (Tên gốc + Xuống dòng + Ghi chú mới)
+                    if (!string.IsNullOrEmpty(ghiChuMoi))
                     {
-                        row.Cells["colName"].Value = tenMonGoc + Environment.NewLine + "   " + noteForm.ReturnNote;
+                        row.Cells["colName"].Value = tenMonGoc + Environment.NewLine + "   " + ghiChuMoi;
                     }
                     else
                     {
-                        row.Cells["colName"].Value = tenMonGoc; // Trả về tên sạch nếu xóa hết ghi chú
+                        row.Cells["colName"].Value = tenMonGoc;
                     }
+                    // Đảm bảo Tag vẫn giữ tên gốc
+                    row.Cells["colName"].Tag = tenMonGoc;
 
-                    // C. Cập nhật Giá tiền (Cực kỳ quan trọng)
-                    // Phải lấy lại GIÁ GỐC từ Database để cộng tiền Topping mới
-                    // (Nếu lấy giá hiện tại trong Grid thì sẽ bị cộng dồn sai: 50k -> thêm topping -> 55k -> sửa topping -> 60k -> SAI)
-
+                    // C. Cập nhật Giá tiền
+                    // Lấy giá gốc sạch từ DB
                     Giadouong giaGocObj = _giadouongBLL.GetLatestGiaByMadouong(maMon);
                     decimal giaGoc = (decimal)giaGocObj.Giaban;
 
                     // Giá mới = Giá Gốc + Tiền Topping (từ NoteForm trả về)
                     decimal giaMoi = giaGoc + noteForm.ReturnExtraPrice;
 
-                    // Gán lại vào lưới
+                    // Cập nhật vào ô giá
                     row.Cells["colPrice"].Value = giaMoi;
 
-                    // Tính lại tổng tiền dòng đó
-                    int soLuong = int.Parse(row.Cells["colQty"].Value.ToString());
+                    // Tính lại Thành tiền (Số lượng * Giá mới)
+                    int soLuong = Convert.ToInt32(row.Cells["colQty"].Value);
                     row.Cells["colTotal"].Value = soLuong * giaMoi;
+
+                    UpdateOrderTotal();
                 }
             }
-
-            // Cập nhật lại tổng tiền cuối cùng (luôn chạy sau khi Thêm/Xóa/Sửa)
-            UpdateOrderTotal();
         }
 
         private void txtTimKiem_TextChanged(object sender, EventArgs e)
@@ -485,6 +496,43 @@ namespace CoffeeManagementSystem
                 UpdateOrderTotal();
             }
             // Nếu nhấn "No", không làm gì cả
+        }
+        // Hàm thêm món vào Grid (Được gọi sau khi NoteForm đóng hoặc khi chọn món)
+        private void AddItemToCart(string maMon, string tenMon, decimal giaGoc)
+        {
+            // Tạo mới đối tượng
+            CartItem newItem = new CartItem
+            {
+                ProductID = maMon,
+                ProductName = tenMon,
+                BasePrice = giaGoc,
+                Quantity = 1
+            };
+
+            // Thêm dòng mới
+            int idx = dgvOrder.Rows.Add();
+            DataGridViewRow row = dgvOrder.Rows[idx];
+
+            // Gắn đối tượng vào Tag
+            row.Tag = newItem;
+
+            // Hiển thị
+            UpdateRowDisplay(row);
+        }
+
+        // 2. Hàm Cập nhật hiển thị (Dùng chung cho Thêm và Sửa)
+        private void UpdateRowDisplay(DataGridViewRow row)
+        {
+            if (row.Tag is CartItem item)
+            {
+                row.Cells["colID"].Value = item.ProductID;
+                // Đây là dòng hiển thị "Matcha Latte \n (Ít đá...)"
+                row.Cells["colName"].Value = item.GetDisplayText();
+                row.Cells["colQty"].Value = item.Quantity;
+                row.Cells["colPrice"].Value = item.UnitPrice;
+                row.Cells["colTotal"].Value = item.TotalPrice;
+            }
+            UpdateOrderTotal();
         }
     }
 }

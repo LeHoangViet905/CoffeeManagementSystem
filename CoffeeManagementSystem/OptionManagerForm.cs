@@ -25,13 +25,17 @@ namespace CoffeeManagementSystem
         {
             InitializeComponent();
             this.Load += OptionManagerForm_Load;
+            dgvNhom.AutoGenerateColumns = false;
+            dgvChiTiet.AutoGenerateColumns = false;
 
             // Gán sự kiện click cho bảng bên trái
             dgvNhom.CellClick += DgvNhom_CellClick;
+            cboNhom.SelectedIndexChanged += CboNhom_SelectedIndexChanged;
         }
         private void OptionManagerForm_Load(object sender, EventArgs e)
         {
             LoadGroupList(); // Tải danh sách nhóm khi mở form
+            LoadTabCauHinh();
         }
 
         // --- PHẦN 1: QUẢN LÝ NHÓM (BÊN TRÁI) ---
@@ -116,49 +120,54 @@ namespace CoffeeManagementSystem
         {
             // A. Load danh sách Nhóm vào ComboBox
             List<NhomTuyChon> listNhom = _bll.GetAllGroups();
+
+            // Tạm tắt sự kiện để tránh kích hoạt lung tung khi đang gán DataSource
+            cboNhom.SelectedIndexChanged -= CboNhom_SelectedIndexChanged;
+
             cboNhom.DataSource = listNhom;
             cboNhom.DisplayMember = "TenNhom";
             cboNhom.ValueMember = "MaNhom";
 
-            // B. Load TẤT CẢ món ăn vào DataGridView
-            dgvMon.AutoGenerateColumns = false; // Quan trọng
-            List<Douong> listMon = _douongBLL.GetAllDouongs();
-
-            // 1. Gán nguồn dữ liệu vào BindingSource
-            bsDouong.DataSource = listMon;
-
-            // 2. Gán BindingSource vào DataGridView
-            dgvMon.DataSource = bsDouong;
-
-            // Gán sự kiện khi chọn ComboBox (để check các ô tương ứng)
+            // Bật lại sự kiện
             cboNhom.SelectedIndexChanged += CboNhom_SelectedIndexChanged;
 
+            // B. Load TẤT CẢ món ăn
+            dgvMon.AutoGenerateColumns = false;
+            List<Douong> listMon = _douongBLL.GetAllDouongs();
+
+            bsDouong.DataSource = listMon;
+            dgvMon.DataSource = bsDouong;
+
             // Kích hoạt lần đầu
-            if (listNhom.Count > 0) CboNhom_SelectedIndexChanged(null, null);
+            if (listNhom.Count > 0)
+            {
+                cboNhom.SelectedIndex = 0; // Dòng này sẽ tự kích hoạt sự kiện
+            }
         }
 
         // 2. Sự kiện khi chọn Nhóm trong ComboBox
         private void CboNhom_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cboNhom.SelectedValue == null) return;
+            // Nếu chưa có item hợp lệ thì thôi
+            if (cboNhom.SelectedItem == null) return;
 
-            // Lấy ID nhóm đang chọn (ví dụ: Topping)
-            int maNhom = (int)cboNhom.SelectedValue; // Lưu ý ép kiểu int nếu ValueMember là int
+            // Lấy object nhóm đang chọn
+            var nhom = cboNhom.SelectedItem as NhomTuyChon;
+            if (nhom == null) return;
 
-            // Lấy danh sách các món ĐÃ ĐƯỢC GÁN cho nhóm này
+            int maNhom = nhom.MaNhom;   // ✅ lúc này chắc chắn là int
+
+            // Lấy danh sách các món đã gán
             List<string> listDaGann = _bll.GetProductIdsByGroupId(maNhom);
 
-            // Duyệt qua DataGridView để Tích (Check) hoặc Bỏ tích
             foreach (DataGridViewRow row in dgvMon.Rows)
             {
-                // Lấy mã món của dòng này
-                // (Đảm bảo bạn đã map DataPropertyName="Madouong" cho cột colMa)
-                string maMon = row.Cells["colMa"].Value.ToString();
+                if (row.IsNewRow) continue;
 
-                // Kiểm tra xem món này có trong danh sách đã gán không
+                string maMon = row.Cells["colMa"].Value?.ToString();
+                if (string.IsNullOrEmpty(maMon)) continue;
+
                 bool isAssigned = listDaGann.Contains(maMon);
-
-                // Set giá trị cho ô Checkbox
                 row.Cells["colChon"].Value = isAssigned;
             }
         }

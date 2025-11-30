@@ -13,45 +13,45 @@ using System.Windows.Forms;
 
 namespace CoffeeManagementSystem
 {
+
     public partial class NoteForm : Form
     {
-        // Khai báo biến
+        // 1. Khai báo BLL để lấy tùy chọn
         private TuyChonBLL _tuyChonBLL = new TuyChonBLL();
-        public decimal ReturnExtraPrice { get; set; } = 0; // Biến trả về tiền thêm (Topping)
-        public string ReturnNote { get; set; } = "";
-        public NoteForm(string ghiChu, string maDouong)
+
+        // 2. HAI BIẾN QUAN TRỌNG ĐỂ TRẢ VỀ KẾT QUẢ
+        public string ReturnNote { get; set; } = "";       // Trả về chuỗi ghi chú
+        public decimal ReturnExtraPrice { get; set; } = 0; // Trả về tiền topping
+
+        // 3. CONSTRUCTOR MỚI (Nhận Ghi chú cũ và Mã món)
+        // Khớp với lệnh gọi: new NoteForm(ghiChuHienTai, maMon);
+        public NoteForm(string ghiChuCu, string maDouong)
         {
             InitializeComponent();
 
-            // 1. Gán ghi chú cũ vào TextBox
-            txtGhiChu.Text = ghiChu;
+            // Hiển thị ghi chú cũ lên TextBox (nếu có)
+            txtGhiChu.Text = ghiChuCu;
 
-            // 2. Vẽ các tùy chọn ĐỘNG
+            // Tải các nút chọn (Đường/Đá/Topping) từ DB
             GenerateDynamicOptions(maDouong);
         }
-        // Hàm vẽ giao diện động (Chỉ tác động vào flowDynamicOptions)
+
+        // Hàm vẽ giao diện động (Giữ nguyên logic cũ)
         private void GenerateDynamicOptions(string maDouong)
         {
-            // CHỈ XÓA PHẦN TÙY CHỌN, KHÔNG XÓA TEXTBOX GHI CHÚ
             flowDynamicOptions.Controls.Clear();
-
-            // Lấy dữ liệu từ DB
             List<OptionGroupDTO> listGroups = _tuyChonBLL.GetOptionsByProduct(maDouong);
 
-            if (listGroups == null || listGroups.Count == 0) return;
+            if (listGroups == null) return;
 
             foreach (var group in listGroups)
             {
-                // Tạo GroupBox
                 Guna2GroupBox grp = new Guna2GroupBox();
                 grp.Text = group.TenNhom;
-                grp.BorderColor = Color.LightGray;
-                // Chỉnh chiều rộng bằng với panel cha trừ đi margin để đẹp
                 grp.Size = new Size(flowDynamicOptions.Width - 10, 120);
 
                 FlowLayoutPanel flpInner = new FlowLayoutPanel();
                 flpInner.Dock = DockStyle.Fill;
-                flpInner.BackColor = Color.White;
                 grp.Controls.Add(flpInner);
 
                 foreach (var item in group.Items)
@@ -60,51 +60,39 @@ namespace CoffeeManagementSystem
                     btn.Text = item.TenChiTiet;
                     if (item.GiaThem > 0) btn.Text += $" (+{item.GiaThem:N0})";
 
+                    btn.Tag = item.GiaThem; // Lưu giá tiền vào Tag
                     btn.Size = new Size(130, 35);
                     btn.BorderRadius = 10;
                     btn.BorderThickness = 1;
                     btn.FillColor = Color.White;
                     btn.BorderColor = Color.Silver;
                     btn.ForeColor = Color.Black;
-                    btn.Margin = new Padding(5);
 
-                    btn.Tag = item.GiaThem; // Lưu tiền
+                    // Logic Checked (Tùy chọn)
+                    // (Nếu bạn muốn làm logic: Mở lên tự động tick lại cái cũ thì cần xử lý chuỗi ghiChuCu ở Constructor
+                    //  nhưng để đơn giản, tạm thời mở lên là trắng tinh cũng được)
 
-                    // Logic chọn Radio/Toggle
-                    if (group.ChonNhieu)
-                        btn.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.ToogleButton;
-                    else
-                        btn.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
+                    if (group.ChonNhieu) btn.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.ToogleButton;
+                    else btn.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
 
-                    // Sự kiện đổi màu
                     btn.CheckedChanged += (s, e) => {
-                        if (btn.Checked)
-                        {
-                            btn.FillColor = Color.MistyRose;
-                            btn.BorderColor = Color.Red;
-                        }
-                        else
-                        {
-                            btn.FillColor = Color.White;
-                            btn.BorderColor = Color.Silver;
-                        }
+                        if (btn.Checked) { btn.FillColor = Color.MistyRose; btn.BorderColor = Color.Red; }
+                        else { btn.FillColor = Color.White; btn.BorderColor = Color.Silver; }
                     };
 
                     flpInner.Controls.Add(btn);
                 }
-
-                // Thêm GroupBox vào khu vực ĐỘNG
                 flowDynamicOptions.Controls.Add(grp);
             }
         }
 
-        // Sự kiện nút LƯU (Kết hợp cả 2 nguồn dữ liệu)
+        // 4. SỰ KIỆN NÚT LƯU (Tính toán kết quả trả về)
         private void BtnLuu_Click(object sender, EventArgs e)
         {
             decimal tongTienThem = 0;
             List<string> cacLuaChon = new List<string>();
 
-            // 1. Quét các nút ĐỘNG để lấy Topping/Đường/Đá
+            // Quét tất cả các nút đang được chọn
             foreach (Control grp in flowDynamicOptions.Controls)
             {
                 if (grp is Guna2GroupBox groupBox)
@@ -117,9 +105,17 @@ namespace CoffeeManagementSystem
                             {
                                 if (c is Guna2Button btn && btn.Checked)
                                 {
-                                    cacLuaChon.Add(btn.Text);
+                                    // A. Lấy text để làm Ghi chú
+                                    // (Cắt bỏ phần giá tiền hiển thị nếu muốn đẹp: "Trân châu (+5k)" -> "Trân châu")
+                                    string tenOption = btn.Text;
+                                    cacLuaChon.Add(tenOption);
+
+                                    // B. Cộng tiền
                                     if (btn.Tag != null)
-                                        tongTienThem += Convert.ToDecimal(btn.Tag);
+                                    {
+                                        decimal price = Convert.ToDecimal(btn.Tag);
+                                        tongTienThem += price;
+                                    }
                                 }
                             }
                         }
@@ -127,7 +123,7 @@ namespace CoffeeManagementSystem
                 }
             }
 
-            // 2. Xử lý chuỗi ghi chú trả về
+            // Gộp chuỗi từ nút bấm và chuỗi gõ tay
             string strOptions = string.Join(", ", cacLuaChon);
             string strManualNote = txtGhiChu.Text.Trim();
 
@@ -138,13 +134,57 @@ namespace CoffeeManagementSystem
             else
                 ReturnNote = strManualNote;
 
-            // 3. Trả về giá tiền thêm (cho 1 đơn vị sản phẩm)
+            // Gán giá trị tiền thêm
             ReturnExtraPrice = tongTienThem;
-
-            // (Không trả về Quantity nữa)
 
             this.DialogResult = DialogResult.OK;
             this.Close();
+        }
+
+        // Nút Hủy/Quay lại
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
+            this.Close();
+        }
+        private void BtnHuy_Click(object sender, EventArgs e)
+        {
+            // 1. Xóa sạch nội dung ô Ghi chú tay
+            txtGhiChu.Clear();
+
+            // 2. Duyệt qua tất cả các GroupBox và Button để bỏ tick
+            // Cấu trúc: FlowPanel Chính -> GroupBox -> FlowPanel Con -> Button
+
+            foreach (Control grp in flowDynamicOptions.Controls)
+            {
+                if (grp is Guna2GroupBox groupBox)
+                {
+                    foreach (Control flp in groupBox.Controls)
+                    {
+                        if (flp is FlowLayoutPanel flowPanel)
+                        {
+                            foreach (Control c in flowPanel.Controls)
+                            {
+                                if (c is Guna2Button btn)
+                                {
+                                    // Bỏ chọn
+                                    btn.Checked = false;
+
+                                    // Reset màu sắc về mặc định (Trắng/Xám)
+                                    // (Phải set thủ công để đảm bảo giao diện cập nhật ngay)
+                                    btn.FillColor = Color.White;
+                                    btn.BorderColor = Color.Silver;
+                                    btn.ForeColor = Color.Black;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            // (Tùy chọn) Nếu bạn muốn đóng Form luôn sau khi xóa thì thêm dòng này:
+            // this.DialogResult = DialogResult.Cancel;
+            // this.Close();
         }
     }
 }
