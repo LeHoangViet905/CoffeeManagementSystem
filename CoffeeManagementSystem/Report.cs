@@ -457,7 +457,9 @@ namespace CoffeeManagementSystem
                 DataGridViewTextBoxColumn colNo = new DataGridViewTextBoxColumn();
                 colNo.Name = "No";                     // giữ Name để CellFormatting/Print dùng
                 colNo.HeaderText = "STT";             // tên hiển thị
-                colNo.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                colNo.DataPropertyName = null;        // STT tự đánh số
+                colNo.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                colNo.FillWeight = 33.33f;
                 colNo.ReadOnly = true;
                 colNo.Resizable = DataGridViewTriState.False;
                 colNo.SortMode = DataGridViewColumnSortMode.NotSortable;
@@ -468,8 +470,9 @@ namespace CoffeeManagementSystem
                 colDate.Name = "Date";
                 colDate.HeaderText = "Ngày giao dịch";
                 colDate.DataPropertyName = "Ngay";    // thuộc tính trong RevenueReportItem
-                colDate.Width = 200;
                 colDate.DefaultCellStyle.Format = "dd/MM/yyyy";
+                colDate.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                colDate.FillWeight = 33.33f;
                 colDate.ReadOnly = true;
                 colDate.Resizable = DataGridViewTriState.False;
                 colDate.SortMode = DataGridViewColumnSortMode.NotSortable;
@@ -480,14 +483,16 @@ namespace CoffeeManagementSystem
                 colPrice.Name = "Price";
                 colPrice.HeaderText = "Doanh thu";
                 colPrice.DataPropertyName = "Tongtien";   // thuộc tính trong RevenueReportItem
-                colPrice.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 colPrice.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
                 colPrice.DefaultCellStyle.Format = "N0";
+                colPrice.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                colPrice.FillWeight = 33.33f;
                 colPrice.ReadOnly = true;
                 colPrice.SortMode = DataGridViewColumnSortMode.NotSortable;
                 dgvRevenue.Columns.Add(colPrice);
 
-             
+
+
                 // 4. Gán dữ liệu
                 dgvRevenue.DataSource = revenueData;
 
