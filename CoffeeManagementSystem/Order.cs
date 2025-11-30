@@ -13,6 +13,7 @@ namespace CoffeeManagementSystem
     public partial class OrderForm : Form
     {
         // 1. Khai báo BLL
+        private DonhangBLL _donhangBLL;
         private DouongBLL _douongBLL;
         private LoaidouongBLL _loaidouongBLL;
         private GiadouongBLL _giadouongBLL;
@@ -24,6 +25,7 @@ namespace CoffeeManagementSystem
         public OrderForm()
         {
             InitializeComponent();
+            _donhangBLL = new DonhangBLL();
 
             _orderBLL = new OrderBLL(null);
             //Khởi tạo BLL
@@ -36,7 +38,11 @@ namespace CoffeeManagementSystem
             guna2TabControl1.SelectedIndexChanged += new EventHandler(guna2TabControl1_SelectedIndexChanged);
 
         }
-
+        private void GenerateAndShowOrderCode()
+        {
+            string newCode = _donhangBLL.TaoMaDonHangMoi();
+            guna2TextBox1.Text = newCode;
+        }
         public OrderForm(string manhanvien, string tenNhanVien) : this() // Gọi constructor mặc định
         {
             CurrentManhanvien = manhanvien;
@@ -52,6 +58,7 @@ namespace CoffeeManagementSystem
             //Gọi hàm tải sản phẩm
             FlowLayoutPanel allPanel = (FlowLayoutPanel)guna2TabControl1.TabPages[0].Controls[0];
             LoadProductsBySearch(allPanel, "");
+            GenerateAndShowOrderCode();
 
         }
 
@@ -294,32 +301,26 @@ namespace CoffeeManagementSystem
             if (e.RowIndex < 0 || dgvOrder.Rows[e.RowIndex].IsNewRow) return;
             DataGridViewRow row = dgvOrder.Rows[e.RowIndex];
 
-            // --- XỬ LÝ NÚT XÓA (X)---
+            // --- CASE A: NÚT XÓA (X) ---
             if (e.ColumnIndex == dgvOrder.Columns["colCancel"].Index)
             {
-                // Xóa hàng
                 dgvOrder.Rows.Remove(row);
                 UpdateOrderTotal();
             }
-
+            // --- CASE B: NÚT GIẢM (-) ---
             else if (e.ColumnIndex == dgvOrder.Columns["colDecrease"].Index)
             {
-                // 1. Lấy số lượng và đơn giá hiện tại từ các ô
                 int currentQty = (int)row.Cells["colQty"].Value;
-                decimal price = (decimal)row.Cells["colPrice"].Value; // (Lấy từ cột đơn giá ẩn)
+                decimal price = (decimal)row.Cells["colPrice"].Value;
 
                 if (currentQty > 1)
                 {
-                    // Nếu > 1, chỉ cần giảm 1
                     currentQty--;
                     row.Cells["colQty"].Value = currentQty;
-
-                    // Cập nhật lại tổng tiền cho hàng này
                     row.Cells["colTotal"].Value = currentQty * price;
                 }
                 else
                 {
-                    // Nếu = 1, xóa luôn hàng đó
                     dgvOrder.Rows.Remove(row);
                 }
                 UpdateOrderTotal();
@@ -440,9 +441,11 @@ namespace CoffeeManagementSystem
             // 3. LẤY THÔNG TIN NHÂN VIÊN
             string maNV = this.CurrentManhanvien;
             string tenNV = this.CurrentTenNhanvien;
-
+            // LẤY MÃ ĐƠN ĐANG HIỂN THỊ
+            string maDonHienTai = guna2TextBox1.Text.Trim();
             // 4. KHỞI TẠO VÀ MỞ PAYMENTFORM
-            PaymentForm paymentForm = new PaymentForm(dsChiTiet, maNV, tenNV);
+            // SỬA CONSTRUCTOR PaymentForm CHO NHẬN THÊM MÃ ĐƠN
+            PaymentForm paymentForm = new PaymentForm(dsChiTiet, maNV, tenNV, maDonHienTai);
 
             // Dùng ShowDialog() để nó "đóng băng" OrderForm
             // Chờ cho đến khi PaymentForm được đóng lại
@@ -452,17 +455,12 @@ namespace CoffeeManagementSystem
             // (PaymentForm của bạn trả về DialogResult.OK khi thành công)
             if (result == DialogResult.OK)
             {
-                // Thanh toán thành công!
-                MessageBox.Show("Thanh toán thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                // Dọn dẹp giỏ hàng
                 dgvOrder.Rows.Clear();
-
-                // Cập nhật lại tổng tiền (về 0)
                 UpdateOrderTotal();
 
-                // (Tùy chọn: Tải lại tab "Tất cả" để làm mới)
-                OrderForm_Load(null, null); // Hoặc gọi lại hàm tải sản phẩm
+                // 🔥 SAU KHI THANH TOÁN XONG VÀ LƯU ĐƠN XUỐNG DB:
+                // OrderForm hỏi DB mã cuối + 1 → hiện mã mới
+                GenerateAndShowOrderCode();
             }
             // (Nếu DialogResult là Cancel, chúng ta không làm gì cả, 
             //  người dùng đã tự tắt form Payment)

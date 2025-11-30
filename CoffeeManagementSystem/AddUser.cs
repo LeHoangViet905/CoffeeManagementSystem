@@ -160,7 +160,7 @@ namespace CoffeeManagementSystem
             try
             {
                 // Gọi BLL để cập nhật nhân viên và kiểm tra kết quả trả về
-                if (nhanvienBLL.UpdateNhanvien(updatedNhanvien))
+                if( nhanvienBLL.UpdateNhanvien(updatedNhanvien))
                 {
                     MessageBox.Show("Cập nhật nhân viên thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.DialogResult = DialogResult.OK;

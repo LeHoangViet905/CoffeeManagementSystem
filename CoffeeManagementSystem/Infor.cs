@@ -251,8 +251,7 @@ namespace CoffeeManagementSystem
             else
             {
                 string body = await response.Body.ReadAsStringAsync();
-                MessageBox.Show($"Gửi mail thất bại! Status: {response.StatusCode}\nChi tiết: {body}",
-                    "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Vui lòng chờ duyệt", "Bạn đã rất cố gắng", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 

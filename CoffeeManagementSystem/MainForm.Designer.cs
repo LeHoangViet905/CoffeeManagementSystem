@@ -89,6 +89,7 @@
             // 
             this.panelMain.BackColor = System.Drawing.Color.SeaShell;
             this.panelMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelMain.Font = new System.Drawing.Font("SVN-Gilroy", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panelMain.Location = new System.Drawing.Point(0, 0);
             this.panelMain.Margin = new System.Windows.Forms.Padding(0);
             this.panelMain.Name = "panelMain";
@@ -104,7 +105,7 @@
             // 
             // splitContainerNavBar.Panel1
             // 
-            this.splitContainerNavBar.Panel1.BackColor = System.Drawing.Color.Firebrick;
+            this.splitContainerNavBar.Panel1.BackColor = System.Drawing.Color.Tomato;
             this.splitContainerNavBar.Panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.splitContainerNavBar.Panel1.Controls.Add(this.btnOptionManager);
             this.splitContainerNavBar.Panel1.Controls.Add(this.btnLogout);
@@ -334,7 +335,8 @@
             this.pnlTitleBar.Controls.Add(this.guna2ControlBox2);
             this.pnlTitleBar.Controls.Add(this.guna2ControlBox1);
             this.pnlTitleBar.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlTitleBar.FillColor = System.Drawing.Color.SeaShell;
+            this.pnlTitleBar.FillColor = System.Drawing.Color.DarkCyan;
+            this.pnlTitleBar.Font = new System.Drawing.Font("SVN-Gilroy", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pnlTitleBar.Location = new System.Drawing.Point(0, 0);
             this.pnlTitleBar.Margin = new System.Windows.Forms.Padding(4);
             this.pnlTitleBar.Name = "pnlTitleBar";
@@ -344,7 +346,9 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.DarkCyan;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Transparent;
             this.label1.Location = new System.Drawing.Point(12, 5);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(216, 20);

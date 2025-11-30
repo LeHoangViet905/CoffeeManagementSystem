@@ -117,7 +117,29 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="guna2BorderlessForm1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAA
+        AAD/////////////////////////////////////////////////////////////////////////////
+        /////////////////////////////////////////////////v///////////////v//////////////
+        /////////////////////////vz3//z15v/89uj/+/Tj//z25//68t//+vLh//r05f/58Nz/+/bo//v0
+        5v/+/Pj///////////////////////z7+//h3vL/8O73/+zp9P/m5PX/6d/d//Xq2//27eH/9+7i//Hj
+        0v/x49L//fr3///////////////////////X1vz/bmz0/8LC+v+op/j/bmz4/7WYpP/fv5v/27ua/9Cm
+        eP/cu5j/zaBt//jx6v//////////////////////nJr3/5qY9/+lo/j/YV7y/4+O+v+5naP/yZVZ/8qZ
+        Zv/Ci0//3b6d/8iVXf/q1sL//////////////////f3//8zL+//q6f3/z877/8jH+v/m5v7/2c3Y/9O5
+        rf/r28z/6tbB/+zbyf/x5dj/8OLU//7+/v//////////////////////////////////////7u7+/317
+        9v9HRfT/oaD5//v7////////////////////////////////////////////////////////7/D//399
+        9/8iHe3/HRjt/yol7v+enPf//Pz/////////////////////////////////////////////+PPu/6eM
+        o/9RPLn/ODTv/yMf7v8fGu3/Kybu/6Gf9//8/P//////////////////////////////////+PLs/82c
+        YP+5bwL/qGUY/19Eof84NO//JB/t/x8a7f8qJu7/tbP5/////////////////////////////////96/
+        n/+vYQX/uG0A/7pwAP+qZhf/Y021/zg18v8hHO3/QT3w/83M+///////////////////////////////
+        ///37+f/xpFW/7FkAf+2agD/yZFE/9/U3P9zcfX/WVXx/8vK+///////////////////////////////
+        //////////////fv6P/GkVf/wolI//Tp3f//////6ur9/+Df/P//////////////////////////////
+        ////////////////////////+fTv//jy7P//////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+        ////////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAA==
+</value>
+  </data>
 </root>

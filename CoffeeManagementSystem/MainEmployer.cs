@@ -16,7 +16,7 @@ namespace CoffeeManagementSystem
             InitializeComponent();
 
             // Mặc định mở màn hình Đặt đồ uống
-            LoadFormCon(new OrderForm());
+            LoadFormCon(new DashboardForm());
         }
 
         // Constructor nhận thông tin nhân viên từ DangNhapForm
@@ -78,7 +78,11 @@ namespace CoffeeManagementSystem
             MainForm.PlayClickSound();
             LoadFormCon(new Infor(_loggedInMaNhanVien));
         }
-
+        private void btnTrangChu_Click(object sender, EventArgs e)
+        {
+            MainForm.PlayClickSound();
+            LoadFormCon(new DashboardForm());
+        }
         private void btnDangXuat_Click(object sender, EventArgs e)
         {
             MainForm.PlayClickSound();

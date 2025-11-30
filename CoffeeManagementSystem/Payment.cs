@@ -29,10 +29,10 @@ namespace CoffeeManagementSystem
         // Lưu hình thức thanh toán đang chờ xác nhận
         private string _pendingPaymentMethod = null;
 
-        public PaymentForm(List<Chitietdonhang> dsChiTiet, string manhanvien, string tenNhanVien)
+        public PaymentForm(List<Chitietdonhang> dsChiTiet, string manhanvien, string tenNhanVien, string maDonHang)
         {
             InitializeComponent();
-            _paymentBLL = new PaymentBLL(dsChiTiet, manhanvien, tenNhanVien);
+            _paymentBLL = new PaymentBLL(dsChiTiet, manhanvien, tenNhanVien,maDonHang);
 
             this.Text = "Payment";
 
@@ -63,14 +63,7 @@ namespace CoffeeManagementSystem
             if (rdbTienMat != null)
                 rdbTienMat.Checked = true;
 
-            if (picQrCode != null)
-            {
-                picQrCode.Visible = false;
-                // Có thể set size ban đầu to sẵn
-                picQrCode.Width = 300;
-                picQrCode.Height = 300;
-            }
-
+           
             if (btnThanhToanThanhCong != null)
                 btnThanhToanThanhCong.Visible = false;
             if (btnThanhToanThatBai != null)
@@ -470,34 +463,7 @@ namespace CoffeeManagementSystem
         /// <summary>
         /// Căn giữa QR ra giữa form và cho to lên.
         /// </summary>
-        private void HienQrToGiuaManHinh()
-        {
-            if (picQrCode == null) return;
-
-            // Kích thước QR đủ to
-            picQrCode.Width = 300;
-            picQrCode.Height = 300;
-
-            // Căn giữa form (theo client size)
-            picQrCode.Left = (this.ClientSize.Width - picQrCode.Width) / 2;
-            picQrCode.Top = (this.ClientSize.Height - picQrCode.Height) / 2;
-
-            // Load ảnh QR giả (nếu có)
-            if (picQrCode.Image == null)
-            {
-                try
-                {
-                    picQrCode.Image = Properties.Resources.qrcode;
-                }
-                catch
-                {
-                    // Nếu không load được ảnh thì vẫn cứ hiển thị khung trống
-                }
-            }
-
-            picQrCode.Visible = true;
-            picQrCode.BringToFront();
-        }
+        
 
         //Xử lý sự kiện click nút "Thanh toán".
         // Nút này KHÔNG còn xử lý payment luôn nữa, mà chỉ mở quy trình:
@@ -522,20 +488,44 @@ namespace CoffeeManagementSystem
             {
                 _pendingPaymentMethod = HINH_THUC_CHUYEN_KHOAN;
 
-                HienQrToGiuaManHinh();
-                ShowChuyenKhoanGuide();
+                // LẤY TỔNG TIỀN TỪ BLL
+                decimal tongTienDecimal = _paymentBLL.CalculateTongTien();
+                double amount = (double)tongTienDecimal;   // VNPay dùng double
 
-                // hiện 2 nút Thành công / Thất bại ngoài form chính
-                btnThanhToanThanhCong.Visible = true;
-                btnThanhToanThatBai.Visible = true;
-                btnThanhToanThanhCong.BringToFront();
-                btnThanhToanThatBai.BringToFront();
+                // LẤY MÃ HÓA ĐƠN TỪ LABEL
+                string maHoaDon = lblMaHoaDonValue.Text?.Trim();
 
-                return;
+                // Mô tả giao dịch gửi sang VNPay
+                string description = $"Thanh toán hóa đơn {maHoaDon} - KH: {txtKhachHangName.Text}";
+
+                // Mở form thanh toán VNPay
+                using (var frm = new FormThanhToan(amount, description))
+                {
+                    var result = frm.ShowDialog();
+
+                    if (result == DialogResult.OK)
+                    {
+                        // VNPay báo thành công (vnp_ResponseCode == "00")
+                        XuLyThanhToan(HINH_THUC_CHUYEN_KHOAN);
+                        Logger.LogInfo("Thanh toán VNPay thành công.");
+                        return;
+                    }
+                    else
+                    {
+                        // Người dùng đóng form / VNPay trả lỗi
+                        Logger.LogInfo("Thanh toán VNPay không thành công hoặc bị hủy.");
+                        MessageBox.Show("Thanh toán chưa hoàn tất.",
+                                        "Thông báo",
+                                        MessageBoxButtons.OK,
+                                        MessageBoxIcon.Information);
+                    }
+                }
+
             }
 
             // Ngược lại là TIỀN MẶT → dùng form riêng
             _pendingPaymentMethod = HINH_THUC_TIEN_MAT;
+            rdbTienMat.Checked=true;
 
             if (ShowCashPaymentDialog())
             {
@@ -557,9 +547,7 @@ namespace CoffeeManagementSystem
         {
             if (rdbTienMat.Checked)
             {
-                // Tiền mặt: không cần QR hiển thị sẵn
-                if (picQrCode != null)
-                    picQrCode.Visible = false;
+             
 
                 Logger.LogDebug("Hình thức thanh toán được chọn: Tiền mặt.");
             }
@@ -568,26 +556,7 @@ namespace CoffeeManagementSystem
         /// <summary>
         /// Xử lý khi chọn radio Chuyển khoản.
         /// </summary>
-        private void rdbChuyenKhoan_CheckedChanged(object sender, EventArgs e)
-        {
-            if (rdbChuyenKhoan.Checked)
-            {
-                // Chỉ chuẩn bị QR (load ảnh), chưa hiển thị, sẽ hiển thị khi bấm Thanh toán
-                if (picQrCode != null && picQrCode.Image == null)
-                {
-                    try
-                    {
-                        picQrCode.Image = Properties.Resources.qrcode;
-                    }
-                    catch
-                    {
-                        // ignore nếu không có file
-                    }
-                }
-
-                Logger.LogDebug("Hình thức thanh toán được chọn: Chuyển khoản.");
-            }
-        }
+        
 
         /// <summary>
         // Nút "Thành công" – đã nhận đủ tiền
@@ -622,9 +591,7 @@ namespace CoffeeManagementSystem
         {
             Logger.LogInfo($"Người dùng xác nhận THANH TOÁN THẤT BẠI ({_pendingPaymentMethod ?? "chưa bắt đầu"}).");
 
-            // Ẩn QR nếu đang hiện
-            if (picQrCode != null)
-                picQrCode.Visible = false;
+            
 
             // Ẩn 2 nút kết quả
             if (btnThanhToanThanhCong != null)
@@ -1075,6 +1042,16 @@ namespace CoffeeManagementSystem
 
                 return false; // Người dùng bấm Hủy
             }
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void picQrCode_Click(object sender, EventArgs e)
+        {
+
         }
     }
 

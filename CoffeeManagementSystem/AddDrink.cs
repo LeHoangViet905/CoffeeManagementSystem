@@ -72,13 +72,6 @@ namespace CoffeeManagementSystem
             pbHinhanh.Image = null;
             _selectedImagePath = "";
             SetButtonState(true, false, false);
-            // Gán sự kiện cho các nút
-            btnLuu.Click += btnLuu_Click;
-            btnCapNhat.Click += btnCapNhat_Click;
-            btnXoa.Click += btnXoa_Click;
-            btnSelectImage.Click += btnSelectImage_Click;
-            button1.Click += button1_Click; // Nút Hủy/Đóng
-
 
             LoadDouongDetails(madouong);
 
@@ -587,6 +580,31 @@ namespace CoffeeManagementSystem
                     Directory.CreateDirectory(DrinkImageFolder);
                 }
             }
+        }
+
+        private void btnCapNhat_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AddDrinkForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnXoa_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCapNhat_Click_2(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnLuu_Click_2(object sender, EventArgs e)
+        {
+
         }
     }
 }

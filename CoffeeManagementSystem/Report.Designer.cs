@@ -128,7 +128,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.panel1.BackColor = System.Drawing.Color.DarkCyan;
             this.panel1.Controls.Add(this.lblBaoCao);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
@@ -142,6 +142,7 @@
             // 
             this.lblBaoCao.AutoSize = true;
             this.lblBaoCao.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
+            this.lblBaoCao.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.lblBaoCao.Location = new System.Drawing.Point(3, 5);
             this.lblBaoCao.Name = "lblBaoCao";
             this.lblBaoCao.Size = new System.Drawing.Size(224, 25);
@@ -169,10 +170,10 @@
             this.dgvProductSales.BackgroundColor = System.Drawing.Color.White;
             this.dgvProductSales.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Firebrick;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.DarkCyan;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.DarkCyan;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvProductSales.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
@@ -290,7 +291,7 @@
             this.dtpProductSalesEndDate.BorderRadius = 10;
             this.dtpProductSalesEndDate.Checked = true;
             this.dtpProductSalesEndDate.CustomFormat = "dd/MM/yyyy";
-            this.dtpProductSalesEndDate.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.dtpProductSalesEndDate.FillColor = System.Drawing.Color.Tomato;
             this.dtpProductSalesEndDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.dtpProductSalesEndDate.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dtpProductSalesEndDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
@@ -310,7 +311,7 @@
             this.dtpProductSalesStartDate.BorderRadius = 15;
             this.dtpProductSalesStartDate.Checked = true;
             this.dtpProductSalesStartDate.CustomFormat = "dd/MM/yyyy";
-            this.dtpProductSalesStartDate.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.dtpProductSalesStartDate.FillColor = System.Drawing.Color.Tomato;
             this.dtpProductSalesStartDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.dtpProductSalesStartDate.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dtpProductSalesStartDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
@@ -332,7 +333,7 @@
             this.btnPrintBestseller.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnPrintBestseller.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnPrintBestseller.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnPrintBestseller.FillColor = System.Drawing.Color.Blue;
+            this.btnPrintBestseller.FillColor = System.Drawing.Color.Tomato;
             this.btnPrintBestseller.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
             this.btnPrintBestseller.ForeColor = System.Drawing.Color.White;
             this.btnPrintBestseller.Image = global::CoffeeManagementSystem.Properties.Resources.Xuat;
@@ -388,10 +389,10 @@
             this.dgvRevenue.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
             this.dgvRevenue.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Firebrick;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.DarkCyan;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("SVN-Gilroy SemiBold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Tomato;
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvRevenue.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
@@ -417,7 +418,7 @@
             this.dataGridViewTextBoxColumn1.HeaderText = "STT";
             this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.Width = 95;
+            this.dataGridViewTextBoxColumn1.Width = 96;
             // 
             // dataGridViewTextBoxColumn2
             // 
@@ -432,7 +433,7 @@
             this.dataGridViewTextBoxColumn4.HeaderText = "Doanh thu";
             this.dataGridViewTextBoxColumn4.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.Width = 155;
+            this.dataGridViewTextBoxColumn4.Width = 188;
             // 
             // panel3
             // 
@@ -466,7 +467,7 @@
             // lblTotalPrice
             // 
             this.lblTotalPrice.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold);
-            this.lblTotalPrice.Location = new System.Drawing.Point(304, 15);
+            this.lblTotalPrice.Location = new System.Drawing.Point(304, 14);
             this.lblTotalPrice.Name = "lblTotalPrice";
             this.lblTotalPrice.Size = new System.Drawing.Size(262, 42);
             this.lblTotalPrice.TabIndex = 11;
@@ -477,7 +478,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold);
-            this.label5.ForeColor = System.Drawing.Color.Firebrick;
+            this.label5.ForeColor = System.Drawing.Color.OrangeRed;
             this.label5.Location = new System.Drawing.Point(21, 14);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(294, 40);
@@ -489,7 +490,7 @@
             this.dtpRevenueEndDate.BorderRadius = 15;
             this.dtpRevenueEndDate.Checked = true;
             this.dtpRevenueEndDate.CustomFormat = "dd/MM/yyyy";
-            this.dtpRevenueEndDate.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.dtpRevenueEndDate.FillColor = System.Drawing.Color.Tomato;
             this.dtpRevenueEndDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.dtpRevenueEndDate.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dtpRevenueEndDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
@@ -510,7 +511,7 @@
             this.btnPrintDoanhThu.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnPrintDoanhThu.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnPrintDoanhThu.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnPrintDoanhThu.FillColor = System.Drawing.Color.Blue;
+            this.btnPrintDoanhThu.FillColor = System.Drawing.Color.Tomato;
             this.btnPrintDoanhThu.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
             this.btnPrintDoanhThu.ForeColor = System.Drawing.Color.White;
             this.btnPrintDoanhThu.Image = global::CoffeeManagementSystem.Properties.Resources.Xuat;
@@ -528,7 +529,7 @@
             this.dtpRevenueStartDate.BorderRadius = 15;
             this.dtpRevenueStartDate.Checked = true;
             this.dtpRevenueStartDate.CustomFormat = "dd/MM/yyyy";
-            this.dtpRevenueStartDate.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.dtpRevenueStartDate.FillColor = System.Drawing.Color.Tomato;
             this.dtpRevenueStartDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.dtpRevenueStartDate.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dtpRevenueStartDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
@@ -581,10 +582,10 @@
             this.dgvPotentialCustomers.BackgroundColor = System.Drawing.Color.White;
             this.dgvPotentialCustomers.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Firebrick;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.DarkCyan;
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Tomato;
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvPotentialCustomers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
@@ -599,7 +600,7 @@
             this.Column6});
             this.dgvPotentialCustomers.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvPotentialCustomers.EnableHeadersVisualStyles = false;
-            this.dgvPotentialCustomers.GridColor = System.Drawing.Color.Pink;
+            this.dgvPotentialCustomers.GridColor = System.Drawing.Color.Tomato;
             this.dgvPotentialCustomers.Location = new System.Drawing.Point(3, 93);
             this.dgvPotentialCustomers.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvPotentialCustomers.Name = "dgvPotentialCustomers";
@@ -683,7 +684,7 @@
             this.btnPrintKHtop.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnPrintKHtop.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnPrintKHtop.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnPrintKHtop.FillColor = System.Drawing.Color.Blue;
+            this.btnPrintKHtop.FillColor = System.Drawing.Color.Tomato;
             this.btnPrintKHtop.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
             this.btnPrintKHtop.ForeColor = System.Drawing.Color.White;
             this.btnPrintKHtop.Image = global::CoffeeManagementSystem.Properties.Resources.Xuat;
@@ -701,7 +702,7 @@
             this.dtToTopSelling.BorderRadius = 15;
             this.dtToTopSelling.Checked = true;
             this.dtToTopSelling.CustomFormat = "dd/MM/yyyy";
-            this.dtToTopSelling.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.dtToTopSelling.FillColor = System.Drawing.Color.Tomato;
             this.dtToTopSelling.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.dtToTopSelling.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dtToTopSelling.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
@@ -720,7 +721,7 @@
             this.dtFromTopSelling.BorderRadius = 15;
             this.dtFromTopSelling.Checked = true;
             this.dtFromTopSelling.CustomFormat = "dd/MM/yyyy";
-            this.dtFromTopSelling.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.dtFromTopSelling.FillColor = System.Drawing.Color.Tomato;
             this.dtFromTopSelling.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.dtFromTopSelling.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dtFromTopSelling.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
@@ -827,6 +828,7 @@
             this.chartDashboard.Name = "chartDashboard";
             this.chartDashboard.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Fire;
             series1.ChartArea = "ChartArea1";
+            series1.Font = new System.Drawing.Font("SVN-Gilroy", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             this.chartDashboard.Series.Add(series1);
@@ -846,7 +848,9 @@
             this.chartRevenueByHour.Location = new System.Drawing.Point(3, 455);
             this.chartRevenueByHour.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chartRevenueByHour.Name = "chartRevenueByHour";
+            this.chartRevenueByHour.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Pastel;
             series2.ChartArea = "ChartArea1";
+            series2.Font = new System.Drawing.Font("SVN-Gilroy", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             series2.Legend = "Legend1";
             series2.Name = "Series1";
             this.chartRevenueByHour.Series.Add(series2);
@@ -856,12 +860,12 @@
             // 
             // Bieudotron
             // 
-            this.Bieudotron.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.Bieudotron.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.Bieudotron.BorderRadius = 10;
             this.Bieudotron.Controls.Add(this.tableLayoutPanelRight);
-            this.Bieudotron.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.Bieudotron.CustomBorderColor = System.Drawing.Color.DarkCyan;
             this.Bieudotron.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Bieudotron.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
+            this.Bieudotron.Font = new System.Drawing.Font("SVN-Gilroy", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Bieudotron.ForeColor = System.Drawing.Color.White;
             this.Bieudotron.Location = new System.Drawing.Point(814, 2);
             this.Bieudotron.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -870,6 +874,7 @@
             this.Bieudotron.Size = new System.Drawing.Size(987, 922);
             this.Bieudotron.TabIndex = 10;
             this.Bieudotron.Text = "Biểu đồ tròn tỷ trọng đóng góp từng loại đồ uống ";
+            this.Bieudotron.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.Bieudotron.Click += new System.EventHandler(this.Bieudotron_Click);
             // 
             // tableLayoutPanelRight
@@ -912,7 +917,7 @@
             this.panelRevenueBox.Controls.Add(this.lblDashRevenue);
             this.panelRevenueBox.Controls.Add(this.lblDashRevenueTitle);
             this.panelRevenueBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelRevenueBox.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.panelRevenueBox.FillColor = System.Drawing.Color.Tomato;
             this.panelRevenueBox.Location = new System.Drawing.Point(10, 10);
             this.panelRevenueBox.Margin = new System.Windows.Forms.Padding(10);
             this.panelRevenueBox.Name = "panelRevenueBox";
@@ -924,7 +929,7 @@
             this.lblDashRevenue.AutoSize = false;
             this.lblDashRevenue.BackColor = System.Drawing.Color.Transparent;
             this.lblDashRevenue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblDashRevenue.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold);
+            this.lblDashRevenue.Font = new System.Drawing.Font("SVN-Gilroy", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDashRevenue.ForeColor = System.Drawing.Color.White;
             this.lblDashRevenue.Location = new System.Drawing.Point(0, 40);
             this.lblDashRevenue.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -937,7 +942,7 @@
             // lblDashRevenueTitle
             // 
             this.lblDashRevenueTitle.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblDashRevenueTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.lblDashRevenueTitle.Font = new System.Drawing.Font("SVN-Gilroy", 11F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDashRevenueTitle.ForeColor = System.Drawing.Color.White;
             this.lblDashRevenueTitle.Location = new System.Drawing.Point(0, 0);
             this.lblDashRevenueTitle.Name = "lblDashRevenueTitle";
@@ -952,7 +957,7 @@
             this.panelTotalOrdersBox.Controls.Add(this.lblDashTotalOrders);
             this.panelTotalOrdersBox.Controls.Add(this.lblDashTotalOrdersTitle);
             this.panelTotalOrdersBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelTotalOrdersBox.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.panelTotalOrdersBox.FillColor = System.Drawing.Color.Tomato;
             this.panelTotalOrdersBox.Location = new System.Drawing.Point(336, 10);
             this.panelTotalOrdersBox.Margin = new System.Windows.Forms.Padding(10);
             this.panelTotalOrdersBox.Name = "panelTotalOrdersBox";
@@ -964,7 +969,7 @@
             this.lblDashTotalOrders.AutoSize = false;
             this.lblDashTotalOrders.BackColor = System.Drawing.Color.Transparent;
             this.lblDashTotalOrders.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblDashTotalOrders.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold);
+            this.lblDashTotalOrders.Font = new System.Drawing.Font("SVN-Gilroy", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDashTotalOrders.ForeColor = System.Drawing.Color.White;
             this.lblDashTotalOrders.Location = new System.Drawing.Point(0, 40);
             this.lblDashTotalOrders.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -977,7 +982,7 @@
             // lblDashTotalOrdersTitle
             // 
             this.lblDashTotalOrdersTitle.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblDashTotalOrdersTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.lblDashTotalOrdersTitle.Font = new System.Drawing.Font("SVN-Gilroy", 11F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDashTotalOrdersTitle.ForeColor = System.Drawing.Color.White;
             this.lblDashTotalOrdersTitle.Location = new System.Drawing.Point(0, 0);
             this.lblDashTotalOrdersTitle.Name = "lblDashTotalOrdersTitle";
@@ -992,7 +997,7 @@
             this.panelAOVBox.Controls.Add(this.lblDashAOV);
             this.panelAOVBox.Controls.Add(this.lblDashAOVTitle);
             this.panelAOVBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelAOVBox.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.panelAOVBox.FillColor = System.Drawing.Color.Tomato;
             this.panelAOVBox.Location = new System.Drawing.Point(662, 10);
             this.panelAOVBox.Margin = new System.Windows.Forms.Padding(10);
             this.panelAOVBox.Name = "panelAOVBox";
@@ -1004,7 +1009,7 @@
             this.lblDashAOV.AutoSize = false;
             this.lblDashAOV.BackColor = System.Drawing.Color.Transparent;
             this.lblDashAOV.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblDashAOV.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold);
+            this.lblDashAOV.Font = new System.Drawing.Font("SVN-Gilroy", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDashAOV.ForeColor = System.Drawing.Color.White;
             this.lblDashAOV.Location = new System.Drawing.Point(0, 40);
             this.lblDashAOV.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -1017,7 +1022,7 @@
             // lblDashAOVTitle
             // 
             this.lblDashAOVTitle.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblDashAOVTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.lblDashAOVTitle.Font = new System.Drawing.Font("SVN-Gilroy", 11F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDashAOVTitle.ForeColor = System.Drawing.Color.White;
             this.lblDashAOVTitle.Location = new System.Drawing.Point(0, 0);
             this.lblDashAOVTitle.Name = "lblDashAOVTitle";
@@ -1054,8 +1059,8 @@
             this.dtpDashTo.BorderRadius = 10;
             this.dtpDashTo.Checked = true;
             this.dtpDashTo.CustomFormat = "dd/MM/yyyy";
-            this.dtpDashTo.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.dtpDashTo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.dtpDashTo.FillColor = System.Drawing.Color.Tomato;
+            this.dtpDashTo.Font = new System.Drawing.Font("SVN-Gilroy", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpDashTo.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dtpDashTo.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpDashTo.Location = new System.Drawing.Point(418, 28);
@@ -1074,8 +1079,8 @@
             this.dtpDashFrom.BorderRadius = 15;
             this.dtpDashFrom.Checked = true;
             this.dtpDashFrom.CustomFormat = "dd/MM/yyyy";
-            this.dtpDashFrom.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.dtpDashFrom.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.dtpDashFrom.FillColor = System.Drawing.Color.Tomato;
+            this.dtpDashFrom.Font = new System.Drawing.Font("SVN-Gilroy", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpDashFrom.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dtpDashFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpDashFrom.Location = new System.Drawing.Point(132, 28);
@@ -1092,18 +1097,20 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("SVN-Gilroy", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(356, 39);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(63, 29);
+            this.label1.Size = new System.Drawing.Size(65, 32);
             this.label1.TabIndex = 35;
             this.label1.Text = "Đến:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("SVN-Gilroy", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(44, 39);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(83, 29);
+            this.label2.Size = new System.Drawing.Size(88, 32);
             this.label2.TabIndex = 34;
             this.label2.Text = "Lọc từ:";
             // 

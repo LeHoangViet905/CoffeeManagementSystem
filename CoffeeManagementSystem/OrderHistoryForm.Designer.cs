@@ -32,9 +32,9 @@ namespace CoffeeManagementSystem
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelHeader = new System.Windows.Forms.Panel();
             this.lblTitle = new System.Windows.Forms.Label();
             this.panelFilter = new System.Windows.Forms.Panel();
@@ -55,7 +55,6 @@ namespace CoffeeManagementSystem
             this.colTongTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colHinhThucThanhToan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colTrangThai = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
             this.panelHeader.SuspendLayout();
             this.panelFilter.SuspendLayout();
             this.guna2ShadowPanelSummary.SuspendLayout();
@@ -64,23 +63,23 @@ namespace CoffeeManagementSystem
             // 
             // panelHeader
             // 
-            this.panelHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.panelHeader.BackColor = System.Drawing.Color.DarkCyan;
             this.panelHeader.Controls.Add(this.lblTitle);
             this.panelHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelHeader.Location = new System.Drawing.Point(0, 0);
-            this.panelHeader.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panelHeader.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelHeader.Name = "panelHeader";
-            this.panelHeader.Size = new System.Drawing.Size(900, 26);
+            this.panelHeader.Size = new System.Drawing.Size(1350, 40);
             this.panelHeader.TabIndex = 0;
             // 
             // lblTitle
             // 
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.Location = new System.Drawing.Point(9, 5);
-            this.lblTitle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblTitle.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblTitle.Location = new System.Drawing.Point(14, 8);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(136, 18);
+            this.lblTitle.Size = new System.Drawing.Size(193, 26);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "Lịch sử đơn hàng";
             // 
@@ -95,10 +94,10 @@ namespace CoffeeManagementSystem
             this.panelFilter.Controls.Add(this.lblTo);
             this.panelFilter.Controls.Add(this.lblFrom);
             this.panelFilter.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelFilter.Location = new System.Drawing.Point(0, 26);
-            this.panelFilter.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panelFilter.Location = new System.Drawing.Point(0, 40);
+            this.panelFilter.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelFilter.Name = "panelFilter";
-            this.panelFilter.Size = new System.Drawing.Size(900, 65);
+            this.panelFilter.Size = new System.Drawing.Size(1350, 100);
             this.panelFilter.TabIndex = 1;
             // 
             // guna2ShadowPanelSummary
@@ -107,34 +106,33 @@ namespace CoffeeManagementSystem
             this.guna2ShadowPanelSummary.Controls.Add(this.lblTotalRevenue);
             this.guna2ShadowPanelSummary.Controls.Add(this.lblTotalOrders);
             this.guna2ShadowPanelSummary.FillColor = System.Drawing.Color.White;
-            this.guna2ShadowPanelSummary.Location = new System.Drawing.Point(465, 7);
-            this.guna2ShadowPanelSummary.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.guna2ShadowPanelSummary.Location = new System.Drawing.Point(1046, 14);
+            this.guna2ShadowPanelSummary.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2ShadowPanelSummary.Name = "guna2ShadowPanelSummary";
-            this.guna2ShadowPanelSummary.Radius = 10;
+            this.guna2ShadowPanelSummary.Radius = 5;
             this.guna2ShadowPanelSummary.ShadowColor = System.Drawing.Color.Black;
-            this.guna2ShadowPanelSummary.Size = new System.Drawing.Size(195, 49);
+            this.guna2ShadowPanelSummary.ShadowDepth = 50;
+            this.guna2ShadowPanelSummary.Size = new System.Drawing.Size(292, 75);
             this.guna2ShadowPanelSummary.TabIndex = 7;
             // 
             // lblTotalRevenue
             // 
             this.lblTotalRevenue.AutoSize = true;
-            this.lblTotalRevenue.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Bold);
+            this.lblTotalRevenue.Font = new System.Drawing.Font("SVN-Gilroy", 9.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotalRevenue.ForeColor = System.Drawing.Color.Firebrick;
-            this.lblTotalRevenue.Location = new System.Drawing.Point(9, 27);
-            this.lblTotalRevenue.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblTotalRevenue.Location = new System.Drawing.Point(14, 39);
             this.lblTotalRevenue.Name = "lblTotalRevenue";
-            this.lblTotalRevenue.Size = new System.Drawing.Size(128, 16);
+            this.lblTotalRevenue.Size = new System.Drawing.Size(169, 27);
             this.lblTotalRevenue.TabIndex = 1;
             this.lblTotalRevenue.Text = "Tổng tiền: 0 VNĐ";
             // 
             // lblTotalOrders
             // 
             this.lblTotalOrders.AutoSize = true;
-            this.lblTotalOrders.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Bold);
-            this.lblTotalOrders.Location = new System.Drawing.Point(9, 8);
-            this.lblTotalOrders.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblTotalOrders.Font = new System.Drawing.Font("SVN-Gilroy", 9.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalOrders.Location = new System.Drawing.Point(14, 11);
             this.lblTotalOrders.Name = "lblTotalOrders";
-            this.lblTotalOrders.Size = new System.Drawing.Size(122, 16);
+            this.lblTotalOrders.Size = new System.Drawing.Size(165, 27);
             this.lblTotalOrders.TabIndex = 0;
             this.lblTotalOrders.Text = "Tổng đơn: 0 đơn";
             // 
@@ -145,12 +143,12 @@ namespace CoffeeManagementSystem
             this.btnViewDetail.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnViewDetail.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnViewDetail.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnViewDetail.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
+            this.btnViewDetail.Font = new System.Drawing.Font("SVN-Gilroy", 9.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnViewDetail.ForeColor = System.Drawing.Color.White;
-            this.btnViewDetail.Location = new System.Drawing.Point(776, 15);
-            this.btnViewDetail.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnViewDetail.Location = new System.Drawing.Point(852, 40);
+            this.btnViewDetail.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnViewDetail.Name = "btnViewDetail";
-            this.btnViewDetail.Size = new System.Drawing.Size(109, 37);
+            this.btnViewDetail.Size = new System.Drawing.Size(164, 40);
             this.btnViewDetail.TabIndex = 6;
             this.btnViewDetail.Text = "Xem chi tiết";
             this.btnViewDetail.Click += new System.EventHandler(this.btnViewDetail_Click);
@@ -162,12 +160,12 @@ namespace CoffeeManagementSystem
             this.btnToday.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnToday.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnToday.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnToday.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
+            this.btnToday.Font = new System.Drawing.Font("SVN-Gilroy", 9.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnToday.ForeColor = System.Drawing.Color.White;
-            this.btnToday.Location = new System.Drawing.Point(668, 15);
-            this.btnToday.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnToday.Location = new System.Drawing.Point(690, 40);
+            this.btnToday.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnToday.Name = "btnToday";
-            this.btnToday.Size = new System.Drawing.Size(98, 37);
+            this.btnToday.Size = new System.Drawing.Size(147, 40);
             this.btnToday.TabIndex = 5;
             this.btnToday.Text = "Hôm nay";
             this.btnToday.Click += new System.EventHandler(this.btnToday_Click);
@@ -179,12 +177,12 @@ namespace CoffeeManagementSystem
             this.btnFilter.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnFilter.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnFilter.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnFilter.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
+            this.btnFilter.Font = new System.Drawing.Font("SVN-Gilroy", 9.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFilter.ForeColor = System.Drawing.Color.White;
-            this.btnFilter.Location = new System.Drawing.Point(360, 15);
-            this.btnFilter.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnFilter.Location = new System.Drawing.Point(540, 40);
+            this.btnFilter.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnFilter.Name = "btnFilter";
-            this.btnFilter.Size = new System.Drawing.Size(90, 37);
+            this.btnFilter.Size = new System.Drawing.Size(135, 40);
             this.btnFilter.TabIndex = 4;
             this.btnFilter.Text = "Lọc";
             this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
@@ -194,16 +192,16 @@ namespace CoffeeManagementSystem
             this.dtpTo.BorderRadius = 10;
             this.dtpTo.Checked = true;
             this.dtpTo.CustomFormat = "dd/MM/yyyy";
-            this.dtpTo.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.dtpTo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
+            this.dtpTo.FillColor = System.Drawing.Color.Tomato;
+            this.dtpTo.Font = new System.Drawing.Font("SVN-Gilroy", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpTo.ForeColor = System.Drawing.Color.White;
             this.dtpTo.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpTo.Location = new System.Drawing.Point(212, 16);
-            this.dtpTo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtpTo.Location = new System.Drawing.Point(318, 25);
+            this.dtpTo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtpTo.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dtpTo.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.dtpTo.Name = "dtpTo";
-            this.dtpTo.Size = new System.Drawing.Size(135, 34);
+            this.dtpTo.Size = new System.Drawing.Size(202, 52);
             this.dtpTo.TabIndex = 3;
             this.dtpTo.Value = new System.DateTime(2025, 11, 29, 16, 58, 42, 623);
             // 
@@ -212,38 +210,36 @@ namespace CoffeeManagementSystem
             this.dtpFrom.BorderRadius = 10;
             this.dtpFrom.Checked = true;
             this.dtpFrom.CustomFormat = "dd/MM/yyyy";
-            this.dtpFrom.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.dtpFrom.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
+            this.dtpFrom.FillColor = System.Drawing.Color.Tomato;
+            this.dtpFrom.Font = new System.Drawing.Font("SVN-Gilroy", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpFrom.ForeColor = System.Drawing.Color.White;
             this.dtpFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpFrom.Location = new System.Drawing.Point(33, 15);
-            this.dtpFrom.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtpFrom.Location = new System.Drawing.Point(50, 22);
+            this.dtpFrom.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtpFrom.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dtpFrom.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.dtpFrom.Name = "dtpFrom";
-            this.dtpFrom.Size = new System.Drawing.Size(135, 34);
+            this.dtpFrom.Size = new System.Drawing.Size(202, 52);
             this.dtpFrom.TabIndex = 2;
             this.dtpFrom.Value = new System.DateTime(2025, 11, 29, 16, 58, 42, 814);
             // 
             // lblTo
             // 
             this.lblTo.AutoSize = true;
-            this.lblTo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F);
-            this.lblTo.Location = new System.Drawing.Point(172, 26);
-            this.lblTo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblTo.Font = new System.Drawing.Font("SVN-Gilroy", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTo.Location = new System.Drawing.Point(258, 40);
             this.lblTo.Name = "lblTo";
-            this.lblTo.Size = new System.Drawing.Size(36, 17);
+            this.lblTo.Size = new System.Drawing.Size(53, 26);
             this.lblTo.TabIndex = 1;
             this.lblTo.Text = "đến:";
             // 
             // lblFrom
             // 
             this.lblFrom.AutoSize = true;
-            this.lblFrom.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F);
-            this.lblFrom.Location = new System.Drawing.Point(9, 26);
-            this.lblFrom.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblFrom.Font = new System.Drawing.Font("SVN-Gilroy", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFrom.Location = new System.Drawing.Point(14, 40);
             this.lblFrom.Name = "lblFrom";
-            this.lblFrom.Size = new System.Drawing.Size(29, 17);
+            this.lblFrom.Size = new System.Drawing.Size(37, 26);
             this.lblFrom.TabIndex = 0;
             this.lblFrom.Text = "Từ:";
             // 
@@ -255,14 +251,14 @@ namespace CoffeeManagementSystem
             this.dgvOrderHistory.AllowUserToResizeRows = false;
             this.dgvOrderHistory.BackgroundColor = System.Drawing.Color.White;
             this.dgvOrderHistory.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Firebrick;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvOrderHistory.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.DarkCyan;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("SVN-Gilroy SemiBold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Tomato;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvOrderHistory.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvOrderHistory.ColumnHeadersHeight = 40;
             this.dgvOrderHistory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvOrderHistory.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -275,18 +271,26 @@ namespace CoffeeManagementSystem
             this.dgvOrderHistory.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvOrderHistory.EnableHeadersVisualStyles = false;
             this.dgvOrderHistory.GridColor = System.Drawing.Color.Pink;
-            this.dgvOrderHistory.Location = new System.Drawing.Point(0, 91);
-            this.dgvOrderHistory.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvOrderHistory.Location = new System.Drawing.Point(0, 140);
+            this.dgvOrderHistory.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvOrderHistory.MultiSelect = false;
             this.dgvOrderHistory.Name = "dgvOrderHistory";
             this.dgvOrderHistory.ReadOnly = true;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("SVN-Gilroy SemiBold", 7.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvOrderHistory.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvOrderHistory.RowHeadersVisible = false;
             this.dgvOrderHistory.RowHeadersWidth = 51;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F);
-            this.dgvOrderHistory.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F);
+            this.dgvOrderHistory.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvOrderHistory.RowTemplate.Height = 30;
             this.dgvOrderHistory.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvOrderHistory.Size = new System.Drawing.Size(900, 437);
+            this.dgvOrderHistory.Size = new System.Drawing.Size(1350, 672);
             this.dgvOrderHistory.TabIndex = 2;
             this.dgvOrderHistory.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvOrderHistory_CellDoubleClick);
             // 
@@ -297,7 +301,7 @@ namespace CoffeeManagementSystem
             this.colMaHoaDon.MinimumWidth = 6;
             this.colMaHoaDon.Name = "colMaHoaDon";
             this.colMaHoaDon.ReadOnly = true;
-            this.colMaHoaDon.Width = 68;
+            this.colMaHoaDon.Width = 108;
             // 
             // colThoiGian
             // 
@@ -306,7 +310,7 @@ namespace CoffeeManagementSystem
             this.colThoiGian.MinimumWidth = 6;
             this.colThoiGian.Name = "colThoiGian";
             this.colThoiGian.ReadOnly = true;
-            this.colThoiGian.Width = 59;
+            this.colThoiGian.Width = 132;
             // 
             // colKhachHang
             // 
@@ -323,7 +327,7 @@ namespace CoffeeManagementSystem
             this.colTongTien.MinimumWidth = 6;
             this.colTongTien.Name = "colTongTien";
             this.colTongTien.ReadOnly = true;
-            this.colTongTien.Width = 84;
+            this.colTongTien.Width = 132;
             // 
             // colHinhThucThanhToan
             // 
@@ -332,7 +336,7 @@ namespace CoffeeManagementSystem
             this.colHinhThucThanhToan.MinimumWidth = 6;
             this.colHinhThucThanhToan.Name = "colHinhThucThanhToan";
             this.colHinhThucThanhToan.ReadOnly = true;
-            this.colHinhThucThanhToan.Width = 123;
+            this.colHinhThucThanhToan.Width = 240;
             // 
             // colTrangThai
             // 
@@ -341,24 +345,18 @@ namespace CoffeeManagementSystem
             this.colTrangThai.MinimumWidth = 6;
             this.colTrangThai.Name = "colTrangThai";
             this.colTrangThai.ReadOnly = true;
-            this.colTrangThai.Width = 88;
-            // 
-            // guna2BorderlessForm1
-            // 
-            this.guna2BorderlessForm1.ContainerControl = this;
-            this.guna2BorderlessForm1.DockIndicatorTransparencyValue = 0.6D;
-            this.guna2BorderlessForm1.TransparentWhileDrag = true;
+            this.colTrangThai.Width = 142;
             // 
             // OrderHistoryForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(900, 528);
+            this.ClientSize = new System.Drawing.Size(1350, 812);
             this.Controls.Add(this.dgvOrderHistory);
             this.Controls.Add(this.panelFilter);
             this.Controls.Add(this.panelHeader);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "OrderHistoryForm";
             this.Text = "OrderHistoryForm";
             this.Load += new System.EventHandler(this.OrderHistoryForm_Load);
