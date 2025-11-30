@@ -176,5 +176,10 @@ namespace CoffeeManagementSystem
                 }
             }
         }
+
+        private void btnThemloaidouong_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -130,6 +130,15 @@
       <HintPath>..\packages\HarfBuzzSharp.8.3.1.1\lib\net462\HarfBuzzSharp.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Microsoft.Web.WebView2.Core, Version=1.0.3595.46, Culture=neutral, PublicKeyToken=2a8ab48044d2601e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.WebView2.1.0.3595.46\lib\net462\Microsoft.Web.WebView2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.WebView2.WinForms, Version=1.0.3595.46, Culture=neutral, PublicKeyToken=2a8ab48044d2601e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.WebView2.1.0.3595.46\lib\net462\Microsoft.Web.WebView2.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.WebView2.Wpf, Version=1.0.3595.46, Culture=neutral, PublicKeyToken=2a8ab48044d2601e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.WebView2.1.0.3595.46\lib\net462\Microsoft.Web.WebView2.Wpf.dll</HintPath>
+    </Reference>
     <Reference Include="MimeKit, Version=4.14.0.0, Culture=neutral, PublicKeyToken=bede1c8a46c66814, processorArchitecture=MSIL">
       <HintPath>..\packages\MimeKit.4.14.0\lib\net48\MimeKit.dll</HintPath>
     </Reference>
@@ -252,6 +261,7 @@
     <Compile Include="bll\OrderBLL.cs" />
     <Compile Include="bll\PaymentBLL.cs" />
     <Compile Include="bll\ReportBLL.cs" />
+    <Compile Include="bll\TuyChonBLL.cs" />
     <Compile Include="Customer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -282,18 +292,43 @@
     <Compile Include="DangNhapForm.Designer.cs">
       <DependentUpon>DangNhapForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="model\OrderhistoryItem.cs" />
+    <Compile Include="NoteForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NoteForm.Designer.cs">
+      <DependentUpon>NoteForm.cs</DependentUpon>
+    </Compile>
+	  <Compile Include="OptionManagerForm.cs">
+		  <SubType>Form</SubType>
+	  </Compile>
+	  <Compile Include="OptionManagerForm.Designer.cs">
+		  <DependentUpon>OptionManagerForm.cs</DependentUpon>
+	  </Compile>
+	  <Compile Include="model\OrderhistoryItem.cs" />
+	      <Compile Include="model\OrderhistoryItem.cs" />
     <Compile Include="OrderDetailForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="OrderDetailForm.Designer.cs">
       <DependentUpon>OrderDetailForm.cs</DependentUpon>
     </Compile>
+
+    <Compile Include="OrderHistoryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+
+
     <Compile Include="OrderHistoryForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="OrderHistoryForm.Designer.cs">
       <DependentUpon>OrderHistoryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ThanhToanVNPay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ThanhToanVNPay.Designer.cs">
+      <DependentUpon>ThanhToanVNPay.cs</DependentUpon>
     </Compile>
     <Compile Include="Trangchu.cs">
       <SubType>Form</SubType>
@@ -313,12 +348,6 @@
     </Compile>
     <Compile Include="Employer.Designer.cs">
       <DependentUpon>Employer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Infor.cs">
       <SubType>Form</SubType>
@@ -372,6 +401,7 @@
     <Compile Include="Report.Designer.cs">
       <DependentUpon>Report.cs</DependentUpon>
     </Compile>
+    <Compile Include="TuyChonDAL.cs" />
     <Compile Include="ucProductItem.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -379,6 +409,8 @@
       <DependentUpon>ucProductItem.cs</DependentUpon>
     </Compile>
     <Compile Include="utilities\Logger.cs" />
+    <Compile Include="VNPayConfig.cs" />
+    <Compile Include="VNPayLibrary.cs" />
     <EmbeddedResource Include="AddDrink.resx">
       <DependentUpon>AddDrink.cs</DependentUpon>
     </EmbeddedResource>
@@ -397,11 +429,20 @@
     <EmbeddedResource Include="DangNhapForm.resx">
       <DependentUpon>DangNhapForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="OrderDetailForm.resx">
-      <DependentUpon>OrderDetailForm.cs</DependentUpon>
+    <EmbeddedResource Include="NoteForm.resx">
+      <DependentUpon>NoteForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="OrderHistoryForm.resx">
+	  <EmbeddedResource Include="OptionManagerForm.resx">
+		  <DependentUpon>OptionManagerForm.cs</DependentUpon>
+	  </EmbeddedResource>
+	  <EmbeddedResource Include="OrderDetailForm.resx">
+		  <DependentUpon>OrderDetailForm.cs</DependentUpon>
+	  </EmbeddedResource>
+	  <EmbeddedResource Include="OrderHistoryForm.resx">
       <DependentUpon>OrderHistoryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ThanhToanVNPay.resx">
+      <DependentUpon>ThanhToanVNPay.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Trangchu.resx">
       <DependentUpon>Trangchu.cs</DependentUpon>
@@ -411,9 +452,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Employer.resx">
       <DependentUpon>Employer.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Infor.resx">
       <DependentUpon>Infor.cs</DependentUpon>
@@ -569,6 +607,7 @@
     <Error Condition="!Exists('..\packages\SkiaSharp.NativeAssets.macOS.3.119.0\build\net462\SkiaSharp.NativeAssets.macOS.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SkiaSharp.NativeAssets.macOS.3.119.0\build\net462\SkiaSharp.NativeAssets.macOS.targets'))" />
     <Error Condition="!Exists('..\packages\SkiaSharp.NativeAssets.Win32.3.119.0\build\net462\SkiaSharp.NativeAssets.Win32.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SkiaSharp.NativeAssets.Win32.3.119.0\build\net462\SkiaSharp.NativeAssets.Win32.targets'))" />
     <Error Condition="!Exists('..\packages\System.ValueTuple.4.6.1\build\net471\System.ValueTuple.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.ValueTuple.4.6.1\build\net471\System.ValueTuple.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.Web.WebView2.1.0.3595.46\build\Microsoft.Web.WebView2.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Web.WebView2.1.0.3595.46\build\Microsoft.Web.WebView2.targets'))" />
   </Target>
   <Import Project="..\packages\EntityFramework.6.5.1\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" />
   <Import Project="..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.119.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets" Condition="Exists('..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.119.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" />
@@ -576,4 +615,5 @@
   <Import Project="..\packages\SkiaSharp.NativeAssets.macOS.3.119.0\build\net462\SkiaSharp.NativeAssets.macOS.targets" Condition="Exists('..\packages\SkiaSharp.NativeAssets.macOS.3.119.0\build\net462\SkiaSharp.NativeAssets.macOS.targets')" />
   <Import Project="..\packages\SkiaSharp.NativeAssets.Win32.3.119.0\build\net462\SkiaSharp.NativeAssets.Win32.targets" Condition="Exists('..\packages\SkiaSharp.NativeAssets.Win32.3.119.0\build\net462\SkiaSharp.NativeAssets.Win32.targets')" />
   <Import Project="..\packages\System.ValueTuple.4.6.1\build\net471\System.ValueTuple.targets" Condition="Exists('..\packages\System.ValueTuple.4.6.1\build\net471\System.ValueTuple.targets')" />
+  <Import Project="..\packages\Microsoft.Web.WebView2.1.0.3595.46\build\Microsoft.Web.WebView2.targets" Condition="Exists('..\packages\Microsoft.Web.WebView2.1.0.3595.46\build\Microsoft.Web.WebView2.targets')" />
 </Project>
