@@ -1076,6 +1076,12 @@ namespace CoffeeManagementSystem
                 return false; // Người dùng bấm Hủy
             }
         }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+    }
     }
 
     // Đảm bảo bạn có class KhachhangNotFoundException nếu bạn đang sử dụng nó
@@ -1085,4 +1091,4 @@ namespace CoffeeManagementSystem
         public KhachhangNotFoundException(string message) : base(message) { }
         public KhachhangNotFoundException(string message, Exception inner) : base(message, inner) { }
     }
-}
+

@@ -870,6 +870,7 @@
             this.Bieudotron.Size = new System.Drawing.Size(987, 922);
             this.Bieudotron.TabIndex = 10;
             this.Bieudotron.Text = "Biểu đồ tròn tỷ trọng đóng góp từng loại đồ uống ";
+            this.Bieudotron.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.Bieudotron.Click += new System.EventHandler(this.Bieudotron_Click);
             // 
             // tableLayoutPanelRight
