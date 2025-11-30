@@ -314,12 +314,6 @@
     <Compile Include="Employer.Designer.cs">
       <DependentUpon>Employer.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Infor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -411,9 +405,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Employer.resx">
       <DependentUpon>Employer.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Infor.resx">
       <DependentUpon>Infor.cs</DependentUpon>
@@ -525,6 +516,7 @@
     <None Include="Resources\Thiết kế chưa có tên %2811%29.png" />
     <None Include="Resources\Thiết kế chưa có tên %2812%29.png" />
     <None Include="Resources\Thiết kế chưa có tên %2813%29 1.png" />
+    <None Include="Resources\Thiết kế chưa có tên %2815%29.png" />
     <Content Include="Resources\tiramisu.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

@@ -28,20 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OrderForm));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OrderForm));
             this.panelSidebar = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
-            this.guna2Button3 = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
-            this.btnThuTien = new Guna.UI2.WinForms.Guna2Button();
-            this.btnHuyOrder = new Guna.UI2.WinForms.Guna2Button();
             this.txtTongTien = new Guna.UI2.WinForms.Guna2TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.dgvOrder = new Guna.UI2.WinForms.Guna2DataGridView();
@@ -81,6 +76,11 @@
             this.flowPanelNGK = new System.Windows.Forms.FlowLayoutPanel();
             this.tabPage10 = new System.Windows.Forms.TabPage();
             this.flowPanelTPN = new System.Windows.Forms.FlowLayoutPanel();
+            this.guna2Button3 = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
+            this.btnThuTien = new Guna.UI2.WinForms.Guna2Button();
+            this.btnHuyOrder = new Guna.UI2.WinForms.Guna2Button();
             this.panelSidebar.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrder)).BeginInit();
@@ -107,8 +107,9 @@
             this.panelSidebar.Controls.Add(this.guna2Panel1);
             this.panelSidebar.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelSidebar.Location = new System.Drawing.Point(0, 0);
+            this.panelSidebar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panelSidebar.Name = "panelSidebar";
-            this.panelSidebar.Size = new System.Drawing.Size(350, 897);
+            this.panelSidebar.Size = new System.Drawing.Size(394, 1121);
             this.panelSidebar.TabIndex = 1;
             // 
             // guna2Panel2
@@ -123,98 +124,11 @@
             this.guna2Panel2.Controls.Add(this.label2);
             this.guna2Panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.guna2Panel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2Panel2.Location = new System.Drawing.Point(0, 662);
+            this.guna2Panel2.Location = new System.Drawing.Point(0, 827);
+            this.guna2Panel2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.guna2Panel2.Name = "guna2Panel2";
-            this.guna2Panel2.Size = new System.Drawing.Size(350, 235);
+            this.guna2Panel2.Size = new System.Drawing.Size(394, 294);
             this.guna2Panel2.TabIndex = 3;
-            // 
-            // guna2Button3
-            // 
-            this.guna2Button3.BorderRadius = 12;
-            this.guna2Button3.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button3.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button3.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button3.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button3.FillColor = System.Drawing.Color.Firebrick;
-            this.guna2Button3.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2Button3.ForeColor = System.Drawing.Color.White;
-            this.guna2Button3.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button3.Image")));
-            this.guna2Button3.ImageSize = new System.Drawing.Size(30, 30);
-            this.guna2Button3.Location = new System.Drawing.Point(242, 62);
-            this.guna2Button3.Name = "guna2Button3";
-            this.guna2Button3.Size = new System.Drawing.Size(83, 45);
-            this.guna2Button3.TabIndex = 6;
-            // 
-            // guna2Button2
-            // 
-            this.guna2Button2.BorderRadius = 12;
-            this.guna2Button2.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button2.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button2.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button2.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button2.FillColor = System.Drawing.Color.Firebrick;
-            this.guna2Button2.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2Button2.ForeColor = System.Drawing.Color.White;
-            this.guna2Button2.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button2.Image")));
-            this.guna2Button2.ImageSize = new System.Drawing.Size(30, 30);
-            this.guna2Button2.Location = new System.Drawing.Point(128, 62);
-            this.guna2Button2.Name = "guna2Button2";
-            this.guna2Button2.Size = new System.Drawing.Size(84, 45);
-            this.guna2Button2.TabIndex = 5;
-            // 
-            // guna2Button1
-            // 
-            this.guna2Button1.BorderRadius = 12;
-            this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button1.FillColor = System.Drawing.Color.Firebrick;
-            this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2Button1.ForeColor = System.Drawing.Color.White;
-            this.guna2Button1.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button1.Image")));
-            this.guna2Button1.ImageSize = new System.Drawing.Size(30, 30);
-            this.guna2Button1.Location = new System.Drawing.Point(14, 62);
-            this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.Size = new System.Drawing.Size(83, 45);
-            this.guna2Button1.TabIndex = 4;
-            // 
-            // btnThuTien
-            // 
-            this.btnThuTien.BorderRadius = 10;
-            this.btnThuTien.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnThuTien.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnThuTien.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnThuTien.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnThuTien.FillColor = System.Drawing.Color.Firebrick;
-            this.btnThuTien.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThuTien.ForeColor = System.Drawing.Color.White;
-            this.btnThuTien.Image = ((System.Drawing.Image)(resources.GetObject("btnThuTien.Image")));
-            this.btnThuTien.Location = new System.Drawing.Point(145, 165);
-            this.btnThuTien.Name = "btnThuTien";
-            this.btnThuTien.Size = new System.Drawing.Size(180, 45);
-            this.btnThuTien.TabIndex = 3;
-            this.btnThuTien.Text = "THU TIỀN";
-            this.btnThuTien.Click += new System.EventHandler(this.btnThuTien_Click);
-            // 
-            // btnHuyOrder
-            // 
-            this.btnHuyOrder.BackColor = System.Drawing.Color.Snow;
-            this.btnHuyOrder.BorderRadius = 10;
-            this.btnHuyOrder.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnHuyOrder.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnHuyOrder.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnHuyOrder.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnHuyOrder.FillColor = System.Drawing.Color.Firebrick;
-            this.btnHuyOrder.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnHuyOrder.ForeColor = System.Drawing.Color.White;
-            this.btnHuyOrder.Image = ((System.Drawing.Image)(resources.GetObject("btnHuyOrder.Image")));
-            this.btnHuyOrder.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnHuyOrder.Location = new System.Drawing.Point(13, 165);
-            this.btnHuyOrder.Name = "btnHuyOrder";
-            this.btnHuyOrder.Size = new System.Drawing.Size(44, 45);
-            this.btnHuyOrder.TabIndex = 2;
-            this.btnHuyOrder.Click += new System.EventHandler(this.btnHuyOrder_Click);
             // 
             // txtTongTien
             // 
@@ -229,13 +143,13 @@
             this.txtTongTien.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTongTien.ForeColor = System.Drawing.Color.Black;
             this.txtTongTien.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtTongTien.Location = new System.Drawing.Point(95, 114);
-            this.txtTongTien.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtTongTien.Location = new System.Drawing.Point(107, 142);
+            this.txtTongTien.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.txtTongTien.Name = "txtTongTien";
             this.txtTongTien.PlaceholderText = "";
             this.txtTongTien.ReadOnly = true;
             this.txtTongTien.SelectedText = "";
-            this.txtTongTien.Size = new System.Drawing.Size(233, 39);
+            this.txtTongTien.Size = new System.Drawing.Size(262, 49);
             this.txtTongTien.TabIndex = 1;
             // 
             // label2
@@ -243,9 +157,9 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(7, 124);
+            this.label2.Location = new System.Drawing.Point(8, 155);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(87, 20);
+            this.label2.Size = new System.Drawing.Size(111, 25);
             this.label2.TabIndex = 0;
             this.label2.Text = "Tổng tiền";
             // 
@@ -277,14 +191,15 @@
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI Variable Display", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlLight;
             dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(78)))), ((int)(((byte)(78)))));
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvOrder.DefaultCellStyle = dataGridViewCellStyle5;
             this.dgvOrder.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvOrder.GridColor = System.Drawing.Color.White;
-            this.dgvOrder.Location = new System.Drawing.Point(0, 50);
+            this.dgvOrder.Location = new System.Drawing.Point(0, 62);
+            this.dgvOrder.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dgvOrder.Name = "dgvOrder";
             this.dgvOrder.ReadOnly = true;
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -298,7 +213,7 @@
             this.dgvOrder.RowHeadersVisible = false;
             this.dgvOrder.RowHeadersWidth = 51;
             this.dgvOrder.RowTemplate.Height = 40;
-            this.dgvOrder.Size = new System.Drawing.Size(350, 847);
+            this.dgvOrder.Size = new System.Drawing.Size(394, 1059);
             this.dgvOrder.TabIndex = 4;
             this.dgvOrder.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvOrder.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -406,8 +321,9 @@
             this.guna2Panel1.Controls.Add(this.label1);
             this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
+            this.guna2Panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(350, 50);
+            this.guna2Panel1.Size = new System.Drawing.Size(394, 62);
             this.guna2Panel1.TabIndex = 1;
             // 
             // guna2TextBox1
@@ -422,23 +338,23 @@
             this.guna2TextBox1.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.guna2TextBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.guna2TextBox1.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox1.Location = new System.Drawing.Point(82, 8);
-            this.guna2TextBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.guna2TextBox1.Location = new System.Drawing.Point(92, 10);
+            this.guna2TextBox1.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.guna2TextBox1.Name = "guna2TextBox1";
             this.guna2TextBox1.PlaceholderText = "";
             this.guna2TextBox1.ReadOnly = true;
             this.guna2TextBox1.SelectedText = "";
-            this.guna2TextBox1.Size = new System.Drawing.Size(95, 35);
+            this.guna2TextBox1.Size = new System.Drawing.Size(107, 44);
             this.guna2TextBox1.TabIndex = 22;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("SVN-Gilroy SemiBold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(14, 15);
+            this.label1.Location = new System.Drawing.Point(16, 19);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(63, 20);
+            this.label1.Size = new System.Drawing.Size(72, 27);
             this.label1.TabIndex = 0;
             this.label1.Text = "Order:";
             // 
@@ -448,19 +364,20 @@
             this.panelHeader.Controls.Add(this.label3);
             this.panelHeader.Controls.Add(this.txtTimKiem);
             this.panelHeader.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelHeader.Location = new System.Drawing.Point(350, 0);
+            this.panelHeader.Location = new System.Drawing.Point(394, 0);
+            this.panelHeader.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panelHeader.Name = "panelHeader";
-            this.panelHeader.Size = new System.Drawing.Size(1266, 50);
+            this.panelHeader.Size = new System.Drawing.Size(1424, 62);
             this.panelHeader.TabIndex = 2;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("SVN-Gilroy SemiBold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(185, 17);
+            this.label3.Location = new System.Drawing.Point(208, 21);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(82, 18);
+            this.label3.Size = new System.Drawing.Size(99, 27);
             this.label3.TabIndex = 1;
             this.label3.Text = "Tìm kiếm:";
             // 
@@ -476,12 +393,12 @@
             this.txtTimKiem.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtTimKiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTimKiem.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtTimKiem.Location = new System.Drawing.Point(276, 9);
-            this.txtTimKiem.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtTimKiem.Location = new System.Drawing.Point(310, 11);
+            this.txtTimKiem.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.txtTimKiem.Name = "txtTimKiem";
             this.txtTimKiem.PlaceholderText = "";
             this.txtTimKiem.SelectedText = "";
-            this.txtTimKiem.Size = new System.Drawing.Size(343, 34);
+            this.txtTimKiem.Size = new System.Drawing.Size(386, 42);
             this.txtTimKiem.TabIndex = 0;
             this.txtTimKiem.TextChanged += new System.EventHandler(this.txtTimKiem_TextChanged);
             // 
@@ -489,9 +406,10 @@
             // 
             this.panelContent.Controls.Add(this.guna2TabControl1);
             this.panelContent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelContent.Location = new System.Drawing.Point(350, 50);
+            this.panelContent.Location = new System.Drawing.Point(394, 62);
+            this.panelContent.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panelContent.Name = "panelContent";
-            this.panelContent.Size = new System.Drawing.Size(1266, 847);
+            this.panelContent.Size = new System.Drawing.Size(1424, 1059);
             this.panelContent.TabIndex = 3;
             // 
             // guna2TabControl1
@@ -509,12 +427,13 @@
             this.guna2TabControl1.Controls.Add(this.tabPage9);
             this.guna2TabControl1.Controls.Add(this.tabPage10);
             this.guna2TabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.guna2TabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2TabControl1.ItemSize = new System.Drawing.Size(180, 40);
+            this.guna2TabControl1.Font = new System.Drawing.Font("SVN-Gilroy", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2TabControl1.ItemSize = new System.Drawing.Size(250, 40);
             this.guna2TabControl1.Location = new System.Drawing.Point(0, 0);
+            this.guna2TabControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.guna2TabControl1.Name = "guna2TabControl1";
             this.guna2TabControl1.SelectedIndex = 0;
-            this.guna2TabControl1.Size = new System.Drawing.Size(1266, 847);
+            this.guna2TabControl1.Size = new System.Drawing.Size(1424, 1059);
             this.guna2TabControl1.TabButtonHoverState.BorderColor = System.Drawing.Color.Empty;
             this.guna2TabControl1.TabButtonHoverState.FillColor = System.Drawing.Color.IndianRed;
             this.guna2TabControl1.TabButtonHoverState.Font = new System.Drawing.Font("Segoe UI Semibold", 10F);
@@ -530,16 +449,17 @@
             this.guna2TabControl1.TabButtonSelectedState.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2TabControl1.TabButtonSelectedState.ForeColor = System.Drawing.Color.Black;
             this.guna2TabControl1.TabButtonSelectedState.InnerColor = System.Drawing.Color.IndianRed;
-            this.guna2TabControl1.TabButtonSize = new System.Drawing.Size(180, 40);
+            this.guna2TabControl1.TabButtonSize = new System.Drawing.Size(250, 40);
             this.guna2TabControl1.TabIndex = 0;
             this.guna2TabControl1.TabMenuBackColor = System.Drawing.Color.Firebrick;
             this.guna2TabControl1.SelectedIndexChanged += new System.EventHandler(this.guna2TabControl1_SelectedIndexChanged);
             // 
             // tabPage11
             // 
-            this.tabPage11.Location = new System.Drawing.Point(184, 4);
+            this.tabPage11.Location = new System.Drawing.Point(254, 4);
+            this.tabPage11.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage11.Name = "tabPage11";
-            this.tabPage11.Size = new System.Drawing.Size(1078, 839);
+            this.tabPage11.Size = new System.Drawing.Size(1166, 1051);
             this.tabPage11.TabIndex = 10;
             this.tabPage11.Tag = "ALL";
             this.tabPage11.Text = "Tất cả";
@@ -548,10 +468,11 @@
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.flowPanelCafe);
-            this.tabPage1.Location = new System.Drawing.Point(184, 4);
+            this.tabPage1.Location = new System.Drawing.Point(254, 4);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1078, 839);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tabPage1.Size = new System.Drawing.Size(1166, 1051);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Cà phê truyền thống";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -559,18 +480,20 @@
             // flowPanelCafe
             // 
             this.flowPanelCafe.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowPanelCafe.Location = new System.Drawing.Point(3, 3);
+            this.flowPanelCafe.Location = new System.Drawing.Point(3, 4);
+            this.flowPanelCafe.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.flowPanelCafe.Name = "flowPanelCafe";
-            this.flowPanelCafe.Size = new System.Drawing.Size(1072, 833);
+            this.flowPanelCafe.Size = new System.Drawing.Size(1160, 1043);
             this.flowPanelCafe.TabIndex = 0;
             // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.flowPanelTea);
             this.tabPage2.Location = new System.Drawing.Point(184, 4);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1078, 839);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tabPage2.Size = new System.Drawing.Size(1236, 1051);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Trà hiện đại";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -578,17 +501,19 @@
             // flowPanelTea
             // 
             this.flowPanelTea.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowPanelTea.Location = new System.Drawing.Point(3, 3);
+            this.flowPanelTea.Location = new System.Drawing.Point(3, 4);
+            this.flowPanelTea.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.flowPanelTea.Name = "flowPanelTea";
-            this.flowPanelTea.Size = new System.Drawing.Size(1072, 833);
+            this.flowPanelTea.Size = new System.Drawing.Size(1230, 1043);
             this.flowPanelTea.TabIndex = 0;
             // 
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.flowPanelJuice);
             this.tabPage3.Location = new System.Drawing.Point(184, 4);
+            this.tabPage3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1078, 839);
+            this.tabPage3.Size = new System.Drawing.Size(1236, 1051);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Nước ép trái cây";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -597,16 +522,18 @@
             // 
             this.flowPanelJuice.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowPanelJuice.Location = new System.Drawing.Point(0, 0);
+            this.flowPanelJuice.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.flowPanelJuice.Name = "flowPanelJuice";
-            this.flowPanelJuice.Size = new System.Drawing.Size(1078, 839);
+            this.flowPanelJuice.Size = new System.Drawing.Size(1236, 1051);
             this.flowPanelJuice.TabIndex = 0;
             // 
             // tabPage4
             // 
             this.tabPage4.Controls.Add(this.flowPanelIce);
             this.tabPage4.Location = new System.Drawing.Point(184, 4);
+            this.tabPage4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(1078, 839);
+            this.tabPage4.Size = new System.Drawing.Size(1236, 1051);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Đồ uống đá xay";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -616,16 +543,18 @@
             this.flowPanelIce.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowPanelIce.ForeColor = System.Drawing.Color.FloralWhite;
             this.flowPanelIce.Location = new System.Drawing.Point(0, 0);
+            this.flowPanelIce.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.flowPanelIce.Name = "flowPanelIce";
-            this.flowPanelIce.Size = new System.Drawing.Size(1078, 839);
+            this.flowPanelIce.Size = new System.Drawing.Size(1236, 1051);
             this.flowPanelIce.TabIndex = 0;
             // 
             // tabPage5
             // 
             this.tabPage5.Controls.Add(this.flowPanelCake);
             this.tabPage5.Location = new System.Drawing.Point(184, 4);
+            this.tabPage5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(1078, 839);
+            this.tabPage5.Size = new System.Drawing.Size(1236, 1051);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Bánh ngọt & Tráng miệng";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -635,16 +564,18 @@
             this.flowPanelCake.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowPanelCake.ForeColor = System.Drawing.Color.FloralWhite;
             this.flowPanelCake.Location = new System.Drawing.Point(0, 0);
+            this.flowPanelCake.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.flowPanelCake.Name = "flowPanelCake";
-            this.flowPanelCake.Size = new System.Drawing.Size(1078, 839);
+            this.flowPanelCake.Size = new System.Drawing.Size(1236, 1051);
             this.flowPanelCake.TabIndex = 0;
             // 
             // tabPage6
             // 
             this.tabPage6.Controls.Add(this.flowPanelST);
             this.tabPage6.Location = new System.Drawing.Point(184, 4);
+            this.tabPage6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Size = new System.Drawing.Size(1078, 839);
+            this.tabPage6.Size = new System.Drawing.Size(1236, 1051);
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "Sinh tố";
             this.tabPage6.UseVisualStyleBackColor = true;
@@ -653,16 +584,18 @@
             // 
             this.flowPanelST.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowPanelST.Location = new System.Drawing.Point(0, 0);
+            this.flowPanelST.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.flowPanelST.Name = "flowPanelST";
-            this.flowPanelST.Size = new System.Drawing.Size(1078, 839);
+            this.flowPanelST.Size = new System.Drawing.Size(1236, 1051);
             this.flowPanelST.TabIndex = 0;
             // 
             // tabPage7
             // 
             this.tabPage7.Controls.Add(this.flowPanelSC);
-            this.tabPage7.Location = new System.Drawing.Point(184, 4);
+            this.tabPage7.Location = new System.Drawing.Point(254, 4);
+            this.tabPage7.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage7.Name = "tabPage7";
-            this.tabPage7.Size = new System.Drawing.Size(1078, 839);
+            this.tabPage7.Size = new System.Drawing.Size(1166, 1051);
             this.tabPage7.TabIndex = 6;
             this.tabPage7.Text = "Sữa chua & Smoothies";
             this.tabPage7.UseVisualStyleBackColor = true;
@@ -671,16 +604,18 @@
             // 
             this.flowPanelSC.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowPanelSC.Location = new System.Drawing.Point(0, 0);
+            this.flowPanelSC.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.flowPanelSC.Name = "flowPanelSC";
-            this.flowPanelSC.Size = new System.Drawing.Size(1078, 839);
+            this.flowPanelSC.Size = new System.Drawing.Size(1166, 1051);
             this.flowPanelSC.TabIndex = 0;
             // 
             // tabPage8
             // 
             this.tabPage8.Controls.Add(this.flowPanelSD);
             this.tabPage8.Location = new System.Drawing.Point(184, 4);
+            this.tabPage8.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage8.Name = "tabPage8";
-            this.tabPage8.Size = new System.Drawing.Size(1078, 839);
+            this.tabPage8.Size = new System.Drawing.Size(1236, 1051);
             this.tabPage8.TabIndex = 7;
             this.tabPage8.Text = "Đồ uống đặc biệt";
             this.tabPage8.UseVisualStyleBackColor = true;
@@ -689,16 +624,18 @@
             // 
             this.flowPanelSD.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowPanelSD.Location = new System.Drawing.Point(0, 0);
+            this.flowPanelSD.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.flowPanelSD.Name = "flowPanelSD";
-            this.flowPanelSD.Size = new System.Drawing.Size(1078, 839);
+            this.flowPanelSD.Size = new System.Drawing.Size(1236, 1051);
             this.flowPanelSD.TabIndex = 0;
             // 
             // tabPage9
             // 
             this.tabPage9.Controls.Add(this.flowPanelNGK);
-            this.tabPage9.Location = new System.Drawing.Point(184, 4);
+            this.tabPage9.Location = new System.Drawing.Point(254, 4);
+            this.tabPage9.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage9.Name = "tabPage9";
-            this.tabPage9.Size = new System.Drawing.Size(1078, 839);
+            this.tabPage9.Size = new System.Drawing.Size(1166, 1051);
             this.tabPage9.TabIndex = 8;
             this.tabPage9.Text = "Nước giải khát";
             this.tabPage9.UseVisualStyleBackColor = true;
@@ -707,16 +644,18 @@
             // 
             this.flowPanelNGK.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowPanelNGK.Location = new System.Drawing.Point(0, 0);
+            this.flowPanelNGK.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.flowPanelNGK.Name = "flowPanelNGK";
-            this.flowPanelNGK.Size = new System.Drawing.Size(1078, 839);
+            this.flowPanelNGK.Size = new System.Drawing.Size(1166, 1051);
             this.flowPanelNGK.TabIndex = 0;
             // 
             // tabPage10
             // 
             this.tabPage10.Controls.Add(this.flowPanelTPN);
             this.tabPage10.Location = new System.Drawing.Point(184, 4);
+            this.tabPage10.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage10.Name = "tabPage10";
-            this.tabPage10.Size = new System.Drawing.Size(1078, 839);
+            this.tabPage10.Size = new System.Drawing.Size(1236, 1051);
             this.tabPage10.TabIndex = 9;
             this.tabPage10.Text = "Thực phẩm nhẹ";
             this.tabPage10.UseVisualStyleBackColor = true;
@@ -725,16 +664,110 @@
             // 
             this.flowPanelTPN.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowPanelTPN.Location = new System.Drawing.Point(0, 0);
+            this.flowPanelTPN.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.flowPanelTPN.Name = "flowPanelTPN";
-            this.flowPanelTPN.Size = new System.Drawing.Size(1078, 839);
+            this.flowPanelTPN.Size = new System.Drawing.Size(1236, 1051);
             this.flowPanelTPN.TabIndex = 0;
+            // 
+            // guna2Button3
+            // 
+            this.guna2Button3.BorderRadius = 12;
+            this.guna2Button3.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button3.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button3.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2Button3.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2Button3.FillColor = System.Drawing.Color.Firebrick;
+            this.guna2Button3.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.guna2Button3.ForeColor = System.Drawing.Color.White;
+            this.guna2Button3.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button3.Image")));
+            this.guna2Button3.ImageSize = new System.Drawing.Size(30, 30);
+            this.guna2Button3.Location = new System.Drawing.Point(272, 78);
+            this.guna2Button3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.guna2Button3.Name = "guna2Button3";
+            this.guna2Button3.Size = new System.Drawing.Size(93, 56);
+            this.guna2Button3.TabIndex = 6;
+            // 
+            // guna2Button2
+            // 
+            this.guna2Button2.BorderRadius = 12;
+            this.guna2Button2.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button2.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button2.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2Button2.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2Button2.FillColor = System.Drawing.Color.Firebrick;
+            this.guna2Button2.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.guna2Button2.ForeColor = System.Drawing.Color.White;
+            this.guna2Button2.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button2.Image")));
+            this.guna2Button2.ImageSize = new System.Drawing.Size(30, 30);
+            this.guna2Button2.Location = new System.Drawing.Point(144, 78);
+            this.guna2Button2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.guna2Button2.Name = "guna2Button2";
+            this.guna2Button2.Size = new System.Drawing.Size(94, 56);
+            this.guna2Button2.TabIndex = 5;
+            // 
+            // guna2Button1
+            // 
+            this.guna2Button1.BorderRadius = 12;
+            this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2Button1.FillColor = System.Drawing.Color.Firebrick;
+            this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.guna2Button1.ForeColor = System.Drawing.Color.White;
+            this.guna2Button1.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button1.Image")));
+            this.guna2Button1.ImageSize = new System.Drawing.Size(30, 30);
+            this.guna2Button1.Location = new System.Drawing.Point(16, 78);
+            this.guna2Button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.guna2Button1.Name = "guna2Button1";
+            this.guna2Button1.Size = new System.Drawing.Size(93, 56);
+            this.guna2Button1.TabIndex = 4;
+            // 
+            // btnThuTien
+            // 
+            this.btnThuTien.BorderRadius = 10;
+            this.btnThuTien.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnThuTien.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnThuTien.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnThuTien.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnThuTien.FillColor = System.Drawing.Color.Firebrick;
+            this.btnThuTien.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThuTien.ForeColor = System.Drawing.Color.White;
+            this.btnThuTien.Image = ((System.Drawing.Image)(resources.GetObject("btnThuTien.Image")));
+            this.btnThuTien.Location = new System.Drawing.Point(163, 206);
+            this.btnThuTien.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnThuTien.Name = "btnThuTien";
+            this.btnThuTien.Size = new System.Drawing.Size(202, 56);
+            this.btnThuTien.TabIndex = 3;
+            this.btnThuTien.Text = "THU TIỀN";
+            this.btnThuTien.Click += new System.EventHandler(this.btnThuTien_Click);
+            // 
+            // btnHuyOrder
+            // 
+            this.btnHuyOrder.BackColor = System.Drawing.Color.Snow;
+            this.btnHuyOrder.BorderRadius = 10;
+            this.btnHuyOrder.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnHuyOrder.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnHuyOrder.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnHuyOrder.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnHuyOrder.FillColor = System.Drawing.Color.Firebrick;
+            this.btnHuyOrder.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnHuyOrder.ForeColor = System.Drawing.Color.White;
+            this.btnHuyOrder.Image = ((System.Drawing.Image)(resources.GetObject("btnHuyOrder.Image")));
+            this.btnHuyOrder.ImageSize = new System.Drawing.Size(30, 30);
+            this.btnHuyOrder.Location = new System.Drawing.Point(15, 206);
+            this.btnHuyOrder.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnHuyOrder.Name = "btnHuyOrder";
+            this.btnHuyOrder.Size = new System.Drawing.Size(50, 56);
+            this.btnHuyOrder.TabIndex = 2;
+            this.btnHuyOrder.Click += new System.EventHandler(this.btnHuyOrder_Click);
             // 
             // OrderForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SeaShell;
-            this.ClientSize = new System.Drawing.Size(1616, 897);
+            this.ClientSize = new System.Drawing.Size(1818, 1121);
             this.Controls.Add(this.panelContent);
             this.Controls.Add(this.panelHeader);
             this.Controls.Add(this.panelSidebar);

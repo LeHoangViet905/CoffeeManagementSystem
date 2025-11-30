@@ -588,5 +588,30 @@ namespace CoffeeManagementSystem
                 }
             }
         }
+
+        private void btnCapNhat_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AddDrinkForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnXoa_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCapNhat_Click_2(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnLuu_Click_2(object sender, EventArgs e)
+        {
+
+        }
     }
 }
