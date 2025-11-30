@@ -343,6 +343,7 @@
             this.btnSave.Size = new System.Drawing.Size(141, 46);
             this.btnSave.TabIndex = 78;
             this.btnSave.Text = "Lưu";
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnUpdate
             // 
@@ -359,6 +360,7 @@
             this.btnUpdate.Size = new System.Drawing.Size(147, 46);
             this.btnUpdate.TabIndex = 79;
             this.btnUpdate.Text = "Cập nhật";
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnDelete
             // 
@@ -375,6 +377,7 @@
             this.btnDelete.Size = new System.Drawing.Size(141, 47);
             this.btnDelete.TabIndex = 80;
             this.btnDelete.Text = "Xóa";
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // guna2BorderlessForm1
             // 
