@@ -16,7 +16,7 @@ namespace CoffeeManagementSystem
             InitializeComponent();
 
             // Mặc định mở màn hình Đặt đồ uống
-            LoadFormCon(new OrderForm());
+            LoadFormCon(new DashboardForm());
         }
 
         // Constructor nhận thông tin nhân viên từ DangNhapForm

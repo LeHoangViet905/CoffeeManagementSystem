@@ -50,25 +50,23 @@
             this.grpPaymentMethod = new System.Windows.Forms.GroupBox();
             this.rdbChuyenKhoan = new System.Windows.Forms.RadioButton();
             this.rdbTienMat = new System.Windows.Forms.RadioButton();
-            this.picQrCode = new System.Windows.Forms.PictureBox();
             this.btnThanhToanThanhCong = new System.Windows.Forms.Button();
             this.btnThanhToanThatBai = new System.Windows.Forms.Button();
             this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
             this.btnClose = new System.Windows.Forms.Button();
             this.grpPaymentMethod.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picQrCode)).BeginInit();
             this.SuspendLayout();
             // 
             // lvwChiTietHoaDon
             // 
-            this.lvwChiTietHoaDon.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(78)))), ((int)(((byte)(78)))));
+            this.lvwChiTietHoaDon.BackColor = System.Drawing.Color.DarkCyan;
             this.lvwChiTietHoaDon.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.STT,
             this.TenDouong,
             this.Soluong,
             this.Gia,
             this.ThanhTien});
-            this.lvwChiTietHoaDon.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lvwChiTietHoaDon.Font = new System.Drawing.Font("SVN-Gilroy", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lvwChiTietHoaDon.ForeColor = System.Drawing.Color.SeaShell;
             this.lvwChiTietHoaDon.FullRowSelect = true;
             this.lvwChiTietHoaDon.GridLines = true;
@@ -127,12 +125,12 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.SeaShell;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Firebrick;
+            this.label1.Font = new System.Drawing.Font("SVN-Gilroy", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Tomato;
             this.label1.Location = new System.Drawing.Point(439, 584);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(236, 32);
+            this.label1.Size = new System.Drawing.Size(229, 37);
             this.label1.TabIndex = 13;
             this.label1.Text = "Tổng thành tiền:";
             // 
@@ -142,8 +140,8 @@
             this.lblHoaDon.AutoSize = true;
             this.lblHoaDon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblHoaDon.Font = new System.Drawing.Font("SVN-Gilroy Heavy", 22F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHoaDon.ForeColor = System.Drawing.Color.Firebrick;
-            this.lblHoaDon.Location = new System.Drawing.Point(413, 9);
+            this.lblHoaDon.ForeColor = System.Drawing.Color.Tomato;
+            this.lblHoaDon.Location = new System.Drawing.Point(410, 21);
             this.lblHoaDon.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblHoaDon.Name = "lblHoaDon";
             this.lblHoaDon.Size = new System.Drawing.Size(225, 59);
@@ -153,20 +151,20 @@
             // lblTen
             // 
             this.lblTen.AutoSize = true;
-            this.lblTen.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTen.Font = new System.Drawing.Font("SVN-Gilroy", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTen.Location = new System.Drawing.Point(660, 78);
             this.lblTen.Name = "lblTen";
-            this.lblTen.Size = new System.Drawing.Size(140, 29);
+            this.lblTen.Size = new System.Drawing.Size(133, 32);
             this.lblTen.TabIndex = 20;
             this.lblTen.Text = "Người lập: ";
             // 
             // lblNguoiLapValue
             // 
             this.lblNguoiLapValue.AutoSize = true;
-            this.lblNguoiLapValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNguoiLapValue.Font = new System.Drawing.Font("SVN-Gilroy", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNguoiLapValue.Location = new System.Drawing.Point(791, 78);
             this.lblNguoiLapValue.Name = "lblNguoiLapValue";
-            this.lblNguoiLapValue.Size = new System.Drawing.Size(59, 29);
+            this.lblNguoiLapValue.Size = new System.Drawing.Size(53, 32);
             this.lblNguoiLapValue.TabIndex = 21;
             this.lblNguoiLapValue.Text = "Tên";
             this.lblNguoiLapValue.Click += new System.EventHandler(this.lblNguoiLapValue_Click);
@@ -174,61 +172,61 @@
             // lblNgayValue
             // 
             this.lblNgayValue.AutoSize = true;
-            this.lblNgayValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNgayValue.Font = new System.Drawing.Font("SVN-Gilroy", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNgayValue.Location = new System.Drawing.Point(791, 134);
             this.lblNgayValue.Name = "lblNgayValue";
-            this.lblNgayValue.Size = new System.Drawing.Size(141, 29);
+            this.lblNgayValue.Size = new System.Drawing.Size(149, 32);
             this.lblNgayValue.TabIndex = 23;
             this.lblNgayValue.Text = "24/05/2025";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("SVN-Gilroy", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(660, 134);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(87, 29);
+            this.label3.Size = new System.Drawing.Size(85, 32);
             this.label3.TabIndex = 22;
             this.label3.Text = "Ngày: ";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("SVN-Gilroy", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(28, 134);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(163, 29);
+            this.label2.Size = new System.Drawing.Size(161, 32);
             this.label2.TabIndex = 24;
             this.label2.Text = "Khách hàng: ";
             // 
             // lblMaHoaDon
             // 
             this.lblMaHoaDon.AutoSize = true;
-            this.lblMaHoaDon.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMaHoaDon.Font = new System.Drawing.Font("SVN-Gilroy", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMaHoaDon.Location = new System.Drawing.Point(28, 78);
             this.lblMaHoaDon.Name = "lblMaHoaDon";
-            this.lblMaHoaDon.Size = new System.Drawing.Size(163, 29);
+            this.lblMaHoaDon.Size = new System.Drawing.Size(159, 32);
             this.lblMaHoaDon.TabIndex = 27;
             this.lblMaHoaDon.Text = "Mã hóa đơn: ";
             // 
             // lblMaHoaDonValue
             // 
             this.lblMaHoaDonValue.AutoSize = true;
-            this.lblMaHoaDonValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMaHoaDonValue.Font = new System.Drawing.Font("SVN-Gilroy", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMaHoaDonValue.Location = new System.Drawing.Point(183, 78);
             this.lblMaHoaDonValue.Name = "lblMaHoaDonValue";
-            this.lblMaHoaDonValue.Size = new System.Drawing.Size(85, 29);
+            this.lblMaHoaDonValue.Size = new System.Drawing.Size(83, 32);
             this.lblMaHoaDonValue.TabIndex = 28;
             this.lblMaHoaDonValue.Text = "label6";
             // 
             // btnThanhToan
             // 
-            this.btnThanhToan.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThanhToan.ForeColor = System.Drawing.Color.Firebrick;
-            this.btnThanhToan.Location = new System.Drawing.Point(795, 648);
+            this.btnThanhToan.Font = new System.Drawing.Font("SVN-Gilroy", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThanhToan.ForeColor = System.Drawing.Color.DarkCyan;
+            this.btnThanhToan.Location = new System.Drawing.Point(678, 635);
             this.btnThanhToan.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnThanhToan.Name = "btnThanhToan";
-            this.btnThanhToan.Size = new System.Drawing.Size(213, 45);
+            this.btnThanhToan.Size = new System.Drawing.Size(330, 58);
             this.btnThanhToan.TabIndex = 29;
             this.btnThanhToan.Text = "Thanh toán";
             this.btnThanhToan.UseVisualStyleBackColor = true;
@@ -247,7 +245,7 @@
             // 
             this.grpPaymentMethod.Controls.Add(this.rdbChuyenKhoan);
             this.grpPaymentMethod.Controls.Add(this.rdbTienMat);
-            this.grpPaymentMethod.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpPaymentMethod.Font = new System.Drawing.Font("SVN-Gilroy", 9.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpPaymentMethod.Location = new System.Drawing.Point(33, 550);
             this.grpPaymentMethod.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.grpPaymentMethod.Name = "grpPaymentMethod";
@@ -263,12 +261,11 @@
             this.rdbChuyenKhoan.Location = new System.Drawing.Point(18, 85);
             this.rdbChuyenKhoan.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rdbChuyenKhoan.Name = "rdbChuyenKhoan";
-            this.rdbChuyenKhoan.Size = new System.Drawing.Size(188, 29);
+            this.rdbChuyenKhoan.Size = new System.Drawing.Size(176, 31);
             this.rdbChuyenKhoan.TabIndex = 1;
             this.rdbChuyenKhoan.TabStop = true;
             this.rdbChuyenKhoan.Text = "Chuyển khoản";
             this.rdbChuyenKhoan.UseVisualStyleBackColor = true;
-            this.rdbChuyenKhoan.CheckedChanged += new System.EventHandler(this.rdbChuyenKhoan_CheckedChanged);
             // 
             // rdbTienMat
             // 
@@ -277,30 +274,16 @@
             this.rdbTienMat.Location = new System.Drawing.Point(18, 39);
             this.rdbTienMat.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rdbTienMat.Name = "rdbTienMat";
-            this.rdbTienMat.Size = new System.Drawing.Size(128, 29);
+            this.rdbTienMat.Size = new System.Drawing.Size(120, 31);
             this.rdbTienMat.TabIndex = 0;
             this.rdbTienMat.TabStop = true;
             this.rdbTienMat.Text = "Tiền mặt";
             this.rdbTienMat.UseVisualStyleBackColor = true;
             this.rdbTienMat.CheckedChanged += new System.EventHandler(this.rdbTienMat_CheckedChanged);
             // 
-            // picQrCode
-            // 
-            this.picQrCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picQrCode.ErrorImage = null;
-            this.picQrCode.InitialImage = null;
-            this.picQrCode.Location = new System.Drawing.Point(345, 151);
-            this.picQrCode.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.picQrCode.Name = "picQrCode";
-            this.picQrCode.Size = new System.Drawing.Size(338, 374);
-            this.picQrCode.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picQrCode.TabIndex = 32;
-            this.picQrCode.TabStop = false;
-            this.picQrCode.Visible = false;
-            // 
             // btnThanhToanThanhCong
             // 
-            this.btnThanhToanThanhCong.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThanhToanThanhCong.Font = new System.Drawing.Font("SVN-Gilroy Medium", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnThanhToanThanhCong.Location = new System.Drawing.Point(345, 538);
             this.btnThanhToanThanhCong.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnThanhToanThanhCong.Name = "btnThanhToanThanhCong";
@@ -313,7 +296,7 @@
             // 
             // btnThanhToanThatBai
             // 
-            this.btnThanhToanThatBai.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThanhToanThatBai.Font = new System.Drawing.Font("SVN-Gilroy Medium", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnThanhToanThatBai.Location = new System.Drawing.Point(525, 538);
             this.btnThanhToanThatBai.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnThanhToanThatBai.Name = "btnThanhToanThatBai";
@@ -352,7 +335,6 @@
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnThanhToanThatBai);
             this.Controls.Add(this.btnThanhToanThanhCong);
-            this.Controls.Add(this.picQrCode);
             this.Controls.Add(this.grpPaymentMethod);
             this.Controls.Add(this.txtKhachHangName);
             this.Controls.Add(this.btnThanhToan);
@@ -374,7 +356,6 @@
             this.Text = "Payment";
             this.grpPaymentMethod.ResumeLayout(false);
             this.grpPaymentMethod.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picQrCode)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -405,7 +386,6 @@
         private System.Windows.Forms.GroupBox grpPaymentMethod;
         private System.Windows.Forms.RadioButton rdbChuyenKhoan;
         private System.Windows.Forms.RadioButton rdbTienMat;
-        private System.Windows.Forms.PictureBox picQrCode;
         private System.Windows.Forms.Button btnThanhToanThanhCong;
         private System.Windows.Forms.Button btnThanhToanThatBai;
         private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;

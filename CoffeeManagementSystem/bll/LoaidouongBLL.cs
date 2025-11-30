@@ -260,5 +260,31 @@ namespace CoffeeManagementSystem.BLL
                 throw new Exception($"Lỗi BLL khi tìm kiếm loại đồ uống: {ex.Message}", ex);
             }
         }
+        public void ImportLoaidouongs(List<Loaidouong> Loaidouongs)
+        {
+            if (Loaidouongs == null || Loaidouongs.Count == 0)
+                throw new ArgumentException("Danh sách loại đồ uống rỗng.", nameof(Loaidouongs));
+
+            _loaidouongDAL.ImportLoaidouongs(Loaidouongs);
+        }
+        // Hàm tạo Madouong mới dựa trên các mã đã có, không cần query DB
+        public string GenerateNextMaLDInMemory(HashSet<string> usedMa)
+        {
+            int max = 0;
+            foreach (var ma in usedMa)
+            {
+                // giả định Maloai có định dạng LD001, LD002,...
+                if (ma.Length <= 2) continue;
+                if (int.TryParse(ma.Substring(2), out int n))
+                {
+                    if (n > max) max = n;
+                }
+            }
+            return "LD" + (max + 1).ToString("D3"); // LD001, LD002, LD003,...
+        }
+        public List<string> GetAllMaLD()
+        {
+            return _loaidouongDAL.GetAllMaLD(); // chỉ gọi 1 lần
+        }
     }
 }

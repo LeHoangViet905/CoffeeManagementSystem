@@ -34,6 +34,11 @@ namespace CoffeeManagementSystem
             this.panelLeft = new System.Windows.Forms.Panel();
             this.groupBoxOrderLines = new System.Windows.Forms.GroupBox();
             this.dgvLines = new System.Windows.Forms.DataGridView();
+            this.colStt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTenDoUong = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colSoLuong = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDonGia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colThanhTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelRight = new System.Windows.Forms.Panel();
             this.groupBoxPayment = new System.Windows.Forms.GroupBox();
             this.lblNhanVienThu = new System.Windows.Forms.Label();
@@ -58,11 +63,6 @@ namespace CoffeeManagementSystem
             this.lblNhanVienLap = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
             this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
-            this.colStt = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTenDoUong = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colSoLuong = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDonGia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colThanhTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelHeader.SuspendLayout();
             this.panelLeft.SuspendLayout();
             this.groupBoxOrderLines.SuspendLayout();
@@ -75,7 +75,7 @@ namespace CoffeeManagementSystem
             // 
             // panelHeader
             // 
-            this.panelHeader.BackColor = System.Drawing.Color.Firebrick;
+            this.panelHeader.BackColor = System.Drawing.Color.DarkCyan;
             this.panelHeader.Controls.Add(this.lblTrangThai);
             this.panelHeader.Controls.Add(this.lblThoiGian);
             this.panelHeader.Controls.Add(this.lblMaDon);
@@ -89,33 +89,33 @@ namespace CoffeeManagementSystem
             // 
             this.lblTrangThai.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTrangThai.AutoSize = true;
-            this.lblTrangThai.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.lblTrangThai.Font = new System.Drawing.Font("SVN-Gilroy", 9.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTrangThai.ForeColor = System.Drawing.Color.Honeydew;
             this.lblTrangThai.Location = new System.Drawing.Point(1016, 23);
             this.lblTrangThai.Name = "lblTrangThai";
-            this.lblTrangThai.Size = new System.Drawing.Size(151, 25);
+            this.lblTrangThai.Size = new System.Drawing.Size(157, 27);
             this.lblTrangThai.TabIndex = 2;
             this.lblTrangThai.Text = "Hoàn thành ✔";
             // 
             // lblThoiGian
             // 
             this.lblThoiGian.AutoSize = true;
-            this.lblThoiGian.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
+            this.lblThoiGian.Font = new System.Drawing.Font("SVN-Gilroy", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblThoiGian.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblThoiGian.Location = new System.Drawing.Point(15, 48);
+            this.lblThoiGian.Location = new System.Drawing.Point(15, 45);
             this.lblThoiGian.Name = "lblThoiGian";
-            this.lblThoiGian.Size = new System.Drawing.Size(150, 24);
+            this.lblThoiGian.Size = new System.Drawing.Size(172, 26);
             this.lblThoiGian.TabIndex = 1;
             this.lblThoiGian.Text = "12/12/2025 10:00";
             // 
             // lblMaDon
             // 
             this.lblMaDon.AutoSize = true;
-            this.lblMaDon.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
+            this.lblMaDon.Font = new System.Drawing.Font("SVN-Gilroy", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMaDon.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblMaDon.Location = new System.Drawing.Point(14, 11);
+            this.lblMaDon.Location = new System.Drawing.Point(14, 9);
             this.lblMaDon.Name = "lblMaDon";
-            this.lblMaDon.Size = new System.Drawing.Size(158, 32);
+            this.lblMaDon.Size = new System.Drawing.Size(157, 37);
             this.lblMaDon.TabIndex = 0;
             this.lblMaDon.Text = "HĐ000001";
             // 
@@ -125,7 +125,7 @@ namespace CoffeeManagementSystem
             this.panelLeft.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelLeft.Location = new System.Drawing.Point(0, 75);
             this.panelLeft.Name = "panelLeft";
-            this.panelLeft.Padding = new System.Windows.Forms.Padding(12, 12, 12, 12);
+            this.panelLeft.Padding = new System.Windows.Forms.Padding(12);
             this.panelLeft.Size = new System.Drawing.Size(860, 488);
             this.panelLeft.TabIndex = 1;
             // 
@@ -133,7 +133,7 @@ namespace CoffeeManagementSystem
             // 
             this.groupBoxOrderLines.Controls.Add(this.dgvLines);
             this.groupBoxOrderLines.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBoxOrderLines.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.groupBoxOrderLines.Font = new System.Drawing.Font("SVN-Gilroy", 9.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxOrderLines.Location = new System.Drawing.Point(12, 12);
             this.groupBoxOrderLines.Name = "groupBoxOrderLines";
             this.groupBoxOrderLines.Size = new System.Drawing.Size(836, 464);
@@ -155,7 +155,7 @@ namespace CoffeeManagementSystem
             this.colDonGia,
             this.colThanhTien});
             this.dgvLines.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvLines.Location = new System.Drawing.Point(3, 26);
+            this.dgvLines.Location = new System.Drawing.Point(3, 30);
             this.dgvLines.MultiSelect = false;
             this.dgvLines.Name = "dgvLines";
             this.dgvLines.ReadOnly = true;
@@ -163,273 +163,8 @@ namespace CoffeeManagementSystem
             this.dgvLines.RowHeadersWidth = 62;
             this.dgvLines.RowTemplate.Height = 28;
             this.dgvLines.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvLines.Size = new System.Drawing.Size(830, 435);
+            this.dgvLines.Size = new System.Drawing.Size(830, 431);
             this.dgvLines.TabIndex = 0;
-            // 
-            // panelRight
-            // 
-            this.panelRight.Controls.Add(this.groupBoxPayment);
-            this.panelRight.Controls.Add(this.groupBoxCustomer);
-            this.panelRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelRight.Location = new System.Drawing.Point(860, 75);
-            this.panelRight.Name = "panelRight";
-            this.panelRight.Padding = new System.Windows.Forms.Padding(6, 12, 12, 12);
-            this.panelRight.Size = new System.Drawing.Size(330, 488);
-            this.panelRight.TabIndex = 2;
-            // 
-            // groupBoxPayment
-            // 
-            this.groupBoxPayment.Controls.Add(this.lblNhanVienThu);
-            this.groupBoxPayment.Controls.Add(this.label15);
-            this.groupBoxPayment.Controls.Add(this.lblSoTienThanhToan);
-            this.groupBoxPayment.Controls.Add(this.label13);
-            this.groupBoxPayment.Controls.Add(this.lblThoiGianThanhToan);
-            this.groupBoxPayment.Controls.Add(this.label11);
-            this.groupBoxPayment.Controls.Add(this.lblHinhThucThanhToan);
-            this.groupBoxPayment.Controls.Add(this.label9);
-            this.groupBoxPayment.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBoxPayment.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            this.groupBoxPayment.Location = new System.Drawing.Point(6, 230);
-            this.groupBoxPayment.Name = "groupBoxPayment";
-            this.groupBoxPayment.Size = new System.Drawing.Size(312, 246);
-            this.groupBoxPayment.TabIndex = 1;
-            this.groupBoxPayment.TabStop = false;
-            this.groupBoxPayment.Text = "Thanh toán";
-            // 
-            // lblNhanVienThu
-            // 
-            this.lblNhanVienThu.AutoSize = true;
-            this.lblNhanVienThu.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.lblNhanVienThu.Location = new System.Drawing.Point(168, 175);
-            this.lblNhanVienThu.Name = "lblNhanVienThu";
-            this.lblNhanVienThu.Size = new System.Drawing.Size(28, 22);
-            this.lblNhanVienThu.TabIndex = 7;
-            this.lblNhanVienThu.Text = "---";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.label15.Location = new System.Drawing.Point(16, 175);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(126, 22);
-            this.label15.TabIndex = 6;
-            this.label15.Text = "Nhân viên thu:";
-            // 
-            // lblSoTienThanhToan
-            // 
-            this.lblSoTienThanhToan.AutoSize = true;
-            this.lblSoTienThanhToan.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            this.lblSoTienThanhToan.ForeColor = System.Drawing.Color.Firebrick;
-            this.lblSoTienThanhToan.Location = new System.Drawing.Point(168, 131);
-            this.lblSoTienThanhToan.Name = "lblSoTienThanhToan";
-            this.lblSoTienThanhToan.Size = new System.Drawing.Size(75, 25);
-            this.lblSoTienThanhToan.TabIndex = 5;
-            this.lblSoTienThanhToan.Text = "0 VNĐ";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.label13.Location = new System.Drawing.Point(16, 134);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(161, 22);
-            this.label13.TabIndex = 4;
-            this.label13.Text = "Số tiền thanh toán:";
-            // 
-            // lblThoiGianThanhToan
-            // 
-            this.lblThoiGianThanhToan.AutoSize = true;
-            this.lblThoiGianThanhToan.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.lblThoiGianThanhToan.Location = new System.Drawing.Point(168, 89);
-            this.lblThoiGianThanhToan.Name = "lblThoiGianThanhToan";
-            this.lblThoiGianThanhToan.Size = new System.Drawing.Size(28, 22);
-            this.lblThoiGianThanhToan.TabIndex = 3;
-            this.lblThoiGianThanhToan.Text = "---";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.label11.Location = new System.Drawing.Point(16, 89);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(119, 22);
-            this.label11.TabIndex = 2;
-            this.label11.Text = "Thời gian TT:";
-            // 
-            // lblHinhThucThanhToan
-            // 
-            this.lblHinhThucThanhToan.AutoSize = true;
-            this.lblHinhThucThanhToan.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.lblHinhThucThanhToan.Location = new System.Drawing.Point(168, 49);
-            this.lblHinhThucThanhToan.Name = "lblHinhThucThanhToan";
-            this.lblHinhThucThanhToan.Size = new System.Drawing.Size(28, 22);
-            this.lblHinhThucThanhToan.TabIndex = 1;
-            this.lblHinhThucThanhToan.Text = "---";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.label9.Location = new System.Drawing.Point(16, 49);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(120, 22);
-            this.label9.TabIndex = 0;
-            this.label9.Text = "Hình thức TT:";
-            // 
-            // groupBoxCustomer
-            // 
-            this.groupBoxCustomer.Controls.Add(this.lblDiemTichLuy);
-            this.groupBoxCustomer.Controls.Add(this.label8);
-            this.groupBoxCustomer.Controls.Add(this.lblEmail);
-            this.groupBoxCustomer.Controls.Add(this.label6);
-            this.groupBoxCustomer.Controls.Add(this.lblSdt);
-            this.groupBoxCustomer.Controls.Add(this.label4);
-            this.groupBoxCustomer.Controls.Add(this.lblTenKhach);
-            this.groupBoxCustomer.Controls.Add(this.label2);
-            this.groupBoxCustomer.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBoxCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            this.groupBoxCustomer.Location = new System.Drawing.Point(6, 12);
-            this.groupBoxCustomer.Name = "groupBoxCustomer";
-            this.groupBoxCustomer.Size = new System.Drawing.Size(312, 218);
-            this.groupBoxCustomer.TabIndex = 0;
-            this.groupBoxCustomer.TabStop = false;
-            this.groupBoxCustomer.Text = "Khách hàng";
-            // 
-            // lblDiemTichLuy
-            // 
-            this.lblDiemTichLuy.AutoSize = true;
-            this.lblDiemTichLuy.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.lblDiemTichLuy.Location = new System.Drawing.Point(168, 175);
-            this.lblDiemTichLuy.Name = "lblDiemTichLuy";
-            this.lblDiemTichLuy.Size = new System.Drawing.Size(20, 22);
-            this.lblDiemTichLuy.TabIndex = 7;
-            this.lblDiemTichLuy.Text = "0";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.label8.Location = new System.Drawing.Point(16, 175);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(117, 22);
-            this.label8.TabIndex = 6;
-            this.label8.Text = "Điểm tích lũy:";
-            // 
-            // lblEmail
-            // 
-            this.lblEmail.AutoSize = true;
-            this.lblEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.lblEmail.Location = new System.Drawing.Point(168, 131);
-            this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(28, 22);
-            this.lblEmail.TabIndex = 5;
-            this.lblEmail.Text = "---";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.label6.Location = new System.Drawing.Point(16, 131);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(59, 22);
-            this.label6.TabIndex = 4;
-            this.label6.Text = "Email:";
-            // 
-            // lblSdt
-            // 
-            this.lblSdt.AutoSize = true;
-            this.lblSdt.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.lblSdt.Location = new System.Drawing.Point(168, 89);
-            this.lblSdt.Name = "lblSdt";
-            this.lblSdt.Size = new System.Drawing.Size(28, 22);
-            this.lblSdt.TabIndex = 3;
-            this.lblSdt.Text = "---";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.label4.Location = new System.Drawing.Point(16, 89);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(96, 22);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "Điện thoại:";
-            // 
-            // lblTenKhach
-            // 
-            this.lblTenKhach.AutoSize = true;
-            this.lblTenKhach.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.lblTenKhach.Location = new System.Drawing.Point(168, 49);
-            this.lblTenKhach.Name = "lblTenKhach";
-            this.lblTenKhach.Size = new System.Drawing.Size(80, 22);
-            this.lblTenKhach.TabIndex = 1;
-            this.lblTenKhach.Text = "Khách lẻ";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.label2.Location = new System.Drawing.Point(16, 49);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(111, 22);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Khách hàng:";
-            // 
-            // panelBottom
-            // 
-            this.panelBottom.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.panelBottom.Controls.Add(this.lblTongTien);
-            this.panelBottom.Controls.Add(this.lblNhanVienLap);
-            this.panelBottom.Controls.Add(this.btnClose);
-            this.panelBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelBottom.Location = new System.Drawing.Point(0, 563);
-            this.panelBottom.Name = "panelBottom";
-            this.panelBottom.Size = new System.Drawing.Size(1190, 63);
-            this.panelBottom.TabIndex = 3;
-            // 
-            // lblTongTien
-            // 
-            this.lblTongTien.AutoSize = true;
-            this.lblTongTien.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            this.lblTongTien.ForeColor = System.Drawing.Color.Firebrick;
-            this.lblTongTien.Location = new System.Drawing.Point(14, 18);
-            this.lblTongTien.Name = "lblTongTien";
-            this.lblTongTien.Size = new System.Drawing.Size(140, 25);
-            this.lblTongTien.TabIndex = 2;
-            this.lblTongTien.Text = "Tổng cộng: 0";
-            // 
-            // lblNhanVienLap
-            // 
-            this.lblNhanVienLap.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblNhanVienLap.AutoSize = true;
-            this.lblNhanVienLap.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.lblNhanVienLap.Location = new System.Drawing.Point(282, 22);
-            this.lblNhanVienLap.Name = "lblNhanVienLap";
-            this.lblNhanVienLap.Size = new System.Drawing.Size(129, 22);
-            this.lblNhanVienLap.TabIndex = 1;
-            this.lblNhanVienLap.Text = "NV lập: NV001";
-            // 
-            // btnClose
-            // 
-            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClose.BackColor = System.Drawing.Color.Firebrick;
-            this.btnClose.Font = new System.Drawing.Font("SVN-Gilroy", 9.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnClose.Location = new System.Drawing.Point(992, 3);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(195, 60);
-            this.btnClose.TabIndex = 0;
-            this.btnClose.Text = "Đóng";
-            this.btnClose.UseVisualStyleBackColor = false;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
-            // guna2BorderlessForm1
-            // 
-            this.guna2BorderlessForm1.BorderRadius = 30;
-            this.guna2BorderlessForm1.ContainerControl = this;
-            this.guna2BorderlessForm1.DockIndicatorTransparencyValue = 0.6D;
-            this.guna2BorderlessForm1.TransparentWhileDrag = true;
             // 
             // colStt
             // 
@@ -437,6 +172,7 @@ namespace CoffeeManagementSystem
             this.colStt.MinimumWidth = 50;
             this.colStt.Name = "colStt";
             this.colStt.ReadOnly = true;
+            this.colStt.Width = 150;
             // 
             // colTenDoUong
             // 
@@ -469,6 +205,271 @@ namespace CoffeeManagementSystem
             this.colThanhTien.Name = "colThanhTien";
             this.colThanhTien.ReadOnly = true;
             this.colThanhTien.Width = 110;
+            // 
+            // panelRight
+            // 
+            this.panelRight.Controls.Add(this.groupBoxPayment);
+            this.panelRight.Controls.Add(this.groupBoxCustomer);
+            this.panelRight.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panelRight.Location = new System.Drawing.Point(860, 75);
+            this.panelRight.Name = "panelRight";
+            this.panelRight.Padding = new System.Windows.Forms.Padding(6, 12, 12, 12);
+            this.panelRight.Size = new System.Drawing.Size(330, 488);
+            this.panelRight.TabIndex = 2;
+            // 
+            // groupBoxPayment
+            // 
+            this.groupBoxPayment.Controls.Add(this.lblNhanVienThu);
+            this.groupBoxPayment.Controls.Add(this.label15);
+            this.groupBoxPayment.Controls.Add(this.lblSoTienThanhToan);
+            this.groupBoxPayment.Controls.Add(this.label13);
+            this.groupBoxPayment.Controls.Add(this.lblThoiGianThanhToan);
+            this.groupBoxPayment.Controls.Add(this.label11);
+            this.groupBoxPayment.Controls.Add(this.lblHinhThucThanhToan);
+            this.groupBoxPayment.Controls.Add(this.label9);
+            this.groupBoxPayment.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBoxPayment.Font = new System.Drawing.Font("SVN-Gilroy", 9.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBoxPayment.Location = new System.Drawing.Point(6, 230);
+            this.groupBoxPayment.Name = "groupBoxPayment";
+            this.groupBoxPayment.Size = new System.Drawing.Size(312, 246);
+            this.groupBoxPayment.TabIndex = 1;
+            this.groupBoxPayment.TabStop = false;
+            this.groupBoxPayment.Text = "Thanh toán";
+            // 
+            // lblNhanVienThu
+            // 
+            this.lblNhanVienThu.AutoSize = true;
+            this.lblNhanVienThu.Font = new System.Drawing.Font("SVN-Gilroy", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNhanVienThu.Location = new System.Drawing.Point(168, 175);
+            this.lblNhanVienThu.Name = "lblNhanVienThu";
+            this.lblNhanVienThu.Size = new System.Drawing.Size(37, 24);
+            this.lblNhanVienThu.TabIndex = 7;
+            this.lblNhanVienThu.Text = "---";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("SVN-Gilroy", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(16, 175);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(128, 24);
+            this.label15.TabIndex = 6;
+            this.label15.Text = "Nhân viên thu:";
+            // 
+            // lblSoTienThanhToan
+            // 
+            this.lblSoTienThanhToan.AutoSize = true;
+            this.lblSoTienThanhToan.Font = new System.Drawing.Font("SVN-Gilroy SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSoTienThanhToan.ForeColor = System.Drawing.Color.Tomato;
+            this.lblSoTienThanhToan.Location = new System.Drawing.Point(168, 131);
+            this.lblSoTienThanhToan.Name = "lblSoTienThanhToan";
+            this.lblSoTienThanhToan.Size = new System.Drawing.Size(62, 24);
+            this.lblSoTienThanhToan.TabIndex = 5;
+            this.lblSoTienThanhToan.Text = "0 VNĐ";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("SVN-Gilroy", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(16, 134);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(169, 24);
+            this.label13.TabIndex = 4;
+            this.label13.Text = "Số tiền thanh toán:";
+            // 
+            // lblThoiGianThanhToan
+            // 
+            this.lblThoiGianThanhToan.AutoSize = true;
+            this.lblThoiGianThanhToan.Font = new System.Drawing.Font("SVN-Gilroy", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblThoiGianThanhToan.Location = new System.Drawing.Point(168, 89);
+            this.lblThoiGianThanhToan.Name = "lblThoiGianThanhToan";
+            this.lblThoiGianThanhToan.Size = new System.Drawing.Size(37, 24);
+            this.lblThoiGianThanhToan.TabIndex = 3;
+            this.lblThoiGianThanhToan.Text = "---";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("SVN-Gilroy", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(16, 89);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(114, 24);
+            this.label11.TabIndex = 2;
+            this.label11.Text = "Thời gian TT:";
+            // 
+            // lblHinhThucThanhToan
+            // 
+            this.lblHinhThucThanhToan.AutoSize = true;
+            this.lblHinhThucThanhToan.Font = new System.Drawing.Font("SVN-Gilroy", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHinhThucThanhToan.Location = new System.Drawing.Point(168, 49);
+            this.lblHinhThucThanhToan.Name = "lblHinhThucThanhToan";
+            this.lblHinhThucThanhToan.Size = new System.Drawing.Size(37, 24);
+            this.lblHinhThucThanhToan.TabIndex = 1;
+            this.lblHinhThucThanhToan.Text = "---";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("SVN-Gilroy", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(16, 49);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(116, 24);
+            this.label9.TabIndex = 0;
+            this.label9.Text = "Hình thức TT:";
+            // 
+            // groupBoxCustomer
+            // 
+            this.groupBoxCustomer.Controls.Add(this.lblDiemTichLuy);
+            this.groupBoxCustomer.Controls.Add(this.label8);
+            this.groupBoxCustomer.Controls.Add(this.lblEmail);
+            this.groupBoxCustomer.Controls.Add(this.label6);
+            this.groupBoxCustomer.Controls.Add(this.lblSdt);
+            this.groupBoxCustomer.Controls.Add(this.label4);
+            this.groupBoxCustomer.Controls.Add(this.lblTenKhach);
+            this.groupBoxCustomer.Controls.Add(this.label2);
+            this.groupBoxCustomer.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBoxCustomer.Font = new System.Drawing.Font("SVN-Gilroy", 9.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBoxCustomer.Location = new System.Drawing.Point(6, 12);
+            this.groupBoxCustomer.Name = "groupBoxCustomer";
+            this.groupBoxCustomer.Size = new System.Drawing.Size(312, 218);
+            this.groupBoxCustomer.TabIndex = 0;
+            this.groupBoxCustomer.TabStop = false;
+            this.groupBoxCustomer.Text = "Khách hàng";
+            // 
+            // lblDiemTichLuy
+            // 
+            this.lblDiemTichLuy.AutoSize = true;
+            this.lblDiemTichLuy.Font = new System.Drawing.Font("SVN-Gilroy", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDiemTichLuy.Location = new System.Drawing.Point(168, 175);
+            this.lblDiemTichLuy.Name = "lblDiemTichLuy";
+            this.lblDiemTichLuy.Size = new System.Drawing.Size(21, 24);
+            this.lblDiemTichLuy.TabIndex = 7;
+            this.lblDiemTichLuy.Text = "0";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("SVN-Gilroy", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(16, 175);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(121, 24);
+            this.label8.TabIndex = 6;
+            this.label8.Text = "Điểm tích lũy:";
+            // 
+            // lblEmail
+            // 
+            this.lblEmail.AutoSize = true;
+            this.lblEmail.Font = new System.Drawing.Font("SVN-Gilroy", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEmail.Location = new System.Drawing.Point(168, 131);
+            this.lblEmail.Name = "lblEmail";
+            this.lblEmail.Size = new System.Drawing.Size(37, 24);
+            this.lblEmail.TabIndex = 5;
+            this.lblEmail.Text = "---";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("SVN-Gilroy", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(16, 131);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(58, 24);
+            this.label6.TabIndex = 4;
+            this.label6.Text = "Email:";
+            // 
+            // lblSdt
+            // 
+            this.lblSdt.AutoSize = true;
+            this.lblSdt.Font = new System.Drawing.Font("SVN-Gilroy", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSdt.Location = new System.Drawing.Point(168, 89);
+            this.lblSdt.Name = "lblSdt";
+            this.lblSdt.Size = new System.Drawing.Size(37, 24);
+            this.lblSdt.TabIndex = 3;
+            this.lblSdt.Text = "---";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("SVN-Gilroy", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(16, 89);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(100, 24);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "Điện thoại:";
+            // 
+            // lblTenKhach
+            // 
+            this.lblTenKhach.AutoSize = true;
+            this.lblTenKhach.Font = new System.Drawing.Font("SVN-Gilroy", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTenKhach.Location = new System.Drawing.Point(168, 49);
+            this.lblTenKhach.Name = "lblTenKhach";
+            this.lblTenKhach.Size = new System.Drawing.Size(81, 24);
+            this.lblTenKhach.TabIndex = 1;
+            this.lblTenKhach.Text = "Khách lẻ";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("SVN-Gilroy", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(16, 49);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(112, 24);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Khách hàng:";
+            // 
+            // panelBottom
+            // 
+            this.panelBottom.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panelBottom.Controls.Add(this.lblTongTien);
+            this.panelBottom.Controls.Add(this.lblNhanVienLap);
+            this.panelBottom.Controls.Add(this.btnClose);
+            this.panelBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelBottom.Location = new System.Drawing.Point(0, 563);
+            this.panelBottom.Name = "panelBottom";
+            this.panelBottom.Size = new System.Drawing.Size(1190, 63);
+            this.panelBottom.TabIndex = 3;
+            // 
+            // lblTongTien
+            // 
+            this.lblTongTien.AutoSize = true;
+            this.lblTongTien.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.lblTongTien.ForeColor = System.Drawing.Color.Tomato;
+            this.lblTongTien.Location = new System.Drawing.Point(14, 18);
+            this.lblTongTien.Name = "lblTongTien";
+            this.lblTongTien.Size = new System.Drawing.Size(140, 25);
+            this.lblTongTien.TabIndex = 2;
+            this.lblTongTien.Text = "Tổng cộng: 0";
+            // 
+            // lblNhanVienLap
+            // 
+            this.lblNhanVienLap.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblNhanVienLap.AutoSize = true;
+            this.lblNhanVienLap.Font = new System.Drawing.Font("SVN-Gilroy", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNhanVienLap.Location = new System.Drawing.Point(282, 22);
+            this.lblNhanVienLap.Name = "lblNhanVienLap";
+            this.lblNhanVienLap.Size = new System.Drawing.Size(124, 24);
+            this.lblNhanVienLap.TabIndex = 1;
+            this.lblNhanVienLap.Text = "NV lập: NV001";
+            // 
+            // btnClose
+            // 
+            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClose.BackColor = System.Drawing.Color.Tomato;
+            this.btnClose.Font = new System.Drawing.Font("SVN-Gilroy", 9.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnClose.Location = new System.Drawing.Point(992, 3);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(195, 60);
+            this.btnClose.TabIndex = 0;
+            this.btnClose.Text = "Đóng";
+            this.btnClose.UseVisualStyleBackColor = false;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // guna2BorderlessForm1
+            // 
+            this.guna2BorderlessForm1.BorderRadius = 30;
+            this.guna2BorderlessForm1.ContainerControl = this;
+            this.guna2BorderlessForm1.DockIndicatorTransparencyValue = 0.6D;
+            this.guna2BorderlessForm1.TransparentWhileDrag = true;
             // 
             // OrderDetailForm
             // 

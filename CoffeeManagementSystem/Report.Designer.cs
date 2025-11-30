@@ -17,17 +17,17 @@
 
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblBaoCao = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
@@ -128,7 +128,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.panel1.BackColor = System.Drawing.Color.DarkCyan;
             this.panel1.Controls.Add(this.lblBaoCao);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
@@ -142,6 +142,7 @@
             // 
             this.lblBaoCao.AutoSize = true;
             this.lblBaoCao.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold);
+            this.lblBaoCao.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.lblBaoCao.Location = new System.Drawing.Point(3, 5);
             this.lblBaoCao.Name = "lblBaoCao";
             this.lblBaoCao.Size = new System.Drawing.Size(224, 25);
@@ -168,14 +169,14 @@
             this.dgvProductSales.AllowUserToResizeRows = false;
             this.dgvProductSales.BackgroundColor = System.Drawing.Color.White;
             this.dgvProductSales.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Firebrick;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvProductSales.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.Firebrick;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvProductSales.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvProductSales.ColumnHeadersHeight = 35;
             this.dgvProductSales.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvProductSales.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -189,14 +190,14 @@
             this.dgvProductSales.Location = new System.Drawing.Point(0, 98);
             this.dgvProductSales.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvProductSales.Name = "dgvProductSales";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvProductSales.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvProductSales.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.dgvProductSales.RowHeadersVisible = false;
             this.dgvProductSales.RowHeadersWidth = 51;
             this.dgvProductSales.Size = new System.Drawing.Size(1810, 932);
@@ -221,8 +222,8 @@
             // dataGridViewTextBoxColumn6
             // 
             this.dataGridViewTextBoxColumn6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.dataGridViewTextBoxColumn6.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.dataGridViewTextBoxColumn6.DefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridViewTextBoxColumn6.HeaderText = "Giá";
             this.dataGridViewTextBoxColumn6.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
@@ -387,14 +388,14 @@
             this.dgvRevenue.BackgroundColor = System.Drawing.Color.White;
             this.dgvRevenue.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
             this.dgvRevenue.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Firebrick;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvRevenue.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.DarkCyan;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("SVN-Gilroy SemiBold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.Tomato;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvRevenue.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dgvRevenue.ColumnHeadersHeight = 50;
             this.dgvRevenue.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvRevenue.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -417,7 +418,7 @@
             this.dataGridViewTextBoxColumn1.HeaderText = "STT";
             this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.Width = 95;
+            this.dataGridViewTextBoxColumn1.Width = 96;
             // 
             // dataGridViewTextBoxColumn2
             // 
@@ -432,7 +433,7 @@
             this.dataGridViewTextBoxColumn4.HeaderText = "Doanh thu";
             this.dataGridViewTextBoxColumn4.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.Width = 155;
+            this.dataGridViewTextBoxColumn4.Width = 188;
             // 
             // panel3
             // 
@@ -466,7 +467,7 @@
             // lblTotalPrice
             // 
             this.lblTotalPrice.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold);
-            this.lblTotalPrice.Location = new System.Drawing.Point(304, 15);
+            this.lblTotalPrice.Location = new System.Drawing.Point(304, 14);
             this.lblTotalPrice.Name = "lblTotalPrice";
             this.lblTotalPrice.Size = new System.Drawing.Size(262, 42);
             this.lblTotalPrice.TabIndex = 11;
@@ -477,7 +478,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold);
-            this.label5.ForeColor = System.Drawing.Color.Firebrick;
+            this.label5.ForeColor = System.Drawing.Color.OrangeRed;
             this.label5.Location = new System.Drawing.Point(21, 14);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(294, 40);
@@ -489,7 +490,7 @@
             this.dtpRevenueEndDate.BorderRadius = 15;
             this.dtpRevenueEndDate.Checked = true;
             this.dtpRevenueEndDate.CustomFormat = "dd/MM/yyyy";
-            this.dtpRevenueEndDate.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.dtpRevenueEndDate.FillColor = System.Drawing.Color.Tomato;
             this.dtpRevenueEndDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.dtpRevenueEndDate.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dtpRevenueEndDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
@@ -510,7 +511,7 @@
             this.btnPrintDoanhThu.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnPrintDoanhThu.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnPrintDoanhThu.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnPrintDoanhThu.FillColor = System.Drawing.Color.Blue;
+            this.btnPrintDoanhThu.FillColor = System.Drawing.Color.Tomato;
             this.btnPrintDoanhThu.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
             this.btnPrintDoanhThu.ForeColor = System.Drawing.Color.White;
             this.btnPrintDoanhThu.Image = global::CoffeeManagementSystem.Properties.Resources.Xuat;
@@ -528,7 +529,7 @@
             this.dtpRevenueStartDate.BorderRadius = 15;
             this.dtpRevenueStartDate.Checked = true;
             this.dtpRevenueStartDate.CustomFormat = "dd/MM/yyyy";
-            this.dtpRevenueStartDate.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.dtpRevenueStartDate.FillColor = System.Drawing.Color.Tomato;
             this.dtpRevenueStartDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.dtpRevenueStartDate.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dtpRevenueStartDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
@@ -580,14 +581,14 @@
             this.dgvPotentialCustomers.AllowUserToResizeRows = false;
             this.dgvPotentialCustomers.BackgroundColor = System.Drawing.Color.White;
             this.dgvPotentialCustomers.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Firebrick;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Firebrick;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPotentialCustomers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.DarkCyan;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.Tomato;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPotentialCustomers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.dgvPotentialCustomers.ColumnHeadersHeight = 100;
             this.dgvPotentialCustomers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvPotentialCustomers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -599,7 +600,7 @@
             this.Column6});
             this.dgvPotentialCustomers.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvPotentialCustomers.EnableHeadersVisualStyles = false;
-            this.dgvPotentialCustomers.GridColor = System.Drawing.Color.Pink;
+            this.dgvPotentialCustomers.GridColor = System.Drawing.Color.Tomato;
             this.dgvPotentialCustomers.Location = new System.Drawing.Point(3, 93);
             this.dgvPotentialCustomers.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvPotentialCustomers.Name = "dgvPotentialCustomers";
@@ -683,7 +684,7 @@
             this.btnPrintKHtop.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnPrintKHtop.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnPrintKHtop.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnPrintKHtop.FillColor = System.Drawing.Color.Blue;
+            this.btnPrintKHtop.FillColor = System.Drawing.Color.Tomato;
             this.btnPrintKHtop.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
             this.btnPrintKHtop.ForeColor = System.Drawing.Color.White;
             this.btnPrintKHtop.Image = global::CoffeeManagementSystem.Properties.Resources.Xuat;
@@ -701,7 +702,7 @@
             this.dtToTopSelling.BorderRadius = 15;
             this.dtToTopSelling.Checked = true;
             this.dtToTopSelling.CustomFormat = "dd/MM/yyyy";
-            this.dtToTopSelling.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.dtToTopSelling.FillColor = System.Drawing.Color.Tomato;
             this.dtToTopSelling.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.dtToTopSelling.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dtToTopSelling.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
@@ -720,7 +721,7 @@
             this.dtFromTopSelling.BorderRadius = 15;
             this.dtFromTopSelling.Checked = true;
             this.dtFromTopSelling.CustomFormat = "dd/MM/yyyy";
-            this.dtFromTopSelling.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.dtFromTopSelling.FillColor = System.Drawing.Color.Tomato;
             this.dtFromTopSelling.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.dtFromTopSelling.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dtFromTopSelling.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
@@ -817,19 +818,19 @@
             // 
             this.chartDashboard.BorderlineColor = System.Drawing.Color.Firebrick;
             this.chartDashboard.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            chartArea1.Name = "ChartArea1";
-            this.chartDashboard.ChartAreas.Add(chartArea1);
+            chartArea3.Name = "ChartArea1";
+            this.chartDashboard.ChartAreas.Add(chartArea3);
             this.chartDashboard.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend1.Name = "Legend1";
-            this.chartDashboard.Legends.Add(legend1);
+            legend3.Name = "Legend1";
+            this.chartDashboard.Legends.Add(legend3);
             this.chartDashboard.Location = new System.Drawing.Point(3, 2);
             this.chartDashboard.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chartDashboard.Name = "chartDashboard";
             this.chartDashboard.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Fire;
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chartDashboard.Series.Add(series1);
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            this.chartDashboard.Series.Add(series3);
             this.chartDashboard.Size = new System.Drawing.Size(785, 449);
             this.chartDashboard.TabIndex = 2;
             this.chartDashboard.Text = "chart1";
@@ -838,18 +839,18 @@
             // 
             this.chartRevenueByHour.BorderlineColor = System.Drawing.Color.Firebrick;
             this.chartRevenueByHour.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            chartArea2.Name = "ChartArea1";
-            this.chartRevenueByHour.ChartAreas.Add(chartArea2);
+            chartArea4.Name = "ChartArea1";
+            this.chartRevenueByHour.ChartAreas.Add(chartArea4);
             this.chartRevenueByHour.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend2.Name = "Legend1";
-            this.chartRevenueByHour.Legends.Add(legend2);
+            legend4.Name = "Legend1";
+            this.chartRevenueByHour.Legends.Add(legend4);
             this.chartRevenueByHour.Location = new System.Drawing.Point(3, 455);
             this.chartRevenueByHour.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chartRevenueByHour.Name = "chartRevenueByHour";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.chartRevenueByHour.Series.Add(series2);
+            series4.ChartArea = "ChartArea1";
+            series4.Legend = "Legend1";
+            series4.Name = "Series1";
+            this.chartRevenueByHour.Series.Add(series4);
             this.chartRevenueByHour.Size = new System.Drawing.Size(785, 449);
             this.chartRevenueByHour.TabIndex = 3;
             this.chartRevenueByHour.Text = "chart2";

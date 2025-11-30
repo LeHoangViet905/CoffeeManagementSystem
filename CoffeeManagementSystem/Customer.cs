@@ -1,6 +1,9 @@
 ﻿using CoffeeManagementSystem.BLL;
+using OfficeOpenXml;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.IO;
 using System.Windows.Forms;
 namespace CoffeeManagementSystem
 {
@@ -164,6 +167,138 @@ namespace CoffeeManagementSystem
         private void txtSearch_TextChanged_1(object sender, EventArgs e)
         {
 
+        }
+        public void LoadGridKhachhang()
+        {
+            try
+            {
+                var list = khachhangBLL.GetAllKhachhangs();
+                dgvKhachHang.DataSource = null;
+                dgvKhachHang.DataSource = list;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi load dữ liệu: " + ex.Message);
+            }
+        }
+
+        private DataTable ReadCSV(string path)
+        {
+            DataTable dt = new DataTable();
+
+            using (var reader = new StreamReader(path))
+            {
+                string header = reader.ReadLine();
+                if (header == null) return dt;
+
+                var columnNames = header.Split(',');
+                foreach (string col in columnNames)
+                    dt.Columns.Add(col.Trim());
+
+                while (!reader.EndOfStream)
+                {
+                    var line = reader.ReadLine();
+                    if (string.IsNullOrWhiteSpace(line)) continue;
+                    dt.Rows.Add(line.Split(','));
+                }
+            }
+
+            return dt;
+        }
+        private DataTable ReadExcel(string path)
+        {
+            DataTable dt = new DataTable();
+            using (var package = new ExcelPackage(new FileInfo(path)))
+            {
+                var ws = package.Workbook.Worksheets[0];
+                int colCount = ws.Dimension.End.Column;
+                int rowCount = ws.Dimension.End.Row;
+
+                for (int col = 1; col <= colCount; col++)
+                    dt.Columns.Add(ws.Cells[1, col].Text);
+
+                for (int row = 2; row <= rowCount; row++)
+                {
+                    DataRow dr = dt.NewRow();
+                    for (int col = 1; col <= colCount; col++)
+                        dr[col - 1] = ws.Cells[row, col].Text;
+                    dt.Rows.Add(dr);
+                }
+            }
+            return dt;
+        }
+        private void button3_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "Excel Files|*.xlsx;*.xls|CSV Files|*.csv";
+            if (ofd.ShowDialog() != DialogResult.OK) return;
+
+            DataTable dt;
+            try
+            {
+                dt = Path.GetExtension(ofd.FileName).ToLower() == ".csv" ? ReadCSV(ofd.FileName) : ReadExcel(ofd.FileName);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi đọc file: " + ex.Message);
+                return;
+            }
+
+            if (dt.Rows.Count == 0)
+            {
+                MessageBox.Show("File không có dữ liệu.");
+                return;
+            }
+
+            var existingMa = khachhangBLL.GetAllMaKH(); // chỉ lấy 1 lần
+            var usedMa = new HashSet<string>(existingMa);
+
+            List<Khachhang> list = new List<Khachhang>();
+
+            foreach (DataRow row in dt.Rows)
+            {
+                string ma;
+                if (row.Table.Columns.Contains("Makhachhang") && !string.IsNullOrWhiteSpace(row["Makhachhang"].ToString()))
+                {
+                    ma = row["Makhachhang"].ToString().Trim();
+                    if (usedMa.Contains(ma))
+                        ma = khachhangBLL.GenerateNextMaKHInMemory(usedMa);
+                }
+                else
+                {
+                    ma = khachhangBLL.GenerateNextMaKHInMemory(usedMa);
+                }
+
+                usedMa.Add(ma);
+
+                Khachhang k = new Khachhang
+                {
+                    Makhachhang = ma,
+                    Hoten = row["Hoten"].ToString().Trim(),
+                    Sodienthoai = row["Sodienthoai"].ToString().Trim(),
+                    Email = row["Email"].ToString().Trim(),
+                    Ngaydangky = Convert.ToDateTime(row["Ngaydangky"]),
+                    Diemtichluy = Convert.ToInt32(row["Diemtichluy"])
+                };
+
+                list.Add(k);
+            }
+            if (list.Count == 0)
+            {
+                MessageBox.Show("Không có dữ liệu hợp lệ để import.");
+                return;
+            }
+
+            try
+            {
+                khachhangBLL.ImportKhachhangs(list);
+                MessageBox.Show("Import thành công " + list.Count + " dòng.");
+                LoadGridKhachhang();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi import: " + ex.Message);
+            }
         }
     }
 }
