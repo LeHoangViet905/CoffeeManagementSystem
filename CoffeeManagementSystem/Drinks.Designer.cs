@@ -44,8 +44,8 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtTimkiemloaidouong = new Guna.UI2.WinForms.Guna2TextBox();
             this.btnThemloaidouong = new System.Windows.Forms.Button();
-            this.txtTimkiemloaidouong = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvLoaidouong = new Guna.UI2.WinForms.Guna2DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -104,7 +104,7 @@
             this.dgvDouong.RowHeadersVisible = false;
             this.dgvDouong.RowHeadersWidth = 51;
             this.dgvDouong.RowTemplate.Height = 24;
-            this.dgvDouong.Size = new System.Drawing.Size(1804, 1056);
+            this.dgvDouong.Size = new System.Drawing.Size(1804, 1053);
             this.dgvDouong.TabIndex = 16;
             this.dgvDouong.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvDouong.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -175,7 +175,6 @@
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(1818, 1102);
-            this.tabControl1.Size = new System.Drawing.Size(1040, 640);
             this.tabControl1.TabIndex = 24;
             // 
             // tabPage1
@@ -189,8 +188,6 @@
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage1.Size = new System.Drawing.Size(1810, 1057);
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tabPage1.Size = new System.Drawing.Size(1032, 607);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Loại đồ uống";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -198,9 +195,8 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Pink;
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.btnThemloaidouong);
             this.panel1.Controls.Add(this.txtTimkiemloaidouong);
+            this.panel1.Controls.Add(this.btnThemloaidouong);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(3, 917);
@@ -209,8 +205,34 @@
             this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1804, 138);
-            this.panel1.Size = new System.Drawing.Size(1028, 89);
             this.panel1.TabIndex = 26;
+            // 
+            // txtTimkiemloaidouong
+            // 
+            this.txtTimkiemloaidouong.AutoSize = true;
+            this.txtTimkiemloaidouong.BackColor = System.Drawing.Color.Transparent;
+            this.txtTimkiemloaidouong.BorderRadius = 15;
+            this.txtTimkiemloaidouong.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtTimkiemloaidouong.DefaultText = "";
+            this.txtTimkiemloaidouong.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtTimkiemloaidouong.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtTimkiemloaidouong.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtTimkiemloaidouong.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtTimkiemloaidouong.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtTimkiemloaidouong.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTimkiemloaidouong.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtTimkiemloaidouong.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtTimkiemloaidouong.Location = new System.Drawing.Point(201, 58);
+            this.txtTimkiemloaidouong.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.txtTimkiemloaidouong.Name = "txtTimkiemloaidouong";
+            this.txtTimkiemloaidouong.PlaceholderText = "";
+            this.txtTimkiemloaidouong.SelectedText = "";
+            this.txtTimkiemloaidouong.ShadowDecoration.BorderRadius = 15;
+            this.txtTimkiemloaidouong.ShadowDecoration.Depth = 5;
+            this.txtTimkiemloaidouong.ShadowDecoration.Enabled = true;
+            this.txtTimkiemloaidouong.Size = new System.Drawing.Size(612, 43);
+            this.txtTimkiemloaidouong.TabIndex = 104;
+            this.txtTimkiemloaidouong.TextChanged += new System.EventHandler(this.txtTimkiemloaidouong_TextChanged);
             // 
             // btnThemloaidouong
             // 
@@ -223,39 +245,25 @@
             this.btnThemloaidouong.Image = ((System.Drawing.Image)(resources.GetObject("btnThemloaidouong.Image")));
             this.btnThemloaidouong.Location = new System.Drawing.Point(1643, 22);
             this.btnThemloaidouong.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnThemloaidouong.Location = new System.Drawing.Point(920, 15);
             this.btnThemloaidouong.Name = "btnThemloaidouong";
             this.btnThemloaidouong.Size = new System.Drawing.Size(142, 100);
-            this.btnThemloaidouong.Size = new System.Drawing.Size(94, 65);
             this.btnThemloaidouong.TabIndex = 23;
             this.btnThemloaidouong.Text = "Thêm";
             this.btnThemloaidouong.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnThemloaidouong.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnThemloaidouong.UseVisualStyleBackColor = false;
-            // 
-            // txtTimkiemloaidouong
-            // 
-            this.txtTimkiemloaidouong.Font = new System.Drawing.Font("Segoe UI Variable Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTimkiemloaidouong.Location = new System.Drawing.Point(181, 62);
-            this.txtTimkiemloaidouong.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtTimkiemloaidouong.Location = new System.Drawing.Point(121, 41);
-            this.txtTimkiemloaidouong.Name = "txtTimkiemloaidouong";
-            this.txtTimkiemloaidouong.Size = new System.Drawing.Size(268, 39);
-            this.txtTimkiemloaidouong.Size = new System.Drawing.Size(180, 29);
-            this.txtTimkiemloaidouong.TabIndex = 21;
-            this.txtTimkiemloaidouong.TextChanged += new System.EventHandler(this.txtTimkiemloaidouong_TextChanged);
+            this.btnThemloaidouong.Click += new System.EventHandler(this.btnThemloaidouong_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Variable Text", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("SVN-Gilroy", 16F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.label1.Location = new System.Drawing.Point(16, 58);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Location = new System.Drawing.Point(10, 37);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(167, 43);
-            this.label1.Size = new System.Drawing.Size(109, 28);
+            this.label1.Size = new System.Drawing.Size(160, 43);
             this.label1.TabIndex = 22;
             this.label1.Text = "Tìm kiếm:";
             // 
@@ -311,7 +319,6 @@
             this.dgvLoaidouong.RowHeadersWidth = 51;
             this.dgvLoaidouong.RowTemplate.Height = 24;
             this.dgvLoaidouong.Size = new System.Drawing.Size(1804, 1053);
-            this.dgvLoaidouong.Size = new System.Drawing.Size(1028, 603);
             this.dgvLoaidouong.TabIndex = 17;
             this.dgvLoaidouong.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvLoaidouong.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -355,15 +362,13 @@
             this.tabPage2.Controls.Add(this.panel2);
             this.tabPage2.Controls.Add(this.dgvDouong);
             this.tabPage2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabPage2.Location = new System.Drawing.Point(4, 38);
+            this.tabPage2.Location = new System.Drawing.Point(4, 41);
             this.tabPage2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage2.Location = new System.Drawing.Point(4, 29);
             this.tabPage2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage2.Size = new System.Drawing.Size(1810, 1060);
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tabPage2.Size = new System.Drawing.Size(1032, 607);
+            this.tabPage2.Size = new System.Drawing.Size(1810, 1057);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Đồ uống";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -376,13 +381,12 @@
             this.panel2.Controls.Add(this.txtTimkiemdouong);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(3, 920);
+            this.panel2.Location = new System.Drawing.Point(3, 917);
             this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel2.Location = new System.Drawing.Point(2, 516);
             this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1804, 138);
-            this.panel2.Size = new System.Drawing.Size(1028, 89);
             this.panel2.TabIndex = 26;
             // 
             // btnThemdouong
@@ -397,10 +401,8 @@
             this.btnThemdouong.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnThemdouong.Location = new System.Drawing.Point(1644, 22);
             this.btnThemdouong.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnThemdouong.Location = new System.Drawing.Point(921, 15);
             this.btnThemdouong.Name = "btnThemdouong";
             this.btnThemdouong.Size = new System.Drawing.Size(142, 100);
-            this.btnThemdouong.Size = new System.Drawing.Size(94, 65);
             this.btnThemdouong.TabIndex = 23;
             this.btnThemdouong.Text = "Thêm";
             this.btnThemdouong.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -412,10 +414,8 @@
             this.txtTimkiemdouong.Font = new System.Drawing.Font("Segoe UI Variable Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTimkiemdouong.Location = new System.Drawing.Point(191, 62);
             this.txtTimkiemdouong.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtTimkiemdouong.Location = new System.Drawing.Point(128, 41);
             this.txtTimkiemdouong.Name = "txtTimkiemdouong";
             this.txtTimkiemdouong.Size = new System.Drawing.Size(268, 39);
-            this.txtTimkiemdouong.Size = new System.Drawing.Size(180, 29);
             this.txtTimkiemdouong.TabIndex = 21;
             this.txtTimkiemdouong.TextChanged += new System.EventHandler(this.txtTimkiemdouong_TextChanged);
             // 
@@ -429,7 +429,6 @@
             this.label2.Location = new System.Drawing.Point(10, 37);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(167, 43);
-            this.label2.Size = new System.Drawing.Size(109, 28);
             this.label2.TabIndex = 22;
             this.label2.Text = "Tìm kiếm:";
             // 
@@ -470,11 +469,9 @@
             // DrinkForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SeaShell;
             this.ClientSize = new System.Drawing.Size(1818, 1102);
-            this.ClientSize = new System.Drawing.Size(1040, 640);
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
@@ -503,7 +500,6 @@
         private Guna.UI2.WinForms.Guna2DataGridView dgvLoaidouong;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnThemloaidouong;
-        private System.Windows.Forms.TextBox txtTimkiemloaidouong;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btnThemdouong;
@@ -516,7 +512,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn GioiTinh;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn DiaChi;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private Guna.UI2.WinForms.Guna2TextBox txtTimkiemloaidouong;
     }
 }

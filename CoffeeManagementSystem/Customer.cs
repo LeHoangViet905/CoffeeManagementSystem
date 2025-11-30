@@ -160,5 +160,10 @@ namespace CoffeeManagementSystem
         {
 
         }
+
+        private void txtSearch_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }
