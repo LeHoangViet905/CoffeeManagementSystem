@@ -305,23 +305,30 @@ namespace CoffeeManagementSystem.BLL
 
             return "KH" + nextNumber.ToString("D3"); // KH001, NV002 ...
         }
+        public string GenerateNextMaKHInMemory(HashSet<string> usedMa)
+        {
+            int max = 0;
+            foreach (var ma in usedMa)
+            {
+                if (ma.Length <= 2) continue;
+                if (int.TryParse(ma.Substring(2), out int n))
+                {
+                    if (n > max) max = n;
+                }
+            }
+            return "KH" + (max + 1).ToString("D3"); // NV001, NV002,...
+        }
 
-        // Optional: Example for email validation if you need it.
-        // private bool IsValidEmail(string email)
-        // {
-        //     if (string.IsNullOrWhiteSpace(email))
-        //         return false;
-        //     try
-        //     {
-        //         // Use Regex to validate email format
-        //         return Regex.IsMatch(email,
-        //             @"^[^@\s]+@[^@\s]+\.[^@\s]+$",
-        //             RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250));
-        //     }
-        //     catch (RegexMatchTimeoutException)
-        //     {
-        //         return false;
-        //     }
-        // }
+        public void ImportKhachhangs(List<Khachhang> khachhangs)
+        {
+            if (khachhangs == null || khachhangs.Count == 0)
+                throw new ArgumentException("Danh sách khách hàng rỗng.", nameof(khachhangs));
+
+            _khachhangDAL.ImportKhachhangs(khachhangs);
+        }
+        public List<string> GetAllMaKH()
+        {
+            return _khachhangDAL.GetAllMaKhachhang(); // chỉ gọi 1 lần
+        }
     }
 }

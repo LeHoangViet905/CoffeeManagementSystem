@@ -234,5 +234,30 @@ namespace CoffeeManagementSystem.BLL
 
             return "NV" + nextNumber.ToString("D3"); // NV001, NV002 ...
         }
+        public string GenerateNextMaNVInMemory(HashSet<string> usedMa)
+        {
+            int max = 0;
+            foreach (var ma in usedMa)
+            {
+                if (ma.Length <= 2) continue;
+                if (int.TryParse(ma.Substring(2), out int n))
+                {
+                    if (n > max) max = n;
+                }
+            }
+            return "NV" + (max + 1).ToString("D3"); // NV001, NV002,...
+        }
+
+        public void ImportNhanviens(List<Nhanvien> nhanviens)
+        {
+            if (nhanviens == null || nhanviens.Count == 0)
+                throw new ArgumentException("Danh sách nhân viên rỗng.", nameof(nhanviens));
+
+            _nhanvienDAL.ImportNhanviens(nhanviens);
+        }
+        public List<string> GetAllMaNV()
+        {
+            return _nhanvienDAL.GetAllMaNV(); // chỉ gọi 1 lần
+        }
     }
 }
