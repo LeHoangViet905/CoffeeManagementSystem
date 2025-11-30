@@ -1,7 +1,18 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="CoffeeManagementSystem.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Vnp_Url" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://sandbox.vnpayment.vn/paymentv2/vpcpay.html</Value>
+    </Setting>
+    <Setting Name="Vnp_TmnCode" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Vnp_HashSecret" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Vnp_ReturnUrl" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://localhost:8888/vnpay_return</Value>
+    </Setting>
+  </Settings>
 </SettingsFile>
