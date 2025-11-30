@@ -125,5 +125,11 @@ namespace CoffeeManagementSystem
             loginForm.Show();
             this.Close();
         }
+
+        private void btnOptionManager_Click(object sender, EventArgs e)
+        {
+            PlayClickSound();
+            LoadFormCon(new OptionManagerForm());
+        }
     }
 }

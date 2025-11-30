@@ -31,10 +31,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OrderForm));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelSidebar = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2Button3 = new Guna.UI2.WinForms.Guna2Button();
@@ -45,14 +46,6 @@
             this.txtTongTien = new Guna.UI2.WinForms.Guna2TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.dgvOrder = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.colID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDecrease = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.colCancel = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.colNote = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -82,6 +75,14 @@
             this.flowPanelNGK = new System.Windows.Forms.FlowLayoutPanel();
             this.tabPage10 = new System.Windows.Forms.TabPage();
             this.flowPanelTPN = new System.Windows.Forms.FlowLayoutPanel();
+            this.colID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDecrease = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.colCancel = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.colNote = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelSidebar.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrder)).BeginInit();
@@ -110,7 +111,7 @@
             this.panelSidebar.Location = new System.Drawing.Point(0, 0);
             this.panelSidebar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panelSidebar.Name = "panelSidebar";
-            this.panelSidebar.Size = new System.Drawing.Size(394, 1121);
+            this.panelSidebar.Size = new System.Drawing.Size(400, 897);
             this.panelSidebar.TabIndex = 1;
             // 
             // guna2Panel2
@@ -128,7 +129,7 @@
             this.guna2Panel2.Location = new System.Drawing.Point(0, 827);
             this.guna2Panel2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.guna2Panel2.Name = "guna2Panel2";
-            this.guna2Panel2.Size = new System.Drawing.Size(394, 294);
+            this.guna2Panel2.Size = new System.Drawing.Size(400, 235);
             this.guna2Panel2.TabIndex = 3;
             // 
             // guna2Button3
@@ -283,32 +284,32 @@
             this.colDecrease,
             this.colCancel,
             this.colNote});
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI Variable Display", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlLight;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(78)))), ((int)(((byte)(78)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvOrder.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI Variable Display", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(78)))), ((int)(((byte)(78)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvOrder.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgvOrder.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvOrder.GridColor = System.Drawing.Color.White;
             this.dgvOrder.Location = new System.Drawing.Point(0, 62);
             this.dgvOrder.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dgvOrder.Name = "dgvOrder";
             this.dgvOrder.ReadOnly = true;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("SVN-Gilroy", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.MenuText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Tomato;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvOrder.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.MenuText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.Firebrick;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvOrder.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dgvOrder.RowHeadersVisible = false;
             this.dgvOrder.RowHeadersWidth = 51;
             this.dgvOrder.RowTemplate.Height = 40;
-            this.dgvOrder.Size = new System.Drawing.Size(394, 1059);
+            this.dgvOrder.Size = new System.Drawing.Size(400, 847);
             this.dgvOrder.TabIndex = 4;
             this.dgvOrder.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvOrder.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -333,90 +334,6 @@
             this.dgvOrder.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.White;
             this.dgvOrder.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvOrder_CellClick);
             // 
-            // colID
-            // 
-            this.colID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.colID.HeaderText = "ID";
-            this.colID.MinimumWidth = 6;
-            this.colID.Name = "colID";
-            this.colID.ReadOnly = true;
-            this.colID.Visible = false;
-            this.colID.Width = 10;
-            // 
-            // colQty
-            // 
-            this.colQty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.colQty.HeaderText = "SL";
-            this.colQty.MinimumWidth = 6;
-            this.colQty.Name = "colQty";
-            this.colQty.ReadOnly = true;
-            this.colQty.Width = 40;
-            // 
-            // colName
-            // 
-            this.colName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colName.FillWeight = 111.5385F;
-            this.colName.HeaderText = "Tên món";
-            this.colName.MinimumWidth = 6;
-            this.colName.Name = "colName";
-            this.colName.ReadOnly = true;
-            // 
-            // colPrice
-            // 
-            this.colPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.colPrice.HeaderText = "Đơn giá";
-            this.colPrice.MinimumWidth = 6;
-            this.colPrice.Name = "colPrice";
-            this.colPrice.ReadOnly = true;
-            this.colPrice.Visible = false;
-            this.colPrice.Width = 10;
-            // 
-            // colTotal
-            // 
-            this.colTotal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle3.Format = "N0";
-            this.colTotal.DefaultCellStyle = dataGridViewCellStyle3;
-            this.colTotal.FillWeight = 111.5385F;
-            this.colTotal.HeaderText = "Thành tiền";
-            this.colTotal.MinimumWidth = 6;
-            this.colTotal.Name = "colTotal";
-            this.colTotal.ReadOnly = true;
-            this.colTotal.Width = 80;
-            // 
-            // colDecrease
-            // 
-            this.colDecrease.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.colDecrease.HeaderText = "-";
-            this.colDecrease.MinimumWidth = 6;
-            this.colDecrease.Name = "colDecrease";
-            this.colDecrease.ReadOnly = true;
-            this.colDecrease.Text = "-";
-            this.colDecrease.UseColumnTextForButtonValue = true;
-            this.colDecrease.Width = 30;
-            // 
-            // colCancel
-            // 
-            this.colCancel.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-            this.colCancel.DefaultCellStyle = dataGridViewCellStyle4;
-            this.colCancel.FillWeight = 76.92308F;
-            this.colCancel.HeaderText = "X";
-            this.colCancel.MinimumWidth = 6;
-            this.colCancel.Name = "colCancel";
-            this.colCancel.ReadOnly = true;
-            this.colCancel.Text = "X";
-            this.colCancel.UseColumnTextForButtonValue = true;
-            this.colCancel.Width = 30;
-            // 
-            // colNote
-            // 
-            this.colNote.HeaderText = "Ghi chú";
-            this.colNote.MinimumWidth = 6;
-            this.colNote.Name = "colNote";
-            this.colNote.ReadOnly = true;
-            this.colNote.Visible = false;
-            // 
             // guna2Panel1
             // 
             this.guna2Panel1.BackColor = System.Drawing.Color.Tomato;
@@ -426,7 +343,7 @@
             this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
             this.guna2Panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(394, 62);
+            this.guna2Panel1.Size = new System.Drawing.Size(400, 50);
             this.guna2Panel1.TabIndex = 1;
             // 
             // guna2TextBox1
@@ -455,7 +372,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("SVN-Gilroy SemiBold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(16, 19);
+            this.label1.Location = new System.Drawing.Point(9, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(72, 27);
             this.label1.TabIndex = 0;
@@ -467,10 +384,9 @@
             this.panelHeader.Controls.Add(this.label3);
             this.panelHeader.Controls.Add(this.txtTimKiem);
             this.panelHeader.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelHeader.Location = new System.Drawing.Point(394, 0);
-            this.panelHeader.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.panelHeader.Location = new System.Drawing.Point(400, 0);
             this.panelHeader.Name = "panelHeader";
-            this.panelHeader.Size = new System.Drawing.Size(1424, 62);
+            this.panelHeader.Size = new System.Drawing.Size(1216, 50);
             this.panelHeader.TabIndex = 2;
             // 
             // label3
@@ -509,10 +425,9 @@
             // 
             this.panelContent.Controls.Add(this.guna2TabControl1);
             this.panelContent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelContent.Location = new System.Drawing.Point(394, 62);
-            this.panelContent.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.panelContent.Location = new System.Drawing.Point(400, 50);
             this.panelContent.Name = "panelContent";
-            this.panelContent.Size = new System.Drawing.Size(1424, 1059);
+            this.panelContent.Size = new System.Drawing.Size(1216, 847);
             this.panelContent.TabIndex = 3;
             // 
             // guna2TabControl1
@@ -536,7 +451,7 @@
             this.guna2TabControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.guna2TabControl1.Name = "guna2TabControl1";
             this.guna2TabControl1.SelectedIndex = 0;
-            this.guna2TabControl1.Size = new System.Drawing.Size(1424, 1059);
+            this.guna2TabControl1.Size = new System.Drawing.Size(1216, 847);
             this.guna2TabControl1.TabButtonHoverState.BorderColor = System.Drawing.Color.Empty;
             this.guna2TabControl1.TabButtonHoverState.FillColor = System.Drawing.Color.IndianRed;
             this.guna2TabControl1.TabButtonHoverState.Font = new System.Drawing.Font("Segoe UI Semibold", 10F);
@@ -562,7 +477,7 @@
             this.tabPage11.Location = new System.Drawing.Point(254, 4);
             this.tabPage11.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage11.Name = "tabPage11";
-            this.tabPage11.Size = new System.Drawing.Size(1166, 1051);
+            this.tabPage11.Size = new System.Drawing.Size(1028, 839);
             this.tabPage11.TabIndex = 10;
             this.tabPage11.Tag = "ALL";
             this.tabPage11.Text = "Tất cả";
@@ -574,8 +489,8 @@
             this.tabPage1.Location = new System.Drawing.Point(254, 4);
             this.tabPage1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabPage1.Size = new System.Drawing.Size(1166, 1051);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(1028, 839);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Cà phê truyền thống";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -586,7 +501,7 @@
             this.flowPanelCafe.Location = new System.Drawing.Point(3, 4);
             this.flowPanelCafe.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.flowPanelCafe.Name = "flowPanelCafe";
-            this.flowPanelCafe.Size = new System.Drawing.Size(1160, 1043);
+            this.flowPanelCafe.Size = new System.Drawing.Size(1022, 833);
             this.flowPanelCafe.TabIndex = 0;
             // 
             // tabPage2
@@ -595,8 +510,8 @@
             this.tabPage2.Location = new System.Drawing.Point(254, 4);
             this.tabPage2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabPage2.Size = new System.Drawing.Size(1166, 1051);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(1028, 839);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Trà hiện đại";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -607,7 +522,7 @@
             this.flowPanelTea.Location = new System.Drawing.Point(3, 4);
             this.flowPanelTea.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.flowPanelTea.Name = "flowPanelTea";
-            this.flowPanelTea.Size = new System.Drawing.Size(1160, 1043);
+            this.flowPanelTea.Size = new System.Drawing.Size(1022, 833);
             this.flowPanelTea.TabIndex = 0;
             // 
             // tabPage3
@@ -616,7 +531,7 @@
             this.tabPage3.Location = new System.Drawing.Point(254, 4);
             this.tabPage3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1166, 1051);
+            this.tabPage3.Size = new System.Drawing.Size(1028, 839);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Nước ép trái cây";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -627,7 +542,7 @@
             this.flowPanelJuice.Location = new System.Drawing.Point(0, 0);
             this.flowPanelJuice.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.flowPanelJuice.Name = "flowPanelJuice";
-            this.flowPanelJuice.Size = new System.Drawing.Size(1166, 1051);
+            this.flowPanelJuice.Size = new System.Drawing.Size(1028, 839);
             this.flowPanelJuice.TabIndex = 0;
             // 
             // tabPage4
@@ -636,7 +551,7 @@
             this.tabPage4.Location = new System.Drawing.Point(254, 4);
             this.tabPage4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(1166, 1051);
+            this.tabPage4.Size = new System.Drawing.Size(1028, 839);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Đồ uống đá xay";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -648,7 +563,7 @@
             this.flowPanelIce.Location = new System.Drawing.Point(0, 0);
             this.flowPanelIce.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.flowPanelIce.Name = "flowPanelIce";
-            this.flowPanelIce.Size = new System.Drawing.Size(1166, 1051);
+            this.flowPanelIce.Size = new System.Drawing.Size(1028, 839);
             this.flowPanelIce.TabIndex = 0;
             // 
             // tabPage5
@@ -657,7 +572,7 @@
             this.tabPage5.Location = new System.Drawing.Point(254, 4);
             this.tabPage5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(1166, 1051);
+            this.tabPage5.Size = new System.Drawing.Size(1028, 839);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Bánh ngọt & Tráng miệng";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -669,7 +584,7 @@
             this.flowPanelCake.Location = new System.Drawing.Point(0, 0);
             this.flowPanelCake.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.flowPanelCake.Name = "flowPanelCake";
-            this.flowPanelCake.Size = new System.Drawing.Size(1166, 1051);
+            this.flowPanelCake.Size = new System.Drawing.Size(1028, 839);
             this.flowPanelCake.TabIndex = 0;
             // 
             // tabPage6
@@ -678,7 +593,7 @@
             this.tabPage6.Location = new System.Drawing.Point(254, 4);
             this.tabPage6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Size = new System.Drawing.Size(1166, 1051);
+            this.tabPage6.Size = new System.Drawing.Size(1028, 839);
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "Sinh tố";
             this.tabPage6.UseVisualStyleBackColor = true;
@@ -689,7 +604,7 @@
             this.flowPanelST.Location = new System.Drawing.Point(0, 0);
             this.flowPanelST.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.flowPanelST.Name = "flowPanelST";
-            this.flowPanelST.Size = new System.Drawing.Size(1166, 1051);
+            this.flowPanelST.Size = new System.Drawing.Size(1028, 839);
             this.flowPanelST.TabIndex = 0;
             // 
             // tabPage7
@@ -698,7 +613,7 @@
             this.tabPage7.Location = new System.Drawing.Point(254, 4);
             this.tabPage7.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage7.Name = "tabPage7";
-            this.tabPage7.Size = new System.Drawing.Size(1166, 1051);
+            this.tabPage7.Size = new System.Drawing.Size(1028, 839);
             this.tabPage7.TabIndex = 6;
             this.tabPage7.Text = "Sữa chua & Smoothies";
             this.tabPage7.UseVisualStyleBackColor = true;
@@ -709,7 +624,7 @@
             this.flowPanelSC.Location = new System.Drawing.Point(0, 0);
             this.flowPanelSC.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.flowPanelSC.Name = "flowPanelSC";
-            this.flowPanelSC.Size = new System.Drawing.Size(1166, 1051);
+            this.flowPanelSC.Size = new System.Drawing.Size(1028, 839);
             this.flowPanelSC.TabIndex = 0;
             // 
             // tabPage8
@@ -718,7 +633,7 @@
             this.tabPage8.Location = new System.Drawing.Point(254, 4);
             this.tabPage8.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage8.Name = "tabPage8";
-            this.tabPage8.Size = new System.Drawing.Size(1166, 1051);
+            this.tabPage8.Size = new System.Drawing.Size(1028, 839);
             this.tabPage8.TabIndex = 7;
             this.tabPage8.Text = "Đồ uống đặc biệt";
             this.tabPage8.UseVisualStyleBackColor = true;
@@ -729,7 +644,7 @@
             this.flowPanelSD.Location = new System.Drawing.Point(0, 0);
             this.flowPanelSD.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.flowPanelSD.Name = "flowPanelSD";
-            this.flowPanelSD.Size = new System.Drawing.Size(1166, 1051);
+            this.flowPanelSD.Size = new System.Drawing.Size(1028, 839);
             this.flowPanelSD.TabIndex = 0;
             // 
             // tabPage9
@@ -738,7 +653,7 @@
             this.tabPage9.Location = new System.Drawing.Point(254, 4);
             this.tabPage9.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage9.Name = "tabPage9";
-            this.tabPage9.Size = new System.Drawing.Size(1166, 1051);
+            this.tabPage9.Size = new System.Drawing.Size(1028, 839);
             this.tabPage9.TabIndex = 8;
             this.tabPage9.Text = "Nước giải khát";
             this.tabPage9.UseVisualStyleBackColor = true;
@@ -749,7 +664,7 @@
             this.flowPanelNGK.Location = new System.Drawing.Point(0, 0);
             this.flowPanelNGK.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.flowPanelNGK.Name = "flowPanelNGK";
-            this.flowPanelNGK.Size = new System.Drawing.Size(1166, 1051);
+            this.flowPanelNGK.Size = new System.Drawing.Size(1028, 839);
             this.flowPanelNGK.TabIndex = 0;
             // 
             // tabPage10
@@ -758,7 +673,7 @@
             this.tabPage10.Location = new System.Drawing.Point(254, 4);
             this.tabPage10.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage10.Name = "tabPage10";
-            this.tabPage10.Size = new System.Drawing.Size(1166, 1051);
+            this.tabPage10.Size = new System.Drawing.Size(1028, 839);
             this.tabPage10.TabIndex = 9;
             this.tabPage10.Text = "Thực phẩm nhẹ";
             this.tabPage10.UseVisualStyleBackColor = true;
@@ -769,8 +684,102 @@
             this.flowPanelTPN.Location = new System.Drawing.Point(0, 0);
             this.flowPanelTPN.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.flowPanelTPN.Name = "flowPanelTPN";
-            this.flowPanelTPN.Size = new System.Drawing.Size(1166, 1051);
+            this.flowPanelTPN.Size = new System.Drawing.Size(1028, 839);
             this.flowPanelTPN.TabIndex = 0;
+            // 
+            // colID
+            // 
+            this.colID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.colID.HeaderText = "ID";
+            this.colID.MinimumWidth = 6;
+            this.colID.Name = "colID";
+            this.colID.ReadOnly = true;
+            this.colID.Visible = false;
+            this.colID.Width = 10;
+            // 
+            // colQty
+            // 
+            this.colQty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.colQty.HeaderText = "SL";
+            this.colQty.MinimumWidth = 6;
+            this.colQty.Name = "colQty";
+            this.colQty.ReadOnly = true;
+            this.colQty.Width = 40;
+            // 
+            // colName
+            // 
+            this.colName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle3.Format = "N0";
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.colName.DefaultCellStyle = dataGridViewCellStyle3;
+            this.colName.FillWeight = 111.5385F;
+            this.colName.HeaderText = "Tên món";
+            this.colName.MinimumWidth = 6;
+            this.colName.Name = "colName";
+            this.colName.ReadOnly = true;
+            // 
+            // colPrice
+            // 
+            this.colPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.colPrice.HeaderText = "Đơn giá";
+            this.colPrice.MinimumWidth = 6;
+            this.colPrice.Name = "colPrice";
+            this.colPrice.ReadOnly = true;
+            this.colPrice.Visible = false;
+            this.colPrice.Width = 10;
+            // 
+            // colTotal
+            // 
+            this.colTotal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.Format = "N0";
+            this.colTotal.DefaultCellStyle = dataGridViewCellStyle4;
+            this.colTotal.FillWeight = 111.5385F;
+            this.colTotal.HeaderText = "Thành tiền";
+            this.colTotal.MinimumWidth = 6;
+            this.colTotal.Name = "colTotal";
+            this.colTotal.ReadOnly = true;
+            this.colTotal.Width = 80;
+            // 
+            // colDecrease
+            // 
+            this.colDecrease.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.colDecrease.HeaderText = "-";
+            this.colDecrease.MinimumWidth = 6;
+            this.colDecrease.Name = "colDecrease";
+            this.colDecrease.ReadOnly = true;
+            this.colDecrease.Text = "-";
+            this.colDecrease.UseColumnTextForButtonValue = true;
+            this.colDecrease.Width = 30;
+            // 
+            // colCancel
+            // 
+            this.colCancel.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI Variable Display", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(78)))), ((int)(((byte)(78)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.colCancel.DefaultCellStyle = dataGridViewCellStyle5;
+            this.colCancel.FillWeight = 76.92308F;
+            this.colCancel.HeaderText = "X";
+            this.colCancel.MinimumWidth = 6;
+            this.colCancel.Name = "colCancel";
+            this.colCancel.ReadOnly = true;
+            this.colCancel.Text = "X";
+            this.colCancel.UseColumnTextForButtonValue = true;
+            this.colCancel.Width = 30;
+            // 
+            // colNote
+            // 
+            this.colNote.HeaderText = "Ghi chú";
+            this.colNote.MinimumWidth = 6;
+            this.colNote.Name = "colNote";
+            this.colNote.ReadOnly = true;
+            this.colNote.Visible = false;
             // 
             // OrderForm
             // 

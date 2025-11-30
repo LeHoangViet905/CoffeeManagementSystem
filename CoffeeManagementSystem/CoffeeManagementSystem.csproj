@@ -314,19 +314,7 @@
     <Compile Include="DangNhapForm.Designer.cs">
       <DependentUpon>DangNhapForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="NoteForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="NoteForm.Designer.cs">
-      <DependentUpon>NoteForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="OptionManagerForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="OptionManagerForm.Designer.cs">
-      <DependentUpon>OptionManagerForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="model\OrderhistoryItem.cs" />
+    <Compile Include="model\CartItem.cs" />
     <Compile Include="model\OrderhistoryItem.cs" />
     <Compile Include="OrderDetailForm.cs">
       <SubType>Form</SubType>
@@ -343,11 +331,17 @@
     <Compile Include="OrderHistoryForm.Designer.cs">
       <DependentUpon>OrderHistoryForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ThanhToanVNPay.cs">
+    <Compile Include="NoteForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ThanhToanVNPay.Designer.cs">
-      <DependentUpon>ThanhToanVNPay.cs</DependentUpon>
+    <Compile Include="NoteForm.Designer.cs">
+      <DependentUpon>NoteForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OptionManagerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OptionManagerForm.Designer.cs">
+      <DependentUpon>OptionManagerForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Trangchu.cs">
       <SubType>Form</SubType>
@@ -460,8 +454,11 @@
     <EmbeddedResource Include="OrderHistoryForm.resx">
       <DependentUpon>OrderHistoryForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ThanhToanVNPay.resx">
-      <DependentUpon>ThanhToanVNPay.cs</DependentUpon>
+    <EmbeddedResource Include="NoteForm.resx">
+      <DependentUpon>NoteForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OptionManagerForm.resx">
+      <DependentUpon>OptionManagerForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Trangchu.resx">
       <DependentUpon>Trangchu.cs</DependentUpon>

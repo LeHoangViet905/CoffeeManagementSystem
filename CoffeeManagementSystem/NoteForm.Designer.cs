@@ -39,7 +39,7 @@
             this.flowDynamicOptions = new System.Windows.Forms.FlowLayoutPanel();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
-            this.btnQuayLai = new Guna.UI2.WinForms.Guna2Button();
+            this.btnBack = new Guna.UI2.WinForms.Guna2Button();
             this.btnLuu = new Guna.UI2.WinForms.Guna2Button();
             this.btnHuy = new Guna.UI2.WinForms.Guna2Button();
             this.guna2TabControl1.SuspendLayout();
@@ -172,7 +172,7 @@
             // 
             // guna2Panel1
             // 
-            this.guna2Panel1.Controls.Add(this.btnQuayLai);
+            this.guna2Panel1.Controls.Add(this.btnBack);
             this.guna2Panel1.Controls.Add(this.btnLuu);
             this.guna2Panel1.Controls.Add(this.btnHuy);
             this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -181,19 +181,20 @@
             this.guna2Panel1.Size = new System.Drawing.Size(1266, 60);
             this.guna2Panel1.TabIndex = 1;
             // 
-            // btnQuayLai
+            // btnBack
             // 
-            this.btnQuayLai.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnQuayLai.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnQuayLai.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnQuayLai.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnQuayLai.Font = new System.Drawing.Font("SVN-Gilroy Medium", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnQuayLai.ForeColor = System.Drawing.Color.White;
-            this.btnQuayLai.Location = new System.Drawing.Point(12, 8);
-            this.btnQuayLai.Name = "btnQuayLai";
-            this.btnQuayLai.Size = new System.Drawing.Size(124, 45);
-            this.btnQuayLai.TabIndex = 2;
-            this.btnQuayLai.Text = "< Quay lại";
+            this.btnBack.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnBack.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnBack.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnBack.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnBack.Font = new System.Drawing.Font("SVN-Gilroy Medium", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBack.ForeColor = System.Drawing.Color.White;
+            this.btnBack.Location = new System.Drawing.Point(12, 8);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(145, 45);
+            this.btnBack.TabIndex = 2;
+            this.btnBack.Text = "< Quay lại";
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // btnLuu
             // 
@@ -223,6 +224,7 @@
             this.btnHuy.Size = new System.Drawing.Size(124, 45);
             this.btnHuy.TabIndex = 0;
             this.btnHuy.Text = "Hủy";
+            this.btnHuy.Click += new System.EventHandler(this.BtnHuy_Click);
             // 
             // NoteForm
             // 
@@ -253,7 +255,7 @@
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
         private Guna.UI2.WinForms.Guna2Button btnLuu;
         private Guna.UI2.WinForms.Guna2Button btnHuy;
-        private Guna.UI2.WinForms.Guna2Button btnQuayLai;
+        private Guna.UI2.WinForms.Guna2Button btnBack;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private Guna.UI2.WinForms.Guna2Panel pnlStatic;
