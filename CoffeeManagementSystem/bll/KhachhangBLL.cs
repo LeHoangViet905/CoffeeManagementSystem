@@ -41,7 +41,7 @@ namespace CoffeeManagementSystem.BLL
             if (string.IsNullOrWhiteSpace(phone))
                 return false;
 
-            string pattern = @"^\d{8,12}$";
+            string pattern = @"^\d{10}$";
             return Regex.IsMatch(phone.Trim(), pattern);
         }
         private KhachhangDAL _khachhangDAL;
