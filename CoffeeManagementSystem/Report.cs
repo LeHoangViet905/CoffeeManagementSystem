@@ -430,75 +430,100 @@ namespace CoffeeManagementSystem
                 DateTime startDate = dtpRevenueStartDate.Value.Date;
                 DateTime endDate = dtpRevenueEndDate.Value.Date;
 
-                // Kiểm tra lỗi ngày trước khi gọi BLL
+                // 1. Kiểm tra khoảng ngày
                 if (startDate > endDate)
                 {
-                    MessageBox.Show("Ngày bắt đầu không được lớn hơn ngày kết thúc.", "Lỗi Ngày", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    lblTotalPrice.Text = "0 VNĐ"; // Reset tổng tiền
-                    return; // Thoát khỏi phương thức
+                    MessageBox.Show("Ngày bắt đầu không được lớn hơn ngày kết thúc.",
+                                    "Lỗi Ngày", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                    dgvRevenue.DataSource = null;
+                    dgvRevenue.Rows.Clear();
+                    lblTotalPrice.Text = "0 VNĐ";
+                    return;
                 }
 
-                // Gọi BLL để lấy dữ liệu, BLL sẽ ném exception nếu ngày không hợp lệ
-                List<RevenueReportItem> revenueData = _reportBLL.GetRevenueReport(startDate, endDate);
+                // 2. Lấy dữ liệu từ BLL
+                List<RevenueReportItem> revenueData =
+                    _reportBLL.GetRevenueReport(startDate, endDate);
 
-                // Quan trọng: Ngắt kết nối nguồn dữ liệu cũ và xóa cột cũ
+                // 3. Cấu hình lại DataGridView
+                dgvRevenue.SuspendLayout();
+
                 dgvRevenue.DataSource = null;
-                dgvRevenue.Columns.Clear(); // Xóa tất cả các cột cũ
-
-                // Đảm bảo AutoGenerateColumns là false
+                dgvRevenue.Columns.Clear();
                 dgvRevenue.AutoGenerateColumns = false;
-                DataGridViewTextBoxColumn noColumn = new DataGridViewTextBoxColumn();
-                noColumn.Name = "No";
-                noColumn.HeaderText = "No";
-                noColumn.Width = 100;
-                noColumn.ReadOnly = true;
-                noColumn.Resizable = DataGridViewTriState.False;
-                noColumn.SortMode = DataGridViewColumnSortMode.NotSortable;
-                dgvRevenue.Columns.Add(noColumn);
 
-                // Cột "Date" (Ngày)
-                DataGridViewTextBoxColumn dateColumn = new DataGridViewTextBoxColumn();
-                dateColumn.DataPropertyName = "Ngay"; // DGV sẽ tự lấy giá trị từ đây
-                dateColumn.Name = "Date";
-                dateColumn.HeaderText = "Date";
-                dateColumn.Width = 200;
-                dateColumn.DefaultCellStyle.Format = "dd/MM/yyyy";
-                dateColumn.ReadOnly = true;
-                dateColumn.Resizable = DataGridViewTriState.False;
-                dateColumn.SortMode = DataGridViewColumnSortMode.NotSortable;
-                dgvRevenue.Columns.Add(dateColumn);
+                // ----- CỘT STT -----
+                DataGridViewTextBoxColumn colNo = new DataGridViewTextBoxColumn();
+                colNo.Name = "No";                     // giữ Name để CellFormatting/Print dùng
+                colNo.HeaderText = "STT";             // tên hiển thị
+                colNo.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                colNo.ReadOnly = true;
+                colNo.Resizable = DataGridViewTriState.False;
+                colNo.SortMode = DataGridViewColumnSortMode.NotSortable;
+                dgvRevenue.Columns.Add(colNo);
 
-                // Cột "Price" (Giá)
-                DataGridViewTextBoxColumn priceColumn = new DataGridViewTextBoxColumn();
-                priceColumn.DataPropertyName = "Tongtien"; // DGV sẽ tự lấy giá trị từ đây
-                priceColumn.Name = "Price";
-                priceColumn.HeaderText = "Price";
-                priceColumn.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                priceColumn.DefaultCellStyle.Format = "N0";
-                priceColumn.ReadOnly = true;
-                priceColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                priceColumn.SortMode = DataGridViewColumnSortMode.NotSortable;
-                dgvRevenue.Columns.Add(priceColumn);
+                // ----- CỘT NGÀY GIAO DỊCH -----
+                DataGridViewTextBoxColumn colDate = new DataGridViewTextBoxColumn();
+                colDate.Name = "Date";
+                colDate.HeaderText = "Ngày giao dịch";
+                colDate.DataPropertyName = "Ngay";    // thuộc tính trong RevenueReportItem
+                colDate.Width = 200;
+                colDate.DefaultCellStyle.Format = "dd/MM/yyyy";
+                colDate.ReadOnly = true;
+                colDate.Resizable = DataGridViewTriState.False;
+                colDate.SortMode = DataGridViewColumnSortMode.NotSortable;
+                dgvRevenue.Columns.Add(colDate);
+
+                // ----- CỘT DOANH THU -----
+                DataGridViewTextBoxColumn colPrice = new DataGridViewTextBoxColumn();
+                colPrice.Name = "Price";
+                colPrice.HeaderText = "Doanh thu";
+                colPrice.DataPropertyName = "Tongtien";   // thuộc tính trong RevenueReportItem
+                colPrice.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                colPrice.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                colPrice.DefaultCellStyle.Format = "N0";
+                colPrice.ReadOnly = true;
+                colPrice.SortMode = DataGridViewColumnSortMode.NotSortable;
+                dgvRevenue.Columns.Add(colPrice);
+
+             
+                // 4. Gán dữ liệu
                 dgvRevenue.DataSource = revenueData;
 
-                // Tính tổng doanh thu và hiển thị lên lblTotalPrice
-                decimal totalRevenue = revenueData.Sum(item => item.Tongtien);
+                // 4.1. Gán số thứ tự cho cột STT (No)
+                for (int i = 0; i < dgvRevenue.Rows.Count; i++)
+                {
+                    dgvRevenue.Rows[i].Cells["No"].Value = i + 1;
+                }
+
+                dgvRevenue.ResumeLayout();
+
+
+                // 5. Tính tổng doanh thu
+                decimal totalRevenue = revenueData.Sum(r => r.Tongtien);
                 lblTotalPrice.Text = totalRevenue.ToString("N0") + " VNĐ";
 
+                // 6. Thông báo nếu không có dữ liệu
                 if (revenueData.Count == 0)
                 {
-                    MessageBox.Show("Không có dữ liệu doanh thu trong khoảng thời gian đã chọn.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Không có dữ liệu doanh thu trong khoảng thời gian đã chọn.",
+                                    "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (ArgumentException ex)
             {
-                MessageBox.Show(ex.Message, "Lỗi Ngày", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(ex.Message, "Lỗi Ngày",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Lỗi khi tải báo cáo doanh thu: {ex.Message}\nVui lòng kiểm tra kết nối CSDL và dữ liệu.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Lỗi khi tải báo cáo doanh thu: {ex.Message}\n" +
+                                "Vui lòng kiểm tra kết nối CSDL và dữ liệu.",
+                                "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
         // Thêm sự kiện CellFormatting vào Form của bạn
         private void dgvRevenue_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)

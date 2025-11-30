@@ -231,7 +231,7 @@
             this.btnTaiKhoan.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnTaiKhoan.ImageOffset = new System.Drawing.Point(59, -40);
             this.btnTaiKhoan.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnTaiKhoan.Location = new System.Drawing.Point(0, 708);
+            this.btnTaiKhoan.Location = new System.Drawing.Point(0, 706);
             this.btnTaiKhoan.Margin = new System.Windows.Forms.Padding(2);
             this.btnTaiKhoan.Name = "btnTaiKhoan";
             this.btnTaiKhoan.Size = new System.Drawing.Size(180, 159);

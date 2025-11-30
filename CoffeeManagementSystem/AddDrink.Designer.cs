@@ -262,6 +262,7 @@
             // 
             // pbHinhanh
             // 
+            this.pbHinhanh.BorderRadius = 10;
             this.pbHinhanh.FillColor = System.Drawing.Color.Gray;
             this.pbHinhanh.ImageRotate = 0F;
             this.pbHinhanh.Location = new System.Drawing.Point(192, 286);
@@ -356,6 +357,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FloralWhite;
             this.ClientSize = new System.Drawing.Size(870, 633);
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.btnCapNhat);
