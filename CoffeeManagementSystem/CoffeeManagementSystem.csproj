@@ -283,6 +283,7 @@
     <Compile Include="bll\OrderBLL.cs" />
     <Compile Include="bll\PaymentBLL.cs" />
     <Compile Include="bll\ReportBLL.cs" />
+    <Compile Include="bll\KhuyenmaiBLL.cs" />
     <Compile Include="bll\TuyChonBLL.cs" />
     <Compile Include="Customer.cs">
       <SubType>Form</SubType>
@@ -307,6 +308,7 @@
     <Compile Include="dal\NhanvienDAL.cs" />
     <Compile Include="dal\ReportDAL.cs" />
     <Compile Include="dal\TaikhoanDAL.cs" />
+    <Compile Include="dal\KhuyenmaiDAL.cs" />
     <Compile Include="dal\ThanhtoanDAL.cs" />
     <Compile Include="DangNhapForm.cs">
       <SubType>Form</SubType>
@@ -314,6 +316,19 @@
     <Compile Include="DangNhapForm.Designer.cs">
       <DependentUpon>DangNhapForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="KhuyenMai.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KhuyenMai.Designer.cs">
+      <DependentUpon>KhuyenMai.cs</DependentUpon>
+    </Compile>
+    <Compile Include="KhuyenmaiEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KhuyenmaiEditForm.Designer.cs">
+      <DependentUpon>KhuyenmaiEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="model\Khuyenmai.cs" />
     <Compile Include="NoteForm.cs">
       <SubType>Form</SubType>
     </Compile>

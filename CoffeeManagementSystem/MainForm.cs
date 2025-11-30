@@ -125,5 +125,17 @@ namespace CoffeeManagementSystem
             loginForm.Show();
             this.Close();
         }
+        private void btnKhuyenMai_Click(object sender, EventArgs e)
+        {
+            // mở form KhuyenMai trong panelMain
+            var form = new KhuyenMai();
+            form.TopLevel = false;
+            form.FormBorderStyle = FormBorderStyle.None;
+            form.Dock = DockStyle.Fill;
+
+            this.panelMain.Controls.Clear();
+            this.panelMain.Controls.Add(form);
+            form.Show();
+        }
     }
 }

@@ -107,6 +107,7 @@
             this.splitContainerNavBar.Panel1.BackColor = System.Drawing.Color.Tomato;
             this.splitContainerNavBar.Panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.splitContainerNavBar.Panel1.Controls.Add(this.btnLogout);
+            this.splitContainerNavBar.Panel1.Controls.Add(this.btnKhuyenMai);
             this.splitContainerNavBar.Panel1.Controls.Add(this.btnTaiKhoan);
             this.splitContainerNavBar.Panel1.Controls.Add(this.lblName);
             this.splitContainerNavBar.Panel1.Controls.Add(this.btnReport);
@@ -258,6 +259,34 @@
             this.btnKhachHang.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnKhachHang.TextOffset = new System.Drawing.Point(17, 10);
             this.btnKhachHang.Click += new System.EventHandler(this.btnKhachHang_Click);
+            // 
+            // btnKhuyenMai
+            // 
+            this.btnKhuyenMai = new Guna.UI2.WinForms.Guna2GradientButton();
+            this.btnKhuyenMai.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnKhuyenMai.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnKhuyenMai.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnKhuyenMai.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnKhuyenMai.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnKhuyenMai.FillColor = System.Drawing.Color.Empty;
+            this.btnKhuyenMai.FillColor2 = System.Drawing.Color.Empty;
+            this.btnKhuyenMai.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnKhuyenMai.ForeColor = System.Drawing.Color.White;
+            this.btnKhuyenMai.HoverState.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnKhuyenMai.HoverState.ForeColor = System.Drawing.Color.White;
+            // nếu có icon thì gán, không thì để null
+            // this.btnKhuyenMai.Image = global::CoffeeManagementSystem.Properties.Resources.khuyenmai;
+            this.btnKhuyenMai.ImageOffset = new System.Drawing.Point(0, -15);
+            this.btnKhuyenMai.ImageSize = new System.Drawing.Size(25, 25);
+            // QUAN TRỌNG: Dock bottom để nó nằm sát dưới, trên nút đăng xuất
+            this.btnKhuyenMai.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnKhuyenMai.Name = "btnKhuyenMai";
+            this.btnKhuyenMai.Size = new System.Drawing.Size(155, 80);
+            this.btnKhuyenMai.TabIndex = 21;
+            this.btnKhuyenMai.Text = "Khuyến mãi";
+            this.btnKhuyenMai.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnKhuyenMai.TextOffset = new System.Drawing.Point(20, 10);
+            this.btnKhuyenMai.Click += new System.EventHandler(this.btnKhuyenMai_Click);
             // 
             // guna2CirclePictureBox1
             // 
@@ -448,5 +477,6 @@
         private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox2;
         private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox1;
         private Guna.UI2.WinForms.Guna2ShadowForm guna2ShadowForm1;
+        private Guna.UI2.WinForms.Guna2GradientButton btnKhuyenMai;
     }
 }
