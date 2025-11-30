@@ -179,14 +179,14 @@ namespace CoffeeManagementSystem
             object cancelIcon = "X";
 
             dgvOrder.Rows.Add(new object[] {
-                productID, // colID (ẩn)
-                1,         // colQty (số lượng)
-                name,      // colName (tên)
-                price,     // colPrice (đơn giá - ẩn)
-                price,     // colTotal (thành tiền)
-                decreaseIcon, //colDecrease (nuút -)
-                cancelIcon // colCancel (nút X)
-            });
+        productID, // colID (ẩn)
+        1,         // colQty (số lượng)
+        name,      // colName (tên)
+        price,     // colPrice (đơn giá - ẩn)
+        price,     // colTotal (thành tiền)
+        decreaseIcon, //colDecrease (nuút -)
+        cancelIcon // colCancel (nút X)
+    });
 
             // Gọi hàm tính tổng tiền
             UpdateOrderTotal();
