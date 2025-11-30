@@ -99,6 +99,8 @@
             this.tabPage8.SuspendLayout();
             this.tabPage9.SuspendLayout();
             this.tabPage10.SuspendLayout();
+
+
             this.SuspendLayout();
             // 
             // panelSidebar

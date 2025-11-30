@@ -67,12 +67,12 @@
             this.txtTendouong.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtTendouong.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtTendouong.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtTendouong.Location = new System.Drawing.Point(192, 182);
-            this.txtTendouong.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.txtTendouong.Location = new System.Drawing.Point(150, 155);
+            this.txtTendouong.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtTendouong.Name = "txtTendouong";
             this.txtTendouong.PlaceholderText = "";
             this.txtTendouong.SelectedText = "";
-            this.txtTendouong.Size = new System.Drawing.Size(596, 40);
+            this.txtTendouong.Size = new System.Drawing.Size(464, 34);
             this.txtTendouong.TabIndex = 86;
             // 
             // txtMota
@@ -87,12 +87,12 @@
             this.txtMota.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMota.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtMota.IconLeftCursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtMota.Location = new System.Drawing.Point(192, 418);
-            this.txtMota.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.txtMota.Location = new System.Drawing.Point(150, 355);
+            this.txtMota.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtMota.Name = "txtMota";
             this.txtMota.PlaceholderText = "";
             this.txtMota.SelectedText = "";
-            this.txtMota.Size = new System.Drawing.Size(596, 118);
+            this.txtMota.Size = new System.Drawing.Size(464, 100);
             this.txtMota.TabIndex = 84;
             // 
             // txtMadouong
@@ -106,21 +106,21 @@
             this.txtMadouong.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtMadouong.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtMadouong.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtMadouong.Location = new System.Drawing.Point(192, 126);
-            this.txtMadouong.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.txtMadouong.Location = new System.Drawing.Point(150, 107);
+            this.txtMadouong.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtMadouong.Name = "txtMadouong";
             this.txtMadouong.PlaceholderText = "";
             this.txtMadouong.SelectedText = "";
-            this.txtMadouong.Size = new System.Drawing.Size(188, 40);
+            this.txtMadouong.Size = new System.Drawing.Size(146, 34);
             this.txtMadouong.TabIndex = 83;
             // 
             // labelLoaidouong
             // 
             this.labelLoaidouong.AutoSize = true;
             this.labelLoaidouong.Font = new System.Drawing.Font("SVN-Gilroy Medium", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelLoaidouong.Location = new System.Drawing.Point(416, 134);
+            this.labelLoaidouong.Location = new System.Drawing.Point(324, 114);
             this.labelLoaidouong.Name = "labelLoaidouong";
-            this.labelLoaidouong.Size = new System.Drawing.Size(160, 29);
+            this.labelLoaidouong.Size = new System.Drawing.Size(139, 25);
             this.labelLoaidouong.TabIndex = 79;
             this.labelLoaidouong.Text = "Loại đồ uống:";
             // 
@@ -128,9 +128,9 @@
             // 
             this.lblTendouong.AutoSize = true;
             this.lblTendouong.Font = new System.Drawing.Font("SVN-Gilroy Medium", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTendouong.Location = new System.Drawing.Point(16, 183);
+            this.lblTendouong.Location = new System.Drawing.Point(12, 155);
             this.lblTendouong.Name = "lblTendouong";
-            this.lblTendouong.Size = new System.Drawing.Size(155, 29);
+            this.lblTendouong.Size = new System.Drawing.Size(135, 25);
             this.lblTendouong.TabIndex = 77;
             this.lblTendouong.Text = "Tên Đồ Uống:";
             // 
@@ -138,9 +138,9 @@
             // 
             this.lblMota.AutoSize = true;
             this.lblMota.Font = new System.Drawing.Font("SVN-Gilroy Medium", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMota.Location = new System.Drawing.Point(16, 418);
+            this.lblMota.Location = new System.Drawing.Point(12, 355);
             this.lblMota.Name = "lblMota";
-            this.lblMota.Size = new System.Drawing.Size(81, 29);
+            this.lblMota.Size = new System.Drawing.Size(71, 25);
             this.lblMota.TabIndex = 72;
             this.lblMota.Text = "Mô tả:";
             // 
@@ -148,9 +148,9 @@
             // 
             this.lblMadouong.AutoSize = true;
             this.lblMadouong.Font = new System.Drawing.Font("SVN-Gilroy Medium", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMadouong.Location = new System.Drawing.Point(16, 129);
+            this.lblMadouong.Location = new System.Drawing.Point(12, 109);
             this.lblMadouong.Name = "lblMadouong";
-            this.lblMadouong.Size = new System.Drawing.Size(152, 29);
+            this.lblMadouong.Size = new System.Drawing.Size(132, 25);
             this.lblMadouong.TabIndex = 71;
             this.lblMadouong.Text = "Mã Đồ Uống:";
             // 
@@ -159,32 +159,34 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Variable Display", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(298, 9);
+            this.label1.Location = new System.Drawing.Point(232, 7);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(295, 43);
+            this.label1.Size = new System.Drawing.Size(246, 36);
             this.label1.TabIndex = 70;
             this.label1.Text = "Thông tin đồ uống";
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.Firebrick;
+            this.panel1.BackColor = System.Drawing.Color.DarkCyan;
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(870, 67);
+            this.panel1.Size = new System.Drawing.Size(676, 57);
             this.panel1.TabIndex = 69;
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.Color.Firebrick;
+            this.button1.BackColor = System.Drawing.Color.DarkCyan;
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Image = global::CoffeeManagementSystem.Properties.Resources.close_black;
-            this.button1.Location = new System.Drawing.Point(816, 3);
+            this.button1.Location = new System.Drawing.Point(634, 2);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(51, 51);
+            this.button1.Size = new System.Drawing.Size(39, 44);
             this.button1.TabIndex = 59;
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -200,18 +202,19 @@
             "Supervisor",
             "Cashier",
             "Worker"});
-            this.cbLoaiDouong.Location = new System.Drawing.Point(574, 129);
+            this.cbLoaiDouong.Location = new System.Drawing.Point(446, 109);
+            this.cbLoaiDouong.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbLoaiDouong.Name = "cbLoaiDouong";
-            this.cbLoaiDouong.Size = new System.Drawing.Size(211, 30);
+            this.cbLoaiDouong.Size = new System.Drawing.Size(165, 26);
             this.cbLoaiDouong.TabIndex = 87;
             // 
             // lblMinhHoa
             // 
             this.lblMinhHoa.AutoSize = true;
             this.lblMinhHoa.Font = new System.Drawing.Font("SVN-Gilroy Medium", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMinhHoa.Location = new System.Drawing.Point(16, 243);
+            this.lblMinhHoa.Location = new System.Drawing.Point(12, 206);
             this.lblMinhHoa.Name = "lblMinhHoa";
-            this.lblMinhHoa.Size = new System.Drawing.Size(118, 29);
+            this.lblMinhHoa.Size = new System.Drawing.Size(103, 25);
             this.lblMinhHoa.TabIndex = 88;
             this.lblMinhHoa.Text = "Minh Họa:";
             // 
@@ -222,9 +225,10 @@
             // btnSelectImage
             // 
             this.btnSelectImage.Font = new System.Drawing.Font("SVN-Gilroy", 10F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSelectImage.Location = new System.Drawing.Point(194, 235);
+            this.btnSelectImage.Location = new System.Drawing.Point(150, 200);
+            this.btnSelectImage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSelectImage.Name = "btnSelectImage";
-            this.btnSelectImage.Size = new System.Drawing.Size(186, 45);
+            this.btnSelectImage.Size = new System.Drawing.Size(144, 38);
             this.btnSelectImage.TabIndex = 89;
             this.btnSelectImage.Text = "&Chọn";
             this.btnSelectImage.UseVisualStyleBackColor = true;
@@ -240,12 +244,12 @@
             this.txtGiaBan.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtGiaBan.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtGiaBan.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtGiaBan.Location = new System.Drawing.Point(574, 235);
-            this.txtGiaBan.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.txtGiaBan.Location = new System.Drawing.Point(446, 200);
+            this.txtGiaBan.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtGiaBan.Name = "txtGiaBan";
             this.txtGiaBan.PlaceholderText = "";
             this.txtGiaBan.SelectedText = "";
-            this.txtGiaBan.Size = new System.Drawing.Size(213, 40);
+            this.txtGiaBan.Size = new System.Drawing.Size(165, 34);
             this.txtGiaBan.TabIndex = 90;
             this.txtGiaBan.TextChanged += new System.EventHandler(this.txtGiaBan_TextChanged);
             // 
@@ -253,9 +257,9 @@
             // 
             this.lblGia.AutoSize = true;
             this.lblGia.Font = new System.Drawing.Font("SVN-Gilroy Medium", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGia.Location = new System.Drawing.Point(416, 243);
+            this.lblGia.Location = new System.Drawing.Point(324, 206);
             this.lblGia.Name = "lblGia";
-            this.lblGia.Size = new System.Drawing.Size(106, 29);
+            this.lblGia.Size = new System.Drawing.Size(92, 25);
             this.lblGia.TabIndex = 91;
             this.lblGia.Text = "Giá bán:";
             this.lblGia.Click += new System.EventHandler(this.lblGia_Click);
@@ -265,9 +269,10 @@
             this.pbHinhanh.BorderRadius = 10;
             this.pbHinhanh.FillColor = System.Drawing.Color.Gray;
             this.pbHinhanh.ImageRotate = 0F;
-            this.pbHinhanh.Location = new System.Drawing.Point(192, 286);
+            this.pbHinhanh.Location = new System.Drawing.Point(150, 243);
+            this.pbHinhanh.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pbHinhanh.Name = "pbHinhanh";
-            this.pbHinhanh.Size = new System.Drawing.Size(188, 118);
+            this.pbHinhanh.Size = new System.Drawing.Size(146, 100);
             this.pbHinhanh.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbHinhanh.TabIndex = 92;
             this.pbHinhanh.TabStop = false;
@@ -277,9 +282,10 @@
             this.btnClose.FlatAppearance.BorderSize = 0;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
-            this.btnClose.Location = new System.Drawing.Point(874, 3);
+            this.btnClose.Location = new System.Drawing.Point(680, 2);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(22, 25);
+            this.btnClose.Size = new System.Drawing.Size(18, 21);
             this.btnClose.TabIndex = 60;
             this.btnClose.UseVisualStyleBackColor = true;
             // 
@@ -301,12 +307,13 @@
             this.btnXoa.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.btnXoa.Font = new System.Drawing.Font("Segoe UI Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnXoa.ForeColor = System.Drawing.Color.White;
-            this.btnXoa.Location = new System.Drawing.Point(607, 553);
+            this.btnXoa.Location = new System.Drawing.Point(472, 470);
+            this.btnXoa.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.ShadowDecoration.BorderRadius = 30;
             this.btnXoa.ShadowDecoration.Depth = 5;
             this.btnXoa.ShadowDecoration.Enabled = true;
-            this.btnXoa.Size = new System.Drawing.Size(180, 55);
+            this.btnXoa.Size = new System.Drawing.Size(140, 47);
             this.btnXoa.TabIndex = 111;
             this.btnXoa.Text = "Xóa ";
             this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click_1);
@@ -322,12 +329,13 @@
             this.btnCapNhat.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnCapNhat.Font = new System.Drawing.Font("Segoe UI Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCapNhat.ForeColor = System.Drawing.Color.White;
-            this.btnCapNhat.Location = new System.Drawing.Point(400, 553);
+            this.btnCapNhat.Location = new System.Drawing.Point(312, 470);
+            this.btnCapNhat.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCapNhat.Name = "btnCapNhat";
             this.btnCapNhat.ShadowDecoration.BorderRadius = 30;
             this.btnCapNhat.ShadowDecoration.Depth = 5;
             this.btnCapNhat.ShadowDecoration.Enabled = true;
-            this.btnCapNhat.Size = new System.Drawing.Size(180, 55);
+            this.btnCapNhat.Size = new System.Drawing.Size(140, 47);
             this.btnCapNhat.TabIndex = 110;
             this.btnCapNhat.Text = "Cập nhật ";
             this.btnCapNhat.Click += new System.EventHandler(this.btnCapNhat_Click_2);
@@ -343,22 +351,23 @@
             this.btnLuu.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnLuu.Font = new System.Drawing.Font("Segoe UI Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLuu.ForeColor = System.Drawing.Color.White;
-            this.btnLuu.Location = new System.Drawing.Point(189, 553);
+            this.btnLuu.Location = new System.Drawing.Point(147, 470);
+            this.btnLuu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.ShadowDecoration.BorderRadius = 30;
             this.btnLuu.ShadowDecoration.Depth = 5;
             this.btnLuu.ShadowDecoration.Enabled = true;
-            this.btnLuu.Size = new System.Drawing.Size(180, 55);
+            this.btnLuu.Size = new System.Drawing.Size(140, 47);
             this.btnLuu.TabIndex = 109;
             this.btnLuu.Text = "Lưu ";
             this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click_2);
             // 
             // AddDrinkForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FloralWhite;
-            this.ClientSize = new System.Drawing.Size(870, 633);
+            this.ClientSize = new System.Drawing.Size(676, 538);
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.btnCapNhat);
             this.Controls.Add(this.btnLuu);
@@ -377,7 +386,9 @@
             this.Controls.Add(this.lblMadouong);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnClose);
+            this.Font = new System.Drawing.Font("SVN-Gilroy", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "AddDrinkForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "AddDrink";
