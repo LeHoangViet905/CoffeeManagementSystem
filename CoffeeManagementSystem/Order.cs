@@ -381,7 +381,7 @@ namespace CoffeeManagementSystem
             if (result == DialogResult.OK)
             {
                 // Thanh toán thành công!
-                MessageBox.Show("Thanh toán thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //MessageBox.Show("Thanh toán thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 // Dọn dẹp giỏ hàng
                 dgvOrder.Rows.Clear();
