@@ -102,10 +102,11 @@ namespace CoffeeManagementSystem
             this.guna2ShadowPanelSummary.Controls.Add(this.lblTotalRevenue);
             this.guna2ShadowPanelSummary.Controls.Add(this.lblTotalOrders);
             this.guna2ShadowPanelSummary.FillColor = System.Drawing.Color.White;
-            this.guna2ShadowPanelSummary.Location = new System.Drawing.Point(698, 11);
+            this.guna2ShadowPanelSummary.Location = new System.Drawing.Point(1046, 14);
             this.guna2ShadowPanelSummary.Name = "guna2ShadowPanelSummary";
-            this.guna2ShadowPanelSummary.Radius = 10;
+            this.guna2ShadowPanelSummary.Radius = 5;
             this.guna2ShadowPanelSummary.ShadowColor = System.Drawing.Color.Black;
+            this.guna2ShadowPanelSummary.ShadowDepth = 50;
             this.guna2ShadowPanelSummary.Size = new System.Drawing.Size(292, 75);
             this.guna2ShadowPanelSummary.TabIndex = 7;
             // 
@@ -139,9 +140,9 @@ namespace CoffeeManagementSystem
             this.btnViewDetail.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnViewDetail.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
             this.btnViewDetail.ForeColor = System.Drawing.Color.White;
-            this.btnViewDetail.Location = new System.Drawing.Point(1164, 23);
+            this.btnViewDetail.Location = new System.Drawing.Point(852, 40);
             this.btnViewDetail.Name = "btnViewDetail";
-            this.btnViewDetail.Size = new System.Drawing.Size(164, 57);
+            this.btnViewDetail.Size = new System.Drawing.Size(164, 40);
             this.btnViewDetail.TabIndex = 6;
             this.btnViewDetail.Text = "Xem chi tiết";
             this.btnViewDetail.Click += new System.EventHandler(this.btnViewDetail_Click);
@@ -155,9 +156,9 @@ namespace CoffeeManagementSystem
             this.btnToday.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnToday.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
             this.btnToday.ForeColor = System.Drawing.Color.White;
-            this.btnToday.Location = new System.Drawing.Point(1002, 23);
+            this.btnToday.Location = new System.Drawing.Point(690, 40);
             this.btnToday.Name = "btnToday";
-            this.btnToday.Size = new System.Drawing.Size(147, 57);
+            this.btnToday.Size = new System.Drawing.Size(147, 40);
             this.btnToday.TabIndex = 5;
             this.btnToday.Text = "Hôm nay";
             this.btnToday.Click += new System.EventHandler(this.btnToday_Click);
@@ -171,9 +172,9 @@ namespace CoffeeManagementSystem
             this.btnFilter.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnFilter.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
             this.btnFilter.ForeColor = System.Drawing.Color.White;
-            this.btnFilter.Location = new System.Drawing.Point(540, 23);
+            this.btnFilter.Location = new System.Drawing.Point(540, 40);
             this.btnFilter.Name = "btnFilter";
-            this.btnFilter.Size = new System.Drawing.Size(135, 57);
+            this.btnFilter.Size = new System.Drawing.Size(135, 40);
             this.btnFilter.TabIndex = 4;
             this.btnFilter.Text = "Lọc";
             this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
@@ -326,6 +327,12 @@ namespace CoffeeManagementSystem
             this.colTrangThai.Name = "colTrangThai";
             this.colTrangThai.ReadOnly = true;
             this.colTrangThai.Width = 143;
+            // 
+            // guna2BorderlessForm1
+            // 
+            this.guna2BorderlessForm1.ContainerControl = this;
+            this.guna2BorderlessForm1.DockIndicatorTransparencyValue = 0.6D;
+            this.guna2BorderlessForm1.TransparentWhileDrag = true;
             // 
             // OrderHistoryForm
             // 
