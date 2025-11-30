@@ -52,9 +52,9 @@
             this.chkHienMatKhau.AutoSize = true;
             this.chkHienMatKhau.Font = new System.Drawing.Font("Segoe UI Variable Text Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkHienMatKhau.Location = new System.Drawing.Point(414, 367);
-            this.chkHienMatKhau.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkHienMatKhau.Margin = new System.Windows.Forms.Padding(4);
             this.chkHienMatKhau.Name = "chkHienMatKhau";
-            this.chkHienMatKhau.Size = new System.Drawing.Size(131, 24);
+            this.chkHienMatKhau.Size = new System.Drawing.Size(156, 28);
             this.chkHienMatKhau.TabIndex = 16;
             this.chkHienMatKhau.Text = "Hiện mật khẩu";
             this.chkHienMatKhau.UseVisualStyleBackColor = true;
@@ -68,7 +68,7 @@
             this.lblMatKhau.Location = new System.Drawing.Point(410, 293);
             this.lblMatKhau.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblMatKhau.Name = "lblMatKhau";
-            this.lblMatKhau.Size = new System.Drawing.Size(82, 18);
+            this.lblMatKhau.Size = new System.Drawing.Size(97, 22);
             this.lblMatKhau.TabIndex = 14;
             this.lblMatKhau.Text = "Mật khẩu:";
             // 
@@ -80,7 +80,7 @@
             this.lblTenDangNhap.Location = new System.Drawing.Point(410, 219);
             this.lblTenDangNhap.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTenDangNhap.Name = "lblTenDangNhap";
-            this.lblTenDangNhap.Size = new System.Drawing.Size(115, 18);
+            this.lblTenDangNhap.Size = new System.Drawing.Size(139, 22);
             this.lblTenDangNhap.TabIndex = 12;
             this.lblTenDangNhap.Text = "Tên tài khoản:";
             // 
@@ -92,7 +92,7 @@
             this.lblDangNhap.Location = new System.Drawing.Point(468, 62);
             this.lblDangNhap.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDangNhap.Name = "lblDangNhap";
-            this.lblDangNhap.Size = new System.Drawing.Size(256, 59);
+            this.lblDangNhap.Size = new System.Drawing.Size(308, 71);
             this.lblDangNhap.TabIndex = 11;
             this.lblDangNhap.Text = "Đăng nhập";
             // 
@@ -104,7 +104,7 @@
             this.lblClose.Location = new System.Drawing.Point(752, 2);
             this.lblClose.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblClose.Name = "lblClose";
-            this.lblClose.Size = new System.Drawing.Size(25, 27);
+            this.lblClose.Size = new System.Drawing.Size(30, 32);
             this.lblClose.TabIndex = 10;
             this.lblClose.Text = "X";
             this.lblClose.Click += new System.EventHandler(this.lblClose_Click);
@@ -115,7 +115,7 @@
             this.lblXinChao.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblXinChao.Location = new System.Drawing.Point(390, 156);
             this.lblXinChao.Name = "lblXinChao";
-            this.lblXinChao.Size = new System.Drawing.Size(387, 18);
+            this.lblXinChao.Size = new System.Drawing.Size(463, 22);
             this.lblXinChao.TabIndex = 18;
             this.lblXinChao.Text = "Chào mừng trở lại. Đăng nhập để bắt đầu làm việc.\r\n";
             // 
@@ -125,7 +125,7 @@
             this.lblDauGach.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDauGach.Location = new System.Drawing.Point(410, 174);
             this.lblDauGach.Name = "lblDauGach";
-            this.lblDauGach.Size = new System.Drawing.Size(381, 20);
+            this.lblDauGach.Size = new System.Drawing.Size(444, 24);
             this.lblDauGach.TabIndex = 19;
             this.lblDauGach.Text = "______________________________________________________________\r\n";
             // 
@@ -213,7 +213,7 @@
             this.panelHinhDangNhap.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panelHinhDangNhap.Controls.Add(this.pictureBox1);
             this.panelHinhDangNhap.Location = new System.Drawing.Point(0, 0);
-            this.panelHinhDangNhap.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelHinhDangNhap.Margin = new System.Windows.Forms.Padding(4);
             this.panelHinhDangNhap.Name = "panelHinhDangNhap";
             this.panelHinhDangNhap.Size = new System.Drawing.Size(374, 544);
             this.panelHinhDangNhap.TabIndex = 9;
@@ -231,7 +231,7 @@
             // 
             // DangNhapForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FloralWhite;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
