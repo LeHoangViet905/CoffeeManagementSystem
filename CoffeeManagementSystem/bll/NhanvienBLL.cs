@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq; // Cần cho các thao tác LINQ nếu có
+using System.Text.RegularExpressions;
 
 namespace CoffeeManagementSystem.BLL
 {
@@ -48,15 +49,15 @@ namespace CoffeeManagementSystem.BLL
             }
 
             // Validate Sdt (tùy chọn: có thể thêm regex cho số điện thoại)
-            if (!string.IsNullOrEmpty(nhanvien.Sodienthoai) && nhanvien.Sodienthoai.Any(c => !char.IsDigit(c)))
+            if (!IsValidPhone(nhanvien.Sodienthoai))
             {
-                throw new ArgumentException("Số điện thoại chỉ được chứa ký tự số.", nameof(nhanvien.Sodienthoai));
+                throw new ArgumentException("Số điện thoại phải gồm đúng 10 chữ số.");
             }
 
             // Validate Email (tùy chọn: có thể thêm regex cho email)
             if (!string.IsNullOrEmpty(nhanvien.Email) && !nhanvien.Email.Contains("@"))
             {
-                throw new ArgumentException("Email không hợp lệ.", nameof(nhanvien.Email));
+                throw new ArgumentException("Email không hợp lệ! Hãy nhập đúng dạng: xxx@mail.com");
             }
 
             if (nhanvien.Ngayvaolam == DateTime.MinValue || nhanvien.Ngayvaolam > DateTime.Now)
@@ -75,6 +76,14 @@ namespace CoffeeManagementSystem.BLL
             }
         }
 
+        public bool IsValidPhone(string phone)
+        {
+            if (string.IsNullOrWhiteSpace(phone))
+                return false;
+
+            string pattern = @"^\d{10}$";   // bắt buộc 10 số
+            return Regex.IsMatch(phone.Trim(), pattern);
+        }
         public List<Nhanvien> GetAllNhanviens()
         {
             try
