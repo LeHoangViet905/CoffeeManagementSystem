@@ -17,17 +17,17 @@
 
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblBaoCao = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
@@ -169,14 +169,14 @@
             this.dgvProductSales.AllowUserToResizeRows = false;
             this.dgvProductSales.BackgroundColor = System.Drawing.Color.White;
             this.dgvProductSales.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.Firebrick;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvProductSales.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.DarkCyan;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.DarkCyan;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvProductSales.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvProductSales.ColumnHeadersHeight = 35;
             this.dgvProductSales.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvProductSales.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -190,14 +190,14 @@
             this.dgvProductSales.Location = new System.Drawing.Point(0, 98);
             this.dgvProductSales.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvProductSales.Name = "dgvProductSales";
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvProductSales.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvProductSales.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvProductSales.RowHeadersVisible = false;
             this.dgvProductSales.RowHeadersWidth = 51;
             this.dgvProductSales.Size = new System.Drawing.Size(1810, 932);
@@ -222,8 +222,8 @@
             // dataGridViewTextBoxColumn6
             // 
             this.dataGridViewTextBoxColumn6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.dataGridViewTextBoxColumn6.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.dataGridViewTextBoxColumn6.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewTextBoxColumn6.HeaderText = "Giá";
             this.dataGridViewTextBoxColumn6.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
@@ -291,7 +291,7 @@
             this.dtpProductSalesEndDate.BorderRadius = 10;
             this.dtpProductSalesEndDate.Checked = true;
             this.dtpProductSalesEndDate.CustomFormat = "dd/MM/yyyy";
-            this.dtpProductSalesEndDate.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.dtpProductSalesEndDate.FillColor = System.Drawing.Color.Tomato;
             this.dtpProductSalesEndDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.dtpProductSalesEndDate.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dtpProductSalesEndDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
@@ -311,7 +311,7 @@
             this.dtpProductSalesStartDate.BorderRadius = 15;
             this.dtpProductSalesStartDate.Checked = true;
             this.dtpProductSalesStartDate.CustomFormat = "dd/MM/yyyy";
-            this.dtpProductSalesStartDate.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.dtpProductSalesStartDate.FillColor = System.Drawing.Color.Tomato;
             this.dtpProductSalesStartDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.dtpProductSalesStartDate.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dtpProductSalesStartDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
@@ -333,7 +333,7 @@
             this.btnPrintBestseller.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnPrintBestseller.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnPrintBestseller.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnPrintBestseller.FillColor = System.Drawing.Color.Blue;
+            this.btnPrintBestseller.FillColor = System.Drawing.Color.Tomato;
             this.btnPrintBestseller.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
             this.btnPrintBestseller.ForeColor = System.Drawing.Color.White;
             this.btnPrintBestseller.Image = global::CoffeeManagementSystem.Properties.Resources.Xuat;
@@ -388,14 +388,14 @@
             this.dgvRevenue.BackgroundColor = System.Drawing.Color.White;
             this.dgvRevenue.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
             this.dgvRevenue.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.DarkCyan;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("SVN-Gilroy SemiBold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.Tomato;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvRevenue.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.DarkCyan;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("SVN-Gilroy SemiBold", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Tomato;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvRevenue.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvRevenue.ColumnHeadersHeight = 50;
             this.dgvRevenue.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvRevenue.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -581,14 +581,14 @@
             this.dgvPotentialCustomers.AllowUserToResizeRows = false;
             this.dgvPotentialCustomers.BackgroundColor = System.Drawing.Color.White;
             this.dgvPotentialCustomers.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.DarkCyan;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.Tomato;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPotentialCustomers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.DarkCyan;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Tomato;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPotentialCustomers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvPotentialCustomers.ColumnHeadersHeight = 100;
             this.dgvPotentialCustomers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvPotentialCustomers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -818,19 +818,20 @@
             // 
             this.chartDashboard.BorderlineColor = System.Drawing.Color.Firebrick;
             this.chartDashboard.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            chartArea3.Name = "ChartArea1";
-            this.chartDashboard.ChartAreas.Add(chartArea3);
+            chartArea1.Name = "ChartArea1";
+            this.chartDashboard.ChartAreas.Add(chartArea1);
             this.chartDashboard.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend3.Name = "Legend1";
-            this.chartDashboard.Legends.Add(legend3);
+            legend1.Name = "Legend1";
+            this.chartDashboard.Legends.Add(legend1);
             this.chartDashboard.Location = new System.Drawing.Point(3, 2);
             this.chartDashboard.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chartDashboard.Name = "chartDashboard";
             this.chartDashboard.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Fire;
-            series3.ChartArea = "ChartArea1";
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            this.chartDashboard.Series.Add(series3);
+            series1.ChartArea = "ChartArea1";
+            series1.Font = new System.Drawing.Font("SVN-Gilroy", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chartDashboard.Series.Add(series1);
             this.chartDashboard.Size = new System.Drawing.Size(785, 449);
             this.chartDashboard.TabIndex = 2;
             this.chartDashboard.Text = "chart1";
@@ -839,30 +840,32 @@
             // 
             this.chartRevenueByHour.BorderlineColor = System.Drawing.Color.Firebrick;
             this.chartRevenueByHour.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            chartArea4.Name = "ChartArea1";
-            this.chartRevenueByHour.ChartAreas.Add(chartArea4);
+            chartArea2.Name = "ChartArea1";
+            this.chartRevenueByHour.ChartAreas.Add(chartArea2);
             this.chartRevenueByHour.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend4.Name = "Legend1";
-            this.chartRevenueByHour.Legends.Add(legend4);
+            legend2.Name = "Legend1";
+            this.chartRevenueByHour.Legends.Add(legend2);
             this.chartRevenueByHour.Location = new System.Drawing.Point(3, 455);
             this.chartRevenueByHour.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chartRevenueByHour.Name = "chartRevenueByHour";
-            series4.ChartArea = "ChartArea1";
-            series4.Legend = "Legend1";
-            series4.Name = "Series1";
-            this.chartRevenueByHour.Series.Add(series4);
+            this.chartRevenueByHour.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Pastel;
+            series2.ChartArea = "ChartArea1";
+            series2.Font = new System.Drawing.Font("SVN-Gilroy", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chartRevenueByHour.Series.Add(series2);
             this.chartRevenueByHour.Size = new System.Drawing.Size(785, 449);
             this.chartRevenueByHour.TabIndex = 3;
             this.chartRevenueByHour.Text = "chart2";
             // 
             // Bieudotron
             // 
-            this.Bieudotron.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.Bieudotron.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.Bieudotron.BorderRadius = 10;
             this.Bieudotron.Controls.Add(this.tableLayoutPanelRight);
-            this.Bieudotron.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.Bieudotron.CustomBorderColor = System.Drawing.Color.DarkCyan;
             this.Bieudotron.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Bieudotron.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
+            this.Bieudotron.Font = new System.Drawing.Font("SVN-Gilroy", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Bieudotron.ForeColor = System.Drawing.Color.White;
             this.Bieudotron.Location = new System.Drawing.Point(814, 2);
             this.Bieudotron.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -914,7 +917,7 @@
             this.panelRevenueBox.Controls.Add(this.lblDashRevenue);
             this.panelRevenueBox.Controls.Add(this.lblDashRevenueTitle);
             this.panelRevenueBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelRevenueBox.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.panelRevenueBox.FillColor = System.Drawing.Color.Tomato;
             this.panelRevenueBox.Location = new System.Drawing.Point(10, 10);
             this.panelRevenueBox.Margin = new System.Windows.Forms.Padding(10);
             this.panelRevenueBox.Name = "panelRevenueBox";
@@ -926,7 +929,7 @@
             this.lblDashRevenue.AutoSize = false;
             this.lblDashRevenue.BackColor = System.Drawing.Color.Transparent;
             this.lblDashRevenue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblDashRevenue.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold);
+            this.lblDashRevenue.Font = new System.Drawing.Font("SVN-Gilroy", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDashRevenue.ForeColor = System.Drawing.Color.White;
             this.lblDashRevenue.Location = new System.Drawing.Point(0, 40);
             this.lblDashRevenue.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -939,7 +942,7 @@
             // lblDashRevenueTitle
             // 
             this.lblDashRevenueTitle.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblDashRevenueTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.lblDashRevenueTitle.Font = new System.Drawing.Font("SVN-Gilroy", 11F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDashRevenueTitle.ForeColor = System.Drawing.Color.White;
             this.lblDashRevenueTitle.Location = new System.Drawing.Point(0, 0);
             this.lblDashRevenueTitle.Name = "lblDashRevenueTitle";
@@ -954,7 +957,7 @@
             this.panelTotalOrdersBox.Controls.Add(this.lblDashTotalOrders);
             this.panelTotalOrdersBox.Controls.Add(this.lblDashTotalOrdersTitle);
             this.panelTotalOrdersBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelTotalOrdersBox.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.panelTotalOrdersBox.FillColor = System.Drawing.Color.Tomato;
             this.panelTotalOrdersBox.Location = new System.Drawing.Point(336, 10);
             this.panelTotalOrdersBox.Margin = new System.Windows.Forms.Padding(10);
             this.panelTotalOrdersBox.Name = "panelTotalOrdersBox";
@@ -966,7 +969,7 @@
             this.lblDashTotalOrders.AutoSize = false;
             this.lblDashTotalOrders.BackColor = System.Drawing.Color.Transparent;
             this.lblDashTotalOrders.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblDashTotalOrders.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold);
+            this.lblDashTotalOrders.Font = new System.Drawing.Font("SVN-Gilroy", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDashTotalOrders.ForeColor = System.Drawing.Color.White;
             this.lblDashTotalOrders.Location = new System.Drawing.Point(0, 40);
             this.lblDashTotalOrders.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -979,7 +982,7 @@
             // lblDashTotalOrdersTitle
             // 
             this.lblDashTotalOrdersTitle.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblDashTotalOrdersTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.lblDashTotalOrdersTitle.Font = new System.Drawing.Font("SVN-Gilroy", 11F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDashTotalOrdersTitle.ForeColor = System.Drawing.Color.White;
             this.lblDashTotalOrdersTitle.Location = new System.Drawing.Point(0, 0);
             this.lblDashTotalOrdersTitle.Name = "lblDashTotalOrdersTitle";
@@ -994,7 +997,7 @@
             this.panelAOVBox.Controls.Add(this.lblDashAOV);
             this.panelAOVBox.Controls.Add(this.lblDashAOVTitle);
             this.panelAOVBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelAOVBox.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.panelAOVBox.FillColor = System.Drawing.Color.Tomato;
             this.panelAOVBox.Location = new System.Drawing.Point(662, 10);
             this.panelAOVBox.Margin = new System.Windows.Forms.Padding(10);
             this.panelAOVBox.Name = "panelAOVBox";
@@ -1006,7 +1009,7 @@
             this.lblDashAOV.AutoSize = false;
             this.lblDashAOV.BackColor = System.Drawing.Color.Transparent;
             this.lblDashAOV.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblDashAOV.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold);
+            this.lblDashAOV.Font = new System.Drawing.Font("SVN-Gilroy", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDashAOV.ForeColor = System.Drawing.Color.White;
             this.lblDashAOV.Location = new System.Drawing.Point(0, 40);
             this.lblDashAOV.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -1019,7 +1022,7 @@
             // lblDashAOVTitle
             // 
             this.lblDashAOVTitle.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblDashAOVTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.lblDashAOVTitle.Font = new System.Drawing.Font("SVN-Gilroy", 11F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDashAOVTitle.ForeColor = System.Drawing.Color.White;
             this.lblDashAOVTitle.Location = new System.Drawing.Point(0, 0);
             this.lblDashAOVTitle.Name = "lblDashAOVTitle";
@@ -1056,8 +1059,8 @@
             this.dtpDashTo.BorderRadius = 10;
             this.dtpDashTo.Checked = true;
             this.dtpDashTo.CustomFormat = "dd/MM/yyyy";
-            this.dtpDashTo.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.dtpDashTo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.dtpDashTo.FillColor = System.Drawing.Color.Tomato;
+            this.dtpDashTo.Font = new System.Drawing.Font("SVN-Gilroy", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpDashTo.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dtpDashTo.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpDashTo.Location = new System.Drawing.Point(418, 28);
@@ -1076,8 +1079,8 @@
             this.dtpDashFrom.BorderRadius = 15;
             this.dtpDashFrom.Checked = true;
             this.dtpDashFrom.CustomFormat = "dd/MM/yyyy";
-            this.dtpDashFrom.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.dtpDashFrom.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.dtpDashFrom.FillColor = System.Drawing.Color.Tomato;
+            this.dtpDashFrom.Font = new System.Drawing.Font("SVN-Gilroy", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpDashFrom.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dtpDashFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpDashFrom.Location = new System.Drawing.Point(132, 28);
@@ -1094,18 +1097,20 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("SVN-Gilroy", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(356, 39);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(63, 29);
+            this.label1.Size = new System.Drawing.Size(65, 32);
             this.label1.TabIndex = 35;
             this.label1.Text = "Đến:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("SVN-Gilroy", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(44, 39);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(83, 29);
+            this.label2.Size = new System.Drawing.Size(88, 32);
             this.label2.TabIndex = 34;
             this.label2.Text = "Lọc từ:";
             // 
