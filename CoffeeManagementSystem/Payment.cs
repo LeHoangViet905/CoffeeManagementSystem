@@ -522,20 +522,44 @@ namespace CoffeeManagementSystem
             {
                 _pendingPaymentMethod = HINH_THUC_CHUYEN_KHOAN;
 
-                HienQrToGiuaManHinh();
-                ShowChuyenKhoanGuide();
+                // LẤY TỔNG TIỀN TỪ BLL
+                decimal tongTienDecimal = _paymentBLL.CalculateTongTien();
+                double amount = (double)tongTienDecimal;   // VNPay dùng double
 
-                // hiện 2 nút Thành công / Thất bại ngoài form chính
-                btnThanhToanThanhCong.Visible = true;
-                btnThanhToanThatBai.Visible = true;
-                btnThanhToanThanhCong.BringToFront();
-                btnThanhToanThatBai.BringToFront();
+                // LẤY MÃ HÓA ĐƠN TỪ LABEL
+                string maHoaDon = lblMaHoaDonValue.Text?.Trim();
 
-                return;
+                // Mô tả giao dịch gửi sang VNPay
+                string description = $"Thanh toán hóa đơn {maHoaDon} - KH: {txtKhachHangName.Text}";
+
+                // Mở form thanh toán VNPay
+                using (var frm = new FormThanhToan(amount, description))
+                {
+                    var result = frm.ShowDialog();
+
+                    if (result == DialogResult.OK)
+                    {
+                        // VNPay báo thành công (vnp_ResponseCode == "00")
+                        XuLyThanhToan(HINH_THUC_CHUYEN_KHOAN);
+                        Logger.LogInfo("Thanh toán VNPay thành công.");
+                        return;
+                    }
+                    else
+                    {
+                        // Người dùng đóng form / VNPay trả lỗi
+                        Logger.LogInfo("Thanh toán VNPay không thành công hoặc bị hủy.");
+                        MessageBox.Show("Thanh toán chưa hoàn tất.",
+                                        "Thông báo",
+                                        MessageBoxButtons.OK,
+                                        MessageBoxIcon.Information);
+                    }
+                }
+
             }
 
             // Ngược lại là TIỀN MẶT → dùng form riêng
             _pendingPaymentMethod = HINH_THUC_TIEN_MAT;
+            rdbTienMat.Checked=true;
 
             if (ShowCashPaymentDialog())
             {
