@@ -54,6 +54,8 @@
             // dgvNhanvien
             // 
             this.dgvNhanvien.AllowUserToOrderColumns = true;
+            this.dgvNhanvien.AllowUserToResizeColumns = false;
+            this.dgvNhanvien.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
             this.dgvNhanvien.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvNhanvien.BackgroundColor = System.Drawing.Color.FloralWhite;

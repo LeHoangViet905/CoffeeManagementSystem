@@ -320,26 +320,23 @@
     <Compile Include="NoteForm.Designer.cs">
       <DependentUpon>NoteForm.cs</DependentUpon>
     </Compile>
-	  <Compile Include="OptionManagerForm.cs">
-		  <SubType>Form</SubType>
-	  </Compile>
-	  <Compile Include="OptionManagerForm.Designer.cs">
-		  <DependentUpon>OptionManagerForm.cs</DependentUpon>
-	  </Compile>
-	  <Compile Include="model\OrderhistoryItem.cs" />
-	      <Compile Include="model\OrderhistoryItem.cs" />
+    <Compile Include="OptionManagerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OptionManagerForm.Designer.cs">
+      <DependentUpon>OptionManagerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="model\OrderhistoryItem.cs" />
+    <Compile Include="model\OrderhistoryItem.cs" />
     <Compile Include="OrderDetailForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="OrderDetailForm.Designer.cs">
       <DependentUpon>OrderDetailForm.cs</DependentUpon>
     </Compile>
-
     <Compile Include="OrderHistoryForm.cs">
       <SubType>Form</SubType>
     </Compile>
-
-
     <Compile Include="OrderHistoryForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -454,13 +451,13 @@
     <EmbeddedResource Include="NoteForm.resx">
       <DependentUpon>NoteForm.cs</DependentUpon>
     </EmbeddedResource>
-	  <EmbeddedResource Include="OptionManagerForm.resx">
-		  <DependentUpon>OptionManagerForm.cs</DependentUpon>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="OrderDetailForm.resx">
-		  <DependentUpon>OrderDetailForm.cs</DependentUpon>
-	  </EmbeddedResource>
-	  <EmbeddedResource Include="OrderHistoryForm.resx">
+    <EmbeddedResource Include="OptionManagerForm.resx">
+      <DependentUpon>OptionManagerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OrderDetailForm.resx">
+      <DependentUpon>OrderDetailForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OrderHistoryForm.resx">
       <DependentUpon>OrderHistoryForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ThanhToanVNPay.resx">
@@ -591,7 +588,6 @@
     </Content>
     <None Include="Resources\qrcode.png" />
     <None Include="Resources\Thêm tiêu đề.png" />
-    <None Include="Resources\tl.png" />
     <Content Include="Resources\TrangChu.png" />
     <None Include="Resources\TrangChu1.png" />
     <Content Include="Resources\trash-bin.png">

@@ -221,5 +221,29 @@ namespace CoffeeManagementSystem.BLL
                 throw new Exception($"Lỗi BLL khi lấy chi tiết đơn hàng: {ex.Message}", ex);
             }
         }
+        public string TaoMaDonHangMoi()
+        {
+            try
+            {
+                string lastCode = _donhangDAL.GetLastMadonhang();
+
+                int nextNumber = 1;
+
+                if (!string.IsNullOrEmpty(lastCode) && lastCode.Length > 2)
+                {
+                    if (int.TryParse(lastCode.Substring(2), out int number))
+                    {
+                        nextNumber = number + 1;
+                    }
+                }
+
+                // DH001, DH002,...
+                return "DH" + nextNumber.ToString("D3"); // hoặc D4 nếu muốn DH0001
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Lỗi BLL khi tạo mã đơn hàng mới: {ex.Message}", ex);
+            }
+        }
     }
 }

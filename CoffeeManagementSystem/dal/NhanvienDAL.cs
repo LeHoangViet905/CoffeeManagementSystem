@@ -363,7 +363,7 @@ namespace CoffeeManagementSystem.DAL // Đặt DAL trong một namespace con đ�
                                 else
                                 {
                                     // Insert nếu chưa tồn tại
-                                    string insertSql = "INSERT INTO Douong (Madouong, Tendouong, Maloai, Mota, Hinhanh) VALUES (@Madouong, @Tendouong, @Maloai, @Mota, @Hinhanh)";
+                                    string insertSql = "INSERT INTO Nhanvien (Manhanvien,Hoten,Ngaysinh,Gioitinh,Diachi,Sodienthoai,Email,Ngayvaolam) VALUES (@Manhanvien,@Hoten,@Ngaysinh,@Gioitinh,@Diachi,@Sodienthoai,@Email,@Ngayvaolam)";
                                     using (var cmdInsert = new SQLiteCommand(insertSql, connection, transaction))
                                     {
                                         cmdInsert.Parameters.AddWithValue("@Manhanvien", n.Manhanvien);
