@@ -50,11 +50,11 @@
             // chkHienMatKhau
             // 
             this.chkHienMatKhau.AutoSize = true;
-            this.chkHienMatKhau.Font = new System.Drawing.Font("Segoe UI Variable Text Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkHienMatKhau.Font = new System.Drawing.Font("SVN-Gilroy", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkHienMatKhau.Location = new System.Drawing.Point(414, 367);
             this.chkHienMatKhau.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.chkHienMatKhau.Name = "chkHienMatKhau";
-            this.chkHienMatKhau.Size = new System.Drawing.Size(131, 24);
+            this.chkHienMatKhau.Size = new System.Drawing.Size(134, 24);
             this.chkHienMatKhau.TabIndex = 16;
             this.chkHienMatKhau.Text = "Hiện mật khẩu";
             this.chkHienMatKhau.UseVisualStyleBackColor = true;
@@ -63,24 +63,24 @@
             // lblMatKhau
             // 
             this.lblMatKhau.AutoSize = true;
-            this.lblMatKhau.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMatKhau.Font = new System.Drawing.Font("SVN-Gilroy", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMatKhau.ForeColor = System.Drawing.Color.Tomato;
             this.lblMatKhau.Location = new System.Drawing.Point(410, 293);
             this.lblMatKhau.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblMatKhau.Name = "lblMatKhau";
-            this.lblMatKhau.Size = new System.Drawing.Size(82, 18);
+            this.lblMatKhau.Size = new System.Drawing.Size(79, 20);
             this.lblMatKhau.TabIndex = 14;
             this.lblMatKhau.Text = "Mật khẩu:";
             // 
             // lblTenDangNhap
             // 
             this.lblTenDangNhap.AutoSize = true;
-            this.lblTenDangNhap.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTenDangNhap.Font = new System.Drawing.Font("SVN-Gilroy", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTenDangNhap.ForeColor = System.Drawing.Color.Tomato;
             this.lblTenDangNhap.Location = new System.Drawing.Point(410, 219);
             this.lblTenDangNhap.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTenDangNhap.Name = "lblTenDangNhap";
-            this.lblTenDangNhap.Size = new System.Drawing.Size(115, 18);
+            this.lblTenDangNhap.Size = new System.Drawing.Size(109, 20);
             this.lblTenDangNhap.TabIndex = 12;
             this.lblTenDangNhap.Text = "Tên tài khoản:";
             // 
@@ -112,10 +112,10 @@
             // lblXinChao
             // 
             this.lblXinChao.AutoSize = true;
-            this.lblXinChao.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblXinChao.Location = new System.Drawing.Point(390, 156);
+            this.lblXinChao.Font = new System.Drawing.Font("SVN-Gilroy", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblXinChao.Location = new System.Drawing.Point(410, 154);
             this.lblXinChao.Name = "lblXinChao";
-            this.lblXinChao.Size = new System.Drawing.Size(387, 18);
+            this.lblXinChao.Size = new System.Drawing.Size(370, 20);
             this.lblXinChao.TabIndex = 18;
             this.lblXinChao.Text = "Chào mừng trở lại. Đăng nhập để bắt đầu làm việc.\r\n";
             // 
@@ -194,7 +194,7 @@
             this.btnDangNhap.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnDangNhap.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnDangNhap.FillColor = System.Drawing.Color.DarkCyan;
-            this.btnDangNhap.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDangNhap.Font = new System.Drawing.Font("SVN-Gilroy", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDangNhap.ForeColor = System.Drawing.Color.White;
             this.btnDangNhap.Location = new System.Drawing.Point(412, 415);
             this.btnDangNhap.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
