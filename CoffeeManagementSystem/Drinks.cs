@@ -313,6 +313,12 @@ namespace CoffeeManagementSystem
 
                 list.Add(d);
             }
+        }
+
+        private void btnThemloaidouong_Click(object sender, EventArgs e)
+        {
+
+        }
 
             if (list.Count == 0)
             {

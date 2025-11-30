@@ -1106,7 +1106,6 @@ namespace CoffeeManagementSystem
             this.Close();
         }
     }
-    }
 
     // Đảm bảo bạn có class KhachhangNotFoundException nếu bạn đang sử dụng nó
     public class KhachhangNotFoundException : Exception
@@ -1115,4 +1114,4 @@ namespace CoffeeManagementSystem
         public KhachhangNotFoundException(string message) : base(message) { }
         public KhachhangNotFoundException(string message, Exception inner) : base(message, inner) { }
     }
-
+}

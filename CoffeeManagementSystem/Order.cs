@@ -278,41 +278,102 @@ namespace CoffeeManagementSystem
 
         private void dgvOrder_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Đảm bảo user click vào 1 hàng (không phải tiêu đề)
-            if (e.RowIndex < 0) return;
+            // 1. Kiểm tra click hợp lệ
+            if (e.RowIndex < 0 || dgvOrder.Rows[e.RowIndex].IsNewRow) return;
+
             DataGridViewRow row = dgvOrder.Rows[e.RowIndex];
 
-            // --- XỬ LÝ NÚT XÓA (X)---
+            // --- CASE A: NÚT XÓA (X) ---
             if (e.ColumnIndex == dgvOrder.Columns["colCancel"].Index)
             {
-                // Xóa hàng
                 dgvOrder.Rows.Remove(row);
             }
-
+            // --- CASE B: NÚT GIẢM (-) ---
             else if (e.ColumnIndex == dgvOrder.Columns["colDecrease"].Index)
             {
-                // 1. Lấy số lượng và đơn giá hiện tại từ các ô
                 int currentQty = (int)row.Cells["colQty"].Value;
-                decimal price = (decimal)row.Cells["colPrice"].Value; // (Lấy từ cột đơn giá ẩn)
+                decimal price = (decimal)row.Cells["colPrice"].Value;
 
                 if (currentQty > 1)
                 {
-                    // Nếu > 1, chỉ cần giảm 1
                     currentQty--;
                     row.Cells["colQty"].Value = currentQty;
-
-                    // Cập nhật lại tổng tiền cho hàng này
                     row.Cells["colTotal"].Value = currentQty * price;
                 }
                 else
                 {
-                    // Nếu = 1, xóa luôn hàng đó
                     dgvOrder.Rows.Remove(row);
                 }
             }
-            // --- KẾT THÚC PHẦN CODE MỚI ---
+            // --- CASE C: CLICK VÀO TÊN MÓN ĐỂ SỬA OPTION (Mới thêm) ---
+            else if (e.ColumnIndex == dgvOrder.Columns["colName"].Index)
+            {
+                // 1. Lấy thông tin hiện tại
+                string maMon = row.Cells["colID"].Value.ToString();
+                string ghiChuHienTai = "";
 
-            // Cập nhật lại tổng tiền cuối cùng (luôn chạy sau khi Thêm/Xóa)
+                // Kiểm tra null cho ô ghi chú
+                if (row.Cells["colNote"].Value != null)
+                    ghiChuHienTai = row.Cells["colNote"].Value.ToString();
+
+                // Lấy tên gốc của món (để không bị dính cái ghi chú cũ vào tên)
+                string tenMonGoc;
+                if (row.Cells["colName"].Tag != null)
+                {
+                    tenMonGoc = row.Cells["colName"].Tag.ToString();
+                }
+                else
+                {
+                    // Lần đầu chưa có Tag thì lấy giá trị hiện tại làm tên gốc
+                    tenMonGoc = row.Cells["colName"].Value.ToString();
+                    row.Cells["colName"].Tag = tenMonGoc; // Lưu lại ngay để dùng lần sau
+                }
+
+                // 2. Mở NoteForm (Popup)
+                // (Sử dụng Constructor mới: chỉ truyền Ghi chú cũ và Mã món)
+                NoteForm noteForm = new NoteForm(ghiChuHienTai, maMon);
+
+                // Hiệu ứng làm mờ nền (Optional)
+                this.Opacity = 0.9;
+                DialogResult result = noteForm.ShowDialog();
+                this.Opacity = 1;
+
+                // 3. Nhận kết quả và Cập nhật Grid
+                if (result == DialogResult.OK)
+                {
+                    // A. Cập nhật ghi chú ẩn
+                    row.Cells["colNote"].Value = noteForm.ReturnNote;
+
+                    // B. Cập nhật hiển thị (Tên + Xuống dòng + Ghi chú)
+                    if (!string.IsNullOrEmpty(noteForm.ReturnNote))
+                    {
+                        row.Cells["colName"].Value = tenMonGoc + Environment.NewLine + "   " + noteForm.ReturnNote;
+                    }
+                    else
+                    {
+                        row.Cells["colName"].Value = tenMonGoc; // Trả về tên sạch nếu xóa hết ghi chú
+                    }
+
+                    // C. Cập nhật Giá tiền (Cực kỳ quan trọng)
+                    // Phải lấy lại GIÁ GỐC từ Database để cộng tiền Topping mới
+                    // (Nếu lấy giá hiện tại trong Grid thì sẽ bị cộng dồn sai: 50k -> thêm topping -> 55k -> sửa topping -> 60k -> SAI)
+
+                    Giadouong giaGocObj = _giadouongBLL.GetLatestGiaByMadouong(maMon);
+                    decimal giaGoc = (decimal)giaGocObj.Giaban;
+
+                    // Giá mới = Giá Gốc + Tiền Topping (từ NoteForm trả về)
+                    decimal giaMoi = giaGoc + noteForm.ReturnExtraPrice;
+
+                    // Gán lại vào lưới
+                    row.Cells["colPrice"].Value = giaMoi;
+
+                    // Tính lại tổng tiền dòng đó
+                    int soLuong = int.Parse(row.Cells["colQty"].Value.ToString());
+                    row.Cells["colTotal"].Value = soLuong * giaMoi;
+                }
+            }
+
+            // Cập nhật lại tổng tiền cuối cùng (luôn chạy sau khi Thêm/Xóa/Sửa)
             UpdateOrderTotal();
         }
 
