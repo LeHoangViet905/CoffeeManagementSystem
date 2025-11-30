@@ -81,6 +81,7 @@
             this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.btnThuTien = new Guna.UI2.WinForms.Guna2Button();
             this.btnHuyOrder = new Guna.UI2.WinForms.Guna2Button();
+            this.colNote = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelSidebar.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrder)).BeginInit();
@@ -98,6 +99,8 @@
             this.tabPage8.SuspendLayout();
             this.tabPage9.SuspendLayout();
             this.tabPage10.SuspendLayout();
+            this.colNote = new System.Windows.Forms.DataGridViewTextBoxColumn();
+
             this.SuspendLayout();
             // 
             // panelSidebar
@@ -181,13 +184,15 @@
             this.dgvOrder.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.dgvOrder.ColumnHeadersVisible = false;
             this.dgvOrder.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.colID,
-            this.colQty,
-            this.colName,
-            this.colPrice,
-            this.colTotal,
-            this.colDecrease,
-            this.colCancel});
+                this.colID,
+                this.colQty,
+                this.colName,
+                this.colPrice,
+                this.colTotal,
+                this.colDecrease,
+                this.colCancel,
+                this.colNote    // 👈 thêm dòng này
+            });
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI Variable Display", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -313,6 +318,15 @@
             this.colCancel.Text = "X";
             this.colCancel.UseColumnTextForButtonValue = true;
             this.colCancel.Width = 30;
+            // 
+            // colNote
+            // 
+            this.colNote.HeaderText = "Ghi chú";
+            this.colNote.MinimumWidth = 6;
+            this.colNote.Name = "colNote";   // 👈 phải đúng tên này
+            this.colNote.ReadOnly = true;
+            this.colNote.Visible = false;
+            this.colNote.Width = 10;
             // 
             // guna2Panel1
             // 

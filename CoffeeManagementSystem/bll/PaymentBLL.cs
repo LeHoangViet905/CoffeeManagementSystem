@@ -43,7 +43,10 @@ namespace CoffeeManagementSystem.BLL
         {
             return _manhanvienLapHoaDon;
         }
-        public PaymentBLL(List<Chitietdonhang> dsChiTiet, string manhanvien, string tenNhanVien)
+        public PaymentBLL(List<Chitietdonhang> dsChiTiet,
+                  string manhanvien,
+                  string tenNhanVien,
+                  string maHoaDon)
         {
             Logger.LogInfo("Bắt đầu khởi tạo PaymentBLL.");
 
@@ -54,13 +57,18 @@ namespace CoffeeManagementSystem.BLL
             _donhangDAL = new DonhangDAL();
             _chitietdonhangDAL = new ChitietdonhangDAL();
             _khachhangDAL = new KhachhangDAL();
-            _thanhtoanDAL = new ThanhtoanDAL(); // KHỞI TẠO: ThanhtoanDAL
+            _thanhtoanDAL = new ThanhtoanDAL();
 
-            _maHoaDonHienTai = GenerateUniqueDonhangId();
+            // 🔥 DÙNG MÃ ĐƯỢC TRUYỀN TỪ OrderForm
+            if (string.IsNullOrWhiteSpace(maHoaDon))
+                throw new ArgumentException("Mã hóa đơn không được rỗng.", nameof(maHoaDon));
 
-            Logger.LogInfo($"PaymentBLL đã được khởi tạo. Mã hóa đơn tạm thời: {_maHoaDonHienTai}, Nhân viên: {_tenNhanVienLapHoaDon} ({_manhanvienLapHoaDon}).");
+            _maHoaDonHienTai = maHoaDon;
+
+            Logger.LogInfo($"PaymentBLL đã được khởi tạo. Mã hóa đơn: {_maHoaDonHienTai}, Nhân viên: {_tenNhanVienLapHoaDon} ({_manhanvienLapHoaDon}).");
             Logger.LogDebug($"Số lượng chi tiết đơn hàng ban đầu: {_dsChiTietHoaDon.Count}.");
         }
+
 
         // --- Các phương thức để Form có thể truy xuất thông tin hiển thị ---
         public string GetMaHoaDonHienTai()
@@ -102,20 +110,6 @@ namespace CoffeeManagementSystem.BLL
         /// <summary>
         /// Phương thức tạo ID duy nhất cho Madonhang (DH + timestamp).
         /// </summary>
-        private string GenerateUniqueDonhangId()
-        {
-            string newId = "DH" + DateTime.Now.ToString("yyyyMMddHHmmssfff");
-            Logger.LogDebug($"Đã tạo ID đơn hàng mới: {newId}.");
-            return newId;
-        }
-
-
-        private string GenerateUniqueKhachhangId()
-        {
-            string newId = "KH" + DateTime.Now.ToString("yyyyMMddHHmmssfff");
-            Logger.LogDebug($"Đã tạo ID khách hàng mới: {newId}.");
-            return newId;
-        }
 
         private string GenerateUniqueThanhtoanId()
         {

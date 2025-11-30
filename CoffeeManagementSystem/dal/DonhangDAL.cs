@@ -18,6 +18,7 @@ namespace CoffeeManagementSystem.DAL
         /// Adds a new order to the database.
         /// </summary>
         /// <param name="donhang">The Donhang object to add.</param>
+        /// 
         public void AddDonhang(Donhang donhang)
         {
             using (SQLiteConnection connection = new SQLiteConnection(ConnectionString))
@@ -543,7 +544,32 @@ namespace CoffeeManagementSystem.DAL
 
             return list;
         }
+        public string GetLastMadonhang()
+        {
+            using (var conn = new SQLiteConnection(ConnectionString))
+            {
+                conn.Open();
+
+                // Giả sử Madonhang: DH001, DH002, ...
+                string sql = @"
+            SELECT Madonhang
+            FROM Donhang
+            WHERE Madonhang LIKE 'DH%'
+            ORDER BY CAST(SUBSTR(Madonhang, 3) AS INTEGER) DESC
+            LIMIT 1;";
+
+                using (var cmd = new SQLiteCommand(sql, conn))
+                {
+                    object result = cmd.ExecuteScalar();
+                    return (result == null || result == DBNull.Value)
+                        ? null
+                        : result.ToString();
+                }
+            }
+        }
+
     }
+
     public class RevenueReportItem
     {
         public DateTime Ngay { get; set; }

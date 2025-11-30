@@ -29,10 +29,10 @@ namespace CoffeeManagementSystem
         // Lưu hình thức thanh toán đang chờ xác nhận
         private string _pendingPaymentMethod = null;
 
-        public PaymentForm(List<Chitietdonhang> dsChiTiet, string manhanvien, string tenNhanVien)
+        public PaymentForm(List<Chitietdonhang> dsChiTiet, string manhanvien, string tenNhanVien, string maDonHang)
         {
             InitializeComponent();
-            _paymentBLL = new PaymentBLL(dsChiTiet, manhanvien, tenNhanVien);
+            _paymentBLL = new PaymentBLL(dsChiTiet, manhanvien, tenNhanVien,maDonHang);
 
             this.Text = "Payment";
 

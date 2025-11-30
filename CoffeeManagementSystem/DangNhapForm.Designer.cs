@@ -48,10 +48,9 @@
             // 
             this.chkHienMatKhau.AutoSize = true;
             this.chkHienMatKhau.Font = new System.Drawing.Font("Segoe UI Variable Text Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkHienMatKhau.Location = new System.Drawing.Point(532, 431);
-            this.chkHienMatKhau.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.chkHienMatKhau.Location = new System.Drawing.Point(355, 280);
             this.chkHienMatKhau.Name = "chkHienMatKhau";
-            this.chkHienMatKhau.Size = new System.Drawing.Size(156, 28);
+            this.chkHienMatKhau.Size = new System.Drawing.Size(104, 20);
             this.chkHienMatKhau.TabIndex = 16;
             this.chkHienMatKhau.Text = "Hiện mật khẩu";
             this.chkHienMatKhau.UseVisualStyleBackColor = true;
@@ -60,33 +59,30 @@
             // lblMatKhau
             // 
             this.lblMatKhau.AutoSize = true;
-            this.lblMatKhau.Font = new System.Drawing.Font("SVN-Gilroy SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMatKhau.Location = new System.Drawing.Point(528, 345);
-            this.lblMatKhau.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblMatKhau.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMatKhau.Location = new System.Drawing.Point(352, 224);
             this.lblMatKhau.Name = "lblMatKhau";
-            this.lblMatKhau.Size = new System.Drawing.Size(93, 24);
+            this.lblMatKhau.Size = new System.Drawing.Size(70, 15);
             this.lblMatKhau.TabIndex = 14;
             this.lblMatKhau.Text = "Mật khẩu:";
             // 
             // lblTenDangNhap
             // 
             this.lblTenDangNhap.AutoSize = true;
-            this.lblTenDangNhap.Font = new System.Drawing.Font("SVN-Gilroy SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTenDangNhap.Location = new System.Drawing.Point(528, 257);
-            this.lblTenDangNhap.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTenDangNhap.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTenDangNhap.Location = new System.Drawing.Point(352, 167);
             this.lblTenDangNhap.Name = "lblTenDangNhap";
-            this.lblTenDangNhap.Size = new System.Drawing.Size(126, 24);
+            this.lblTenDangNhap.Size = new System.Drawing.Size(98, 15);
             this.lblTenDangNhap.TabIndex = 12;
             this.lblTenDangNhap.Text = "Tên tài khoản:";
             // 
             // lblDangNhap
             // 
             this.lblDangNhap.AutoSize = true;
-            this.lblDangNhap.Font = new System.Drawing.Font("SVN-Gilroy XBold", 26F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDangNhap.Location = new System.Drawing.Point(614, 70);
-            this.lblDangNhap.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDangNhap.Font = new System.Drawing.Font("SVN-Gilroy", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDangNhap.Location = new System.Drawing.Point(409, 46);
             this.lblDangNhap.Name = "lblDangNhap";
-            this.lblDangNhap.Size = new System.Drawing.Size(300, 69);
+            this.lblDangNhap.Size = new System.Drawing.Size(203, 47);
             this.lblDangNhap.TabIndex = 11;
             this.lblDangNhap.Text = "Đăng nhập";
             // 
@@ -95,10 +91,9 @@
             this.lblClose.AutoSize = true;
             this.lblClose.Font = new System.Drawing.Font("Segoe UI Variable Display", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblClose.ForeColor = System.Drawing.Color.Red;
-            this.lblClose.Location = new System.Drawing.Point(966, 3);
-            this.lblClose.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblClose.Location = new System.Drawing.Point(644, 2);
             this.lblClose.Name = "lblClose";
-            this.lblClose.Size = new System.Drawing.Size(30, 32);
+            this.lblClose.Size = new System.Drawing.Size(21, 21);
             this.lblClose.TabIndex = 10;
             this.lblClose.Text = "X";
             this.lblClose.Click += new System.EventHandler(this.lblClose_Click);
@@ -106,10 +101,11 @@
             // lblXinChao
             // 
             this.lblXinChao.AutoSize = true;
-            this.lblXinChao.Font = new System.Drawing.Font("SVN-Gilroy SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblXinChao.Location = new System.Drawing.Point(537, 181);
+            this.lblXinChao.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblXinChao.Location = new System.Drawing.Point(337, 118);
+            this.lblXinChao.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblXinChao.Name = "lblXinChao";
-            this.lblXinChao.Size = new System.Drawing.Size(435, 24);
+            this.lblXinChao.Size = new System.Drawing.Size(332, 15);
             this.lblXinChao.TabIndex = 18;
             this.lblXinChao.Text = "Chào mừng trở lại. Đăng nhập để bắt đầu làm việc.\r\n";
             // 
@@ -117,9 +113,10 @@
             // 
             this.lblDauGach.AutoSize = true;
             this.lblDauGach.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDauGach.Location = new System.Drawing.Point(528, 205);
+            this.lblDauGach.Location = new System.Drawing.Point(352, 133);
+            this.lblDauGach.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblDauGach.Name = "lblDauGach";
-            this.lblDauGach.Size = new System.Drawing.Size(444, 24);
+            this.lblDauGach.Size = new System.Drawing.Size(317, 16);
             this.lblDauGach.TabIndex = 19;
             this.lblDauGach.Text = "______________________________________________________________\r\n";
             // 
@@ -136,15 +133,14 @@
             this.txtTenTaiKhoan.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtTenTaiKhoan.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtTenTaiKhoan.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtTenTaiKhoan.Location = new System.Drawing.Point(532, 293);
-            this.txtTenTaiKhoan.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtTenTaiKhoan.Location = new System.Drawing.Point(355, 190);
             this.txtTenTaiKhoan.Name = "txtTenTaiKhoan";
             this.txtTenTaiKhoan.PlaceholderText = "";
             this.txtTenTaiKhoan.SelectedText = "";
             this.txtTenTaiKhoan.ShadowDecoration.BorderRadius = 15;
             this.txtTenTaiKhoan.ShadowDecoration.Depth = 10;
             this.txtTenTaiKhoan.ShadowDecoration.Enabled = true;
-            this.txtTenTaiKhoan.Size = new System.Drawing.Size(429, 47);
+            this.txtTenTaiKhoan.Size = new System.Drawing.Size(286, 31);
             this.txtTenTaiKhoan.TabIndex = 20;
             this.txtTenTaiKhoan.TextChanged += new System.EventHandler(this.txtTenTaiKhoan_TextChanged);
             // 
@@ -161,15 +157,14 @@
             this.txtMatkhau.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtMatkhau.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtMatkhau.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtMatkhau.Location = new System.Drawing.Point(530, 376);
-            this.txtMatkhau.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtMatkhau.Location = new System.Drawing.Point(353, 244);
             this.txtMatkhau.Name = "txtMatkhau";
             this.txtMatkhau.PlaceholderText = "";
             this.txtMatkhau.SelectedText = "";
             this.txtMatkhau.ShadowDecoration.BorderRadius = 15;
             this.txtMatkhau.ShadowDecoration.Depth = 10;
             this.txtMatkhau.ShadowDecoration.Enabled = true;
-            this.txtMatkhau.Size = new System.Drawing.Size(431, 47);
+            this.txtMatkhau.Size = new System.Drawing.Size(287, 31);
             this.txtMatkhau.TabIndex = 21;
             this.txtMatkhau.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtMatkhau_KeyDown);
             // 
@@ -188,11 +183,12 @@
             this.btnDangNhap.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnDangNhap.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnDangNhap.FillColor = System.Drawing.Color.Firebrick;
-            this.btnDangNhap.Font = new System.Drawing.Font("SVN-Gilroy XBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDangNhap.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDangNhap.ForeColor = System.Drawing.Color.White;
-            this.btnDangNhap.Location = new System.Drawing.Point(530, 490);
+            this.btnDangNhap.Location = new System.Drawing.Point(353, 318);
+            this.btnDangNhap.Margin = new System.Windows.Forms.Padding(2);
             this.btnDangNhap.Name = "btnDangNhap";
-            this.btnDangNhap.Size = new System.Drawing.Size(431, 52);
+            this.btnDangNhap.Size = new System.Drawing.Size(287, 34);
             this.btnDangNhap.TabIndex = 22;
             this.btnDangNhap.Text = "Đăng nhập";
             // 
@@ -205,18 +201,17 @@
             this.panelHinhDangNhap.BackgroundImage = global::CoffeeManagementSystem.Properties.Resources.hinhdangnhap;
             this.panelHinhDangNhap.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panelHinhDangNhap.Location = new System.Drawing.Point(0, 0);
-            this.panelHinhDangNhap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panelHinhDangNhap.Name = "panelHinhDangNhap";
-            this.panelHinhDangNhap.Size = new System.Drawing.Size(482, 640);
+            this.panelHinhDangNhap.Size = new System.Drawing.Size(321, 416);
             this.panelHinhDangNhap.TabIndex = 9;
             // 
             // DangNhapForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FloralWhite;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(1006, 640);
+            this.ClientSize = new System.Drawing.Size(671, 416);
             this.ControlBox = false;
             this.Controls.Add(this.btnDangNhap);
             this.Controls.Add(this.txtTenTaiKhoan);
@@ -230,6 +225,7 @@
             this.Controls.Add(this.lblDangNhap);
             this.Controls.Add(this.lblClose);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "DangNhapForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";

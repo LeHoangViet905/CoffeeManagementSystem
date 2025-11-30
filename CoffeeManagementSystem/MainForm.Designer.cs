@@ -59,12 +59,12 @@
             // lblName
             // 
             this.lblName.BackColor = System.Drawing.Color.Transparent;
-            this.lblName.Font = new System.Drawing.Font("SVN-Gilroy", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblName.ForeColor = System.Drawing.Color.White;
-            this.lblName.Location = new System.Drawing.Point(27, 144);
+            this.lblName.Location = new System.Drawing.Point(5, 120);
             this.lblName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(187, 70);
+            this.lblName.Size = new System.Drawing.Size(156, 68);
             this.lblName.TabIndex = 18;
             this.lblName.Text = "Tên người dùng";
             this.lblName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -74,12 +74,12 @@
             // 
             this.lblQuanLy.AutoSize = true;
             this.lblQuanLy.BackColor = System.Drawing.Color.Transparent;
-            this.lblQuanLy.Font = new System.Drawing.Font("SVN-Gilroy", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblQuanLy.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblQuanLy.ForeColor = System.Drawing.Color.White;
-            this.lblQuanLy.Location = new System.Drawing.Point(84, 122);
+            this.lblQuanLy.Location = new System.Drawing.Point(49, 102);
             this.lblQuanLy.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblQuanLy.Name = "lblQuanLy";
-            this.lblQuanLy.Size = new System.Drawing.Size(74, 24);
+            this.lblQuanLy.Size = new System.Drawing.Size(58, 18);
             this.lblQuanLy.TabIndex = 17;
             this.lblQuanLy.Text = "Quản lý";
             this.lblQuanLy.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -91,15 +91,13 @@
             this.panelMain.Location = new System.Drawing.Point(0, 0);
             this.panelMain.Margin = new System.Windows.Forms.Padding(0);
             this.panelMain.Name = "panelMain";
-            this.panelMain.Size = new System.Drawing.Size(1750, 1057);
+            this.panelMain.Size = new System.Drawing.Size(1458, 881);
             this.panelMain.TabIndex = 19;
             // 
             // splitContainerNavBar
             // 
             this.splitContainerNavBar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerNavBar.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainerNavBar.IsSplitterFixed = true;
-            this.splitContainerNavBar.Location = new System.Drawing.Point(0, 36);
+            this.splitContainerNavBar.Location = new System.Drawing.Point(0, 30);
             this.splitContainerNavBar.Margin = new System.Windows.Forms.Padding(0);
             this.splitContainerNavBar.Name = "splitContainerNavBar";
             // 
@@ -121,9 +119,9 @@
             // splitContainerNavBar.Panel2
             // 
             this.splitContainerNavBar.Panel2.Controls.Add(this.panelMain);
-            this.splitContainerNavBar.Size = new System.Drawing.Size(1942, 1057);
-            this.splitContainerNavBar.SplitterDistance = 186;
-            this.splitContainerNavBar.SplitterWidth = 6;
+            this.splitContainerNavBar.Size = new System.Drawing.Size(1618, 881);
+            this.splitContainerNavBar.SplitterDistance = 155;
+            this.splitContainerNavBar.SplitterWidth = 5;
             this.splitContainerNavBar.TabIndex = 20;
             // 
             // btnLogout
@@ -136,17 +134,17 @@
             this.btnLogout.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btnLogout.FillColor = System.Drawing.Color.Empty;
             this.btnLogout.FillColor2 = System.Drawing.Color.Empty;
-            this.btnLogout.Font = new System.Drawing.Font("SVN-Gilroy", 9.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogout.ForeColor = System.Drawing.Color.White;
-            this.btnLogout.HoverState.Font = new System.Drawing.Font("SVN-Gilroy", 9.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogout.HoverState.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogout.HoverState.ForeColor = System.Drawing.Color.White;
             this.btnLogout.Image = global::CoffeeManagementSystem.Properties.Resources.logout;
             this.btnLogout.ImageOffset = new System.Drawing.Point(-3, 0);
             this.btnLogout.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnLogout.Location = new System.Drawing.Point(0, 961);
+            this.btnLogout.Location = new System.Drawing.Point(0, 801);
             this.btnLogout.Margin = new System.Windows.Forms.Padding(2);
             this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(186, 96);
+            this.btnLogout.Size = new System.Drawing.Size(155, 80);
             this.btnLogout.TabIndex = 20;
             this.btnLogout.Text = "Đăng xuất";
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
@@ -160,18 +158,17 @@
             this.btnTaiKhoan.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnTaiKhoan.FillColor = System.Drawing.Color.Empty;
             this.btnTaiKhoan.FillColor2 = System.Drawing.Color.Empty;
-            this.btnTaiKhoan.Font = new System.Drawing.Font("SVN-Gilroy", 9.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTaiKhoan.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTaiKhoan.ForeColor = System.Drawing.Color.White;
-            this.btnTaiKhoan.HoverState.Font = new System.Drawing.Font("SVN-Gilroy SemiBold", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTaiKhoan.HoverState.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTaiKhoan.HoverState.ForeColor = System.Drawing.Color.White;
             this.btnTaiKhoan.Image = global::CoffeeManagementSystem.Properties.Resources.TaiKhoan;
             this.btnTaiKhoan.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnTaiKhoan.ImageOffset = new System.Drawing.Point(70, -40);
             this.btnTaiKhoan.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnTaiKhoan.Location = new System.Drawing.Point(6, 780);
+            this.btnTaiKhoan.Location = new System.Drawing.Point(2, 660);
             this.btnTaiKhoan.Margin = new System.Windows.Forms.Padding(2);
             this.btnTaiKhoan.Name = "btnTaiKhoan";
-            this.btnTaiKhoan.Size = new System.Drawing.Size(180, 192);
+            this.btnTaiKhoan.Size = new System.Drawing.Size(150, 80);
             this.btnTaiKhoan.TabIndex = 19;
             this.btnTaiKhoan.Text = "Quản lý tài khoản";
             this.btnTaiKhoan.TextOffset = new System.Drawing.Point(5, 0);
@@ -186,21 +183,21 @@
             this.btnReport.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnReport.FillColor = System.Drawing.Color.Empty;
             this.btnReport.FillColor2 = System.Drawing.Color.Empty;
-            this.btnReport.Font = new System.Drawing.Font("SVN-Gilroy", 9.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReport.ForeColor = System.Drawing.Color.White;
-            this.btnReport.HoverState.Font = new System.Drawing.Font("SVN-Gilroy SemiBold", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReport.HoverState.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReport.HoverState.ForeColor = System.Drawing.Color.White;
             this.btnReport.Image = global::CoffeeManagementSystem.Properties.Resources.BaoCao;
             this.btnReport.ImageOffset = new System.Drawing.Point(0, -15);
             this.btnReport.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnReport.Location = new System.Drawing.Point(2, 680);
+            this.btnReport.Location = new System.Drawing.Point(0, 566);
             this.btnReport.Margin = new System.Windows.Forms.Padding(2);
             this.btnReport.Name = "btnReport";
-            this.btnReport.Size = new System.Drawing.Size(193, 96);
+            this.btnReport.Size = new System.Drawing.Size(161, 80);
             this.btnReport.TabIndex = 16;
             this.btnReport.Text = "Báo Cáo";
             this.btnReport.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnReport.TextOffset = new System.Drawing.Point(35, 10);
+            this.btnReport.TextOffset = new System.Drawing.Point(24, 10);
             this.btnReport.Click += new System.EventHandler(this.btnReport_Click);
             // 
             // btnTrangChu
@@ -215,17 +212,17 @@
             this.btnTrangChu.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnTrangChu.FillColor = System.Drawing.Color.Empty;
             this.btnTrangChu.FillColor2 = System.Drawing.Color.Empty;
-            this.btnTrangChu.Font = new System.Drawing.Font("SVN-Gilroy", 9.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTrangChu.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTrangChu.ForeColor = System.Drawing.Color.White;
-            this.btnTrangChu.HoverState.Font = new System.Drawing.Font("SVN-Gilroy SemiBold", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTrangChu.HoverState.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTrangChu.HoverState.ForeColor = System.Drawing.Color.White;
             this.btnTrangChu.Image = global::CoffeeManagementSystem.Properties.Resources.TrangChu;
-            this.btnTrangChu.ImageOffset = new System.Drawing.Point(5, -25);
+            this.btnTrangChu.ImageOffset = new System.Drawing.Point(5, -15);
             this.btnTrangChu.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnTrangChu.Location = new System.Drawing.Point(6, 238);
+            this.btnTrangChu.Location = new System.Drawing.Point(0, 198);
             this.btnTrangChu.Margin = new System.Windows.Forms.Padding(0);
             this.btnTrangChu.Name = "btnTrangChu";
-            this.btnTrangChu.Size = new System.Drawing.Size(193, 95);
+            this.btnTrangChu.Size = new System.Drawing.Size(161, 79);
             this.btnTrangChu.TabIndex = 10;
             this.btnTrangChu.Text = "Trang Chủ";
             this.btnTrangChu.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -244,17 +241,17 @@
             this.btnKhachHang.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnKhachHang.FillColor = System.Drawing.Color.Empty;
             this.btnKhachHang.FillColor2 = System.Drawing.Color.Empty;
-            this.btnKhachHang.Font = new System.Drawing.Font("SVN-Gilroy", 9.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnKhachHang.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnKhachHang.ForeColor = System.Drawing.Color.White;
-            this.btnKhachHang.HoverState.Font = new System.Drawing.Font("SVN-Gilroy SemiBold", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnKhachHang.HoverState.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnKhachHang.HoverState.ForeColor = System.Drawing.Color.White;
             this.btnKhachHang.Image = global::CoffeeManagementSystem.Properties.Resources.KhachHang;
             this.btnKhachHang.ImageOffset = new System.Drawing.Point(3, -15);
             this.btnKhachHang.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnKhachHang.Location = new System.Drawing.Point(0, 345);
+            this.btnKhachHang.Location = new System.Drawing.Point(-2, 289);
             this.btnKhachHang.Margin = new System.Windows.Forms.Padding(2);
             this.btnKhachHang.Name = "btnKhachHang";
-            this.btnKhachHang.Size = new System.Drawing.Size(196, 96);
+            this.btnKhachHang.Size = new System.Drawing.Size(163, 80);
             this.btnKhachHang.TabIndex = 11;
             this.btnKhachHang.Text = "Khách Hàng";
             this.btnKhachHang.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -265,11 +262,11 @@
             // 
             this.guna2CirclePictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("guna2CirclePictureBox1.Image")));
             this.guna2CirclePictureBox1.ImageRotate = 0F;
-            this.guna2CirclePictureBox1.Location = new System.Drawing.Point(74, 22);
+            this.guna2CirclePictureBox1.Location = new System.Drawing.Point(41, 18);
             this.guna2CirclePictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.guna2CirclePictureBox1.Name = "guna2CirclePictureBox1";
             this.guna2CirclePictureBox1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.guna2CirclePictureBox1.Size = new System.Drawing.Size(97, 97);
+            this.guna2CirclePictureBox1.Size = new System.Drawing.Size(81, 81);
             this.guna2CirclePictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.guna2CirclePictureBox1.TabIndex = 13;
             this.guna2CirclePictureBox1.TabStop = false;
@@ -284,21 +281,21 @@
             this.btnEmployer.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnEmployer.FillColor = System.Drawing.Color.Empty;
             this.btnEmployer.FillColor2 = System.Drawing.Color.Empty;
-            this.btnEmployer.Font = new System.Drawing.Font("SVN-Gilroy", 9.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEmployer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEmployer.ForeColor = System.Drawing.Color.White;
-            this.btnEmployer.HoverState.Font = new System.Drawing.Font("SVN-Gilroy SemiBold", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEmployer.HoverState.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEmployer.HoverState.ForeColor = System.Drawing.Color.White;
             this.btnEmployer.Image = global::CoffeeManagementSystem.Properties.Resources.NhanVien;
             this.btnEmployer.ImageOffset = new System.Drawing.Point(3, -15);
             this.btnEmployer.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnEmployer.Location = new System.Drawing.Point(2, 461);
+            this.btnEmployer.Location = new System.Drawing.Point(-2, 383);
             this.btnEmployer.Margin = new System.Windows.Forms.Padding(2);
             this.btnEmployer.Name = "btnEmployer";
-            this.btnEmployer.Size = new System.Drawing.Size(196, 86);
+            this.btnEmployer.Size = new System.Drawing.Size(163, 72);
             this.btnEmployer.TabIndex = 14;
             this.btnEmployer.Text = "Nhân Viên";
             this.btnEmployer.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnEmployer.TextOffset = new System.Drawing.Point(32, 10);
+            this.btnEmployer.TextOffset = new System.Drawing.Point(22, 10);
             this.btnEmployer.Click += new System.EventHandler(this.btnEmployer_Click);
             // 
             // btnMenu
@@ -310,21 +307,21 @@
             this.btnMenu.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnMenu.FillColor = System.Drawing.Color.Empty;
             this.btnMenu.FillColor2 = System.Drawing.Color.Empty;
-            this.btnMenu.Font = new System.Drawing.Font("SVN-Gilroy", 9.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMenu.ForeColor = System.Drawing.Color.White;
-            this.btnMenu.HoverState.Font = new System.Drawing.Font("SVN-Gilroy SemiBold", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMenu.HoverState.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMenu.HoverState.ForeColor = System.Drawing.Color.White;
             this.btnMenu.Image = global::CoffeeManagementSystem.Properties.Resources.DoUong;
             this.btnMenu.ImageOffset = new System.Drawing.Point(0, -15);
             this.btnMenu.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnMenu.Location = new System.Drawing.Point(2, 574);
+            this.btnMenu.Location = new System.Drawing.Point(0, 478);
             this.btnMenu.Margin = new System.Windows.Forms.Padding(2);
             this.btnMenu.Name = "btnMenu";
-            this.btnMenu.Size = new System.Drawing.Size(196, 89);
+            this.btnMenu.Size = new System.Drawing.Size(163, 74);
             this.btnMenu.TabIndex = 13;
             this.btnMenu.Text = "Đồ uống";
             this.btnMenu.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnMenu.TextOffset = new System.Drawing.Point(40, 10);
+            this.btnMenu.TextOffset = new System.Drawing.Point(23, 10);
             this.btnMenu.Click += new System.EventHandler(this.btnMenu_Click);
             // 
             // pnlTitleBar
@@ -337,19 +334,18 @@
             this.pnlTitleBar.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlTitleBar.FillColor = System.Drawing.Color.SeaShell;
             this.pnlTitleBar.Location = new System.Drawing.Point(0, 0);
-            this.pnlTitleBar.Margin = new System.Windows.Forms.Padding(5);
+            this.pnlTitleBar.Margin = new System.Windows.Forms.Padding(4);
             this.pnlTitleBar.Name = "pnlTitleBar";
-            this.pnlTitleBar.Size = new System.Drawing.Size(1942, 36);
+            this.pnlTitleBar.Size = new System.Drawing.Size(1618, 30);
             this.pnlTitleBar.TabIndex = 24;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(14, 6);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(12, 5);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(282, 25);
+            this.label1.Size = new System.Drawing.Size(216, 20);
             this.label1.TabIndex = 6;
             this.label1.Text = "Ứng dụng quản lý quán cafe";
             // 
@@ -362,10 +358,10 @@
             this.guna2ControlBox3.HoverState.FillColor = System.Drawing.Color.DimGray;
             this.guna2ControlBox3.HoverState.IconColor = System.Drawing.Color.White;
             this.guna2ControlBox3.IconColor = System.Drawing.Color.White;
-            this.guna2ControlBox3.Location = new System.Drawing.Point(1816, 0);
-            this.guna2ControlBox3.Margin = new System.Windows.Forms.Padding(5);
+            this.guna2ControlBox3.Location = new System.Drawing.Point(1900, 0);
+            this.guna2ControlBox3.Margin = new System.Windows.Forms.Padding(4);
             this.guna2ControlBox3.Name = "guna2ControlBox3";
-            this.guna2ControlBox3.Size = new System.Drawing.Size(42, 36);
+            this.guna2ControlBox3.Size = new System.Drawing.Size(35, 30);
             this.guna2ControlBox3.TabIndex = 5;
             // 
             // guna2ControlBox2
@@ -377,10 +373,10 @@
             this.guna2ControlBox2.HoverState.FillColor = System.Drawing.Color.DimGray;
             this.guna2ControlBox2.HoverState.IconColor = System.Drawing.Color.White;
             this.guna2ControlBox2.IconColor = System.Drawing.Color.White;
-            this.guna2ControlBox2.Location = new System.Drawing.Point(1858, 0);
-            this.guna2ControlBox2.Margin = new System.Windows.Forms.Padding(5);
+            this.guna2ControlBox2.Location = new System.Drawing.Point(1942, 0);
+            this.guna2ControlBox2.Margin = new System.Windows.Forms.Padding(4);
             this.guna2ControlBox2.Name = "guna2ControlBox2";
-            this.guna2ControlBox2.Size = new System.Drawing.Size(42, 36);
+            this.guna2ControlBox2.Size = new System.Drawing.Size(35, 30);
             this.guna2ControlBox2.TabIndex = 4;
             // 
             // guna2ControlBox1
@@ -390,10 +386,10 @@
             this.guna2ControlBox1.HoverState.FillColor = System.Drawing.Color.DimGray;
             this.guna2ControlBox1.HoverState.IconColor = System.Drawing.Color.White;
             this.guna2ControlBox1.IconColor = System.Drawing.Color.White;
-            this.guna2ControlBox1.Location = new System.Drawing.Point(1900, 0);
-            this.guna2ControlBox1.Margin = new System.Windows.Forms.Padding(5);
+            this.guna2ControlBox1.Location = new System.Drawing.Point(1984, 0);
+            this.guna2ControlBox1.Margin = new System.Windows.Forms.Padding(4);
             this.guna2ControlBox1.Name = "guna2ControlBox1";
-            this.guna2ControlBox1.Size = new System.Drawing.Size(42, 36);
+            this.guna2ControlBox1.Size = new System.Drawing.Size(35, 30);
             this.guna2ControlBox1.TabIndex = 3;
             // 
             // guna2ShadowForm1
@@ -403,15 +399,15 @@
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(144F, 144F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(1942, 1093);
+            this.ClientSize = new System.Drawing.Size(1618, 911);
             this.Controls.Add(this.splitContainerNavBar);
             this.Controls.Add(this.pnlTitleBar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.MinimumSize = new System.Drawing.Size(878, 542);
+            this.MinimumSize = new System.Drawing.Size(732, 452);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Coffee Management System";

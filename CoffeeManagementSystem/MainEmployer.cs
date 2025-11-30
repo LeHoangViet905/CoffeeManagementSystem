@@ -118,11 +118,5 @@ namespace CoffeeManagementSystem
 
             LoadFormCon(frm);
         }
-
-        private void btnTrangChu_Click(object sender, EventArgs e)
-        {
-            MainForm.PlayClickSound();
-            LoadFormCon(new DashboardForm());
-        }
     }
 }
