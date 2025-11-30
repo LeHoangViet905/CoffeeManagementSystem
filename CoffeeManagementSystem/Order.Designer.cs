@@ -83,8 +83,6 @@
             this.colDecrease = new System.Windows.Forms.DataGridViewButtonColumn();
             this.colCancel = new System.Windows.Forms.DataGridViewButtonColumn();
             this.colNote = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colParentID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelSidebar.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrder)).BeginInit();
@@ -258,6 +256,7 @@
             this.dgvOrder.AllowUserToAddRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
             this.dgvOrder.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvOrder.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvOrder.BackgroundColor = System.Drawing.Color.FloralWhite;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
@@ -278,9 +277,7 @@
             this.colTotal,
             this.colDecrease,
             this.colCancel,
-            this.colNote,
-            this.colType,
-            this.colParentID});
+            this.colNote});
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI Variable Display", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -754,22 +751,6 @@
             this.colNote.ReadOnly = true;
             this.colNote.Visible = false;
             // 
-            // colType
-            // 
-            this.colType.HeaderText = "Loại";
-            this.colType.MinimumWidth = 6;
-            this.colType.Name = "colType";
-            this.colType.ReadOnly = true;
-            this.colType.Visible = false;
-            // 
-            // colParentID
-            // 
-            this.colParentID.HeaderText = "Mã cha";
-            this.colParentID.MinimumWidth = 6;
-            this.colParentID.Name = "colParentID";
-            this.colParentID.ReadOnly = true;
-            this.colParentID.Visible = false;
-            // 
             // OrderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -857,7 +838,5 @@
         private System.Windows.Forms.DataGridViewButtonColumn colDecrease;
         private System.Windows.Forms.DataGridViewButtonColumn colCancel;
         private System.Windows.Forms.DataGridViewTextBoxColumn colNote;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colType;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colParentID;
     }
 }
