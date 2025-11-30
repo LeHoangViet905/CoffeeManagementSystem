@@ -99,7 +99,6 @@
             this.tabPage8.SuspendLayout();
             this.tabPage9.SuspendLayout();
             this.tabPage10.SuspendLayout();
-            this.colNote = new System.Windows.Forms.DataGridViewTextBoxColumn();
 
             this.SuspendLayout();
             // 
