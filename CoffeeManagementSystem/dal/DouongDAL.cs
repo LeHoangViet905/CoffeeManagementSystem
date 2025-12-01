@@ -4,24 +4,31 @@ using System.Data.SQLite;
 
 namespace CoffeeManagementSystem.DAL
 {
+    /// <summary>
+    /// Lớp truy xuất dữ liệu cho bảng Douong (đồ uống).
+    /// Kế thừa BaseDataAccess để dùng chung ConnectionString.
+    /// </summary>
     public class DouongDAL : BaseDataAccess
     {
+        // Chuỗi kết nối riêng (đang song song với ConnectionString của BaseDataAccess)
         private readonly string _connectionString = @"DataSource=QuanLyCaPheDatabase.db;Version=3;";
-        private GiadouongDAL giadouongDAL; // Khai báo đối tượng GiadouongDAL
+
+        // Đối tượng DAL cho bảng Giadouong để lấy giá mới nhất của từng đồ uống
+        private GiadouongDAL giadouongDAL;
 
         public DouongDAL() : base()
         {
-            giadouongDAL = new GiadouongDAL(); // Khởi tạo GiadouongDAL trong constructor
+            // Khởi tạo GiadouongDAL trong constructor
+            giadouongDAL = new GiadouongDAL();
         }
 
         // =====================================================
-        // PHƯƠNG THỨC LẤY DANH SÁCH ĐỒ UỐNG
+        // LẤY DANH SÁCH ĐỒ UỐNG
         // =====================================================
 
         /// <summary>
-        /// Lấy tất cả đồ uống từ CSDL và điền giá mới nhất cho từng đồ uống.
+        /// Lấy tất cả đồ uống từ CSDL và gán luôn giá hiện tại (CurrentGia) cho từng đồ uống.
         /// </summary>
-        /// <returns>Danh sách các đối tượng Douong.</returns>
         public List<Douong> GetAllDouongs()
         {
             List<Douong> douongs = new List<Douong>();
@@ -48,8 +55,8 @@ namespace CoffeeManagementSystem.DAL
                                     Hinhanh = reader["Hinhanh"] != DBNull.Value ? reader["Hinhanh"].ToString() : null
                                 };
 
-                                // Lấy giá mới nhất và gán vào thuộc tính CurrentGia
-                                // Sửa lỗi: Truy cập thuộc tính Giaban của đối tượng Giadouong và xử lý null
+                                // Gọi GiadouongDAL để lấy giá mới nhất → gán vào thuộc tính CurrentGia
+                                // Dùng toán tử ?./?? để xử lý trường hợp không có giá (trả về 0m)
                                 douong.CurrentGia = giadouongDAL.GetLatestGiaByMadouong(douong.Madouong)?.Giaban ?? 0m;
 
                                 douongs.Add(douong);
@@ -59,7 +66,7 @@ namespace CoffeeManagementSystem.DAL
                 }
                 catch (Exception ex)
                 {
-                    // ĐIỀU CHỈNH: Thay thế MessageBox.Show bằng cách ném lỗi để BLL xử lý
+                    // DAL không hiển thị MessageBox, ném lỗi lên BLL/UI xử lý
                     throw new Exception($"Lỗi DAL khi lấy tất cả đồ uống: {ex.Message}", ex);
                 }
             }
@@ -67,10 +74,9 @@ namespace CoffeeManagementSystem.DAL
         }
 
         /// <summary>
-        /// Tìm kiếm đồ uống theo tên hoặc mã.
+        /// Tìm kiếm đồ uống theo tên hoặc mã (LIKE, không phân biệt hoa/thường).
+        /// Đồng thời gán CurrentGia cho từng kết quả.
         /// </summary>
-        /// <param name="searchTerm">Từ khóa tìm kiếm.</param>
-        /// <returns>Danh sách các đối tượng Douong phù hợp.</returns>
         public List<Douong> SearchDouongs(string searchTerm)
         {
             List<Douong> douongs = new List<Douong>();
@@ -87,6 +93,7 @@ namespace CoffeeManagementSystem.DAL
 
                     using (SQLiteCommand command = new SQLiteCommand(selectSql, connection))
                     {
+                        // Tìm kiếm chứa từ khóa ( %term% )
                         command.Parameters.AddWithValue("@SearchTerm", "%" + searchTerm.ToLower() + "%");
 
                         using (SQLiteDataReader reader = command.ExecuteReader())
@@ -101,8 +108,8 @@ namespace CoffeeManagementSystem.DAL
                                     Mota = reader["Mota"] != DBNull.Value ? reader["Mota"].ToString() : null,
                                     Hinhanh = reader["Hinhanh"] != DBNull.Value ? reader["Hinhanh"].ToString() : null
                                 };
-                                // Lấy giá mới nhất và gán vào thuộc tính CurrentGia
-                                // Sửa lỗi: Truy cập thuộc tính Giaban của đối tượng Giadouong và xử lý null
+
+                                // Gán giá mới nhất cho đồ uống
                                 douong.CurrentGia = giadouongDAL.GetLatestGiaByMadouong(douong.Madouong)?.Giaban ?? 0m;
                                 douongs.Add(douong);
                             }
@@ -111,7 +118,6 @@ namespace CoffeeManagementSystem.DAL
                 }
                 catch (Exception ex)
                 {
-                    // ĐIỀU CHỈNH: Thay thế MessageBox.Show bằng cách ném lỗi để BLL xử lý
                     throw new Exception($"Lỗi DAL khi tìm kiếm đồ uống: {ex.Message}", ex);
                 }
             }
@@ -119,22 +125,24 @@ namespace CoffeeManagementSystem.DAL
         }
 
         /// <summary>
-        /// Lấy một đồ uống theo mã đồ uống.
+        /// Lấy thông tin chi tiết một đồ uống theo mã.
+        /// Gồm cả giá hiện tại (CurrentGia).
         /// </summary>
-        /// <param name="madouong">Mã đồ uống.</param>
-        /// <returns>Đối tượng Douong hoặc null nếu không tìm thấy.</returns>
         public Douong GetDouongById(string madouong)
         {
             Douong douong = null;
+
             using (SQLiteConnection connection = new SQLiteConnection(ConnectionString))
             {
                 try
                 {
                     connection.Open();
                     string selectSql = "SELECT Madouong, Tendouong, Maloai, Mota, Hinhanh FROM Douong WHERE Madouong = @Madouong";
+
                     using (SQLiteCommand command = new SQLiteCommand(selectSql, connection))
                     {
                         command.Parameters.AddWithValue("@Madouong", madouong);
+
                         using (SQLiteDataReader reader = command.ExecuteReader())
                         {
                             if (reader.Read())
@@ -147,8 +155,8 @@ namespace CoffeeManagementSystem.DAL
                                     Mota = reader["Mota"] != DBNull.Value ? reader["Mota"].ToString() : null,
                                     Hinhanh = reader["Hinhanh"] != DBNull.Value ? reader["Hinhanh"].ToString() : null
                                 };
-                                // Lấy giá mới nhất cho đồ uống cụ thể này
-                                // Sửa lỗi: Truy cập thuộc tính Giaban của đối tượng Giadouong và xử lý null
+
+                                // Gán giá hiện tại cho 1 đồ uống cụ thể
                                 douong.CurrentGia = giadouongDAL.GetLatestGiaByMadouong(douong.Madouong)?.Giaban ?? 0m;
                             }
                         }
@@ -156,7 +164,6 @@ namespace CoffeeManagementSystem.DAL
                 }
                 catch (Exception ex)
                 {
-                    // ĐIỀU CHỈNH: Thay thế MessageBox.Show bằng cách ném lỗi để BLL xử lý
                     throw new Exception($"Lỗi DAL khi lấy đồ uống theo ID: {ex.Message}", ex);
                 }
             }
@@ -164,13 +171,12 @@ namespace CoffeeManagementSystem.DAL
         }
 
         // =====================================================
-        // PHƯƠNG THỨC THÊM/CẬP NHẬT/XÓA ĐỒ UỐNG
+        // THÊM / CẬP NHẬT / XÓA ĐỒ UỐNG
         // =====================================================
 
         /// <summary>
-        /// Thêm một đồ uống mới vào CSDL.
+        /// Thêm một đồ uống mới vào bảng Douong.
         /// </summary>
-        /// <param name="douong">Đối tượng Douong cần thêm.</param>
         public void AddDouong(Douong douong)
         {
             using (SQLiteConnection connection = new SQLiteConnection(ConnectionString))
@@ -178,7 +184,10 @@ namespace CoffeeManagementSystem.DAL
                 try
                 {
                     connection.Open();
-                    string insertSql = "INSERT INTO Douong (Madouong, Tendouong, Maloai, Mota, Hinhanh) VALUES (@Madouong, @Tendouong, @Maloai, @Mota, @Hinhanh)";
+                    string insertSql = @"
+                        INSERT INTO Douong (Madouong, Tendouong, Maloai, Mota, Hinhanh) 
+                        VALUES (@Madouong, @Tendouong, @Maloai, @Mota, @Hinhanh)";
+
                     using (SQLiteCommand command = new SQLiteCommand(insertSql, connection))
                     {
                         command.Parameters.AddWithValue("@Madouong", douong.Madouong);
@@ -191,16 +200,14 @@ namespace CoffeeManagementSystem.DAL
                 }
                 catch (Exception ex)
                 {
-                    // ĐIỀU CHỈNH: Thay thế MessageBox.Show bằng cách ném lỗi để BLL xử lý
                     throw new Exception($"Lỗi DAL khi thêm đồ uống: {ex.Message}", ex);
                 }
             }
         }
 
         /// <summary>
-        /// Cập nhật thông tin đồ uống trong CSDL.
+        /// Cập nhật thông tin một đồ uống (không xử lý giá).
         /// </summary>
-        /// <param name="douong">Đối tượng Douong cần cập nhật.</param>
         public void UpdateDouong(Douong douong)
         {
             using (SQLiteConnection connection = new SQLiteConnection(ConnectionString))
@@ -208,7 +215,14 @@ namespace CoffeeManagementSystem.DAL
                 try
                 {
                     connection.Open();
-                    string updateSql = "UPDATE Douong SET Tendouong = @Tendouong, Maloai = @Maloai, Mota = @Mota, Hinhanh = @Hinhanh WHERE Madouong = @Madouong";
+                    string updateSql = @"
+                        UPDATE Douong 
+                        SET Tendouong = @Tendouong, 
+                            Maloai    = @Maloai, 
+                            Mota      = @Mota, 
+                            Hinhanh   = @Hinhanh 
+                        WHERE Madouong = @Madouong";
+
                     using (SQLiteCommand command = new SQLiteCommand(updateSql, connection))
                     {
                         command.Parameters.AddWithValue("@Tendouong", douong.Tendouong);
@@ -221,16 +235,15 @@ namespace CoffeeManagementSystem.DAL
                 }
                 catch (Exception ex)
                 {
-                    // ĐIỀU CHỈNH: Thay thế MessageBox.Show bằng cách ném lỗi để BLL xử lý
                     throw new Exception($"Lỗi DAL khi cập nhật đồ uống: {ex.Message}", ex);
                 }
             }
         }
 
         /// <summary>
-        /// Xóa một đồ uống khỏi CSDL.
+        /// Xóa một đồ uống theo mã.
+        /// (Có thể cần xóa/cập nhật các bản ghi giá ở bảng Giadouong trước, tùy nghiệp vụ.)
         /// </summary>
-        /// <param name="madouong">Mã đồ uống cần xóa.</param>
         public void DeleteDouong(string madouong)
         {
             using (SQLiteConnection connection = new SQLiteConnection(ConnectionString))
@@ -238,7 +251,7 @@ namespace CoffeeManagementSystem.DAL
                 try
                 {
                     connection.Open();
-                    // Lưu ý: Có thể cần thêm logic xóa các giá liên quan trong bảng Giadouong trước nếu cần
+
                     string deleteSql = "DELETE FROM Douong WHERE Madouong = @Madouong";
                     using (SQLiteCommand command = new SQLiteCommand(deleteSql, connection))
                     {
@@ -248,14 +261,23 @@ namespace CoffeeManagementSystem.DAL
                 }
                 catch (Exception ex)
                 {
-                    // ĐIỀU CHỈNH: Thay thế MessageBox.Show bằng cách ném lỗi để BLL xử lý
                     throw new Exception($"Lỗi DAL khi xóa đồ uống: {ex.Message}", ex);
                 }
             }
         }
+
+        // =====================================================
+        // HỖ TRỢ SINH MÃ / IMPORT DANH SÁCH ĐỒ UỐNG
+        // =====================================================
+
+        /// <summary>
+        /// Lấy toàn bộ mã đồ uống (Madouong) từ CSDL.
+        /// Dùng cho sinh mã tự động / kiểm tra trùng / import.
+        /// </summary>
         public List<string> GetAllMaDU()
         {
             List<string> maList = new List<string>();
+
             using (var conn = new SQLiteConnection(_connectionString))
             {
                 conn.Open();
@@ -268,8 +290,16 @@ namespace CoffeeManagementSystem.DAL
                     }
                 }
             }
+
             return maList;
         }
+
+        /// <summary>
+        /// Import nhiều đồ uống:
+        /// - Nếu Madouong đã tồn tại → UPDATE
+        /// - Nếu chưa tồn tại → INSERT
+        /// Thực hiện trong transaction để đảm bảo toàn vẹn.
+        /// </summary>
         public void ImportDouongs(List<Douong> douongs)
         {
             using (SQLiteConnection connection = new SQLiteConnection(ConnectionString))
@@ -281,7 +311,7 @@ namespace CoffeeManagementSystem.DAL
                     {
                         foreach (var d in douongs)
                         {
-                            // Kiểm tra xem đã tồn tại chưa
+                            // 1. Kiểm tra đồ uống đã tồn tại theo Madouong hay chưa
                             string checkSql = "SELECT COUNT(1) FROM Douong WHERE Madouong = @Madouong";
                             using (var cmdCheck = new SQLiteCommand(checkSql, connection, transaction))
                             {
@@ -290,8 +320,15 @@ namespace CoffeeManagementSystem.DAL
 
                                 if (count > 0)
                                 {
-                                    // Update nếu tồn tại
-                                    string updateSql = "UPDATE Douong SET Tendouong=@Tendouong, Maloai=@Maloai, Mota=@Mota, Hinhanh=@Hinhanh WHERE Madouong=@Madouong";
+                                    // 2. Nếu đã tồn tại → cập nhật thông tin
+                                    string updateSql = @"
+                                        UPDATE Douong 
+                                        SET Tendouong = @Tendouong, 
+                                            Maloai    = @Maloai, 
+                                            Mota      = @Mota, 
+                                            Hinhanh   = @Hinhanh 
+                                        WHERE Madouong = @Madouong";
+
                                     using (var cmdUpdate = new SQLiteCommand(updateSql, connection, transaction))
                                     {
                                         cmdUpdate.Parameters.AddWithValue("@Tendouong", d.Tendouong);
@@ -304,8 +341,11 @@ namespace CoffeeManagementSystem.DAL
                                 }
                                 else
                                 {
-                                    // Insert nếu chưa tồn tại
-                                    string insertSql = "INSERT INTO Douong (Madouong, Tendouong, Maloai, Mota, Hinhanh) VALUES (@Madouong, @Tendouong, @Maloai, @Mota, @Hinhanh)";
+                                    // 3. Nếu chưa tồn tại → chèn mới
+                                    string insertSql = @"
+                                        INSERT INTO Douong (Madouong, Tendouong, Maloai, Mota, Hinhanh) 
+                                        VALUES (@Madouong, @Tendouong, @Maloai, @Mota, @Hinhanh)";
+
                                     using (var cmdInsert = new SQLiteCommand(insertSql, connection, transaction))
                                     {
                                         cmdInsert.Parameters.AddWithValue("@Madouong", d.Madouong);
@@ -319,15 +359,16 @@ namespace CoffeeManagementSystem.DAL
                             }
                         }
 
+                        // Commit nếu mọi thứ OK
                         transaction.Commit();
                     }
                     catch (Exception ex)
                     {
+                        // Có lỗi → rollback và ném ngoại lệ
                         transaction.Rollback();
                         throw new Exception("Lỗi DAL khi import nhiều đồ uống: " + ex.Message, ex);
                     }
                 }
-
             }
         }
     }

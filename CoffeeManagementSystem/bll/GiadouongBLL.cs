@@ -1,9 +1,13 @@
-﻿using CoffeeManagementSystem.DAL; // Để gọi các phương thức DAL
+﻿using CoffeeManagementSystem.DAL; // Để gọi các phương thức làm việc với CSDL ở tầng DAL
 using System;
 using System.Collections.Generic;
 
 namespace CoffeeManagementSystem.BLL
 {
+    /// <summary>
+    /// Lớp nghiệp vụ cho bảng Giadouong.
+    /// Trung gian giữa UI/BLL khác và GiadouongDAL.
+    /// </summary>
     public class GiadouongBLL
     {
         private GiadouongDAL _giadouongDAL;
@@ -22,18 +26,18 @@ namespace CoffeeManagementSystem.BLL
         {
             try
             {
-                // Logic nghiệp vụ (nếu có) có thể được thêm ở đây trước hoặc sau khi gọi DAL.
+                // Có thể bổ sung thêm logic nghiệp vụ tại đây nếu cần
                 return _giadouongDAL.GetAllGiadouongs();
             }
             catch (Exception ex)
             {
-                // Bắt lỗi từ DAL và ném lại một lỗi nghiệp vụ/tầng BLL cụ thể hơn
+                // Bắt lỗi từ DAL và ném lại lỗi ở tầng BLL với thông điệp rõ ràng hơn
                 throw new InvalidOperationException($"Lỗi BLL khi lấy tất cả giá đồ uống: {ex.Message}", ex);
             }
         }
 
         /// <summary>
-        /// Lấy giá mới nhất cho một đồ uống cụ thể.
+        /// Lấy bản ghi giá mới nhất cho một đồ uống.
         /// </summary>
         /// <param name="madouong">Mã đồ uống.</param>
         /// <returns>Đối tượng Giadouong có giá mới nhất, hoặc null nếu không tìm thấy.</returns>
@@ -52,19 +56,21 @@ namespace CoffeeManagementSystem.BLL
             }
             catch (Exception ex)
             {
-                throw new InvalidOperationException($"Lỗi BLL khi lấy giá mới nhất cho đồ uống '{madouong}': {ex.Message}", ex);
+                throw new InvalidOperationException(
+                    $"Lỗi BLL khi lấy giá mới nhất cho đồ uống '{madouong}': {ex.Message}", ex);
             }
         }
 
         /// <summary>
         /// Thêm một bản ghi giá đồ uống mới.
+        /// Thực hiện kiểm tra dữ liệu trước khi gọi DAL.
         /// </summary>
         /// <param name="giadouong">Đối tượng Giadouong cần thêm.</param>
         /// <exception cref="ArgumentException">Ném ra nếu đối tượng Giadouong không hợp lệ.</exception>
         /// <exception cref="InvalidOperationException">Ném ra nếu có lỗi nghiệp vụ hoặc truy vấn.</exception>
         public void AddGiadouong(Giadouong giadouong)
         {
-            // Logic nghiệp vụ: Kiểm tra tính hợp lệ của dữ liệu trước khi gọi DAL
+            // Kiểm tra tính hợp lệ của dữ liệu đầu vào
             if (giadouong == null)
             {
                 throw new ArgumentNullException(nameof(giadouong), "Đối tượng giá đồ uống không được null.");
@@ -81,7 +87,7 @@ namespace CoffeeManagementSystem.BLL
             {
                 throw new ArgumentException("Giá bán không được là số âm.", nameof(giadouong.Giaban));
             }
-            // Thêm các kiểm tra khác nếu cần (ví dụ: ngày áp dụng không trong tương lai xa, vv.)
+            // Có thể thêm các ràng buộc khác: ngày áp dụng, trùng Magia, v.v.
 
             try
             {
@@ -93,14 +99,12 @@ namespace CoffeeManagementSystem.BLL
             }
         }
 
-
-
         /// <summary>
         /// Lấy giá hiện tại (giá bán) của một đồ uống.
-        /// Phương thức này được AddDrinkForm gọi để hiển thị giá hiện tại.
+        /// Thường dùng để hiển thị giá ở Form (dựa trên bản ghi giá mới nhất).
         /// </summary>
         /// <param name="madouong">Mã đồ uống.</param>
-        /// <returns>Giá hiện tại của đồ uống, trả về 0 nếu không tìm thấy hoặc có lỗi.</returns>
+        /// <returns>Giá hiện tại của đồ uống, trả về 0 nếu không tìm thấy.</returns>
         public decimal GetCurrentGia(string madouong)
         {
             if (string.IsNullOrWhiteSpace(madouong))
@@ -110,37 +114,48 @@ namespace CoffeeManagementSystem.BLL
 
             try
             {
-                // Gọi phương thức GetLatestGiaByMadouong đã có sẵn để lấy đối tượng giá mới nhất
+                // Dùng lại hàm lấy bản ghi giá mới nhất
                 Giadouong latestGia = GetLatestGiaByMadouong(madouong);
-                return latestGia?.Giaban ?? 0; // Trả về Giaban nếu có, ngược lại là 0
+                return latestGia?.Giaban ?? 0; // Nếu null thì trả 0
             }
             catch (Exception ex)
             {
-                // Log lỗi và ném lại lỗi tầng BLL
-                throw new InvalidOperationException($"Lỗi BLL khi lấy giá hiện tại của đồ uống '{madouong}': {ex.Message}", ex);
+                throw new InvalidOperationException(
+                    $"Lỗi BLL khi lấy giá hiện tại của đồ uống '{madouong}': {ex.Message}", ex);
             }
         }
 
         /// <summary>
-        /// Helper method để tạo ID duy nhất cho Magia.
-        /// Phương thức này được Form hoặc BLL khác gọi khi cần tạo Magia mới.
+        /// Tạo ID mới cho bảng giá (Magia) theo timestamp.
+        /// Được gọi từ Form hoặc BLL khác khi cần tạo Magia.
         /// </summary>
         public string GenerateNewGiadouongId()
         {
-            // Logic tạo ID
+            // Ví dụ: GIA20251201123456789
             return "GIA" + DateTime.Now.ToString("yyyyMMddHHmmssfff");
         }
+
+        /// <summary>
+        /// Lấy danh sách giá hiện tại (mới nhất) của tất cả đồ uống.
+        /// Thích hợp cho báo cáo hoặc màn hình tổng hợp giá.
+        /// </summary>
+        /// <returns>Danh sách Giadouong đại diện cho giá hiện tại.</returns>
         public List<Giadouong> GetAllCurrentPrices()
         {
-            // BLL chỉ đơn giản là gọi hàm tương ứng của DAL
+            // BLL chỉ đơn giản là gọi hàm tương ứng ở DAL,
+            // có thể bổ sung logic nghiệp vụ (lọc, sắp xếp, ...) nếu cần.
             return _giadouongDAL.GetAllCurrentPrices();
         }
+
+        /// <summary>
+        /// Tìm kiếm toàn bộ đồ uống kèm giá (nếu DAL join sẵn).
+        /// </summary>
+        /// <param name="searchTerm">Từ khóa tìm kiếm (tên, mã,...).</param>
+        /// <returns>Danh sách Douong đã qua xử lý search.</returns>
         public List<Douong> SearchAllDouongs(string searchTerm)
         {
+            // Ở đây BLL ủy quyền hoàn toàn cho DAL xử lý truy vấn tìm kiếm.
             return _giadouongDAL.SearchAllDouongs(searchTerm);
         }
-
-        // Tùy chọn: Thêm các phương thức UpdateGiadouong và DeleteGiadouong nếu có nhu cầu nghiệp vụ.
-        // Tuy nhiên, thường thì giá sẽ được thêm mới chứ ít khi cập nhật hoặc xóa trực tiếp.
     }
 }

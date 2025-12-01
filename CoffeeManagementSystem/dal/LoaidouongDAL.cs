@@ -1,72 +1,79 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
-using System.Windows.Forms; // Only for MessageBox in error handling examples
-
-// Ensure using namespace contains your BaseDataAccess class
-// Ensure using namespace contains your Loaidouong Model class
 
 namespace CoffeeManagementSystem.DAL
 {
+    /// <summary>
+    /// Lớp truy cập dữ liệu (DAL) cho bảng Loaidouong.
+    /// Chỉ làm việc với CSDL, không liên quan đến UI.
+    /// </summary>
     public class LoaidouongDAL : BaseDataAccess
     {
+        // Chuỗi kết nối riêng, ngoài ra có thể dùng ConnectionString từ BaseDataAccess
         private readonly string _connectionString = @"DataSource=QuanLyCaPheDatabase.db;Version=3;";
+
         public LoaidouongDAL() : base() { }
 
         /// <summary>
-        /// Retrieves all drink categories from the database.
+        /// Lấy tất cả loại đồ uống từ CSDL.
         /// </summary>
-        /// <returns>A list of Loaidouong objects.</returns>
+        /// <returns>Danh sách Loaidouong.</returns>
         public List<Loaidouong> GetAllLoaidouongs()
         {
             List<Loaidouong> loaidouongs = new List<Loaidouong>();
+
             using (SQLiteConnection connection = new SQLiteConnection(ConnectionString))
             {
                 try
                 {
                     connection.Open();
                     string selectSql = "SELECT Maloai, Tenloai FROM Loaidouong";
+
                     using (SQLiteCommand command = new SQLiteCommand(selectSql, connection))
+                    using (SQLiteDataReader reader = command.ExecuteReader())
                     {
-                        using (SQLiteDataReader reader = command.ExecuteReader())
+                        while (reader.Read())
                         {
-                            while (reader.Read())
+                            Loaidouong loaidouong = new Loaidouong
                             {
-                                Loaidouong loaidouong = new Loaidouong
-                                {
-                                    Maloai = reader["Maloai"].ToString(),
-                                    Tenloai = reader["Tenloai"].ToString()
-                                };
-                                loaidouongs.Add(loaidouong);
-                            }
+                                Maloai = reader["Maloai"].ToString(),
+                                Tenloai = reader["Tenloai"].ToString()
+                            };
+                            loaidouongs.Add(loaidouong);
                         }
                     }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Lỗi khi lấy danh sách loại đồ uống: {ex.Message}", "Lỗi CSDL", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    // DAL không hiển thị MessageBox, ném lỗi để BLL/UI xử lý
+                    throw new Exception($"Lỗi DAL khi lấy danh sách loại đồ uống: {ex.Message}", ex);
                 }
             }
+
             return loaidouongs;
         }
 
         /// <summary>
-        /// Retrieves drink category information by ID.
+        /// Lấy thông tin một loại đồ uống theo mã.
         /// </summary>
-        /// <param name="maloai">The ID of the drink category to retrieve.</param>
-        /// <returns>A Loaidouong object if found, otherwise null.</returns>
+        /// <param name="maloai">Mã loại đồ uống.</param>
+        /// <returns>Đối tượng Loaidouong nếu tìm thấy, ngược lại null.</returns>
         public Loaidouong GetLoaidouongById(string maloai)
         {
             Loaidouong loaidouong = null;
+
             using (SQLiteConnection connection = new SQLiteConnection(ConnectionString))
             {
                 try
                 {
                     connection.Open();
                     string selectSql = "SELECT Maloai, Tenloai FROM Loaidouong WHERE Maloai = @Maloai";
+
                     using (SQLiteCommand command = new SQLiteCommand(selectSql, connection))
                     {
                         command.Parameters.AddWithValue("@Maloai", maloai);
+
                         using (SQLiteDataReader reader = command.ExecuteReader())
                         {
                             if (reader.Read())
@@ -82,16 +89,17 @@ namespace CoffeeManagementSystem.DAL
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Lỗi khi lấy loại đồ uống theo ID: {ex.Message}", "Lỗi CSDL", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    throw new Exception($"Lỗi DAL khi lấy loại đồ uống theo mã: {ex.Message}", ex);
                 }
             }
+
             return loaidouong;
         }
 
         /// <summary>
-        /// Adds a new drink category to the database.
+        /// Thêm một loại đồ uống mới vào CSDL.
         /// </summary>
-        /// <param name="loaidouong">The Loaidouong object to add.</param>
+        /// <param name="loaidouong">Đối tượng Loaidouong cần thêm.</param>
         public void AddLoaidouong(Loaidouong loaidouong)
         {
             using (SQLiteConnection connection = new SQLiteConnection(ConnectionString))
@@ -99,7 +107,10 @@ namespace CoffeeManagementSystem.DAL
                 try
                 {
                     connection.Open();
-                    string insertSql = "INSERT INTO Loaidouong (Maloai, Tenloai) VALUES (@Maloai, @Tenloai)";
+                    string insertSql = @"
+                        INSERT INTO Loaidouong (Maloai, Tenloai) 
+                        VALUES (@Maloai, @Tenloai)";
+
                     using (SQLiteCommand command = new SQLiteCommand(insertSql, connection))
                     {
                         command.Parameters.AddWithValue("@Maloai", loaidouong.Maloai);
@@ -109,15 +120,15 @@ namespace CoffeeManagementSystem.DAL
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Lỗi khi thêm loại đồ uống: {ex.Message}", "Lỗi CSDL", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    throw new Exception($"Lỗi DAL khi thêm loại đồ uống: {ex.Message}", ex);
                 }
             }
         }
 
         /// <summary>
-        /// Updates the information of a drink category.
+        /// Cập nhật thông tin một loại đồ uống.
         /// </summary>
-        /// <param name="loaidouong">The Loaidouong object containing updated information (Maloai is required).</param>
+        /// <param name="loaidouong">Đối tượng Loaidouong (Maloai bắt buộc, Tenloai là dữ liệu mới).</param>
         public void UpdateLoaidouong(Loaidouong loaidouong)
         {
             using (SQLiteConnection connection = new SQLiteConnection(ConnectionString))
@@ -129,6 +140,7 @@ namespace CoffeeManagementSystem.DAL
                         UPDATE Loaidouong
                         SET Tenloai = @Tenloai
                         WHERE Maloai = @Maloai";
+
                     using (SQLiteCommand command = new SQLiteCommand(updateSql, connection))
                     {
                         command.Parameters.AddWithValue("@Tenloai", loaidouong.Tenloai);
@@ -138,15 +150,15 @@ namespace CoffeeManagementSystem.DAL
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Lỗi khi cập nhật loại đồ uống: {ex.Message}", "Lỗi CSDL", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    throw new Exception($"Lỗi DAL khi cập nhật loại đồ uống: {ex.Message}", ex);
                 }
             }
         }
 
         /// <summary>
-        /// Deletes a drink category from the database.
+        /// Xóa một loại đồ uống khỏi CSDL.
         /// </summary>
-        /// <param name="maloai">The ID of the drink category to delete.</param>
+        /// <param name="maloai">Mã loại đồ uống cần xóa.</param>
         public void DeleteLoaidouong(string maloai)
         {
             using (SQLiteConnection connection = new SQLiteConnection(ConnectionString))
@@ -155,6 +167,7 @@ namespace CoffeeManagementSystem.DAL
                 {
                     connection.Open();
                     string deleteSql = "DELETE FROM Loaidouong WHERE Maloai = @Maloai";
+
                     using (SQLiteCommand command = new SQLiteCommand(deleteSql, connection))
                     {
                         command.Parameters.AddWithValue("@Maloai", maloai);
@@ -163,19 +176,21 @@ namespace CoffeeManagementSystem.DAL
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Lỗi khi xóa loại đồ uống: {ex.Message}", "Lỗi CSDL", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    throw new Exception($"Lỗi DAL khi xóa loại đồ uống: {ex.Message}", ex);
                 }
             }
         }
 
         /// <summary>
-        /// Searches for drink categories based on a keyword in Maloai and Tenloai columns.
+        /// Tìm kiếm loại đồ uống theo từ khóa (trên Maloai hoặc Tenloai).
         /// </summary>
-        /// <param name="searchTerm">The search keyword.</param>
-        /// <returns>A list of matching Loaidouong objects.</returns>
+        /// <param name="searchTerm">Từ khóa tìm kiếm.</param>
+        /// <returns>Danh sách Loaidouong phù hợp.</returns>
         public List<Loaidouong> SearchLoaidouongs(string searchTerm)
         {
             List<Loaidouong> loaidouongs = new List<Loaidouong>();
+
+            // Nếu chuỗi tìm kiếm trống → trả list rỗng (BLL có thể xử lý thành lấy all nếu muốn)
             if (string.IsNullOrWhiteSpace(searchTerm))
             {
                 return loaidouongs;
@@ -186,14 +201,17 @@ namespace CoffeeManagementSystem.DAL
                 try
                 {
                     connection.Open();
+
                     string selectSql = @"
                         SELECT Maloai, Tenloai
                         FROM Loaidouong
                         WHERE LOWER(Maloai) LIKE @SearchTerm
                            OR LOWER(Tenloai) LIKE @SearchTerm";
+
                     using (SQLiteCommand command = new SQLiteCommand(selectSql, connection))
                     {
                         command.Parameters.AddWithValue("@SearchTerm", "%" + searchTerm.ToLower() + "%");
+
                         using (SQLiteDataReader reader = command.ExecuteReader())
                         {
                             while (reader.Read())
@@ -210,11 +228,19 @@ namespace CoffeeManagementSystem.DAL
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Lỗi khi tìm kiếm loại đồ uống: {ex.Message}", "Lỗi CSDL", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    throw new Exception($"Lỗi DAL khi tìm kiếm loại đồ uống: {ex.Message}", ex);
                 }
             }
+
             return loaidouongs;
         }
+
+        /// <summary>
+        /// Import nhiều loại đồ uống:
+        /// - Nếu Maloai đã tồn tại → cập nhật Tenloai.
+        /// - Nếu chưa tồn tại → thêm mới.
+        /// Thực hiện trong transaction để đảm bảo toàn vẹn dữ liệu.
+        /// </summary>
         public void ImportLoaidouongs(List<Loaidouong> loaidouongs)
         {
             using (SQLiteConnection connection = new SQLiteConnection(ConnectionString))
@@ -226,7 +252,7 @@ namespace CoffeeManagementSystem.DAL
                     {
                         foreach (var a in loaidouongs)
                         {
-                            // Kiểm tra xem đã tồn tại chưa
+                            // Kiểm tra đã tồn tại Maloai hay chưa
                             string checkSql = "SELECT COUNT(1) FROM Loaidouong WHERE Maloai = @Maloai";
                             using (var cmdCheck = new SQLiteCommand(checkSql, connection, transaction))
                             {
@@ -235,25 +261,30 @@ namespace CoffeeManagementSystem.DAL
 
                                 if (count > 0)
                                 {
-                                    // Update nếu tồn tại
-                                    string updateSql = "UPDATE Loaidouong SET Tenloai=@Tenloai WHERE Maloai=@Maloai";
+                                    // Đã tồn tại → update Tenloai
+                                    string updateSql = @"
+                                        UPDATE Loaidouong 
+                                        SET Tenloai = @Tenloai 
+                                        WHERE Maloai = @Maloai";
+
                                     using (var cmdUpdate = new SQLiteCommand(updateSql, connection, transaction))
                                     {
                                         cmdUpdate.Parameters.AddWithValue("@Tenloai", a.Tenloai);
-
                                         cmdUpdate.Parameters.AddWithValue("@Maloai", a.Maloai);
                                         cmdUpdate.ExecuteNonQuery();
                                     }
                                 }
                                 else
                                 {
-                                    // Insert nếu chưa tồn tại
-                                    string insertSql = "INSERT INTO Loaidouong (Maloai, Tenloai) VALUES (@Maloai, @Tenloai)";
+                                    // Chưa tồn tại → insert mới
+                                    string insertSql = @"
+                                        INSERT INTO Loaidouong (Maloai, Tenloai) 
+                                        VALUES (@Maloai, @Tenloai)";
+
                                     using (var cmdInsert = new SQLiteCommand(insertSql, connection, transaction))
                                     {
-                                        cmdInsert.Parameters.AddWithValue("@Tenloai", a.Tenloai);
-
                                         cmdInsert.Parameters.AddWithValue("@Maloai", a.Maloai);
+                                        cmdInsert.Parameters.AddWithValue("@Tenloai", a.Tenloai);
                                         cmdInsert.ExecuteNonQuery();
                                     }
                                 }
@@ -270,13 +301,21 @@ namespace CoffeeManagementSystem.DAL
                 }
             }
         }
+
+        /// <summary>
+        /// Lấy tất cả mã loại đồ uống (Maloai) từ CSDL.
+        /// Thường dùng để sinh mã mới trên BLL.
+        /// </summary>
+        /// <returns>Danh sách chuỗi Maloai.</returns>
         public List<string> GetAllMaLD()
         {
             List<string> maList = new List<string>();
+
             using (var conn = new SQLiteConnection(_connectionString))
             {
                 conn.Open();
                 var cmd = new SQLiteCommand("SELECT Maloai FROM Loaidouong", conn);
+
                 using (var reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
@@ -285,7 +324,8 @@ namespace CoffeeManagementSystem.DAL
                     }
                 }
             }
+
             return maList;
         }
     }
-    }
+}

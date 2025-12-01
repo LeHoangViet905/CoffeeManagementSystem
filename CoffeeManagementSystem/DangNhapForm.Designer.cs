@@ -152,7 +152,6 @@
             this.txtTenTaiKhoan.ShadowDecoration.Enabled = true;
             this.txtTenTaiKhoan.Size = new System.Drawing.Size(333, 40);
             this.txtTenTaiKhoan.TabIndex = 20;
-            this.txtTenTaiKhoan.TextChanged += new System.EventHandler(this.txtTenTaiKhoan_TextChanged);
             // 
             // txtMatkhau
             // 

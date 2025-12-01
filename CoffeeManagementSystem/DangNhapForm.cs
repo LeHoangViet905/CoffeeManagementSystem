@@ -6,22 +6,18 @@ namespace CoffeeManagementSystem
 {
     public partial class DangNhapForm : Form
     {
-        private AuthBLL _authBLL; // Khai báo đối tượng BLL
+        private AuthBLL _authBLL; // Đối tượng xử lý nghiệp vụ đăng nhập (kiểm tra tài khoản)
 
         public DangNhapForm()
         {
-            //hello Việt
             InitializeComponent();
-            _authBLL = new AuthBLL(); // Khởi tạo BLL
+            _authBLL = new AuthBLL(); // Khởi tạo lớp nghiệp vụ
 
             // Gán sự kiện click cho nút Đăng nhập
+            // →Khi người dùng bấm nút sẽ thực thi hàm btnLogin_Click()
             this.btnDangNhap.Click += new EventHandler(this.btnLogin_Click);
 
-            // Tùy chọn: Xử lý sự kiện KeyDown trên TextBox mật khẩu để nhấn Enter cũng đăng nhập
-            //Sửa chỗ này nha
-            //this.txtMatkhau.KeyDown += new KeyEventHandler(this.txtMatkhau_KeyDown);
-
-            // Đặt PasswordChar mặc định khi khởi tạo
+            // Đặt ký tự hiển thị cho TextBox mật khẩu
             txtMatkhau.PasswordChar = '●';
         }
 
@@ -29,83 +25,84 @@ namespace CoffeeManagementSystem
         {
             if (e.KeyCode == Keys.Enter)
             {
-                btnLogin_Click(sender, e); //giả lập bấm nút Đăng nhập!
-                e.Handled = true; //Tránh việc Enter bị xử lý thêm ở chỗ khác.
-                e.SuppressKeyPress = true; //Không cho tiếng “ting” hoặc dấu xuống dòng xảy ra trong textbox khi Enter được bấm.
+                btnLogin_Click(sender, e);
+                e.Handled = true;
+                e.SuppressKeyPress = true;
             }
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            // Lấy thông tin từ giao diện người dùng
             string tendangnhap = txtTenTaiKhoan.Text.Trim();
             string matkhau = txtMatkhau.Text.Trim();
 
-
-            //Dùng try để bắt lỗi. Nếu có lỗi, chương trình không bị sập mà sẽ xử lý trong catch.
             try
             {
-                // Gọi BLL để xác thực người dùng
+                // Gọi BLL để xác thực tài khoản
+                // → Trả về đối tượng Taikhoan nếu hợp lệ, ngược lại trả về null
                 Taikhoan taiKhoan = _authBLL.AuthenticateUser(tendangnhap, matkhau);
-                //Kiểm tra xem kết quả có hợp lệ không.
+
                 if (taiKhoan != null)
                 {
-                    // Lấy tên hiển thị từ BLL
+                    // Lấy tên nhân viên để hiển thị lời chào
                     string tenNhanVienHienThi = _authBLL.GetEmployeeDisplayName(taiKhoan.Manhanvien, taiKhoan.Tendangnhap);
 
-                    // Đăng nhập thành công
-                    MessageBox.Show($"Đăng nhập thành công! Chào mừng {tenNhanVienHienThi} ({taiKhoan.Vaitro}).", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show($"Đăng nhập thành công! Chào mừng {tenNhanVienHienThi} ({taiKhoan.Vaitro}).",
+                                    "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    // Xác định vai trò và hiển thị Main Form tương ứng
-                    // SỬ DỤNG TRIM() VÀ EQUALS(..., StringComparison.OrdinalIgnoreCase) ĐỂ SO SÁNH VAI TRÒ LINH HOẠT HƠN
-                    //Trim(): xóa khoảng trắng dư
-                    //Equals(..., StringComparison.OrdinalIgnoreCase): so sánh không phân biệt chữ hoa thường
+                    // Điều hướng theo vai trò tài khoản
                     if (taiKhoan.Vaitro.Trim().Equals("Admin", StringComparison.OrdinalIgnoreCase))
                     {
+                        // Mở giao diện dành cho Admin
                         MainForm QuanLyForm = new MainForm(taiKhoan.Manhanvien, tenNhanVienHienThi);
                         QuanLyForm.Show();
-                        this.Hide();
+                        this.Hide(); // Ẩn form đăng nhập
                     }
                     else if (taiKhoan.Vaitro.Trim().Equals("NhanVien", StringComparison.OrdinalIgnoreCase))
                     {
+                        // Mở giao diện dành cho Nhân viên
                         MainEmployer NhanVienForm = new MainEmployer(taiKhoan.Manhanvien, tenNhanVienHienThi);
                         NhanVienForm.Show();
                         this.Hide();
                     }
                     else
                     {
-                        // Vai trò không được hỗ trợ, ngay cả sau khi đã xử lý khoảng trắng và chữ hoa/thường
-                        MessageBox.Show($"Vai trò '{taiKhoan.Vaitro}' không được hỗ trợ. Vui lòng liên hệ quản trị viên.", "Lỗi vai trò", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        // Vai trò không hợp lệ hoặc chưa được hỗ trợ
+                        MessageBox.Show($"Vai trò '{taiKhoan.Vaitro}' không được hỗ trợ.",
+                                        "Lỗi vai trò", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 else
                 {
-                    // Tài khoản không tồn tại hoặc sai mật khẩu (BLL đã trả về null)
-                    MessageBox.Show("Tên đăng nhập hoặc mật khẩu không đúng.", "Lỗi đăng nhập", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    // Sai tên đăng nhập hoặc mật khẩu
+                    MessageBox.Show("Tên đăng nhập hoặc mật khẩu không đúng.",
+                                    "Lỗi đăng nhập", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            catch (ArgumentException ex) // Bắt lỗi từ BLL nếu người dùng nhập thiếu
+            catch (ArgumentException ex)
             {
+                // Lỗi dữ liệu đầu vào (ví dụ: bỏ trống tài khoản hoặc mật khẩu)
                 MessageBox.Show(ex.Message, "Lỗi đăng nhập", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Đã xảy ra lỗi trong quá trình đăng nhập: {ex.Message}\nChi tiết: {ex.InnerException?.Message}", "Lỗi hệ thống", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // Các lỗi hệ thống khác
+                MessageBox.Show($"Đã xảy ra lỗi trong quá trình đăng nhập: {ex.Message}\nChi tiết: {ex.InnerException?.Message}",
+                                "Lỗi hệ thống", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void chkHienMatKhau_CheckedChanged(object sender, EventArgs e)
         {
+            // Khi tick vào checkbox → hiển thị mật khẩu, bỏ tick → ẩn mật khẩu
             txtMatkhau.PasswordChar = chkHienMatKhau.Checked ? '\0' : '●';
         }
 
         private void lblClose_Click(object sender, EventArgs e)
         {
+            // Đóng form đăng nhập
             this.Close();
-        }
-
-        private void txtTenTaiKhoan_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

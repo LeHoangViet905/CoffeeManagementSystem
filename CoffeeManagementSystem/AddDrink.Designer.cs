@@ -316,7 +316,7 @@
             this.btnXoa.Size = new System.Drawing.Size(140, 47);
             this.btnXoa.TabIndex = 111;
             this.btnXoa.Text = "Xóa ";
-            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click_1);
+            //this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click_1);
             // 
             // btnCapNhat
             // 
@@ -338,7 +338,6 @@
             this.btnCapNhat.Size = new System.Drawing.Size(140, 47);
             this.btnCapNhat.TabIndex = 110;
             this.btnCapNhat.Text = "Cập nhật ";
-            this.btnCapNhat.Click += new System.EventHandler(this.btnCapNhat_Click_2);
             // 
             // btnLuu
             // 
@@ -360,7 +359,6 @@
             this.btnLuu.Size = new System.Drawing.Size(140, 47);
             this.btnLuu.TabIndex = 109;
             this.btnLuu.Text = "Lưu ";
-            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click_2);
             // 
             // AddDrinkForm
             // 
@@ -392,7 +390,6 @@
             this.Name = "AddDrinkForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "AddDrink";
-            this.Load += new System.EventHandler(this.AddDrinkForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbHinhanh)).EndInit();

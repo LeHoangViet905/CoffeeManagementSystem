@@ -1,31 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
-// BỎ using System.Windows.Forms; ở DAL vì DAL không nên hiển thị MessageBox
+// KHÔNG dùng System.Windows.Forms trong DAL vì DAL không nên hiển thị MessageBox
 
-// Đảm bảo using namespace chứa lớp BaseDataAccess của bạn
-// Ví dụ: using CoffeeManagementSystem.DAL;
-// Giả định BaseDataAccess nằm trong cùng namespace hoặc đã được using ở nơi khác.
-
-// Đảm bảo using namespace chứa lớp Model Nhanvien của bạn
-
-namespace CoffeeManagementSystem.DAL // Đặt DAL trong một namespace con để tổ chức code tốt hơn
+namespace CoffeeManagementSystem.DAL
 {
-    public class NhanvienDAL : BaseDataAccess // Kế thừa từ lớp BaseDataAccess
+    /// <summary>
+    /// Lớp truy xuất dữ liệu cho bảng Nhanvien.
+    /// Kế thừa BaseDataAccess để dùng chung ConnectionString.
+    /// </summary>
+    public class NhanvienDAL : BaseDataAccess
     {
+        // Chuỗi kết nối riêng (đang song song với ConnectionString của BaseDataAccess)
         private readonly string _connectionString = @"DataSource=QuanLyCaPheDatabase.db;Version=3;";
-        public NhanvienDAL() : base() // Gọi constructor của lớp base để lấy ConnectionString
+
+        public NhanvienDAL() : base()
         {
         }
 
         // =====================================================
-        // PHƯƠNG THỨC LẤY DANH SÁCH NHÂN VIÊN
+        // LẤY DANH SÁCH NHÂN VIÊN
         // =====================================================
 
         /// <summary>
-        /// Lấy tất cả nhân viên từ CSDL.
+        /// Lấy toàn bộ nhân viên từ CSDL (không lọc).
         /// </summary>
-        /// <returns>Danh sách các đối tượng Nhanvien.</returns>
         public List<Nhanvien> GetAllNhanviens()
         {
             List<Nhanvien> nhanviens = new List<Nhanvien>();
@@ -50,39 +49,41 @@ namespace CoffeeManagementSystem.DAL // Đặt DAL trong một namespace con đ�
             }
             catch (Exception ex)
             {
-                // Thay vì MessageBox, ném lại ngoại lệ để BLL xử lý
+                // DAL không show MessageBox, ném lỗi cho BLL xử lý
                 throw new Exception("Lỗi DAL khi lấy danh sách nhân viên: " + ex.Message, ex);
             }
-            return nhanviens; // Trả về danh sách nhân viên
+            return nhanviens;
         }
 
         // =====================================================
-        // PHƯƠNG THỨC LẤY NHÂN VIÊN THEO ID
+        // LẤY NHÂN VIÊN THEO MÃ
         // =====================================================
 
         /// <summary>
-        /// Lấy thông tin nhân viên theo Mã nhân viên.
+        /// Lấy thông tin một nhân viên theo mã (Manhanvien).
         /// </summary>
-        /// <param name="manhanvien">Mã nhân viên cần lấy.</param>
-        /// <returns>Đối tượng Nhanvien nếu tìm thấy, ngược lại trả về null.</returns>
         public Nhanvien GetNhanvienById(string manhanvien)
         {
             Nhanvien nhanvien = null;
+
             using (SQLiteConnection connection = new SQLiteConnection(ConnectionString))
             {
                 try
                 {
                     connection.Open();
-                    string selectSql = "SELECT Manhanvien, Hoten, Ngaysinh, Gioitinh, Diachi, Sodienthoai, Email, Ngayvaolam FROM Nhanvien WHERE Manhanvien = @Manhanvien";
+                    string selectSql = @"
+                        SELECT Manhanvien, Hoten, Ngaysinh, Gioitinh, Diachi, Sodienthoai, Email, Ngayvaolam 
+                        FROM Nhanvien 
+                        WHERE Manhanvien = @Manhanvien";
 
                     using (SQLiteCommand command = new SQLiteCommand(selectSql, connection))
                     {
-                        // Sử dụng Parameter cho điều kiện WHERE
+                        // Tránh SQL Injection bằng parameter
                         command.Parameters.AddWithValue("@Manhanvien", manhanvien);
 
                         using (SQLiteDataReader reader = command.ExecuteReader())
                         {
-                            if (reader.Read()) // Đọc hàng đầu tiên (và duy nhất) nếu có
+                            if (reader.Read())
                             {
                                 nhanvien = MapDataReaderToNhanvien(reader);
                             }
@@ -91,23 +92,22 @@ namespace CoffeeManagementSystem.DAL // Đặt DAL trong một namespace con đ�
                 }
                 catch (Exception ex)
                 {
-                    // Thay vì MessageBox, ném lại ngoại lệ để BLL xử lý
                     throw new Exception("Lỗi DAL khi lấy nhân viên theo ID: " + ex.Message, ex);
                 }
             }
-            return nhanvien; // Trả về object Nhanvien hoặc null
+
+            return nhanvien; // Có thể null nếu không tìm thấy
         }
 
         // =====================================================
-        // PHƯƠNG THỨC THÊM NHÂN VIÊN MỚI
+        // THÊM NHÂN VIÊN MỚI
         // =====================================================
 
         /// <summary>
         /// Thêm một nhân viên mới vào CSDL.
+        /// Trả về true nếu thêm thành công.
         /// </summary>
-        /// <param name="nhanvien">Đối tượng Nhanvien cần thêm.</param>
-        /// <returns>True nếu thêm thành công, ngược lại False.</returns>
-        public bool AddNhanvien(Nhanvien nhanvien) // THAY ĐỔI TỪ VOID SANG BOOL
+        public bool AddNhanvien(Nhanvien nhanvien)
         {
             using (SQLiteConnection connection = new SQLiteConnection(ConnectionString))
             {
@@ -115,36 +115,36 @@ namespace CoffeeManagementSystem.DAL // Đặt DAL trong một namespace con đ�
                 {
                     connection.Open();
                     string insertSql = @"
-                        INSERT INTO Nhanvien (Manhanvien, Hoten, Ngaysinh, Gioitinh, Diachi, Sodienthoai, Email, Ngayvaolam)
-                        VALUES (@Manhanvien, @Hoten, @Ngaysinh, @Gioitinh, @Diachi, @Sodienthoai, @Email, @Ngayvaolam)";
+                        INSERT INTO Nhanvien 
+                            (Manhanvien, Hoten, Ngaysinh, Gioitinh, Diachi, Sodienthoai, Email, Ngayvaolam)
+                        VALUES 
+                            (@Manhanvien, @Hoten, @Ngaysinh, @Gioitinh, @Diachi, @Sodienthoai, @Email, @Ngayvaolam)";
 
                     using (SQLiteCommand command = new SQLiteCommand(insertSql, connection))
                     {
-                        // Sử dụng Parameters để chèn dữ liệu
-                        AddNhanvienParameters(command, nhanvien); // Dùng phương thức hỗ trợ chung
+                        // Dùng hàm chung để add parameter
+                        AddNhanvienParameters(command, nhanvien);
 
-                        int rowsAffected = command.ExecuteNonQuery(); // Thực thi lệnh INSERT
-                        return rowsAffected > 0; // Trả về true nếu có ít nhất 1 hàng bị ảnh hưởng
+                        int rowsAffected = command.ExecuteNonQuery();
+                        return rowsAffected > 0;
                     }
                 }
                 catch (Exception ex)
                 {
-                    // Thay vì MessageBox, ném lại ngoại lệ để BLL xử lý
                     throw new Exception("Lỗi DAL khi thêm nhân viên: " + ex.Message, ex);
                 }
             }
         }
 
         // =====================================================
-        // PHƯƠNG THỨC CẬP NHẬT THÔNG TIN NHÂN VIÊN
+        // CẬP NHẬT NHÂN VIÊN
         // =====================================================
 
         /// <summary>
-        /// Cập nhật thông tin của một nhân viên.
+        /// Cập nhật thông tin một nhân viên (dựa trên Manhanvien).
+        /// Trả về true nếu cập nhật thành công.
         /// </summary>
-        /// <param name="nhanvien">Đối tượng Nhanvien chứa thông tin cập nhật (cần có Manhanvien).</param>
-        /// <returns>True nếu cập nhật thành công, ngược lại False.</returns>
-        public bool UpdateNhanvien(Nhanvien nhanvien) // THAY ĐỔI TỪ VOID SANG BOOL
+        public bool UpdateNhanvien(Nhanvien nhanvien)
         {
             using (SQLiteConnection connection = new SQLiteConnection(ConnectionString))
             {
@@ -153,42 +153,40 @@ namespace CoffeeManagementSystem.DAL // Đặt DAL trong một namespace con đ�
                     connection.Open();
                     string updateSql = @"
                         UPDATE Nhanvien
-                        SET Hoten = @Hoten,
-                            Ngaysinh = @Ngaysinh,
-                            Gioitinh = @Gioitinh,
-                            Diachi = @Diachi,
+                        SET Hoten       = @Hoten,
+                            Ngaysinh    = @Ngaysinh,
+                            Gioitinh    = @Gioitinh,
+                            Diachi      = @Diachi,
                             Sodienthoai = @Sodienthoai,
-                            Email = @Email,
-                            Ngayvaolam = @Ngayvaolam
-                        WHERE Manhanvien = @Manhanvien"; // Cập nhật dựa trên khóa chính
+                            Email       = @Email,
+                            Ngayvaolam  = @Ngayvaolam
+                        WHERE Manhanvien = @Manhanvien";
 
                     using (SQLiteCommand command = new SQLiteCommand(updateSql, connection))
                     {
-                        // Sử dụng Parameters để cập nhật dữ liệu
-                        AddNhanvienParameters(command, nhanvien); // Dùng phương thức hỗ trợ chung
+                        // Dùng chung hàm set parameter
+                        AddNhanvienParameters(command, nhanvien);
 
-                        int rowsAffected = command.ExecuteNonQuery(); // Thực thi lệnh UPDATE
-                        return rowsAffected > 0; // Trả về true nếu có ít nhất 1 hàng bị ảnh hưởng
+                        int rowsAffected = command.ExecuteNonQuery();
+                        return rowsAffected > 0;
                     }
                 }
                 catch (Exception ex)
                 {
-                    // Thay vì MessageBox, ném lại ngoại lệ để BLL xử lý
                     throw new Exception("Lỗi DAL khi cập nhật nhân viên: " + ex.Message, ex);
                 }
             }
         }
 
         // =====================================================
-        // PHƯƠNG THỨC XÓA NHÂN VIÊN
+        // XÓA NHÂN VIÊN
         // =====================================================
 
         /// <summary>
-        /// Xóa một nhân viên khỏi CSDL.
+        /// Xóa nhân viên theo mã.
+        /// Trả về true nếu xóa thành công.
         /// </summary>
-        /// <param name="manhanvien">Mã nhân viên cần xóa.</param>
-        /// <returns>True nếu xóa thành công, ngược lại False.</returns>
-        public bool DeleteNhanvien(string manhanvien) // THAY ĐỔI TỪ VOID SANG BOOL
+        public bool DeleteNhanvien(string manhanvien)
         {
             using (SQLiteConnection connection = new SQLiteConnection(ConnectionString))
             {
@@ -199,35 +197,31 @@ namespace CoffeeManagementSystem.DAL // Đặt DAL trong một namespace con đ�
 
                     using (SQLiteCommand command = new SQLiteCommand(deleteSql, connection))
                     {
-                        // Sử dụng Parameter cho điều kiện WHERE
                         command.Parameters.AddWithValue("@Manhanvien", manhanvien);
 
-                        int rowsAffected = command.ExecuteNonQuery(); // Thực thi lệnh DELETE
-                        return rowsAffected > 0; // Trả về true nếu có ít nhất 1 hàng bị ảnh hưởng
+                        int rowsAffected = command.ExecuteNonQuery();
+                        return rowsAffected > 0;
                     }
                 }
                 catch (Exception ex)
                 {
-                    // Thay vì MessageBox, ném lại ngoại lệ để BLL xử lý
                     throw new Exception("Lỗi DAL khi xóa nhân viên: " + ex.Message, ex);
                 }
             }
         }
 
         // =====================================================
-        // PHƯƠNG THỨC TÌM KIẾM NHÂN VIÊN
+        // TÌM KIẾM NHÂN VIÊN
         // =====================================================
 
         /// <summary>
-        /// Tìm kiếm nhân viên dựa trên từ khóa trong các cột Manhanvien, Hoten, Sodienthoai, Email, Diachi.
+        /// Tìm kiếm nhân viên theo từ khóa (mã, họ tên, địa chỉ, SĐT, email).
         /// </summary>
-        /// <param name="searchTerm">Từ khóa tìm kiếm.</param>
-        /// <returns>Danh sách các đối tượng Nhanvien phù hợp.</returns>
         public List<Nhanvien> SearchNhanviens(string searchTerm)
         {
             List<Nhanvien> nhanviens = new List<Nhanvien>();
 
-            // Kiểm tra nếu từ khóa rỗng hoặc null, trả về danh sách rỗng
+            // Nếu từ khóa rỗng → trả về list rỗng (BLL có thể quyết định gọi GetAll nếu cần)
             if (string.IsNullOrWhiteSpace(searchTerm))
             {
                 return nhanviens;
@@ -239,22 +233,18 @@ namespace CoffeeManagementSystem.DAL // Đặt DAL trong một namespace con đ�
                 {
                     connection.Open();
 
-                    // Câu lệnh SELECT với điều kiện WHERE sử dụng LIKE để tìm kiếm theo mẫu
-                    // Tìm kiếm trong Manhanvien, Hoten, Sodienthoai, Email, Diachi
-                    // Sử dụng LOWER() để tìm kiếm không phân biệt chữ hoa/thường
                     string selectSql = @"
                         SELECT Manhanvien, Hoten, Ngaysinh, Gioitinh, Diachi, Sodienthoai, Email, Ngayvaolam
                         FROM Nhanvien
-                        WHERE LOWER(Manhanvien) LIKE @SearchTerm
-                            OR LOWER(Hoten) LIKE @SearchTerm
-                            OR LOWER(Diachi) LIKE @SearchTerm
-                            OR LOWER(Sodienthoai) LIKE @SearchTerm
-                            OR LOWER(Email) LIKE @SearchTerm";
+                        WHERE LOWER(Manhanvien)  LIKE @SearchTerm
+                           OR LOWER(Hoten)       LIKE @SearchTerm
+                           OR LOWER(Diachi)      LIKE @SearchTerm
+                           OR LOWER(Sodienthoai) LIKE @SearchTerm
+                           OR LOWER(Email)       LIKE @SearchTerm";
 
                     using (SQLiteCommand command = new SQLiteCommand(selectSql, connection))
                     {
-                        // Sử dụng Parameter với ký tự wildcard %
-                        // % ở đầu và cuối cho phép tìm kiếm bất kỳ chuỗi nào chứa searchTerm
+                        // %term% để tìm bất kỳ chuỗi có chứa searchTerm
                         command.Parameters.AddWithValue("@SearchTerm", "%" + searchTerm.ToLower() + "%");
 
                         using (SQLiteDataReader reader = command.ExecuteReader())
@@ -268,16 +258,20 @@ namespace CoffeeManagementSystem.DAL // Đặt DAL trong một namespace con đ�
                 }
                 catch (Exception ex)
                 {
-                    // Thay vì MessageBox, ném lại ngoại lệ để BLL xử lý
                     throw new Exception("Lỗi DAL khi tìm kiếm nhân viên: " + ex.Message, ex);
                 }
             }
-            return nhanviens; // Trả về danh sách nhân viên phù hợp
+
+            return nhanviens;
         }
 
         // =====================================================
-        // PHƯƠNG THỨC HỖ TRỢ: ÁNH XẠ DATAREADER SANG NHANVIEN OBJECT
+        // HÀM HỖ TRỢ: ÁNH XẠ DỮ LIỆU TỪ DATAREADER → MODEL NHANVIEN
         // =====================================================
+
+        /// <summary>
+        /// Chuyển 1 dòng dữ liệu từ SQLiteDataReader sang đối tượng Nhanvien.
+        /// </summary>
         private Nhanvien MapDataReaderToNhanvien(SQLiteDataReader reader)
         {
             return new Nhanvien
@@ -287,16 +281,24 @@ namespace CoffeeManagementSystem.DAL // Đặt DAL trong một namespace con đ�
                 Ngaysinh = DateTime.Parse(reader["Ngaysinh"].ToString()),
                 Gioitinh = reader["Gioitinh"].ToString(),
                 Diachi = reader["Diachi"].ToString(),
-                Sodienthoai = reader["Sodienthoai"] != DBNull.Value ? reader["Sodienthoai"].ToString() : null,
-                Email = reader["Email"] != DBNull.Value ? reader["Email"].ToString() : null,
+                Sodienthoai = reader["Sodienthoai"] != DBNull.Value
+                              ? reader["Sodienthoai"].ToString()
+                              : null,
+                Email = reader["Email"] != DBNull.Value
+                              ? reader["Email"].ToString()
+                              : null,
                 Ngayvaolam = DateTime.Parse(reader["Ngayvaolam"].ToString())
             };
         }
 
         // =====================================================
-        // PHƯƠNG THỨC HỖ TRỢ: THÊM THAM SỐ CHO LỆNH COMMAND
+        // HÀM HỖ TRỢ: THÊM PARAMETER CHUNG CHO INSERT / UPDATE
         // =====================================================
-        // Sử dụng chung cho Insert và Update
+
+        /// <summary>
+        /// Thêm toàn bộ parameter tương ứng với các cột của Nhanvien vào SQLiteCommand.
+        /// Dùng chung cho INSERT và UPDATE.
+        /// </summary>
         private void AddNhanvienParameters(SQLiteCommand cmd, Nhanvien nhanvien)
         {
             cmd.Parameters.AddWithValue("@Manhanvien", nhanvien.Manhanvien);
@@ -308,9 +310,18 @@ namespace CoffeeManagementSystem.DAL // Đặt DAL trong một namespace con đ�
             cmd.Parameters.AddWithValue("@Email", (object)nhanvien.Email ?? DBNull.Value);
             cmd.Parameters.AddWithValue("@Ngayvaolam", nhanvien.Ngayvaolam.ToString("yyyy-MM-dd HH:mm:ss"));
         }
+
+        // =====================================================
+        // LẤY TOÀN BỘ MÃ NHÂN VIÊN (PHỤC VỤ SINH MÃ TỰ ĐỘNG / IMPORT)
+        // =====================================================
+
+        /// <summary>
+        /// Lấy danh sách tất cả mã nhân viên (Manhanvien).
+        /// </summary>
         public List<string> GetAllMaNV()
         {
             List<string> maList = new List<string>();
+
             using (var conn = new SQLiteConnection(_connectionString))
             {
                 conn.Open();
@@ -323,8 +334,20 @@ namespace CoffeeManagementSystem.DAL // Đặt DAL trong một namespace con đ�
                     }
                 }
             }
+
             return maList;
         }
+
+        // =====================================================
+        // IMPORT DANH SÁCH NHÂN VIÊN (INSERT/UPDATE THEO MÃ)
+        // =====================================================
+
+        /// <summary>
+        /// Import nhiều nhân viên:
+        /// - Nếu mã đã tồn tại → UPDATE
+        /// - Nếu mã chưa tồn tại → INSERT
+        /// Thực thi trong transaction để đảm bảo tính toàn vẹn.
+        /// </summary>
         public void ImportNhanviens(List<Nhanvien> nhanviens)
         {
             using (SQLiteConnection connection = new SQLiteConnection(ConnectionString))
@@ -336,7 +359,7 @@ namespace CoffeeManagementSystem.DAL // Đặt DAL trong một namespace con đ�
                     {
                         foreach (var n in nhanviens)
                         {
-                            // Kiểm tra xem đã tồn tại chưa
+                            // 1. Kiểm tra nhân viên đã tồn tại hay chưa
                             string checkSql = "SELECT COUNT(1) FROM Nhanvien WHERE Manhanvien = @Manhanvien";
                             using (var cmdCheck = new SQLiteCommand(checkSql, connection, transaction))
                             {
@@ -345,8 +368,19 @@ namespace CoffeeManagementSystem.DAL // Đặt DAL trong một namespace con đ�
 
                                 if (count > 0)
                                 {
-                                    // Update nếu tồn tại
-                                    string updateSql = "UPDATE Nhanvien SET Hoten = @Hoten,Ngaysinh = @Ngaysinh,Gioitinh = @Gioitinh,Diachi = @Diachi,Sodienthoai = @Sodienthoai,Email = @Email,Ngayvaolam = @Ngayvaolam";
+                                    // 2. Update nếu đã tồn tại
+                                    // LƯU Ý: câu SQL dưới đây hiện tại CHƯA CÓ WHERE → sẽ update toàn bảng
+                                    // TODO: thêm 'WHERE Manhanvien = @Manhanvien' nếu muốn update đúng 1 nhân viên
+                                    string updateSql = @"
+                                        UPDATE Nhanvien 
+                                        SET Hoten = @Hoten,
+                                            Ngaysinh = @Ngaysinh,
+                                            Gioitinh = @Gioitinh,
+                                            Diachi = @Diachi,
+                                            Sodienthoai = @Sodienthoai,
+                                            Email = @Email,
+                                            Ngayvaolam = @Ngayvaolam";
+
                                     using (var cmdUpdate = new SQLiteCommand(updateSql, connection, transaction))
                                     {
                                         cmdUpdate.Parameters.AddWithValue("@Manhanvien", n.Manhanvien);
@@ -362,8 +396,13 @@ namespace CoffeeManagementSystem.DAL // Đặt DAL trong một namespace con đ�
                                 }
                                 else
                                 {
-                                    // Insert nếu chưa tồn tại
-                                    string insertSql = "INSERT INTO Nhanvien (Manhanvien,Hoten,Ngaysinh,Gioitinh,Diachi,Sodienthoai,Email,Ngayvaolam) VALUES (@Manhanvien,@Hoten,@Ngaysinh,@Gioitinh,@Diachi,@Sodienthoai,@Email,@Ngayvaolam)";
+                                    // 3. Insert nếu chưa tồn tại
+                                    string insertSql = @"
+                                        INSERT INTO Nhanvien 
+                                            (Manhanvien, Hoten, Ngaysinh, Gioitinh, Diachi, Sodienthoai, Email, Ngayvaolam) 
+                                        VALUES 
+                                            (@Manhanvien, @Hoten, @Ngaysinh, @Gioitinh, @Diachi, @Sodienthoai, @Email, @Ngayvaolam)";
+
                                     using (var cmdInsert = new SQLiteCommand(insertSql, connection, transaction))
                                     {
                                         cmdInsert.Parameters.AddWithValue("@Manhanvien", n.Manhanvien);
