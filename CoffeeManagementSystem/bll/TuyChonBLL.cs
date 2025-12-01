@@ -1,9 +1,10 @@
-﻿using System;
+﻿using CoffeeManagementSystem.DAL;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CoffeeManagementSystem.DAL;
 
 namespace CoffeeManagementSystem.bll
 {
@@ -44,7 +45,6 @@ namespace CoffeeManagementSystem.bll
             _dal.DeleteGroup(maNhom);
         }
 
-        // --- CHI TIẾT TÙY CHỌN ---
 
         public List<ChiTietTuyChon> GetDetailsByGroupId(int maNhom)
         {
@@ -89,6 +89,11 @@ namespace CoffeeManagementSystem.bll
         public List<OptionGroupDTO> GetOptionsByProduct(string maDouong)
         {
             return _dal.GetOptionsByProduct(maDouong);
+        }
+        public DataTable GetProductsWithConfig()
+        {
+            // Gọi xuống DAL
+            return _dal.GetProductsWithConfig();
         }
     }
 }

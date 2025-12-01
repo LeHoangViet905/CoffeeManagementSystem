@@ -17,7 +17,7 @@ namespace CoffeeManagementSystem
                 lblName.Text = value;
             }
         }
-        // --- Cầu nối cho Giá Sản phẩm ---
+
         private decimal _priceDecimal;
         public decimal ProductPriceDecimal
         {
@@ -28,11 +28,10 @@ namespace CoffeeManagementSystem
             set
             {
                 _priceDecimal = value;
-                chipPrice.Text = value.ToString("N0") + "VND";
+                chipPrice.Text = value.ToString("N0");
             }
         }
 
-        // --- Cầu nối cho Hình ảnh ---
         private Image _productImage;
         public Image ProductImage
         {
@@ -47,14 +46,12 @@ namespace CoffeeManagementSystem
         {
             InitializeComponent();
 
-            // Gắn sự kiện click cho TẤT CẢ control CON
             picImage.Click += new EventHandler(ChildControl_Click);
             lblName.Click += new EventHandler(ChildControl_Click);
             chipPrice.Click += new EventHandler(ChildControl_Click);
 
         }
 
-        // 3. Tạo hàm xử lý cho CÁC CON (và cả NỀN)
         private void ChildControl_Click(object sender, EventArgs e)
         {
             this.OnClick(e);

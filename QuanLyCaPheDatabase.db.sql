@@ -84,6 +84,29 @@ CREATE TABLE IF NOT EXISTS "Thanhtoan" (
 	FOREIGN KEY("Madonhang") REFERENCES "Donhang"("Madonhang") ON DELETE CASCADE,
 	FOREIGN KEY("Manhanvienthu") REFERENCES "Nhanvien"("Manhanvien")
 );
+CREATE TABLE IF NOT EXISTS NhomTuyChon (
+    MaNhom INTEGER PRIMARY KEY AUTOINCREMENT, 
+    TenNhom TEXT NOT NULL,
+    ChonNhieu INTEGER DEFAULT 0 
+);
+
+
+CREATE TABLE IF NOT EXISTS ChiTietTuyChon (
+    MaChiTiet INTEGER PRIMARY KEY AUTOINCREMENT,
+    MaNhom INTEGER,
+    TenChiTiet TEXT,
+    GiaThem REAL DEFAULT 0, 
+    FOREIGN KEY(MaNhom) REFERENCES NhomTuyChon(MaNhom) ON DELETE CASCADE
+);
+
+
+CREATE TABLE CauHinhMon (
+    Madouong TEXT,
+    MaNhom INTEGER,
+    PRIMARY KEY (Madouong, MaNhom), 
+    FOREIGN KEY(Madouong) REFERENCES Douong(Madouong) ON DELETE CASCADE,
+    FOREIGN KEY(MaNhom) REFERENCES NhomTuyChon(MaNhom) ON DELETE CASCADE
+);
 INSERT INTO "Chitietdonhang" VALUES ('DH001','DU001',1,32000.0,32000.0,NULL);
 INSERT INTO "Chitietdonhang" VALUES ('DH001','DU002',1,45000.0,45000.0,NULL);
 INSERT INTO "Chitietdonhang" VALUES ('DH002','DU003',1,40000.0,40000.0,'Ít đường');

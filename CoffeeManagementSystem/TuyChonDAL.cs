@@ -326,5 +326,28 @@ namespace CoffeeManagementSystem.DAL
             }
             return result;
         }
+        public DataTable GetProductsWithConfig()
+        {
+            using (SQLiteConnection connection = new SQLiteConnection(ConnectionString))
+            {
+                connection.Open();
+
+                // Kỹ thuật GROUP_CONCAT: Gộp nhiều dòng thành 1 dòng cách nhau bởi dấu phẩy
+                string sql = @"
+            SELECT 
+                d.Madouong, 
+                d.Tendouong, 
+                GROUP_CONCAT(n.TenNhom, ', ') AS CacNhomDaCo
+            FROM Douong d
+            LEFT JOIN CauHinhMon ch ON d.Madouong = ch.Madouong
+            LEFT JOIN NhomTuyChon n ON ch.MaNhom = n.MaNhom
+            GROUP BY d.Madouong, d.Tendouong";
+
+                SQLiteDataAdapter da = new SQLiteDataAdapter(sql, connection);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                return dt;
+            }
+        }
     }
 }

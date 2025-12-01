@@ -163,40 +163,61 @@ namespace CoffeeManagementSystem
         private void AddProductToOrder(string productID, string name, decimal price)
         {
 
+            // 1. TÌM DÒNG "SẠCH" ĐỂ GỘP (Cùng ID và KHÔNG có ghi chú)
             foreach (DataGridViewRow row in dgvOrder.Rows)
             {
-                // 1. KIỂM TRA XEM MÓN ĐÃ CÓ TRONG GIỎ (dgvOrder) CHƯA
-                if (row.Cells["colID"].Value != null && row.Cells["colID"].Value.ToString() == productID)
+                if (row.IsNewRow) continue;
+
+                string rowID = row.Cells["colID"].Value?.ToString();
+
+                // Lấy ghi chú hiện tại của dòng đó (kiểm tra null)
+                string rowNote = "";
+                if (row.Cells["colNote"].Value != null)
+                    rowNote = row.Cells["colNote"].Value.ToString();
+
+                // ĐIỀU KIỆN GỘP:
+                // 1. Cùng Mã món
+                // 2. Ghi chú phải RỖNG (Tức là món này chưa thêm topping/sửa đổi gì cả)
+                if (rowID == productID && string.IsNullOrEmpty(rowNote))
                 {
-                    // 2. ĐÃ CÓ -> TĂNG SỐ LƯỢNG
-                    int currentQty = (int)row.Cells["colQty"].Value;
+                    // ==> TÌM THẤY DÒNG SẠCH: Tăng số lượng
+                    int currentQty = Convert.ToInt32(row.Cells["colQty"].Value);
                     currentQty++;
 
                     row.Cells["colQty"].Value = currentQty;
 
-                    // Cập nhật tổng tiền của dòng (SL * Đơn giá)
+                    // Tính lại tổng tiền (Số lượng * Giá hiện tại)
+                    // (Giá hiện tại chính là giá gốc vì chưa có topping)
                     row.Cells["colTotal"].Value = currentQty * price;
 
-                    // Gọi hàm tính tổng tiền
                     UpdateOrderTotal();
-                    return; // Xong
+                    return; // Xong nhiệm vụ, thoát hàm luôn
                 }
             }
-            object decreaseIcon = "-";
-            object cancelIcon = "X";
 
-            dgvOrder.Rows.Add(new object[] {
-        productID, // colID (ẩn)
-        1,         // colQty (số lượng)
-        name,      // colName (tên)
-        price,     // colPrice (đơn giá - ẩn)
-        price,     // colTotal (thành tiền)
-        decreaseIcon, //colDecrease (nuút -)
-        cancelIcon // colCancel (nút X)
-    });
+            // 2. NẾU KHÔNG TÌM THẤY DÒNG SẠCH -> THÊM DÒNG MỚI
+            // (Kể cả khi đã có dòng "Trà Đào + Topping" rồi, code sẽ chạy xuống đây để tạo dòng mới)
 
-            // Gọi hàm tính tổng tiền
+            int index = dgvOrder.Rows.Add();
+            DataGridViewRow newRow = dgvOrder.Rows[index];
+
+            // Gán dữ liệu
+            newRow.Cells["colID"].Value = productID;
+            newRow.Cells["colQty"].Value = 1;
+            newRow.Cells["colName"].Value = name;
+            newRow.Cells["colPrice"].Value = price;
+            newRow.Cells["colTotal"].Value = price;
+
+            // Gán các nút và cột ẩn
+            newRow.Cells["colDecrease"].Value = "-";
+            newRow.Cells["colCancel"].Value = "X";
+
+            // QUAN TRỌNG:
+            newRow.Cells["colName"].Tag = name; // Lưu tên gốc để sau này sửa ghi chú không bị mất tên
+            newRow.Cells["colNote"].Value = ""; // Món mới tinh thì ghi chú rỗng
+
             UpdateOrderTotal();
+        
         }
 
         private void UpdateOrderTotal()
@@ -494,43 +515,6 @@ namespace CoffeeManagementSystem
                 UpdateOrderTotal();
             }
             // Nếu nhấn "No", không làm gì cả
-        }
-        // Hàm thêm món vào Grid (Được gọi sau khi NoteForm đóng hoặc khi chọn món)
-        private void AddItemToCart(string maMon, string tenMon, decimal giaGoc)
-        {
-            // Tạo mới đối tượng
-            CartItem newItem = new CartItem
-            {
-                ProductID = maMon,
-                ProductName = tenMon,
-                BasePrice = giaGoc,
-                Quantity = 1
-            };
-
-            // Thêm dòng mới
-            int idx = dgvOrder.Rows.Add();
-            DataGridViewRow row = dgvOrder.Rows[idx];
-
-            // Gắn đối tượng vào Tag
-            row.Tag = newItem;
-
-            // Hiển thị
-            UpdateRowDisplay(row);
-        }
-
-        // 2. Hàm Cập nhật hiển thị (Dùng chung cho Thêm và Sửa)
-        private void UpdateRowDisplay(DataGridViewRow row)
-        {
-            if (row.Tag is CartItem item)
-            {
-                row.Cells["colID"].Value = item.ProductID;
-                // Đây là dòng hiển thị "Matcha Latte \n (Ít đá...)"
-                row.Cells["colName"].Value = item.GetDisplayText();
-                row.Cells["colQty"].Value = item.Quantity;
-                row.Cells["colPrice"].Value = item.UnitPrice;
-                row.Cells["colTotal"].Value = item.TotalPrice;
-            }
-            UpdateOrderTotal();
         }
     }
 }

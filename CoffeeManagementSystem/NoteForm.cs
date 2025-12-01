@@ -22,12 +22,13 @@ namespace CoffeeManagementSystem
         // 2. HAI BIẾN QUAN TRỌNG ĐỂ TRẢ VỀ KẾT QUẢ
         public string ReturnNote { get; set; } = "";       // Trả về chuỗi ghi chú
         public decimal ReturnExtraPrice { get; set; } = 0; // Trả về tiền topping
-
+        private string _ghiChuCu = "";
         // 3. CONSTRUCTOR MỚI (Nhận Ghi chú cũ và Mã món)
         // Khớp với lệnh gọi: new NoteForm(ghiChuHienTai, maMon);
         public NoteForm(string ghiChuCu, string maDouong)
         {
             InitializeComponent();
+            _ghiChuCu = ghiChuCu;
 
             // Hiển thị ghi chú cũ lên TextBox (nếu có)
             txtGhiChu.Text = ghiChuCu;
@@ -75,6 +76,14 @@ namespace CoffeeManagementSystem
                     if (group.ChonNhieu) btn.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.ToogleButton;
                     else btn.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
 
+                    if (!string.IsNullOrEmpty(_ghiChuCu) && _ghiChuCu.Contains(item.TenChiTiet))
+                    {
+                        btn.Checked = true;
+
+                        // Cập nhật màu sắc ngay lập tức để người dùng thấy nó đang sáng
+                        btn.FillColor = Color.MistyRose;
+                        btn.BorderColor = Color.Red;
+                    }
                     btn.CheckedChanged += (s, e) => {
                         if (btn.Checked) { btn.FillColor = Color.MistyRose; btn.BorderColor = Color.Red; }
                         else { btn.FillColor = Color.White; btn.BorderColor = Color.Silver; }

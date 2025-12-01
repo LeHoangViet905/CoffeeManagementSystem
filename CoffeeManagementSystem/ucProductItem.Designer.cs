@@ -51,13 +51,14 @@
             this.chipPrice.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.chipPrice.BorderColor = System.Drawing.Color.White;
             this.chipPrice.BorderRadius = 8;
+            this.chipPrice.DefaultAutoSize = true;
             this.chipPrice.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.chipPrice.Font = new System.Drawing.Font("Segoe UI Variable Display", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chipPrice.ForeColor = System.Drawing.Color.White;
-            this.chipPrice.Location = new System.Drawing.Point(81, 3);
+            this.chipPrice.Location = new System.Drawing.Point(55, 3);
             this.chipPrice.Name = "chipPrice";
             this.chipPrice.Padding = new System.Windows.Forms.Padding(5, 2, 5, 2);
-            this.chipPrice.Size = new System.Drawing.Size(96, 34);
+            this.chipPrice.Size = new System.Drawing.Size(113, 37);
             this.chipPrice.TabIndex = 1;
             this.chipPrice.Text = "80,000";
             // 

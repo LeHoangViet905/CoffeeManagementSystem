@@ -81,19 +81,20 @@ namespace CoffeeManagementSystem
             this.panelHeader.Controls.Add(this.lblMaDon);
             this.panelHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelHeader.Location = new System.Drawing.Point(0, 0);
+            this.panelHeader.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelHeader.Name = "panelHeader";
-            this.panelHeader.Size = new System.Drawing.Size(1190, 75);
+            this.panelHeader.Size = new System.Drawing.Size(1058, 60);
             this.panelHeader.TabIndex = 0;
             // 
             // lblTrangThai
             // 
             this.lblTrangThai.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTrangThai.AutoSize = true;
-            this.lblTrangThai.Font = new System.Drawing.Font("SVN-Gilroy", 9.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTrangThai.Font = new System.Drawing.Font("SVN-Gilroy", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTrangThai.ForeColor = System.Drawing.Color.Honeydew;
-            this.lblTrangThai.Location = new System.Drawing.Point(1016, 23);
+            this.lblTrangThai.Location = new System.Drawing.Point(908, 15);
             this.lblTrangThai.Name = "lblTrangThai";
-            this.lblTrangThai.Size = new System.Drawing.Size(157, 27);
+            this.lblTrangThai.Size = new System.Drawing.Size(138, 24);
             this.lblTrangThai.TabIndex = 2;
             this.lblTrangThai.Text = "Hoàn thành ✔";
             // 
@@ -102,9 +103,9 @@ namespace CoffeeManagementSystem
             this.lblThoiGian.AutoSize = true;
             this.lblThoiGian.Font = new System.Drawing.Font("SVN-Gilroy", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblThoiGian.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblThoiGian.Location = new System.Drawing.Point(15, 45);
+            this.lblThoiGian.Location = new System.Drawing.Point(13, 36);
             this.lblThoiGian.Name = "lblThoiGian";
-            this.lblThoiGian.Size = new System.Drawing.Size(172, 26);
+            this.lblThoiGian.Size = new System.Drawing.Size(143, 22);
             this.lblThoiGian.TabIndex = 1;
             this.lblThoiGian.Text = "12/12/2025 10:00";
             // 
@@ -113,9 +114,9 @@ namespace CoffeeManagementSystem
             this.lblMaDon.AutoSize = true;
             this.lblMaDon.Font = new System.Drawing.Font("SVN-Gilroy", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMaDon.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblMaDon.Location = new System.Drawing.Point(14, 9);
+            this.lblMaDon.Location = new System.Drawing.Point(12, 7);
             this.lblMaDon.Name = "lblMaDon";
-            this.lblMaDon.Size = new System.Drawing.Size(157, 37);
+            this.lblMaDon.Size = new System.Drawing.Size(132, 32);
             this.lblMaDon.TabIndex = 0;
             this.lblMaDon.Text = "HĐ000001";
             // 
@@ -123,10 +124,11 @@ namespace CoffeeManagementSystem
             // 
             this.panelLeft.Controls.Add(this.groupBoxOrderLines);
             this.panelLeft.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelLeft.Location = new System.Drawing.Point(0, 75);
+            this.panelLeft.Location = new System.Drawing.Point(0, 60);
+            this.panelLeft.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelLeft.Name = "panelLeft";
-            this.panelLeft.Padding = new System.Windows.Forms.Padding(12);
-            this.panelLeft.Size = new System.Drawing.Size(860, 488);
+            this.panelLeft.Padding = new System.Windows.Forms.Padding(11, 10, 11, 10);
+            this.panelLeft.Size = new System.Drawing.Size(765, 391);
             this.panelLeft.TabIndex = 1;
             // 
             // groupBoxOrderLines
@@ -134,9 +136,11 @@ namespace CoffeeManagementSystem
             this.groupBoxOrderLines.Controls.Add(this.dgvLines);
             this.groupBoxOrderLines.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBoxOrderLines.Font = new System.Drawing.Font("SVN-Gilroy", 9.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBoxOrderLines.Location = new System.Drawing.Point(12, 12);
+            this.groupBoxOrderLines.Location = new System.Drawing.Point(11, 10);
+            this.groupBoxOrderLines.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBoxOrderLines.Name = "groupBoxOrderLines";
-            this.groupBoxOrderLines.Size = new System.Drawing.Size(836, 464);
+            this.groupBoxOrderLines.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBoxOrderLines.Size = new System.Drawing.Size(743, 371);
             this.groupBoxOrderLines.TabIndex = 0;
             this.groupBoxOrderLines.TabStop = false;
             this.groupBoxOrderLines.Text = "Chi tiết đơn hàng";
@@ -155,7 +159,8 @@ namespace CoffeeManagementSystem
             this.colDonGia,
             this.colThanhTien});
             this.dgvLines.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvLines.Location = new System.Drawing.Point(3, 30);
+            this.dgvLines.Location = new System.Drawing.Point(3, 25);
+            this.dgvLines.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvLines.MultiSelect = false;
             this.dgvLines.Name = "dgvLines";
             this.dgvLines.ReadOnly = true;
@@ -163,7 +168,7 @@ namespace CoffeeManagementSystem
             this.dgvLines.RowHeadersWidth = 62;
             this.dgvLines.RowTemplate.Height = 28;
             this.dgvLines.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvLines.Size = new System.Drawing.Size(830, 431);
+            this.dgvLines.Size = new System.Drawing.Size(737, 344);
             this.dgvLines.TabIndex = 0;
             // 
             // colStt
@@ -211,10 +216,11 @@ namespace CoffeeManagementSystem
             this.panelRight.Controls.Add(this.groupBoxPayment);
             this.panelRight.Controls.Add(this.groupBoxCustomer);
             this.panelRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelRight.Location = new System.Drawing.Point(860, 75);
+            this.panelRight.Location = new System.Drawing.Point(765, 60);
+            this.panelRight.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelRight.Name = "panelRight";
-            this.panelRight.Padding = new System.Windows.Forms.Padding(6, 12, 12, 12);
-            this.panelRight.Size = new System.Drawing.Size(330, 488);
+            this.panelRight.Padding = new System.Windows.Forms.Padding(5, 10, 11, 10);
+            this.panelRight.Size = new System.Drawing.Size(293, 391);
             this.panelRight.TabIndex = 2;
             // 
             // groupBoxPayment
@@ -229,9 +235,11 @@ namespace CoffeeManagementSystem
             this.groupBoxPayment.Controls.Add(this.label9);
             this.groupBoxPayment.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBoxPayment.Font = new System.Drawing.Font("SVN-Gilroy", 9.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBoxPayment.Location = new System.Drawing.Point(6, 230);
+            this.groupBoxPayment.Location = new System.Drawing.Point(5, 184);
+            this.groupBoxPayment.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBoxPayment.Name = "groupBoxPayment";
-            this.groupBoxPayment.Size = new System.Drawing.Size(312, 246);
+            this.groupBoxPayment.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBoxPayment.Size = new System.Drawing.Size(277, 197);
             this.groupBoxPayment.TabIndex = 1;
             this.groupBoxPayment.TabStop = false;
             this.groupBoxPayment.Text = "Thanh toán";
@@ -240,19 +248,19 @@ namespace CoffeeManagementSystem
             // 
             this.lblNhanVienThu.AutoSize = true;
             this.lblNhanVienThu.Font = new System.Drawing.Font("SVN-Gilroy", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNhanVienThu.Location = new System.Drawing.Point(168, 175);
+            this.lblNhanVienThu.Location = new System.Drawing.Point(185, 142);
             this.lblNhanVienThu.Name = "lblNhanVienThu";
-            this.lblNhanVienThu.Size = new System.Drawing.Size(37, 24);
+            this.lblNhanVienThu.Size = new System.Drawing.Size(33, 20);
             this.lblNhanVienThu.TabIndex = 7;
             this.lblNhanVienThu.Text = "---";
             // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("SVN-Gilroy", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(16, 175);
+            this.label15.Font = new System.Drawing.Font("SVN-Gilroy Medium", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(14, 140);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(128, 24);
+            this.label15.Size = new System.Drawing.Size(114, 20);
             this.label15.TabIndex = 6;
             this.label15.Text = "Nhân viên thu:";
             // 
@@ -261,19 +269,19 @@ namespace CoffeeManagementSystem
             this.lblSoTienThanhToan.AutoSize = true;
             this.lblSoTienThanhToan.Font = new System.Drawing.Font("SVN-Gilroy SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSoTienThanhToan.ForeColor = System.Drawing.Color.Tomato;
-            this.lblSoTienThanhToan.Location = new System.Drawing.Point(168, 131);
+            this.lblSoTienThanhToan.Location = new System.Drawing.Point(185, 107);
             this.lblSoTienThanhToan.Name = "lblSoTienThanhToan";
-            this.lblSoTienThanhToan.Size = new System.Drawing.Size(62, 24);
+            this.lblSoTienThanhToan.Size = new System.Drawing.Size(53, 20);
             this.lblSoTienThanhToan.TabIndex = 5;
             this.lblSoTienThanhToan.Text = "0 VNĐ";
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("SVN-Gilroy", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(16, 134);
+            this.label13.Font = new System.Drawing.Font("SVN-Gilroy Medium", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(14, 107);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(169, 24);
+            this.label13.Size = new System.Drawing.Size(148, 20);
             this.label13.TabIndex = 4;
             this.label13.Text = "Số tiền thanh toán:";
             // 
@@ -281,19 +289,19 @@ namespace CoffeeManagementSystem
             // 
             this.lblThoiGianThanhToan.AutoSize = true;
             this.lblThoiGianThanhToan.Font = new System.Drawing.Font("SVN-Gilroy", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblThoiGianThanhToan.Location = new System.Drawing.Point(168, 89);
+            this.lblThoiGianThanhToan.Location = new System.Drawing.Point(185, 73);
             this.lblThoiGianThanhToan.Name = "lblThoiGianThanhToan";
-            this.lblThoiGianThanhToan.Size = new System.Drawing.Size(37, 24);
+            this.lblThoiGianThanhToan.Size = new System.Drawing.Size(33, 20);
             this.lblThoiGianThanhToan.TabIndex = 3;
             this.lblThoiGianThanhToan.Text = "---";
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("SVN-Gilroy", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(16, 89);
+            this.label11.Font = new System.Drawing.Font("SVN-Gilroy Medium", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(14, 71);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(114, 24);
+            this.label11.Size = new System.Drawing.Size(102, 20);
             this.label11.TabIndex = 2;
             this.label11.Text = "Thời gian TT:";
             // 
@@ -301,19 +309,19 @@ namespace CoffeeManagementSystem
             // 
             this.lblHinhThucThanhToan.AutoSize = true;
             this.lblHinhThucThanhToan.Font = new System.Drawing.Font("SVN-Gilroy", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHinhThucThanhToan.Location = new System.Drawing.Point(168, 49);
+            this.lblHinhThucThanhToan.Location = new System.Drawing.Point(185, 41);
             this.lblHinhThucThanhToan.Name = "lblHinhThucThanhToan";
-            this.lblHinhThucThanhToan.Size = new System.Drawing.Size(37, 24);
+            this.lblHinhThucThanhToan.Size = new System.Drawing.Size(33, 20);
             this.lblHinhThucThanhToan.TabIndex = 1;
             this.lblHinhThucThanhToan.Text = "---";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("SVN-Gilroy", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(16, 49);
+            this.label9.Font = new System.Drawing.Font("SVN-Gilroy Medium", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(14, 39);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(116, 24);
+            this.label9.Size = new System.Drawing.Size(104, 20);
             this.label9.TabIndex = 0;
             this.label9.Text = "Hình thức TT:";
             // 
@@ -329,9 +337,11 @@ namespace CoffeeManagementSystem
             this.groupBoxCustomer.Controls.Add(this.label2);
             this.groupBoxCustomer.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBoxCustomer.Font = new System.Drawing.Font("SVN-Gilroy", 9.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBoxCustomer.Location = new System.Drawing.Point(6, 12);
+            this.groupBoxCustomer.Location = new System.Drawing.Point(5, 10);
+            this.groupBoxCustomer.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBoxCustomer.Name = "groupBoxCustomer";
-            this.groupBoxCustomer.Size = new System.Drawing.Size(312, 218);
+            this.groupBoxCustomer.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBoxCustomer.Size = new System.Drawing.Size(277, 174);
             this.groupBoxCustomer.TabIndex = 0;
             this.groupBoxCustomer.TabStop = false;
             this.groupBoxCustomer.Text = "Khách hàng";
@@ -339,20 +349,20 @@ namespace CoffeeManagementSystem
             // lblDiemTichLuy
             // 
             this.lblDiemTichLuy.AutoSize = true;
-            this.lblDiemTichLuy.Font = new System.Drawing.Font("SVN-Gilroy", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDiemTichLuy.Location = new System.Drawing.Point(168, 175);
+            this.lblDiemTichLuy.Font = new System.Drawing.Font("SVN-Gilroy Medium", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDiemTichLuy.Location = new System.Drawing.Point(169, 140);
             this.lblDiemTichLuy.Name = "lblDiemTichLuy";
-            this.lblDiemTichLuy.Size = new System.Drawing.Size(21, 24);
+            this.lblDiemTichLuy.Size = new System.Drawing.Size(19, 20);
             this.lblDiemTichLuy.TabIndex = 7;
             this.lblDiemTichLuy.Text = "0";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("SVN-Gilroy", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(16, 175);
+            this.label8.Font = new System.Drawing.Font("SVN-Gilroy Medium", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(14, 140);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(121, 24);
+            this.label8.Size = new System.Drawing.Size(108, 20);
             this.label8.TabIndex = 6;
             this.label8.Text = "Điểm tích lũy:";
             // 
@@ -360,19 +370,19 @@ namespace CoffeeManagementSystem
             // 
             this.lblEmail.AutoSize = true;
             this.lblEmail.Font = new System.Drawing.Font("SVN-Gilroy", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEmail.Location = new System.Drawing.Point(168, 131);
+            this.lblEmail.Location = new System.Drawing.Point(169, 105);
             this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(37, 24);
+            this.lblEmail.Size = new System.Drawing.Size(33, 20);
             this.lblEmail.TabIndex = 5;
             this.lblEmail.Text = "---";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("SVN-Gilroy", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(16, 131);
+            this.label6.Font = new System.Drawing.Font("SVN-Gilroy Medium", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(14, 105);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(58, 24);
+            this.label6.Size = new System.Drawing.Size(52, 20);
             this.label6.TabIndex = 4;
             this.label6.Text = "Email:";
             // 
@@ -380,19 +390,19 @@ namespace CoffeeManagementSystem
             // 
             this.lblSdt.AutoSize = true;
             this.lblSdt.Font = new System.Drawing.Font("SVN-Gilroy", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSdt.Location = new System.Drawing.Point(168, 89);
+            this.lblSdt.Location = new System.Drawing.Point(169, 71);
             this.lblSdt.Name = "lblSdt";
-            this.lblSdt.Size = new System.Drawing.Size(37, 24);
+            this.lblSdt.Size = new System.Drawing.Size(33, 20);
             this.lblSdt.TabIndex = 3;
             this.lblSdt.Text = "---";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("SVN-Gilroy", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(16, 89);
+            this.label4.Font = new System.Drawing.Font("SVN-Gilroy Medium", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(14, 71);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(100, 24);
+            this.label4.Size = new System.Drawing.Size(89, 20);
             this.label4.TabIndex = 2;
             this.label4.Text = "Điện thoại:";
             // 
@@ -400,19 +410,19 @@ namespace CoffeeManagementSystem
             // 
             this.lblTenKhach.AutoSize = true;
             this.lblTenKhach.Font = new System.Drawing.Font("SVN-Gilroy", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTenKhach.Location = new System.Drawing.Point(168, 49);
+            this.lblTenKhach.Location = new System.Drawing.Point(169, 39);
             this.lblTenKhach.Name = "lblTenKhach";
-            this.lblTenKhach.Size = new System.Drawing.Size(81, 24);
+            this.lblTenKhach.Size = new System.Drawing.Size(68, 20);
             this.lblTenKhach.TabIndex = 1;
             this.lblTenKhach.Text = "Khách lẻ";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("SVN-Gilroy", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(16, 49);
+            this.label2.Font = new System.Drawing.Font("SVN-Gilroy Medium", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(14, 39);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(112, 24);
+            this.label2.Size = new System.Drawing.Size(101, 20);
             this.label2.TabIndex = 0;
             this.label2.Text = "Khách hàng:";
             // 
@@ -423,9 +433,10 @@ namespace CoffeeManagementSystem
             this.panelBottom.Controls.Add(this.lblNhanVienLap);
             this.panelBottom.Controls.Add(this.btnClose);
             this.panelBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelBottom.Location = new System.Drawing.Point(0, 563);
+            this.panelBottom.Location = new System.Drawing.Point(0, 451);
+            this.panelBottom.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelBottom.Name = "panelBottom";
-            this.panelBottom.Size = new System.Drawing.Size(1190, 63);
+            this.panelBottom.Size = new System.Drawing.Size(1058, 50);
             this.panelBottom.TabIndex = 3;
             // 
             // lblTongTien
@@ -433,9 +444,9 @@ namespace CoffeeManagementSystem
             this.lblTongTien.AutoSize = true;
             this.lblTongTien.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
             this.lblTongTien.ForeColor = System.Drawing.Color.Tomato;
-            this.lblTongTien.Location = new System.Drawing.Point(14, 18);
+            this.lblTongTien.Location = new System.Drawing.Point(12, 14);
             this.lblTongTien.Name = "lblTongTien";
-            this.lblTongTien.Size = new System.Drawing.Size(140, 25);
+            this.lblTongTien.Size = new System.Drawing.Size(118, 20);
             this.lblTongTien.TabIndex = 2;
             this.lblTongTien.Text = "Tổng cộng: 0";
             // 
@@ -443,10 +454,10 @@ namespace CoffeeManagementSystem
             // 
             this.lblNhanVienLap.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblNhanVienLap.AutoSize = true;
-            this.lblNhanVienLap.Font = new System.Drawing.Font("SVN-Gilroy", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNhanVienLap.Location = new System.Drawing.Point(282, 22);
+            this.lblNhanVienLap.Font = new System.Drawing.Font("SVN-Gilroy Medium", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNhanVienLap.Location = new System.Drawing.Point(425, 14);
             this.lblNhanVienLap.Name = "lblNhanVienLap";
-            this.lblNhanVienLap.Size = new System.Drawing.Size(124, 24);
+            this.lblNhanVienLap.Size = new System.Drawing.Size(113, 20);
             this.lblNhanVienLap.TabIndex = 1;
             this.lblNhanVienLap.Text = "NV lập: NV001";
             // 
@@ -456,9 +467,10 @@ namespace CoffeeManagementSystem
             this.btnClose.BackColor = System.Drawing.Color.Tomato;
             this.btnClose.Font = new System.Drawing.Font("SVN-Gilroy", 9.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnClose.Location = new System.Drawing.Point(992, 3);
+            this.btnClose.Location = new System.Drawing.Point(857, 0);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(195, 60);
+            this.btnClose.Size = new System.Drawing.Size(173, 48);
             this.btnClose.TabIndex = 0;
             this.btnClose.Text = "Đóng";
             this.btnClose.UseVisualStyleBackColor = false;
@@ -473,14 +485,15 @@ namespace CoffeeManagementSystem
             // 
             // OrderDetailForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1190, 626);
+            this.ClientSize = new System.Drawing.Size(1058, 501);
             this.Controls.Add(this.panelLeft);
             this.Controls.Add(this.panelRight);
             this.Controls.Add(this.panelBottom);
             this.Controls.Add(this.panelHeader);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "OrderDetailForm";
