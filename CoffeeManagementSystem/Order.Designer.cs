@@ -46,6 +46,14 @@
             this.txtTongTien = new Guna.UI2.WinForms.Guna2TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.dgvOrder = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.colID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDecrease = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.colCancel = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.colNote = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -75,14 +83,6 @@
             this.flowPanelNGK = new System.Windows.Forms.FlowLayoutPanel();
             this.tabPage10 = new System.Windows.Forms.TabPage();
             this.flowPanelTPN = new System.Windows.Forms.FlowLayoutPanel();
-            this.colID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDecrease = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.colCancel = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.colNote = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelSidebar.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrder)).BeginInit();
@@ -111,7 +111,7 @@
             this.panelSidebar.Location = new System.Drawing.Point(0, 0);
             this.panelSidebar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panelSidebar.Name = "panelSidebar";
-            this.panelSidebar.Size = new System.Drawing.Size(400, 897);
+            this.panelSidebar.Size = new System.Drawing.Size(400, 1121);
             this.panelSidebar.TabIndex = 1;
             // 
             // guna2Panel2
@@ -126,10 +126,10 @@
             this.guna2Panel2.Controls.Add(this.label2);
             this.guna2Panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.guna2Panel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2Panel2.Location = new System.Drawing.Point(0, 827);
+            this.guna2Panel2.Location = new System.Drawing.Point(0, 824);
             this.guna2Panel2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.guna2Panel2.Name = "guna2Panel2";
-            this.guna2Panel2.Size = new System.Drawing.Size(400, 235);
+            this.guna2Panel2.Size = new System.Drawing.Size(400, 297);
             this.guna2Panel2.TabIndex = 3;
             // 
             // guna2Button3
@@ -294,7 +294,7 @@
             this.dgvOrder.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgvOrder.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvOrder.GridColor = System.Drawing.Color.White;
-            this.dgvOrder.Location = new System.Drawing.Point(0, 62);
+            this.dgvOrder.Location = new System.Drawing.Point(0, 50);
             this.dgvOrder.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dgvOrder.Name = "dgvOrder";
             this.dgvOrder.ReadOnly = true;
@@ -309,7 +309,7 @@
             this.dgvOrder.RowHeadersVisible = false;
             this.dgvOrder.RowHeadersWidth = 51;
             this.dgvOrder.RowTemplate.Height = 40;
-            this.dgvOrder.Size = new System.Drawing.Size(400, 847);
+            this.dgvOrder.Size = new System.Drawing.Size(400, 1071);
             this.dgvOrder.TabIndex = 4;
             this.dgvOrder.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvOrder.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -333,359 +333,6 @@
             this.dgvOrder.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.Salmon;
             this.dgvOrder.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.White;
             this.dgvOrder.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvOrder_CellClick);
-            // 
-            // guna2Panel1
-            // 
-            this.guna2Panel1.BackColor = System.Drawing.Color.Tomato;
-            this.guna2Panel1.Controls.Add(this.guna2TextBox1);
-            this.guna2Panel1.Controls.Add(this.label1);
-            this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
-            this.guna2Panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(400, 50);
-            this.guna2Panel1.TabIndex = 1;
-            // 
-            // guna2TextBox1
-            // 
-            this.guna2TextBox1.BorderRadius = 10;
-            this.guna2TextBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.guna2TextBox1.DefaultText = "";
-            this.guna2TextBox1.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.guna2TextBox1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.guna2TextBox1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox1.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox1.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2TextBox1.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox1.Location = new System.Drawing.Point(92, 10);
-            this.guna2TextBox1.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.guna2TextBox1.Name = "guna2TextBox1";
-            this.guna2TextBox1.PlaceholderText = "";
-            this.guna2TextBox1.ReadOnly = true;
-            this.guna2TextBox1.SelectedText = "";
-            this.guna2TextBox1.Size = new System.Drawing.Size(107, 44);
-            this.guna2TextBox1.TabIndex = 22;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("SVN-Gilroy SemiBold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(9, 15);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(72, 27);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Order:";
-            // 
-            // panelHeader
-            // 
-            this.panelHeader.BackColor = System.Drawing.Color.Tomato;
-            this.panelHeader.Controls.Add(this.label3);
-            this.panelHeader.Controls.Add(this.txtTimKiem);
-            this.panelHeader.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelHeader.Location = new System.Drawing.Point(400, 0);
-            this.panelHeader.Name = "panelHeader";
-            this.panelHeader.Size = new System.Drawing.Size(1216, 50);
-            this.panelHeader.TabIndex = 2;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("SVN-Gilroy SemiBold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(208, 21);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(99, 27);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "Tìm kiếm:";
-            // 
-            // txtTimKiem
-            // 
-            this.txtTimKiem.BorderRadius = 12;
-            this.txtTimKiem.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtTimKiem.DefaultText = "";
-            this.txtTimKiem.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtTimKiem.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtTimKiem.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtTimKiem.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtTimKiem.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtTimKiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTimKiem.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtTimKiem.Location = new System.Drawing.Point(310, 11);
-            this.txtTimKiem.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.txtTimKiem.Name = "txtTimKiem";
-            this.txtTimKiem.PlaceholderText = "";
-            this.txtTimKiem.SelectedText = "";
-            this.txtTimKiem.Size = new System.Drawing.Size(386, 42);
-            this.txtTimKiem.TabIndex = 0;
-            this.txtTimKiem.TextChanged += new System.EventHandler(this.txtTimKiem_TextChanged);
-            // 
-            // panelContent
-            // 
-            this.panelContent.Controls.Add(this.guna2TabControl1);
-            this.panelContent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelContent.Location = new System.Drawing.Point(400, 50);
-            this.panelContent.Name = "panelContent";
-            this.panelContent.Size = new System.Drawing.Size(1216, 847);
-            this.panelContent.TabIndex = 3;
-            // 
-            // guna2TabControl1
-            // 
-            this.guna2TabControl1.Alignment = System.Windows.Forms.TabAlignment.Left;
-            this.guna2TabControl1.Controls.Add(this.tabPage11);
-            this.guna2TabControl1.Controls.Add(this.tabPage1);
-            this.guna2TabControl1.Controls.Add(this.tabPage2);
-            this.guna2TabControl1.Controls.Add(this.tabPage3);
-            this.guna2TabControl1.Controls.Add(this.tabPage4);
-            this.guna2TabControl1.Controls.Add(this.tabPage5);
-            this.guna2TabControl1.Controls.Add(this.tabPage6);
-            this.guna2TabControl1.Controls.Add(this.tabPage7);
-            this.guna2TabControl1.Controls.Add(this.tabPage8);
-            this.guna2TabControl1.Controls.Add(this.tabPage9);
-            this.guna2TabControl1.Controls.Add(this.tabPage10);
-            this.guna2TabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.guna2TabControl1.Font = new System.Drawing.Font("SVN-Gilroy", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2TabControl1.ItemSize = new System.Drawing.Size(250, 40);
-            this.guna2TabControl1.Location = new System.Drawing.Point(0, 0);
-            this.guna2TabControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.guna2TabControl1.Name = "guna2TabControl1";
-            this.guna2TabControl1.SelectedIndex = 0;
-            this.guna2TabControl1.Size = new System.Drawing.Size(1216, 847);
-            this.guna2TabControl1.TabButtonHoverState.BorderColor = System.Drawing.Color.Empty;
-            this.guna2TabControl1.TabButtonHoverState.FillColor = System.Drawing.Color.IndianRed;
-            this.guna2TabControl1.TabButtonHoverState.Font = new System.Drawing.Font("Segoe UI Semibold", 10F);
-            this.guna2TabControl1.TabButtonHoverState.ForeColor = System.Drawing.Color.White;
-            this.guna2TabControl1.TabButtonHoverState.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(52)))), ((int)(((byte)(70)))));
-            this.guna2TabControl1.TabButtonIdleState.BorderColor = System.Drawing.Color.Empty;
-            this.guna2TabControl1.TabButtonIdleState.FillColor = System.Drawing.Color.Transparent;
-            this.guna2TabControl1.TabButtonIdleState.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2TabControl1.TabButtonIdleState.ForeColor = System.Drawing.Color.White;
-            this.guna2TabControl1.TabButtonIdleState.InnerColor = System.Drawing.Color.Transparent;
-            this.guna2TabControl1.TabButtonSelectedState.BorderColor = System.Drawing.Color.Empty;
-            this.guna2TabControl1.TabButtonSelectedState.FillColor = System.Drawing.Color.White;
-            this.guna2TabControl1.TabButtonSelectedState.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2TabControl1.TabButtonSelectedState.ForeColor = System.Drawing.Color.Black;
-            this.guna2TabControl1.TabButtonSelectedState.InnerColor = System.Drawing.Color.IndianRed;
-            this.guna2TabControl1.TabButtonSize = new System.Drawing.Size(250, 40);
-            this.guna2TabControl1.TabIndex = 0;
-            this.guna2TabControl1.TabMenuBackColor = System.Drawing.Color.DarkCyan;
-            this.guna2TabControl1.SelectedIndexChanged += new System.EventHandler(this.guna2TabControl1_SelectedIndexChanged);
-            // 
-            // tabPage11
-            // 
-            this.tabPage11.Location = new System.Drawing.Point(254, 4);
-            this.tabPage11.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabPage11.Name = "tabPage11";
-            this.tabPage11.Size = new System.Drawing.Size(1028, 839);
-            this.tabPage11.TabIndex = 10;
-            this.tabPage11.Tag = "ALL";
-            this.tabPage11.Text = "Tất cả";
-            this.tabPage11.UseVisualStyleBackColor = true;
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Controls.Add(this.flowPanelCafe);
-            this.tabPage1.Location = new System.Drawing.Point(254, 4);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1028, 839);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Cà phê truyền thống";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // flowPanelCafe
-            // 
-            this.flowPanelCafe.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowPanelCafe.Location = new System.Drawing.Point(3, 4);
-            this.flowPanelCafe.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.flowPanelCafe.Name = "flowPanelCafe";
-            this.flowPanelCafe.Size = new System.Drawing.Size(1022, 833);
-            this.flowPanelCafe.TabIndex = 0;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.flowPanelTea);
-            this.tabPage2.Location = new System.Drawing.Point(254, 4);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1028, 839);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Trà hiện đại";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // flowPanelTea
-            // 
-            this.flowPanelTea.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowPanelTea.Location = new System.Drawing.Point(3, 4);
-            this.flowPanelTea.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.flowPanelTea.Name = "flowPanelTea";
-            this.flowPanelTea.Size = new System.Drawing.Size(1022, 833);
-            this.flowPanelTea.TabIndex = 0;
-            // 
-            // tabPage3
-            // 
-            this.tabPage3.Controls.Add(this.flowPanelJuice);
-            this.tabPage3.Location = new System.Drawing.Point(254, 4);
-            this.tabPage3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1028, 839);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Nước ép trái cây";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // flowPanelJuice
-            // 
-            this.flowPanelJuice.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowPanelJuice.Location = new System.Drawing.Point(0, 0);
-            this.flowPanelJuice.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.flowPanelJuice.Name = "flowPanelJuice";
-            this.flowPanelJuice.Size = new System.Drawing.Size(1028, 839);
-            this.flowPanelJuice.TabIndex = 0;
-            // 
-            // tabPage4
-            // 
-            this.tabPage4.Controls.Add(this.flowPanelIce);
-            this.tabPage4.Location = new System.Drawing.Point(254, 4);
-            this.tabPage4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(1028, 839);
-            this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "Đồ uống đá xay";
-            this.tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // flowPanelIce
-            // 
-            this.flowPanelIce.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowPanelIce.ForeColor = System.Drawing.Color.FloralWhite;
-            this.flowPanelIce.Location = new System.Drawing.Point(0, 0);
-            this.flowPanelIce.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.flowPanelIce.Name = "flowPanelIce";
-            this.flowPanelIce.Size = new System.Drawing.Size(1028, 839);
-            this.flowPanelIce.TabIndex = 0;
-            // 
-            // tabPage5
-            // 
-            this.tabPage5.Controls.Add(this.flowPanelCake);
-            this.tabPage5.Location = new System.Drawing.Point(254, 4);
-            this.tabPage5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(1028, 839);
-            this.tabPage5.TabIndex = 4;
-            this.tabPage5.Text = "Bánh ngọt & Tráng miệng";
-            this.tabPage5.UseVisualStyleBackColor = true;
-            // 
-            // flowPanelCake
-            // 
-            this.flowPanelCake.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowPanelCake.ForeColor = System.Drawing.Color.FloralWhite;
-            this.flowPanelCake.Location = new System.Drawing.Point(0, 0);
-            this.flowPanelCake.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.flowPanelCake.Name = "flowPanelCake";
-            this.flowPanelCake.Size = new System.Drawing.Size(1028, 839);
-            this.flowPanelCake.TabIndex = 0;
-            // 
-            // tabPage6
-            // 
-            this.tabPage6.Controls.Add(this.flowPanelST);
-            this.tabPage6.Location = new System.Drawing.Point(254, 4);
-            this.tabPage6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Size = new System.Drawing.Size(1028, 839);
-            this.tabPage6.TabIndex = 5;
-            this.tabPage6.Text = "Sinh tố";
-            this.tabPage6.UseVisualStyleBackColor = true;
-            // 
-            // flowPanelST
-            // 
-            this.flowPanelST.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowPanelST.Location = new System.Drawing.Point(0, 0);
-            this.flowPanelST.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.flowPanelST.Name = "flowPanelST";
-            this.flowPanelST.Size = new System.Drawing.Size(1028, 839);
-            this.flowPanelST.TabIndex = 0;
-            // 
-            // tabPage7
-            // 
-            this.tabPage7.Controls.Add(this.flowPanelSC);
-            this.tabPage7.Location = new System.Drawing.Point(254, 4);
-            this.tabPage7.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabPage7.Name = "tabPage7";
-            this.tabPage7.Size = new System.Drawing.Size(1028, 839);
-            this.tabPage7.TabIndex = 6;
-            this.tabPage7.Text = "Sữa chua & Smoothies";
-            this.tabPage7.UseVisualStyleBackColor = true;
-            // 
-            // flowPanelSC
-            // 
-            this.flowPanelSC.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowPanelSC.Location = new System.Drawing.Point(0, 0);
-            this.flowPanelSC.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.flowPanelSC.Name = "flowPanelSC";
-            this.flowPanelSC.Size = new System.Drawing.Size(1028, 839);
-            this.flowPanelSC.TabIndex = 0;
-            // 
-            // tabPage8
-            // 
-            this.tabPage8.Controls.Add(this.flowPanelSD);
-            this.tabPage8.Location = new System.Drawing.Point(254, 4);
-            this.tabPage8.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabPage8.Name = "tabPage8";
-            this.tabPage8.Size = new System.Drawing.Size(1028, 839);
-            this.tabPage8.TabIndex = 7;
-            this.tabPage8.Text = "Đồ uống đặc biệt";
-            this.tabPage8.UseVisualStyleBackColor = true;
-            // 
-            // flowPanelSD
-            // 
-            this.flowPanelSD.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowPanelSD.Location = new System.Drawing.Point(0, 0);
-            this.flowPanelSD.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.flowPanelSD.Name = "flowPanelSD";
-            this.flowPanelSD.Size = new System.Drawing.Size(1028, 839);
-            this.flowPanelSD.TabIndex = 0;
-            // 
-            // tabPage9
-            // 
-            this.tabPage9.Controls.Add(this.flowPanelNGK);
-            this.tabPage9.Location = new System.Drawing.Point(254, 4);
-            this.tabPage9.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabPage9.Name = "tabPage9";
-            this.tabPage9.Size = new System.Drawing.Size(1028, 839);
-            this.tabPage9.TabIndex = 8;
-            this.tabPage9.Text = "Nước giải khát";
-            this.tabPage9.UseVisualStyleBackColor = true;
-            // 
-            // flowPanelNGK
-            // 
-            this.flowPanelNGK.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowPanelNGK.Location = new System.Drawing.Point(0, 0);
-            this.flowPanelNGK.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.flowPanelNGK.Name = "flowPanelNGK";
-            this.flowPanelNGK.Size = new System.Drawing.Size(1028, 839);
-            this.flowPanelNGK.TabIndex = 0;
-            // 
-            // tabPage10
-            // 
-            this.tabPage10.Controls.Add(this.flowPanelTPN);
-            this.tabPage10.Location = new System.Drawing.Point(254, 4);
-            this.tabPage10.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabPage10.Name = "tabPage10";
-            this.tabPage10.Size = new System.Drawing.Size(1028, 839);
-            this.tabPage10.TabIndex = 9;
-            this.tabPage10.Text = "Thực phẩm nhẹ";
-            this.tabPage10.UseVisualStyleBackColor = true;
-            // 
-            // flowPanelTPN
-            // 
-            this.flowPanelTPN.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowPanelTPN.Location = new System.Drawing.Point(0, 0);
-            this.flowPanelTPN.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.flowPanelTPN.Name = "flowPanelTPN";
-            this.flowPanelTPN.Size = new System.Drawing.Size(1028, 839);
-            this.flowPanelTPN.TabIndex = 0;
             // 
             // colID
             // 
@@ -780,6 +427,359 @@
             this.colNote.Name = "colNote";
             this.colNote.ReadOnly = true;
             this.colNote.Visible = false;
+            // 
+            // guna2Panel1
+            // 
+            this.guna2Panel1.BackColor = System.Drawing.Color.Tomato;
+            this.guna2Panel1.Controls.Add(this.guna2TextBox1);
+            this.guna2Panel1.Controls.Add(this.label1);
+            this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
+            this.guna2Panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.guna2Panel1.Name = "guna2Panel1";
+            this.guna2Panel1.Size = new System.Drawing.Size(400, 50);
+            this.guna2Panel1.TabIndex = 1;
+            // 
+            // guna2TextBox1
+            // 
+            this.guna2TextBox1.BorderRadius = 10;
+            this.guna2TextBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.guna2TextBox1.DefaultText = "";
+            this.guna2TextBox1.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.guna2TextBox1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.guna2TextBox1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.guna2TextBox1.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.guna2TextBox1.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2TextBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.guna2TextBox1.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2TextBox1.Location = new System.Drawing.Point(92, 10);
+            this.guna2TextBox1.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.guna2TextBox1.Name = "guna2TextBox1";
+            this.guna2TextBox1.PlaceholderText = "";
+            this.guna2TextBox1.ReadOnly = true;
+            this.guna2TextBox1.SelectedText = "";
+            this.guna2TextBox1.Size = new System.Drawing.Size(107, 44);
+            this.guna2TextBox1.TabIndex = 22;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("SVN-Gilroy SemiBold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(9, 15);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(72, 27);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Order:";
+            // 
+            // panelHeader
+            // 
+            this.panelHeader.BackColor = System.Drawing.Color.Tomato;
+            this.panelHeader.Controls.Add(this.label3);
+            this.panelHeader.Controls.Add(this.txtTimKiem);
+            this.panelHeader.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelHeader.Location = new System.Drawing.Point(400, 0);
+            this.panelHeader.Name = "panelHeader";
+            this.panelHeader.Size = new System.Drawing.Size(1418, 50);
+            this.panelHeader.TabIndex = 2;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("SVN-Gilroy SemiBold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(208, 21);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(99, 27);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "Tìm kiếm:";
+            // 
+            // txtTimKiem
+            // 
+            this.txtTimKiem.BorderRadius = 12;
+            this.txtTimKiem.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtTimKiem.DefaultText = "";
+            this.txtTimKiem.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtTimKiem.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtTimKiem.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtTimKiem.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtTimKiem.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtTimKiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTimKiem.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtTimKiem.Location = new System.Drawing.Point(310, 11);
+            this.txtTimKiem.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.txtTimKiem.Name = "txtTimKiem";
+            this.txtTimKiem.PlaceholderText = "";
+            this.txtTimKiem.SelectedText = "";
+            this.txtTimKiem.Size = new System.Drawing.Size(386, 42);
+            this.txtTimKiem.TabIndex = 0;
+            this.txtTimKiem.TextChanged += new System.EventHandler(this.txtTimKiem_TextChanged);
+            // 
+            // panelContent
+            // 
+            this.panelContent.Controls.Add(this.guna2TabControl1);
+            this.panelContent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelContent.Location = new System.Drawing.Point(400, 50);
+            this.panelContent.Name = "panelContent";
+            this.panelContent.Size = new System.Drawing.Size(1418, 1071);
+            this.panelContent.TabIndex = 3;
+            // 
+            // guna2TabControl1
+            // 
+            this.guna2TabControl1.Alignment = System.Windows.Forms.TabAlignment.Left;
+            this.guna2TabControl1.Controls.Add(this.tabPage11);
+            this.guna2TabControl1.Controls.Add(this.tabPage1);
+            this.guna2TabControl1.Controls.Add(this.tabPage2);
+            this.guna2TabControl1.Controls.Add(this.tabPage3);
+            this.guna2TabControl1.Controls.Add(this.tabPage4);
+            this.guna2TabControl1.Controls.Add(this.tabPage5);
+            this.guna2TabControl1.Controls.Add(this.tabPage6);
+            this.guna2TabControl1.Controls.Add(this.tabPage7);
+            this.guna2TabControl1.Controls.Add(this.tabPage8);
+            this.guna2TabControl1.Controls.Add(this.tabPage9);
+            this.guna2TabControl1.Controls.Add(this.tabPage10);
+            this.guna2TabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.guna2TabControl1.Font = new System.Drawing.Font("SVN-Gilroy", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2TabControl1.ItemSize = new System.Drawing.Size(250, 40);
+            this.guna2TabControl1.Location = new System.Drawing.Point(0, 0);
+            this.guna2TabControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.guna2TabControl1.Name = "guna2TabControl1";
+            this.guna2TabControl1.SelectedIndex = 0;
+            this.guna2TabControl1.Size = new System.Drawing.Size(1418, 1071);
+            this.guna2TabControl1.TabButtonHoverState.BorderColor = System.Drawing.Color.Empty;
+            this.guna2TabControl1.TabButtonHoverState.FillColor = System.Drawing.Color.IndianRed;
+            this.guna2TabControl1.TabButtonHoverState.Font = new System.Drawing.Font("Segoe UI Semibold", 10F);
+            this.guna2TabControl1.TabButtonHoverState.ForeColor = System.Drawing.Color.White;
+            this.guna2TabControl1.TabButtonHoverState.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(52)))), ((int)(((byte)(70)))));
+            this.guna2TabControl1.TabButtonIdleState.BorderColor = System.Drawing.Color.Empty;
+            this.guna2TabControl1.TabButtonIdleState.FillColor = System.Drawing.Color.Transparent;
+            this.guna2TabControl1.TabButtonIdleState.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2TabControl1.TabButtonIdleState.ForeColor = System.Drawing.Color.White;
+            this.guna2TabControl1.TabButtonIdleState.InnerColor = System.Drawing.Color.Transparent;
+            this.guna2TabControl1.TabButtonSelectedState.BorderColor = System.Drawing.Color.Empty;
+            this.guna2TabControl1.TabButtonSelectedState.FillColor = System.Drawing.Color.White;
+            this.guna2TabControl1.TabButtonSelectedState.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2TabControl1.TabButtonSelectedState.ForeColor = System.Drawing.Color.Black;
+            this.guna2TabControl1.TabButtonSelectedState.InnerColor = System.Drawing.Color.IndianRed;
+            this.guna2TabControl1.TabButtonSize = new System.Drawing.Size(250, 40);
+            this.guna2TabControl1.TabIndex = 0;
+            this.guna2TabControl1.TabMenuBackColor = System.Drawing.Color.DarkCyan;
+            this.guna2TabControl1.SelectedIndexChanged += new System.EventHandler(this.guna2TabControl1_SelectedIndexChanged);
+            // 
+            // tabPage11
+            // 
+            this.tabPage11.Location = new System.Drawing.Point(254, 4);
+            this.tabPage11.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tabPage11.Name = "tabPage11";
+            this.tabPage11.Size = new System.Drawing.Size(1160, 1063);
+            this.tabPage11.TabIndex = 10;
+            this.tabPage11.Tag = "ALL";
+            this.tabPage11.Text = "Tất cả";
+            this.tabPage11.UseVisualStyleBackColor = true;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.flowPanelCafe);
+            this.tabPage1.Location = new System.Drawing.Point(254, 4);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(958, 839);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Cà phê truyền thống";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // flowPanelCafe
+            // 
+            this.flowPanelCafe.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowPanelCafe.Location = new System.Drawing.Point(3, 3);
+            this.flowPanelCafe.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.flowPanelCafe.Name = "flowPanelCafe";
+            this.flowPanelCafe.Size = new System.Drawing.Size(952, 833);
+            this.flowPanelCafe.TabIndex = 0;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.flowPanelTea);
+            this.tabPage2.Location = new System.Drawing.Point(254, 4);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(958, 839);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Trà hiện đại";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // flowPanelTea
+            // 
+            this.flowPanelTea.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowPanelTea.Location = new System.Drawing.Point(3, 3);
+            this.flowPanelTea.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.flowPanelTea.Name = "flowPanelTea";
+            this.flowPanelTea.Size = new System.Drawing.Size(952, 833);
+            this.flowPanelTea.TabIndex = 0;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.flowPanelJuice);
+            this.tabPage3.Location = new System.Drawing.Point(254, 4);
+            this.tabPage3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(958, 839);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Nước ép trái cây";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // flowPanelJuice
+            // 
+            this.flowPanelJuice.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowPanelJuice.Location = new System.Drawing.Point(0, 0);
+            this.flowPanelJuice.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.flowPanelJuice.Name = "flowPanelJuice";
+            this.flowPanelJuice.Size = new System.Drawing.Size(958, 839);
+            this.flowPanelJuice.TabIndex = 0;
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.flowPanelIce);
+            this.tabPage4.Location = new System.Drawing.Point(254, 4);
+            this.tabPage4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Size = new System.Drawing.Size(958, 839);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Đồ uống đá xay";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // flowPanelIce
+            // 
+            this.flowPanelIce.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowPanelIce.ForeColor = System.Drawing.Color.FloralWhite;
+            this.flowPanelIce.Location = new System.Drawing.Point(0, 0);
+            this.flowPanelIce.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.flowPanelIce.Name = "flowPanelIce";
+            this.flowPanelIce.Size = new System.Drawing.Size(958, 839);
+            this.flowPanelIce.TabIndex = 0;
+            // 
+            // tabPage5
+            // 
+            this.tabPage5.Controls.Add(this.flowPanelCake);
+            this.tabPage5.Location = new System.Drawing.Point(254, 4);
+            this.tabPage5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Size = new System.Drawing.Size(958, 839);
+            this.tabPage5.TabIndex = 4;
+            this.tabPage5.Text = "Bánh ngọt & Tráng miệng";
+            this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // flowPanelCake
+            // 
+            this.flowPanelCake.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowPanelCake.ForeColor = System.Drawing.Color.FloralWhite;
+            this.flowPanelCake.Location = new System.Drawing.Point(0, 0);
+            this.flowPanelCake.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.flowPanelCake.Name = "flowPanelCake";
+            this.flowPanelCake.Size = new System.Drawing.Size(958, 839);
+            this.flowPanelCake.TabIndex = 0;
+            // 
+            // tabPage6
+            // 
+            this.tabPage6.Controls.Add(this.flowPanelST);
+            this.tabPage6.Location = new System.Drawing.Point(254, 4);
+            this.tabPage6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tabPage6.Name = "tabPage6";
+            this.tabPage6.Size = new System.Drawing.Size(958, 839);
+            this.tabPage6.TabIndex = 5;
+            this.tabPage6.Text = "Sinh tố";
+            this.tabPage6.UseVisualStyleBackColor = true;
+            // 
+            // flowPanelST
+            // 
+            this.flowPanelST.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowPanelST.Location = new System.Drawing.Point(0, 0);
+            this.flowPanelST.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.flowPanelST.Name = "flowPanelST";
+            this.flowPanelST.Size = new System.Drawing.Size(958, 839);
+            this.flowPanelST.TabIndex = 0;
+            // 
+            // tabPage7
+            // 
+            this.tabPage7.Controls.Add(this.flowPanelSC);
+            this.tabPage7.Location = new System.Drawing.Point(254, 4);
+            this.tabPage7.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tabPage7.Name = "tabPage7";
+            this.tabPage7.Size = new System.Drawing.Size(958, 839);
+            this.tabPage7.TabIndex = 6;
+            this.tabPage7.Text = "Sữa chua & Smoothies";
+            this.tabPage7.UseVisualStyleBackColor = true;
+            // 
+            // flowPanelSC
+            // 
+            this.flowPanelSC.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowPanelSC.Location = new System.Drawing.Point(0, 0);
+            this.flowPanelSC.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.flowPanelSC.Name = "flowPanelSC";
+            this.flowPanelSC.Size = new System.Drawing.Size(958, 839);
+            this.flowPanelSC.TabIndex = 0;
+            // 
+            // tabPage8
+            // 
+            this.tabPage8.Controls.Add(this.flowPanelSD);
+            this.tabPage8.Location = new System.Drawing.Point(254, 4);
+            this.tabPage8.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tabPage8.Name = "tabPage8";
+            this.tabPage8.Size = new System.Drawing.Size(958, 839);
+            this.tabPage8.TabIndex = 7;
+            this.tabPage8.Text = "Đồ uống đặc biệt";
+            this.tabPage8.UseVisualStyleBackColor = true;
+            // 
+            // flowPanelSD
+            // 
+            this.flowPanelSD.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowPanelSD.Location = new System.Drawing.Point(0, 0);
+            this.flowPanelSD.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.flowPanelSD.Name = "flowPanelSD";
+            this.flowPanelSD.Size = new System.Drawing.Size(958, 839);
+            this.flowPanelSD.TabIndex = 0;
+            // 
+            // tabPage9
+            // 
+            this.tabPage9.Controls.Add(this.flowPanelNGK);
+            this.tabPage9.Location = new System.Drawing.Point(254, 4);
+            this.tabPage9.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tabPage9.Name = "tabPage9";
+            this.tabPage9.Size = new System.Drawing.Size(958, 839);
+            this.tabPage9.TabIndex = 8;
+            this.tabPage9.Text = "Nước giải khát";
+            this.tabPage9.UseVisualStyleBackColor = true;
+            // 
+            // flowPanelNGK
+            // 
+            this.flowPanelNGK.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowPanelNGK.Location = new System.Drawing.Point(0, 0);
+            this.flowPanelNGK.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.flowPanelNGK.Name = "flowPanelNGK";
+            this.flowPanelNGK.Size = new System.Drawing.Size(958, 839);
+            this.flowPanelNGK.TabIndex = 0;
+            // 
+            // tabPage10
+            // 
+            this.tabPage10.Controls.Add(this.flowPanelTPN);
+            this.tabPage10.Location = new System.Drawing.Point(254, 4);
+            this.tabPage10.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tabPage10.Name = "tabPage10";
+            this.tabPage10.Size = new System.Drawing.Size(958, 839);
+            this.tabPage10.TabIndex = 9;
+            this.tabPage10.Text = "Thực phẩm nhẹ";
+            this.tabPage10.UseVisualStyleBackColor = true;
+            // 
+            // flowPanelTPN
+            // 
+            this.flowPanelTPN.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowPanelTPN.Location = new System.Drawing.Point(0, 0);
+            this.flowPanelTPN.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.flowPanelTPN.Name = "flowPanelTPN";
+            this.flowPanelTPN.Size = new System.Drawing.Size(958, 839);
+            this.flowPanelTPN.TabIndex = 0;
             // 
             // OrderForm
             // 

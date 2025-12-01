@@ -3,22 +3,25 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SQLite;
-using System.Windows.Forms; // Only for MessageBox in error handling examples (will be replaced by throw in DAL)
-
-// Ensure using namespace contains your BaseDataAccess class
-// Ensure using namespace contains your Donhang Model class
+using System.Windows.Forms; // Chỉ dùng cho một số MessageBox trong báo cáo (có thể thay bằng throw sau này)
 
 namespace CoffeeManagementSystem.DAL
 {
+    /// <summary>
+    /// DonhangDAL:
+    /// - Tầng truy cập dữ liệu (Data Access Layer) cho bảng Donhang.
+    /// - Chỉ chịu trách nhiệm làm việc với CSDL (SELECT, INSERT, UPDATE, DELETE).
+    /// - Được gọi từ BLL (PaymentBLL, các BLL khác) để thao tác với bảng Donhang.
+    /// </summary>
     public class DonhangDAL : BaseDataAccess
     {
         public DonhangDAL() : base() { }
 
         /// <summary>
-        /// Adds a new order to the database.
+        /// Thêm 1 đơn hàng mới (không dùng transaction).
+        /// - Ít dùng trong flow thanh toán chính, vì thanh toán đang dùng bản có transaction.
+        /// - Có thể dùng ở những chỗ đơn giản khác nếu cần.
         /// </summary>
-        /// <param name="donhang">The Donhang object to add.</param>
-        /// 
         public void AddDonhang(Donhang donhang)
         {
             using (SQLiteConnection connection = new SQLiteConnection(ConnectionString))
@@ -34,6 +37,7 @@ namespace CoffeeManagementSystem.DAL
                     {
                         command.Parameters.AddWithValue("@Madonhang", donhang.Madonhang);
                         command.Parameters.AddWithValue("@Manhanvien", donhang.Manhanvien);
+                        // Nếu Makhachhang null → lưu DBNull.Value (cho phép hóa đơn không có khách).
                         command.Parameters.AddWithValue("@Makhachhang", (object)donhang.Makhachhang ?? DBNull.Value);
                         command.Parameters.AddWithValue("@Thoigiandat", donhang.Thoigiandat.ToString("yyyy-MM-dd HH:mm:ss"));
                         command.Parameters.AddWithValue("@Trangthaidon", donhang.Trangthaidon);
@@ -44,19 +48,17 @@ namespace CoffeeManagementSystem.DAL
                 }
                 catch (Exception ex)
                 {
-                    // ĐIỀU CHỈNH: Thay thế MessageBox.Show bằng cách ném lỗi để BLL xử lý
+                    // DAL không show MessageBox nữa, ném lỗi cho BLL/UI xử lý.
                     throw new Exception($"Lỗi DAL khi thêm đơn hàng: {ex.Message}", ex);
                 }
             }
         }
 
         /// <summary>
-        /// Thêm một đơn hàng mới vào cơ sở dữ liệu trong một transaction.
-        /// Phương thức này được sử dụng bởi BLL để đảm bảo tính toàn vẹn dữ liệu.
+        /// Thêm đơn hàng trong ngữ cảnh transaction có sẵn:
+        /// - Được PaymentBLL gọi trong ProcessPayment(...)
+        /// - Dùng chung connection + transaction với Chitietdonhang & Thanhtoan để đảm bảo COMMIT/ROLLBACK đồng bộ.
         /// </summary>
-        /// <param name="donhang">Đối tượng Donhang cần thêm.</param>
-        /// <param name="connection">Kết nối SQLite hiện có (để sử dụng transaction).</param>
-        /// <param name="transaction">Transaction SQLite hiện có.</param>
         public void AddDonhang(Donhang donhang, SQLiteConnection connection, SQLiteTransaction transaction)
         {
             try
@@ -79,15 +81,15 @@ namespace CoffeeManagementSystem.DAL
             }
             catch (Exception ex)
             {
-                // Ném lỗi để BLL xử lý rollback, không hiển thị MessageBox ở đây.
+                // Ném lỗi về cho BLL để BLL quyết định rollback transaction.
                 throw new Exception($"Lỗi DAL khi thêm đơn hàng trong transaction: {ex.Message}", ex);
             }
         }
 
         /// <summary>
-        /// Retrieves all orders from the database.
+        /// Lấy toàn bộ danh sách đơn hàng từ CSDL.
+        /// - Thường dùng cho màn hình quản lý đơn hàng / lịch sử đơn.
         /// </summary>
-        /// <returns>A list of Donhang objects.</returns>
         public List<Donhang> GetAllDonhangs()
         {
             List<Donhang> donhangs = new List<Donhang>();
@@ -119,7 +121,6 @@ namespace CoffeeManagementSystem.DAL
                 }
                 catch (Exception ex)
                 {
-                    // ĐIỀU CHỈNH: Thay thế MessageBox.Show bằng cách ném lỗi để BLL xử lý
                     throw new Exception($"Lỗi DAL khi lấy danh sách đơn hàng: {ex.Message}", ex);
                 }
             }
@@ -127,10 +128,9 @@ namespace CoffeeManagementSystem.DAL
         }
 
         /// <summary>
-        /// Retrieves order information by ID.
+        /// Lấy 1 đơn hàng theo mã Madonhang.
+        /// - Trả về Donhang nếu tìm thấy, ngược lại trả về null.
         /// </summary>
-        /// <param name="madonhang">The ID of the order to retrieve.</param>
-        /// <returns>A Donhang object if found, otherwise null.</returns>
         public Donhang GetDonhangById(string madonhang)
         {
             Donhang donhang = null;
@@ -162,7 +162,6 @@ namespace CoffeeManagementSystem.DAL
                 }
                 catch (Exception ex)
                 {
-                    // ĐIỀU CHỈNH: Thay thế MessageBox.Show bằng cách ném lỗi để BLL xử lý
                     throw new Exception($"Lỗi DAL khi lấy đơn hàng theo ID: {ex.Message}", ex);
                 }
             }
@@ -170,9 +169,9 @@ namespace CoffeeManagementSystem.DAL
         }
 
         /// <summary>
-        /// Updates the information of an order.
+        /// Cập nhật thông tin 1 đơn hàng theo Madonhang.
+        /// - Yêu cầu Madonhang không được thay đổi (khóa để WHERE).
         /// </summary>
-        /// <param name="donhang">The Donhang object containing updated information (Madonhang is required).</param>
         public void UpdateDonhang(Donhang donhang)
         {
             using (SQLiteConnection connection = new SQLiteConnection(ConnectionString))
@@ -203,16 +202,15 @@ namespace CoffeeManagementSystem.DAL
                 }
                 catch (Exception ex)
                 {
-                    // ĐIỀU CHỈNH: Thay thế MessageBox.Show bằng cách ném lỗi để BLL xử lý
                     throw new Exception($"Lỗi DAL khi cập nhật đơn hàng: {ex.Message}", ex);
                 }
             }
         }
 
         /// <summary>
-        /// Deletes an order from the database.
+        /// Xóa 1 đơn hàng theo Madonhang.
+        /// - Lưu ý: nếu có khóa ngoại (chi tiết đơn hàng), cần xóa trước hoặc dùng cascade.
         /// </summary>
-        /// <param name="madonhang">The ID of the order to delete.</param>
         public void DeleteDonhang(string madonhang)
         {
             using (SQLiteConnection connection = new SQLiteConnection(ConnectionString))
@@ -229,17 +227,16 @@ namespace CoffeeManagementSystem.DAL
                 }
                 catch (Exception ex)
                 {
-                    // ĐIỀU CHỈNH: Thay thế MessageBox.Show bằng cách ném lỗi để BLL xử lý
                     throw new Exception($"Lỗi DAL khi xóa đơn hàng: {ex.Message}", ex);
                 }
             }
         }
+
         /// <summary>
-        /// Hàm đếm tổng số đơn cho label
+        /// Đếm tổng số đơn hàng trong khoảng thời gian (start → end).
+        /// - Dùng cho label tổng số đơn / thống kê chung.
+        /// - Sử dụng [fromDate, toDate + 1) để không mất phần giờ.
         /// </summary>
-        /// <param name="start"></param>
-        /// <param name="end"></param>
-        /// <returns></returns>
         public int GetOrderCount(DateTime start, DateTime end)
         {
             string query = @"
@@ -261,10 +258,10 @@ namespace CoffeeManagementSystem.DAL
         }
 
         /// <summary>
-        /// Searches for orders based on a keyword in Madonhang, Manhanvien, Makhachhang, Trangthaidon columns.
+        /// Tìm kiếm đơn hàng theo keyword:
+        /// - So khớp LIKE trên các cột: Madonhang, Manhanvien, Makhachhang, Trangthaidon.
+        /// - Dùng LOWER(...) để tìm kiếm không phân biệt hoa/thường.
         /// </summary>
-        /// <param name="searchTerm">The search keyword.</param>
-        /// <returns>A list of matching Donhang objects.</returns>
         public List<Donhang> SearchDonhangs(string searchTerm)
         {
             List<Donhang> donhangs = new List<Donhang>();
@@ -308,12 +305,17 @@ namespace CoffeeManagementSystem.DAL
                 }
                 catch (Exception ex)
                 {
-                    // ĐIỀU CHỈNH: Thay thế MessageBox.Show bằng cách ném lỗi để BLL xử lý
                     throw new Exception($"Lỗi DAL khi tìm kiếm đơn hàng: {ex.Message}", ex);
                 }
             }
             return donhangs;
         }
+
+        /// <summary>
+        /// Lấy dữ liệu doanh thu theo ngày trong khoảng (startDate → endDate).
+        /// - Trả về list RevenueReportItem để vẽ chart cột / line.
+        /// - Gom nhóm theo ngày (STRFTIME('%Y-%m-%d', Thoigiandat)).
+        /// </summary>
         public List<RevenueReportItem> GetRevenueByDateRange(DateTime startDate, DateTime endDate)
         {
             List<RevenueReportItem> revenueData = new List<RevenueReportItem>();
@@ -351,11 +353,18 @@ namespace CoffeeManagementSystem.DAL
                 }
                 catch (Exception ex)
                 {
+                    // Ở đây vẫn dùng MessageBox, có thể chuyển sang throw nếu muốn thống nhất với các hàm khác
                     MessageBox.Show($"Lỗi khi lấy báo cáo doanh thu: {ex.Message}", "Lỗi CSDL", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             return revenueData;
         }
+
+        /// <summary>
+        /// Lấy doanh thu theo loại đồ uống trong 1 ngày cụ thể (cho chart cột/bảng).
+        /// - JOIN Loaidouong, Douong, Chitietdonhang, Donhang.
+        /// - Gom nhóm theo tên loại (Tenloai).
+        /// </summary>
         public DataTable GetDoanhThuTheoLoaiTrongNgay(DateTime day)
         {
             string sql = @"
@@ -383,12 +392,11 @@ namespace CoffeeManagementSystem.DAL
 
             return dt;
         }
+
         /// <summary>
-        /// Hàm lấy doanh thu theo loại đồ uống cho pie chart
+        /// Lấy doanh thu theo loại đồ uống trong khoảng thời gian (start → end)
+        /// - Dùng cho pie chart: mỗi lát là 1 loại đồ uống.
         /// </summary>
-        /// <param name="start"></param>
-        /// <param name="end"></param>
-        /// <returns></returns>
         public DataTable GetDoanhThuTheoLoai(DateTime start, DateTime end)
         {
             string query = @"
@@ -406,7 +414,7 @@ namespace CoffeeManagementSystem.DAL
             using (var cmd = new SQLiteCommand(query, conn))
             using (var da = new SQLiteDataAdapter(cmd))
             {
-                // dùng BETWEEN dạng [start, end+1) để không bị mất phần giờ
+                // [start, end+1) để không mất phần giờ
                 cmd.Parameters.AddWithValue("@fromDate", start.Date);
                 cmd.Parameters.AddWithValue("@toDatePlus1", end.Date.AddDays(1));
 
@@ -416,11 +424,11 @@ namespace CoffeeManagementSystem.DAL
 
             return dt;
         }
+
         /// <summary>
-        /// Hàm lấy doanh thu theo giờ dựa trên đơn hàng
+        /// Lấy doanh thu theo giờ trong 1 ngày (dựa trên Tongtien của Donhang).
+        /// - Dùng cho chart cột theo giờ: 08h, 09h, 10h,...
         /// </summary>
-        /// <param name="date"></param>
-        /// <returns></returns>
         public DataTable GetRevenueByHour(DateTime date)
         {
             string query = @"
@@ -446,6 +454,12 @@ namespace CoffeeManagementSystem.DAL
                 }
             }
         }
+
+        /// <summary>
+        /// Lấy danh sách lịch sử đơn hàng trong khoảng thời gian:
+        /// - JOIN với Khachhang & Thanhtoan để lấy tên khách + hình thức thanh toán.
+        /// - Dùng cho màn hình “Lịch sử đơn hàng”.
+        /// </summary>
         public List<OrderHistoryItem> GetOrderHistory(DateTime fromDate, DateTime toDate)
         {
             List<OrderHistoryItem> list = new List<OrderHistoryItem>();
@@ -504,6 +518,12 @@ namespace CoffeeManagementSystem.DAL
 
             return list;
         }
+
+        /// <summary>
+        /// Lấy chi tiết từng món của một đơn hàng (theo Madonhang)
+        /// - JOIN Chitietdonhang với Douong để lấy tên đồ uống.
+        /// - Dùng cho màn chi tiết đơn / popup xem chi tiết.
+        /// </summary>
         public List<OrderDetailLine> GetOrderDetail(string madonhang)
         {
             var list = new List<OrderDetailLine>();
@@ -544,6 +564,11 @@ namespace CoffeeManagementSystem.DAL
 
             return list;
         }
+
+        /// <summary>
+        /// Lấy Madonhang cuối cùng dạng DHxxx (DH001, DH002, ...)
+        /// - Dùng để sinh mã đơn mới: đọc mã lớn nhất rồi +1.
+        /// </summary>
         public string GetLastMadonhang()
         {
             using (var conn = new SQLiteConnection(ConnectionString))
@@ -570,6 +595,9 @@ namespace CoffeeManagementSystem.DAL
 
     }
 
+    /// <summary>
+    /// Model dùng cho báo cáo doanh thu theo ngày (GetRevenueByDateRange).
+    /// </summary>
     public class RevenueReportItem
     {
         public DateTime Ngay { get; set; }
