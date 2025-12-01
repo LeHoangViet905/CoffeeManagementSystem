@@ -52,6 +52,7 @@
             this.txtSearch = new Guna.UI2.WinForms.Guna2TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnAdd = new System.Windows.Forms.Button();
+            this.btnThemkhachhang = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKhachHang)).BeginInit();
             this.guna2Panel1.SuspendLayout();
             this.SuspendLayout();
@@ -68,7 +69,7 @@
             this.dgvKhachHang.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Raised;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.DarkCyan;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("SVN-Gilroy", 9.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DarkCyan;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -111,7 +112,7 @@
             dataGridViewCellStyle11.ForeColor = System.Drawing.Color.Black;
             this.dgvKhachHang.RowsDefaultCellStyle = dataGridViewCellStyle11;
             this.dgvKhachHang.RowTemplate.Height = 24;
-            this.dgvKhachHang.Size = new System.Drawing.Size(1386, 788);
+            this.dgvKhachHang.Size = new System.Drawing.Size(1370, 749);
             this.dgvKhachHang.TabIndex = 20;
             this.dgvKhachHang.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvKhachHang.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -201,15 +202,16 @@
             this.guna2Panel1.BackColor = System.Drawing.Color.DarkCyan;
             this.guna2Panel1.BorderRadius = 20;
             this.guna2Panel1.BorderThickness = 3;
+            this.guna2Panel1.Controls.Add(this.btnThemkhachhang);
             this.guna2Panel1.Controls.Add(this.button3);
             this.guna2Panel1.Controls.Add(this.txtSearch);
             this.guna2Panel1.Controls.Add(this.label1);
             this.guna2Panel1.Controls.Add(this.btnAdd);
             this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.guna2Panel1.Location = new System.Drawing.Point(0, 691);
+            this.guna2Panel1.Location = new System.Drawing.Point(0, 652);
             this.guna2Panel1.Margin = new System.Windows.Forms.Padding(4);
             this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(1386, 97);
+            this.guna2Panel1.Size = new System.Drawing.Size(1370, 97);
             this.guna2Panel1.TabIndex = 24;
             // 
             // button3
@@ -222,7 +224,7 @@
             this.button3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
             this.button3.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button3.Location = new System.Drawing.Point(1262, 21);
+            this.button3.Location = new System.Drawing.Point(1145, 20);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(112, 64);
             this.button3.TabIndex = 107;
@@ -262,12 +264,12 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("SVN-Gilroy", 16F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(35, 27);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(160, 43);
+            this.label1.Size = new System.Drawing.Size(116, 26);
             this.label1.TabIndex = 105;
             this.label1.Text = "Tìm kiếm:";
             // 
@@ -281,7 +283,7 @@
             this.btnAdd.ForeColor = System.Drawing.Color.White;
             this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
             this.btnAdd.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnAdd.Location = new System.Drawing.Point(-896, 0);
+            this.btnAdd.Location = new System.Drawing.Point(-912, 0);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(120, 60);
             this.btnAdd.TabIndex = 23;
@@ -291,11 +293,30 @@
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
+            // btnThemkhachhang
+            // 
+            this.btnThemkhachhang.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnThemkhachhang.BackColor = System.Drawing.Color.DarkCyan;
+            this.btnThemkhachhang.FlatAppearance.BorderSize = 0;
+            this.btnThemkhachhang.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnThemkhachhang.Font = new System.Drawing.Font("Segoe UI Variable Small", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThemkhachhang.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnThemkhachhang.Image = ((System.Drawing.Image)(resources.GetObject("btnThemkhachhang.Image")));
+            this.btnThemkhachhang.Location = new System.Drawing.Point(1263, 20);
+            this.btnThemkhachhang.Name = "btnThemkhachhang";
+            this.btnThemkhachhang.Size = new System.Drawing.Size(95, 65);
+            this.btnThemkhachhang.TabIndex = 108;
+            this.btnThemkhachhang.Text = "Thêm";
+            this.btnThemkhachhang.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnThemkhachhang.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnThemkhachhang.UseVisualStyleBackColor = false;
+            this.btnThemkhachhang.Click += new System.EventHandler(this.btnThemloaidouong_Click);
+            // 
             // CustomerForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1386, 788);
+            this.ClientSize = new System.Drawing.Size(1370, 749);
             this.Controls.Add(this.guna2Panel1);
             this.Controls.Add(this.dgvKhachHang);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -325,5 +346,6 @@
         private Guna.UI2.WinForms.Guna2TextBox txtSearch;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnThemkhachhang;
     }
 }
