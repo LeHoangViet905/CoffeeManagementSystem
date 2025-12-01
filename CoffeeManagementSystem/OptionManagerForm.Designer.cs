@@ -69,13 +69,13 @@
             this.label6 = new System.Windows.Forms.Label();
             this.txtTimKiem = new Guna.UI2.WinForms.Guna2TextBox();
             this.dgvMon = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.colChon = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.colMa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnLuuCauHinh = new Guna.UI2.WinForms.Guna2Button();
             this.cboNhom = new Guna.UI2.WinForms.Guna2ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.bsDouong = new System.Windows.Forms.BindingSource(this.components);
+            this.colChon = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.colMa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelLeft.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNhom)).BeginInit();
             this.panelRight.SuspendLayout();
@@ -560,7 +560,7 @@
             this.guna2TabControl1.TabButtonSelectedState.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(132)))), ((int)(((byte)(255)))));
             this.guna2TabControl1.TabButtonSize = new System.Drawing.Size(180, 40);
             this.guna2TabControl1.TabIndex = 8;
-            this.guna2TabControl1.TabMenuBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(42)))), ((int)(((byte)(57)))));
+            this.guna2TabControl1.TabMenuBackColor = System.Drawing.Color.Tomato;
             this.guna2TabControl1.TabMenuOrientation = Guna.UI2.WinForms.TabMenuOrientation.HorizontalTop;
             // 
             // tabPage1
@@ -637,7 +637,7 @@
             dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvMon.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
-            this.dgvMon.ColumnHeadersHeight = 25;
+            this.dgvMon.ColumnHeadersHeight = 60;
             this.dgvMon.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.dgvMon.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colChon,
@@ -672,7 +672,7 @@
             this.dgvMon.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvMon.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
             this.dgvMon.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            this.dgvMon.ThemeStyle.HeaderStyle.Height = 25;
+            this.dgvMon.ThemeStyle.HeaderStyle.Height = 60;
             this.dgvMon.ThemeStyle.ReadOnly = false;
             this.dgvMon.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvMon.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
@@ -682,28 +682,6 @@
             this.dgvMon.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvMon.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             // 
-            // colChon
-            // 
-            this.colChon.HeaderText = "Chọn";
-            this.colChon.MinimumWidth = 6;
-            this.colChon.Name = "colChon";
-            // 
-            // colMa
-            // 
-            this.colMa.DataPropertyName = "Madouong";
-            this.colMa.HeaderText = "Mã đồ uống";
-            this.colMa.MinimumWidth = 6;
-            this.colMa.Name = "colMa";
-            this.colMa.ReadOnly = true;
-            // 
-            // colTen
-            // 
-            this.colTen.DataPropertyName = "Tendouong";
-            this.colTen.HeaderText = "Tên đồ uống";
-            this.colTen.MinimumWidth = 6;
-            this.colTen.Name = "colTen";
-            this.colTen.ReadOnly = true;
-            // 
             // btnLuuCauHinh
             // 
             this.btnLuuCauHinh.BorderRadius = 15;
@@ -711,7 +689,7 @@
             this.btnLuuCauHinh.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnLuuCauHinh.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnLuuCauHinh.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnLuuCauHinh.FillColor = System.Drawing.Color.Firebrick;
+            this.btnLuuCauHinh.FillColor = System.Drawing.Color.Tomato;
             this.btnLuuCauHinh.Font = new System.Drawing.Font("SVN-Gilroy SemiBold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLuuCauHinh.ForeColor = System.Drawing.Color.White;
             this.btnLuuCauHinh.Location = new System.Drawing.Point(34, 85);
@@ -748,6 +726,28 @@
             this.label5.Size = new System.Drawing.Size(259, 32);
             this.label5.TabIndex = 8;
             this.label5.Text = "Chọn Nhóm Tùy Chọn:";
+            // 
+            // colChon
+            // 
+            this.colChon.HeaderText = "Chọn";
+            this.colChon.MinimumWidth = 6;
+            this.colChon.Name = "colChon";
+            // 
+            // colMa
+            // 
+            this.colMa.DataPropertyName = "Madouong";
+            this.colMa.HeaderText = "Mã đồ uống";
+            this.colMa.MinimumWidth = 6;
+            this.colMa.Name = "colMa";
+            this.colMa.ReadOnly = true;
+            // 
+            // colTen
+            // 
+            this.colTen.DataPropertyName = "Tendouong";
+            this.colTen.HeaderText = "Tên đồ uống";
+            this.colTen.MinimumWidth = 6;
+            this.colTen.Name = "colTen";
+            this.colTen.ReadOnly = true;
             // 
             // OptionManagerForm
             // 
@@ -806,9 +806,6 @@
         private System.Windows.Forms.Label label5;
         private Guna.UI2.WinForms.Guna2DataGridView dgvMon;
         private Guna.UI2.WinForms.Guna2Button btnLuuCauHinh;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn colChon;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colMa;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colTen;
         private System.Windows.Forms.Label label6;
         private Guna.UI2.WinForms.Guna2TextBox txtTimKiem;
         private System.Windows.Forms.BindingSource bsDouong;
@@ -818,5 +815,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colMaChiTiet;
         private System.Windows.Forms.DataGridViewTextBoxColumn colTenChiTiet;
         private System.Windows.Forms.DataGridViewTextBoxColumn colGiaThem;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn colChon;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colMa;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colTen;
     }
 }

@@ -294,7 +294,7 @@
             this.dgvOrder.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgvOrder.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvOrder.GridColor = System.Drawing.Color.White;
-            this.dgvOrder.Location = new System.Drawing.Point(0, 50);
+            this.dgvOrder.Location = new System.Drawing.Point(0, 67);
             this.dgvOrder.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dgvOrder.Name = "dgvOrder";
             this.dgvOrder.ReadOnly = true;
@@ -309,7 +309,7 @@
             this.dgvOrder.RowHeadersVisible = false;
             this.dgvOrder.RowHeadersWidth = 51;
             this.dgvOrder.RowTemplate.Height = 40;
-            this.dgvOrder.Size = new System.Drawing.Size(400, 1071);
+            this.dgvOrder.Size = new System.Drawing.Size(400, 1054);
             this.dgvOrder.TabIndex = 4;
             this.dgvOrder.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvOrder.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -437,7 +437,7 @@
             this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
             this.guna2Panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(400, 50);
+            this.guna2Panel1.Size = new System.Drawing.Size(400, 67);
             this.guna2Panel1.TabIndex = 1;
             // 
             // guna2TextBox1
@@ -466,7 +466,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("SVN-Gilroy SemiBold", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(9, 15);
+            this.label1.Location = new System.Drawing.Point(10, 18);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(72, 27);
             this.label1.TabIndex = 0;
@@ -480,7 +480,7 @@
             this.panelHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelHeader.Location = new System.Drawing.Point(400, 0);
             this.panelHeader.Name = "panelHeader";
-            this.panelHeader.Size = new System.Drawing.Size(1418, 50);
+            this.panelHeader.Size = new System.Drawing.Size(1418, 67);
             this.panelHeader.TabIndex = 2;
             // 
             // label3
@@ -519,9 +519,9 @@
             // 
             this.panelContent.Controls.Add(this.guna2TabControl1);
             this.panelContent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelContent.Location = new System.Drawing.Point(400, 50);
+            this.panelContent.Location = new System.Drawing.Point(400, 67);
             this.panelContent.Name = "panelContent";
-            this.panelContent.Size = new System.Drawing.Size(1418, 1071);
+            this.panelContent.Size = new System.Drawing.Size(1418, 1054);
             this.panelContent.TabIndex = 3;
             // 
             // guna2TabControl1
@@ -545,7 +545,7 @@
             this.guna2TabControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.guna2TabControl1.Name = "guna2TabControl1";
             this.guna2TabControl1.SelectedIndex = 0;
-            this.guna2TabControl1.Size = new System.Drawing.Size(1418, 1071);
+            this.guna2TabControl1.Size = new System.Drawing.Size(1418, 1054);
             this.guna2TabControl1.TabButtonHoverState.BorderColor = System.Drawing.Color.Empty;
             this.guna2TabControl1.TabButtonHoverState.FillColor = System.Drawing.Color.IndianRed;
             this.guna2TabControl1.TabButtonHoverState.Font = new System.Drawing.Font("Segoe UI Semibold", 10F);
@@ -571,7 +571,7 @@
             this.tabPage11.Location = new System.Drawing.Point(254, 4);
             this.tabPage11.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage11.Name = "tabPage11";
-            this.tabPage11.Size = new System.Drawing.Size(1160, 1063);
+            this.tabPage11.Size = new System.Drawing.Size(1160, 1046);
             this.tabPage11.TabIndex = 10;
             this.tabPage11.Tag = "ALL";
             this.tabPage11.Text = "Tất cả";
