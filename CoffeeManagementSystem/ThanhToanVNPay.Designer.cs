@@ -42,21 +42,20 @@
             this.webView21.Location = new System.Drawing.Point(0, 0);
             this.webView21.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.webView21.Name = "webView21";
-            this.webView21.Size = new System.Drawing.Size(1318, 1139);
+            this.webView21.Size = new System.Drawing.Size(1318, 1055);
             this.webView21.TabIndex = 0;
             this.webView21.ZoomFactor = 1D;
             // 
             // FormThanhToan
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1318, 1139);
+            this.ClientSize = new System.Drawing.Size(1318, 1055);
             this.Controls.Add(this.webView21);
             this.Font = new System.Drawing.Font("SVN-Gilroy", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FormThanhToan";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.WindowsDefaultBounds;
             this.Text = "ThanhToanVNPay";
             this.Load += new System.EventHandler(this.FormThanhToan_Load_1);
             ((System.ComponentModel.ISupportInitialize)(this.webView21)).EndInit();
