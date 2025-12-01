@@ -498,7 +498,7 @@ namespace CoffeeManagementSystem
                 // Mô tả giao dịch gửi sang VNPay
                 string description = $"Thanh toán hóa đơn {maHoaDon} - KH: {txtKhachHangName.Text}";
 
-                // Mở form thanh toán VNPay
+                //Mở form thanh toán VNPay
                 using (var frm = new FormThanhToan(amount, description))
                 {
                     var result = frm.ShowDialog();

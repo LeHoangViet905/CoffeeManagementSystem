@@ -325,9 +325,6 @@
     <Compile Include="OrderHistoryForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="OrderHistoryForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="OrderHistoryForm.Designer.cs">
       <DependentUpon>OrderHistoryForm.cs</DependentUpon>
     </Compile>
@@ -342,6 +339,12 @@
     </Compile>
     <Compile Include="OptionManagerForm.Designer.cs">
       <DependentUpon>OptionManagerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ThanhToanVNPay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ThanhToanVNPay.Designer.cs">
+      <DependentUpon>ThanhToanVNPay.cs</DependentUpon>
     </Compile>
     <Compile Include="Trangchu.cs">
       <SubType>Form</SubType>
@@ -454,11 +457,8 @@
     <EmbeddedResource Include="OrderHistoryForm.resx">
       <DependentUpon>OrderHistoryForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NoteForm.resx">
-      <DependentUpon>NoteForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="OptionManagerForm.resx">
-      <DependentUpon>OptionManagerForm.cs</DependentUpon>
+    <EmbeddedResource Include="ThanhToanVNPay.resx">
+      <DependentUpon>ThanhToanVNPay.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Trangchu.resx">
       <DependentUpon>Trangchu.cs</DependentUpon>
