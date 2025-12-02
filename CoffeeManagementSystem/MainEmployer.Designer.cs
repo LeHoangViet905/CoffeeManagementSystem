@@ -122,14 +122,15 @@
             this.btnTaiKhoan.HoverState.ForeColor = System.Drawing.Color.White;
             this.btnTaiKhoan.Image = global::CoffeeManagementSystem.Properties.Resources.TaiKhoan;
             this.btnTaiKhoan.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnTaiKhoan.ImageOffset = new System.Drawing.Point(59, -40);
+            this.btnTaiKhoan.ImageOffset = new System.Drawing.Point(47, -40);
             this.btnTaiKhoan.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnTaiKhoan.Location = new System.Drawing.Point(0, 588);
+            this.btnTaiKhoan.Location = new System.Drawing.Point(0, 571);
             this.btnTaiKhoan.Margin = new System.Windows.Forms.Padding(2);
             this.btnTaiKhoan.Name = "btnTaiKhoan";
             this.btnTaiKhoan.Size = new System.Drawing.Size(150, 132);
             this.btnTaiKhoan.TabIndex = 19;
             this.btnTaiKhoan.Text = "Quản lý tài khoản";
+            this.btnTaiKhoan.TextOffset = new System.Drawing.Point(3, 0);
             this.btnTaiKhoan.Click += new System.EventHandler(this.btnTaiKhoan_Click);
             // 
             // lblName
@@ -161,14 +162,14 @@
             this.btnLichSuDonHang.Image = global::CoffeeManagementSystem.Properties.Resources.lichsu;
             this.btnLichSuDonHang.ImageOffset = new System.Drawing.Point(0, -40);
             this.btnLichSuDonHang.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnLichSuDonHang.Location = new System.Drawing.Point(-5, 456);
+            this.btnLichSuDonHang.Location = new System.Drawing.Point(3, 467);
             this.btnLichSuDonHang.Margin = new System.Windows.Forms.Padding(2);
             this.btnLichSuDonHang.Name = "btnLichSuDonHang";
-            this.btnLichSuDonHang.Size = new System.Drawing.Size(163, 139);
+            this.btnLichSuDonHang.Size = new System.Drawing.Size(151, 133);
             this.btnLichSuDonHang.TabIndex = 21;
             this.btnLichSuDonHang.Text = "Lịch sử đơn hàng";
             this.btnLichSuDonHang.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnLichSuDonHang.TextOffset = new System.Drawing.Point(10, 10);
+            this.btnLichSuDonHang.TextOffset = new System.Drawing.Point(10, 5);
             this.btnLichSuDonHang.Click += new System.EventHandler(this.btnLichSuDonHang_Click_1);
             // 
             // lblNhanVien
@@ -314,7 +315,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("SVN-Gilroy", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 5);
+            this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(229, 22);
             this.label1.TabIndex = 6;
@@ -324,7 +325,7 @@
             // 
             this.guna2ControlBox3.ControlBoxType = Guna.UI2.WinForms.Enums.ControlBoxType.MinimizeBox;
             this.guna2ControlBox3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.guna2ControlBox3.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(167)))), ((int)(((byte)(167)))));
+            this.guna2ControlBox3.FillColor = System.Drawing.Color.Tomato;
             this.guna2ControlBox3.ForeColor = System.Drawing.Color.Black;
             this.guna2ControlBox3.HoverState.FillColor = System.Drawing.Color.DimGray;
             this.guna2ControlBox3.HoverState.IconColor = System.Drawing.Color.White;
@@ -339,7 +340,7 @@
             // 
             this.guna2ControlBox2.ControlBoxType = Guna.UI2.WinForms.Enums.ControlBoxType.MaximizeBox;
             this.guna2ControlBox2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.guna2ControlBox2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(167)))), ((int)(((byte)(167)))));
+            this.guna2ControlBox2.FillColor = System.Drawing.Color.Tomato;
             this.guna2ControlBox2.ForeColor = System.Drawing.Color.Black;
             this.guna2ControlBox2.HoverState.FillColor = System.Drawing.Color.DimGray;
             this.guna2ControlBox2.HoverState.IconColor = System.Drawing.Color.White;
@@ -353,7 +354,7 @@
             // guna2ControlBox1
             // 
             this.guna2ControlBox1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.guna2ControlBox1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(167)))), ((int)(((byte)(167)))));
+            this.guna2ControlBox1.FillColor = System.Drawing.Color.Tomato;
             this.guna2ControlBox1.HoverState.FillColor = System.Drawing.Color.DimGray;
             this.guna2ControlBox1.HoverState.IconColor = System.Drawing.Color.White;
             this.guna2ControlBox1.IconColor = System.Drawing.Color.White;

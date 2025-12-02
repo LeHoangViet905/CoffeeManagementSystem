@@ -155,15 +155,16 @@
             this.dtpNgayVaoLam.BackColor = System.Drawing.Color.Transparent;
             this.dtpNgayVaoLam.BorderRadius = 15;
             this.dtpNgayVaoLam.Checked = true;
-            this.dtpNgayVaoLam.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.dtpNgayVaoLam.FillColor = System.Drawing.Color.Tomato;
             this.dtpNgayVaoLam.Font = new System.Drawing.Font("SVN-Gilroy", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpNgayVaoLam.ForeColor = System.Drawing.Color.White;
             this.dtpNgayVaoLam.Format = System.Windows.Forms.DateTimePickerFormat.Long;
             this.dtpNgayVaoLam.Location = new System.Drawing.Point(347, 375);
             this.dtpNgayVaoLam.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtpNgayVaoLam.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dtpNgayVaoLam.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.dtpNgayVaoLam.Name = "dtpNgayVaoLam";
-            this.dtpNgayVaoLam.Size = new System.Drawing.Size(343, 36);
+            this.dtpNgayVaoLam.Size = new System.Drawing.Size(370, 36);
             this.dtpNgayVaoLam.TabIndex = 79;
             this.dtpNgayVaoLam.Value = new System.DateTime(2025, 5, 25, 13, 24, 29, 976);
             // 
@@ -171,15 +172,16 @@
             // 
             this.dtpNgaySinh.BorderRadius = 15;
             this.dtpNgaySinh.Checked = true;
-            this.dtpNgaySinh.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.dtpNgaySinh.FillColor = System.Drawing.Color.Tomato;
             this.dtpNgaySinh.Font = new System.Drawing.Font("SVN-Gilroy", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpNgaySinh.ForeColor = System.Drawing.Color.White;
             this.dtpNgaySinh.Format = System.Windows.Forms.DateTimePickerFormat.Long;
             this.dtpNgaySinh.Location = new System.Drawing.Point(347, 135);
             this.dtpNgaySinh.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtpNgaySinh.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dtpNgaySinh.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.dtpNgaySinh.Name = "dtpNgaySinh";
-            this.dtpNgaySinh.Size = new System.Drawing.Size(343, 36);
+            this.dtpNgaySinh.Size = new System.Drawing.Size(370, 36);
             this.dtpNgaySinh.TabIndex = 78;
             this.dtpNgaySinh.Value = new System.DateTime(2025, 5, 25, 13, 24, 29, 976);
             // 
