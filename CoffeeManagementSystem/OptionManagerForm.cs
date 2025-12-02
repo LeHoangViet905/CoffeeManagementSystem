@@ -221,7 +221,26 @@ namespace CoffeeManagementSystem
 
         private void txtTimKiem_TextChanged(object sender, EventArgs e)
         {
-
+             string keyword = txtTimKiem.Text.Trim();
+            
+             if (string.IsNullOrWhiteSpace(keyword))
+             {
+                 bsDouong.Filter = null;
+             }
+             else
+             {
+                 try
+                 {
+                     string filterExpression = string.Format("Tendouong LIKE '*{0}*'", keyword);
+            
+                     bsDouong.Filter = filterExpression;
+                 }
+                 catch (Exception ex)
+                 {
+                     MessageBox.Show("Lỗi cú pháp tìm kiếm: " + ex.Message);
+                     bsDouong.Filter = null;
+                 }
+             }
         }
 
         private void btnSuaNhom_Click(object sender, EventArgs e)
