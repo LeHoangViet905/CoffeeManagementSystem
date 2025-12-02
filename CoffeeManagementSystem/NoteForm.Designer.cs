@@ -60,6 +60,7 @@
             this.guna2TabControl1.Controls.Add(this.tabPage1);
             this.guna2TabControl1.Controls.Add(this.tabPage2);
             this.guna2TabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.guna2TabControl1.Font = new System.Drawing.Font("SVN-Gilroy SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2TabControl1.ItemSize = new System.Drawing.Size(180, 40);
             this.guna2TabControl1.Location = new System.Drawing.Point(0, 0);
             this.guna2TabControl1.Name = "guna2TabControl1";
@@ -71,18 +72,18 @@
             this.guna2TabControl1.TabButtonHoverState.ForeColor = System.Drawing.Color.White;
             this.guna2TabControl1.TabButtonHoverState.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(52)))), ((int)(((byte)(70)))));
             this.guna2TabControl1.TabButtonIdleState.BorderColor = System.Drawing.Color.Empty;
-            this.guna2TabControl1.TabButtonIdleState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(42)))), ((int)(((byte)(57)))));
-            this.guna2TabControl1.TabButtonIdleState.Font = new System.Drawing.Font("Segoe UI Semibold", 10F);
-            this.guna2TabControl1.TabButtonIdleState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(160)))), ((int)(((byte)(167)))));
+            this.guna2TabControl1.TabButtonIdleState.FillColor = System.Drawing.Color.DarkCyan;
+            this.guna2TabControl1.TabButtonIdleState.Font = new System.Drawing.Font("SVN-Gilroy SemiBold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2TabControl1.TabButtonIdleState.ForeColor = System.Drawing.Color.White;
             this.guna2TabControl1.TabButtonIdleState.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(42)))), ((int)(((byte)(57)))));
             this.guna2TabControl1.TabButtonSelectedState.BorderColor = System.Drawing.Color.Empty;
             this.guna2TabControl1.TabButtonSelectedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(37)))), ((int)(((byte)(49)))));
-            this.guna2TabControl1.TabButtonSelectedState.Font = new System.Drawing.Font("Segoe UI Semibold", 10F);
+            this.guna2TabControl1.TabButtonSelectedState.Font = new System.Drawing.Font("SVN-Gilroy SemiBold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2TabControl1.TabButtonSelectedState.ForeColor = System.Drawing.Color.White;
             this.guna2TabControl1.TabButtonSelectedState.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(132)))), ((int)(((byte)(255)))));
             this.guna2TabControl1.TabButtonSize = new System.Drawing.Size(180, 40);
             this.guna2TabControl1.TabIndex = 0;
-            this.guna2TabControl1.TabMenuBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(42)))), ((int)(((byte)(57)))));
+            this.guna2TabControl1.TabMenuBackColor = System.Drawing.Color.DarkCyan;
             this.guna2TabControl1.TabMenuOrientation = Guna.UI2.WinForms.TabMenuOrientation.HorizontalTop;
             // 
             // tabPage1
@@ -187,6 +188,7 @@
             this.btnBack.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnBack.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnBack.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnBack.FillColor = System.Drawing.Color.Tomato;
             this.btnBack.Font = new System.Drawing.Font("SVN-Gilroy Medium", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBack.ForeColor = System.Drawing.Color.White;
             this.btnBack.Location = new System.Drawing.Point(12, 8);
@@ -202,6 +204,7 @@
             this.btnLuu.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnLuu.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnLuu.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnLuu.FillColor = System.Drawing.Color.Tomato;
             this.btnLuu.Font = new System.Drawing.Font("SVN-Gilroy Medium", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLuu.ForeColor = System.Drawing.Color.White;
             this.btnLuu.Location = new System.Drawing.Point(1135, 8);
@@ -217,6 +220,7 @@
             this.btnHuy.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnHuy.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnHuy.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnHuy.FillColor = System.Drawing.Color.Tomato;
             this.btnHuy.Font = new System.Drawing.Font("SVN-Gilroy Medium", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHuy.ForeColor = System.Drawing.Color.White;
             this.btnHuy.Location = new System.Drawing.Point(994, 8);

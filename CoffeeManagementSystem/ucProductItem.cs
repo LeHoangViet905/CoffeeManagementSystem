@@ -28,7 +28,7 @@ namespace CoffeeManagementSystem
             set
             {
                 _priceDecimal = value;
-                chipPrice.Text = value.ToString("N0") + "VND";
+                chipPrice.Text = value.ToString("N0");
             }
         }
 

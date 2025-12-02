@@ -72,7 +72,7 @@
             this.txtTendouong.Name = "txtTendouong";
             this.txtTendouong.PlaceholderText = "";
             this.txtTendouong.SelectedText = "";
-            this.txtTendouong.Size = new System.Drawing.Size(464, 34);
+            this.txtTendouong.Size = new System.Drawing.Size(475, 34);
             this.txtTendouong.TabIndex = 86;
             // 
             // txtMota
@@ -118,7 +118,7 @@
             // 
             this.labelLoaidouong.AutoSize = true;
             this.labelLoaidouong.Font = new System.Drawing.Font("SVN-Gilroy Medium", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelLoaidouong.Location = new System.Drawing.Point(324, 114);
+            this.labelLoaidouong.Location = new System.Drawing.Point(324, 109);
             this.labelLoaidouong.Name = "labelLoaidouong";
             this.labelLoaidouong.Size = new System.Drawing.Size(139, 25);
             this.labelLoaidouong.TabIndex = 79;
@@ -157,11 +157,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Variable Display", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("SVN-Gilroy", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(232, 7);
+            this.label1.Location = new System.Drawing.Point(216, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(246, 36);
+            this.label1.Size = new System.Drawing.Size(247, 36);
             this.label1.TabIndex = 70;
             this.label1.Text = "Thông tin đồ uống";
             // 
@@ -202,10 +202,10 @@
             "Supervisor",
             "Cashier",
             "Worker"});
-            this.cbLoaiDouong.Location = new System.Drawing.Point(446, 109);
+            this.cbLoaiDouong.Location = new System.Drawing.Point(472, 111);
             this.cbLoaiDouong.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbLoaiDouong.Name = "cbLoaiDouong";
-            this.cbLoaiDouong.Size = new System.Drawing.Size(165, 26);
+            this.cbLoaiDouong.Size = new System.Drawing.Size(153, 26);
             this.cbLoaiDouong.TabIndex = 87;
             // 
             // lblMinhHoa
@@ -249,7 +249,7 @@
             this.txtGiaBan.Name = "txtGiaBan";
             this.txtGiaBan.PlaceholderText = "";
             this.txtGiaBan.SelectedText = "";
-            this.txtGiaBan.Size = new System.Drawing.Size(165, 34);
+            this.txtGiaBan.Size = new System.Drawing.Size(179, 34);
             this.txtGiaBan.TabIndex = 90;
             this.txtGiaBan.TextChanged += new System.EventHandler(this.txtGiaBan_TextChanged);
             // 
@@ -305,7 +305,7 @@
             this.btnXoa.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnXoa.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnXoa.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.btnXoa.Font = new System.Drawing.Font("Segoe UI Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnXoa.Font = new System.Drawing.Font("SVN-Gilroy", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnXoa.ForeColor = System.Drawing.Color.White;
             this.btnXoa.Location = new System.Drawing.Point(472, 470);
             this.btnXoa.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -316,7 +316,6 @@
             this.btnXoa.Size = new System.Drawing.Size(140, 47);
             this.btnXoa.TabIndex = 111;
             this.btnXoa.Text = "Xóa ";
-            //this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click_1);
             // 
             // btnCapNhat
             // 
@@ -327,7 +326,7 @@
             this.btnCapNhat.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnCapNhat.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnCapNhat.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btnCapNhat.Font = new System.Drawing.Font("Segoe UI Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCapNhat.Font = new System.Drawing.Font("SVN-Gilroy", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCapNhat.ForeColor = System.Drawing.Color.White;
             this.btnCapNhat.Location = new System.Drawing.Point(312, 470);
             this.btnCapNhat.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -348,7 +347,7 @@
             this.btnLuu.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnLuu.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnLuu.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnLuu.Font = new System.Drawing.Font("Segoe UI Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLuu.Font = new System.Drawing.Font("SVN-Gilroy", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLuu.ForeColor = System.Drawing.Color.White;
             this.btnLuu.Location = new System.Drawing.Point(147, 470);
             this.btnLuu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -365,7 +364,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FloralWhite;
-            this.ClientSize = new System.Drawing.Size(676, 538);
+            this.ClientSize = new System.Drawing.Size(676, 520);
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.btnCapNhat);
             this.Controls.Add(this.btnLuu);

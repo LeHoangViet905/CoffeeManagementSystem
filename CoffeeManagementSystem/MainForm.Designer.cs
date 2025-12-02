@@ -34,6 +34,7 @@
             this.lblQuanLy = new System.Windows.Forms.Label();
             this.panelMain = new System.Windows.Forms.Panel();
             this.splitContainerNavBar = new System.Windows.Forms.SplitContainer();
+            this.btnOptionManager = new Guna.UI2.WinForms.Guna2GradientButton();
             this.btnLogout = new Guna.UI2.WinForms.Guna2GradientButton();
             this.btnTaiKhoan = new Guna.UI2.WinForms.Guna2GradientButton();
             this.btnReport = new Guna.UI2.WinForms.Guna2GradientButton();
@@ -48,7 +49,6 @@
             this.guna2ControlBox2 = new Guna.UI2.WinForms.Guna2ControlBox();
             this.guna2ControlBox1 = new Guna.UI2.WinForms.Guna2ControlBox();
             this.guna2ShadowForm1 = new Guna.UI2.WinForms.Guna2ShadowForm(this.components);
-            this.btnOptionManager = new Guna.UI2.WinForms.Guna2GradientButton();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerNavBar)).BeginInit();
             this.splitContainerNavBar.Panel1.SuspendLayout();
             this.splitContainerNavBar.Panel2.SuspendLayout();
@@ -126,6 +126,33 @@
             this.splitContainerNavBar.SplitterDistance = 155;
             this.splitContainerNavBar.SplitterWidth = 5;
             this.splitContainerNavBar.TabIndex = 20;
+            // 
+            // btnOptionManager
+            // 
+            this.btnOptionManager.BorderColor = System.Drawing.Color.Empty;
+            this.btnOptionManager.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnOptionManager.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnOptionManager.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnOptionManager.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnOptionManager.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnOptionManager.FillColor = System.Drawing.Color.Empty;
+            this.btnOptionManager.FillColor2 = System.Drawing.Color.Empty;
+            this.btnOptionManager.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOptionManager.ForeColor = System.Drawing.Color.White;
+            this.btnOptionManager.HoverState.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOptionManager.HoverState.ForeColor = System.Drawing.Color.White;
+            this.btnOptionManager.Image = global::CoffeeManagementSystem.Properties.Resources.NhanVien;
+            this.btnOptionManager.ImageOffset = new System.Drawing.Point(3, -15);
+            this.btnOptionManager.ImageSize = new System.Drawing.Size(25, 25);
+            this.btnOptionManager.Location = new System.Drawing.Point(-19, 676);
+            this.btnOptionManager.Margin = new System.Windows.Forms.Padding(2);
+            this.btnOptionManager.Name = "btnOptionManager";
+            this.btnOptionManager.Size = new System.Drawing.Size(174, 75);
+            this.btnOptionManager.TabIndex = 21;
+            this.btnOptionManager.Text = "Quản lý chi tiết";
+            this.btnOptionManager.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnOptionManager.TextOffset = new System.Drawing.Point(12, 15);
+            this.btnOptionManager.Click += new System.EventHandler(this.btnOptionManager_Click);
             // 
             // btnLogout
             // 
@@ -359,7 +386,7 @@
             // 
             this.guna2ControlBox3.ControlBoxType = Guna.UI2.WinForms.Enums.ControlBoxType.MinimizeBox;
             this.guna2ControlBox3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.guna2ControlBox3.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(167)))), ((int)(((byte)(167)))));
+            this.guna2ControlBox3.FillColor = System.Drawing.Color.Tomato;
             this.guna2ControlBox3.ForeColor = System.Drawing.Color.Black;
             this.guna2ControlBox3.HoverState.FillColor = System.Drawing.Color.DimGray;
             this.guna2ControlBox3.HoverState.IconColor = System.Drawing.Color.White;
@@ -374,7 +401,7 @@
             // 
             this.guna2ControlBox2.ControlBoxType = Guna.UI2.WinForms.Enums.ControlBoxType.MaximizeBox;
             this.guna2ControlBox2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.guna2ControlBox2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(167)))), ((int)(((byte)(167)))));
+            this.guna2ControlBox2.FillColor = System.Drawing.Color.Tomato;
             this.guna2ControlBox2.ForeColor = System.Drawing.Color.Black;
             this.guna2ControlBox2.HoverState.FillColor = System.Drawing.Color.DimGray;
             this.guna2ControlBox2.HoverState.IconColor = System.Drawing.Color.White;
@@ -388,7 +415,7 @@
             // guna2ControlBox1
             // 
             this.guna2ControlBox1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.guna2ControlBox1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(167)))), ((int)(((byte)(167)))));
+            this.guna2ControlBox1.FillColor = System.Drawing.Color.Tomato;
             this.guna2ControlBox1.HoverState.FillColor = System.Drawing.Color.DimGray;
             this.guna2ControlBox1.HoverState.IconColor = System.Drawing.Color.White;
             this.guna2ControlBox1.IconColor = System.Drawing.Color.White;
@@ -402,33 +429,6 @@
             // 
             this.guna2ShadowForm1.BorderRadius = 20;
             this.guna2ShadowForm1.TargetForm = this;
-            // 
-            // btnOptionManager
-            // 
-            this.btnOptionManager.BorderColor = System.Drawing.Color.Empty;
-            this.btnOptionManager.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnOptionManager.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnOptionManager.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnOptionManager.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnOptionManager.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnOptionManager.FillColor = System.Drawing.Color.Empty;
-            this.btnOptionManager.FillColor2 = System.Drawing.Color.Empty;
-            this.btnOptionManager.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOptionManager.ForeColor = System.Drawing.Color.White;
-            this.btnOptionManager.HoverState.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOptionManager.HoverState.ForeColor = System.Drawing.Color.White;
-            this.btnOptionManager.Image = global::CoffeeManagementSystem.Properties.Resources.NhanVien;
-            this.btnOptionManager.ImageOffset = new System.Drawing.Point(3, -15);
-            this.btnOptionManager.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnOptionManager.Location = new System.Drawing.Point(-8, 686);
-            this.btnOptionManager.Margin = new System.Windows.Forms.Padding(2);
-            this.btnOptionManager.Name = "btnOptionManager";
-            this.btnOptionManager.Size = new System.Drawing.Size(163, 72);
-            this.btnOptionManager.TabIndex = 21;
-            this.btnOptionManager.Text = "Quản lý chi tiết";
-            this.btnOptionManager.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnOptionManager.TextOffset = new System.Drawing.Point(22, 10);
-            this.btnOptionManager.Click += new System.EventHandler(this.btnOptionManager_Click);
             // 
             // MainForm
             // 

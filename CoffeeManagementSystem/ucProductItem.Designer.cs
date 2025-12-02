@@ -51,13 +51,14 @@
             this.chipPrice.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.chipPrice.BorderColor = System.Drawing.Color.White;
             this.chipPrice.BorderRadius = 8;
+            this.chipPrice.DefaultAutoSize = true;
             this.chipPrice.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.chipPrice.Font = new System.Drawing.Font("Segoe UI Variable Display", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chipPrice.ForeColor = System.Drawing.Color.White;
-            this.chipPrice.Location = new System.Drawing.Point(81, 3);
+            this.chipPrice.Location = new System.Drawing.Point(64, 3);
             this.chipPrice.Name = "chipPrice";
             this.chipPrice.Padding = new System.Windows.Forms.Padding(5, 2, 5, 2);
-            this.chipPrice.Size = new System.Drawing.Size(96, 34);
+            this.chipPrice.Size = new System.Drawing.Size(113, 37);
             this.chipPrice.TabIndex = 1;
             this.chipPrice.Text = "80,000";
             // 
@@ -65,9 +66,10 @@
             // 
             this.lblName.BackColor = System.Drawing.Color.Transparent;
             this.lblName.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.lblName.Location = new System.Drawing.Point(0, 162);
+            this.lblName.Font = new System.Drawing.Font("Segoe UI Variable Display", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblName.Location = new System.Drawing.Point(0, 158);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(180, 18);
+            this.lblName.Size = new System.Drawing.Size(180, 22);
             this.lblName.TabIndex = 2;
             this.lblName.Text = "Tên sản phẩm";
             this.lblName.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
