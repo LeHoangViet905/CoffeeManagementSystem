@@ -20,7 +20,7 @@ TÁC GIẢ:
 
 •	Hứa Đức Nghĩa: https://github.com/nghia2122005-cmyk 
 
-•	Nguyễn Kiều Minh Trí: 
+•	Nguyễn Kiều Minh Trí: https://github.com/MinhTri1701
 
 •	Lê Hoàng Việt: https://github.com/LeHoangViet905 
 
