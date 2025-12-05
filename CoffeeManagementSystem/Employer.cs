@@ -308,5 +308,24 @@ namespace CoffeeManagementSystem
                 MessageBox.Show("Lỗi khi import: " + ex.Message);
             }
         }
+
+        private void guna2Button2_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "Excel Files|*.xlsx;*.xls|CSV Files|*.csv";
+            sfd.FileName = "NhanVien_Export";
+            if (sfd.ShowDialog() != DialogResult.OK) return;
+            try
+            {
+                //Lấy danh sách nhân viên từ BLL
+                var list = nhanvienBLL.GetAllNhanviens();
+                nhanvienBLL.ExportNhanvienToCSV(list, sfd.FileName);
+                MessageBox.Show("Xuất file thành công!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi xuất file: " + ex.Message);
+            }
+        }
     }
 }

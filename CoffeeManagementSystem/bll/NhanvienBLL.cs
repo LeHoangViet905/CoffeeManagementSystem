@@ -1,7 +1,10 @@
 ﻿using CoffeeManagementSystem.DAL; // Để truy cập tầng DAL
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq; // Dùng cho LINQ nếu cần trong tương lai
+using System.Reflection;
+using System.Text;
 using System.Text.RegularExpressions;
 
 namespace CoffeeManagementSystem.BLL
@@ -313,6 +316,49 @@ namespace CoffeeManagementSystem.BLL
         public List<string> GetAllMaNV()
         {
             return _nhanvienDAL.GetAllMaNV(); // chỉ gọi 1 lần để tái sử dụng
+        }
+        public void ExportNhanvienToCSV(List<Nhanvien> list, string filePath)
+        {
+            if (list == null) throw new ArgumentNullException(nameof(list));
+            if (string.IsNullOrWhiteSpace(filePath)) throw new ArgumentException("Đường dẫn file không hợp lệ.", nameof(filePath));
+
+            // Đảm bảo .csv
+            if (!filePath.EndsWith(".csv", StringComparison.OrdinalIgnoreCase))
+                filePath = Path.ChangeExtension(filePath, ".csv");
+
+            // Lấy header từ tên property của class Douong (đồng bộ với DB)
+            var props = typeof(Nhanvien).GetProperties(BindingFlags.Public | BindingFlags.Instance);
+
+            // Ghi file với UTF8 (không BOM) hoặc nếu muốn Excel dễ đọc có thể dùng Encoding.UTF8 preamble:
+            var encoding = new UTF8Encoding(encoderShouldEmitUTF8Identifier: true); // có BOM để Excel nhận UTF-8
+            using (var sw = new StreamWriter(filePath, false, encoding))
+            {
+                // Header
+                sw.WriteLine(string.Join(",", props.Select(p => EscapeCsv(p.Name))));
+
+                // Rows
+                foreach (var item in list)
+                {
+                    var values = props.Select(p =>
+                    {
+                        var val = p.GetValue(item);
+                        return EscapeCsv(val?.ToString() ?? "");
+                    });
+                    sw.WriteLine(string.Join(",", values));
+                }
+            }
+        }
+
+        /// <summary>
+        /// Escape theo CSV: 
+        /// - nếu chứa dấu " hoặc , hoặc newline -> bao bằng " và doubled quotes bên trong
+        /// </summary>
+        private string EscapeCsv(string s)
+        {
+            if (s == null) return "";
+            bool mustQuote = s.Contains(",") || s.Contains("\"") || s.Contains("\n") || s.Contains("\r");
+            string escaped = s.Replace("\"", "\"\""); // double quotes
+            return mustQuote ? $"\"{escaped}\"" : escaped;
         }
     }
 }
