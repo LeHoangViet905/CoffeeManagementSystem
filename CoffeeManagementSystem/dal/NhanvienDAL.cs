@@ -15,9 +15,6 @@ namespace CoffeeManagementSystem.DAL
     /// </summary>
     public class NhanvienDAL : BaseDataAccess
     {
-        // Chuỗi kết nối riêng (đang song song với ConnectionString của BaseDataAccess)
-        private readonly string _connectionString = @"DataSource=QuanLyCaPheDatabase.db;Version=3;";
-
         public NhanvienDAL() : base()
         {
         }
@@ -326,7 +323,7 @@ namespace CoffeeManagementSystem.DAL
         {
             List<string> maList = new List<string>();
 
-            using (var conn = new SQLiteConnection(_connectionString))
+            using (var conn = new SQLiteConnection(ConnectionString))
             {
                 conn.Open();
                 var cmd = new SQLiteCommand("SELECT Manhanvien FROM Nhanvien", conn);
