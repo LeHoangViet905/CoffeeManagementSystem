@@ -176,16 +176,15 @@ namespace CoffeeManagementSystem.BLL
         ///       - Cập nhật điểm tích lũy khách hàng (nếu có)
         ///       - Commit nếu ok, Rollback nếu lỗi.
         /// </summary>
-        public bool ProcessPayment(string customerName,
-                                   string hinhThucThanhToan,
-                                   string manhanvienThuNgan,
-                                   string ghiChu,
-                                   out Khachhang customerToUse)
+        public bool ProcessPayment(string customerPhoneNumber,
+                           string hinhThucThanhToan,
+                           string manhanvienThuNgan,
+                           string ghiChu,
+                           out Khachhang customerToUse)
         {
-            Logger.LogInfo($"Bắt đầu ProcessPayment cho khách hàng: '{customerName ?? "Khách vãng lai"}', Hình thức TT: {hinhThucThanhToan}");
-            customerToUse = null; // Giá trị mặc định cho out
+            Logger.LogInfo($"Bắt đầu ProcessPayment cho SĐT: '{customerPhoneNumber ?? "Khách vãng lai"}', Hình thức TT: {hinhThucThanhToan}");
+            customerToUse = null;
 
-            // Không có món nào → không cho thanh toán
             if (!_dsChiTietHoaDon.Any())
             {
                 Logger.LogWarning("Không có đồ uống nào trong hóa đơn để thanh toán.");
@@ -195,40 +194,37 @@ namespace CoffeeManagementSystem.BLL
             decimal tongTienHoaDon = CalculateTongTien();
             string makhachhang = null;
 
-            // === XỬ LÝ KHÁCH HÀNG THEO TÊN ===
-            if (!string.IsNullOrWhiteSpace(customerName))
+            // === XỬ LÝ KHÁCH HÀNG THEO SỐ ĐIỆN THOẠI ===
+            if (!string.IsNullOrWhiteSpace(customerPhoneNumber))
             {
                 try
                 {
-                    customerToUse = _khachhangDAL.GetKhachhangByName(customerName);
+                    customerToUse = _khachhangDAL.GetKhachhangByPhoneNumber(customerPhoneNumber);
 
                     if (customerToUse == null)
                     {
-                        // Không tìm thấy khách → ném exception để PaymentForm hỏi thêm mới
-                        Logger.LogInfo($"Khách hàng '{customerName}' không tìm thấy trong CSDL.");
-                        throw new KhachhangNotFoundException($"Khách hàng '{customerName}' chưa tồn tại.");
+                        Logger.LogInfo($"Khách hàng với SĐT '{customerPhoneNumber}' không tìm thấy trong CSDL.");
+                        throw new KhachhangNotFoundException($"Khách hàng với số điện thoại '{customerPhoneNumber}' chưa tồn tại.");
                     }
                     else
                     {
-                        Logger.LogInfo($"Đã tìm thấy khách hàng: {customerToUse.Hoten} (Mã: {customerToUse.Makhachhang}).");
+                        Logger.LogInfo($"Đã tìm thấy khách hàng: {customerToUse.Hoten} (Mã: {customerToUse.Makhachhang}, SĐT: {customerToUse.Sodienthoai}).");
                         makhachhang = customerToUse.Makhachhang;
                     }
                 }
                 catch (KhachhangNotFoundException)
                 {
-                    // Ném lại để UI xử lý (hiển thị MessageBox, hỏi có thêm khách hay không)
                     throw;
                 }
                 catch (Exception ex)
                 {
-                    Logger.LogError($"Lỗi khi tìm kiếm khách hàng '{customerName}'.", ex);
+                    Logger.LogError($"Lỗi khi tìm kiếm khách hàng theo SĐT '{customerPhoneNumber}'.", ex);
                     throw new Exception($"Lỗi khi xử lý thông tin khách hàng: {ex.Message}", ex);
                 }
             }
             else
             {
-                // Không có tên khách → thanh toán như khách vãng lai
-                Logger.LogInfo("Không có tên khách hàng được cung cấp. Xử lý như khách vãng lai.");
+                Logger.LogInfo("Không có số điện thoại khách hàng được cung cấp. Xử lý như khách vãng lai.");
             }
 
             // Tạo đối tượng ĐƠN HÀNG
@@ -347,9 +343,9 @@ namespace CoffeeManagementSystem.BLL
         /// Thêm mới khách hàng với tên đơn giản (không có số điện thoại, email,...).
         /// - Được gọi khi PaymentForm hỏi: "KH chưa tồn tại, bạn có muốn thêm không?"
         /// </summary>
-        public Khachhang AddNewKhachhang(string customerName)
+        public Khachhang AddNewKhachhang(string customerName, string phoneNumber)
         {
-            Logger.LogInfo($"Bắt đầu thêm khách hàng mới: '{customerName}'.");
+            Logger.LogInfo($"Bắt đầu thêm khách hàng mới: Tên='{customerName}', SĐT='{phoneNumber}'.");
 
             if (string.IsNullOrWhiteSpace(customerName))
                 throw new ArgumentException("Tên khách hàng không được trống.", nameof(customerName));
@@ -360,21 +356,54 @@ namespace CoffeeManagementSystem.BLL
                 {
                     Makhachhang = GenerateNewKhachhangId(),
                     Hoten = customerName,
+                    Sodienthoai = string.IsNullOrWhiteSpace(phoneNumber) ? null : phoneNumber,
                     Ngaydangky = DateTime.Now,
                     Diemtichluy = 0
                 };
 
                 _khachhangDAL.AddKhachhang(newCustomer);
-                Logger.LogInfo($"Đã thêm mới khách hàng thành công: '{newCustomer.Hoten}' (Mã: {newCustomer.Makhachhang}).");
+                Logger.LogInfo($"Đã thêm mới khách hàng thành công: '{newCustomer.Hoten}' (Mã: {newCustomer.Makhachhang}, SĐT: {newCustomer.Sodienthoai}).");
 
                 return newCustomer;
             }
             catch (Exception ex)
             {
-                Logger.LogError($"Lỗi khi thêm mới khách hàng '{customerName}'.", ex);
+                Logger.LogError($"Lỗi khi thêm mới khách hàng '{customerName}' với SĐT '{phoneNumber}'.", ex);
                 throw new Exception($"Không thể thêm mới khách hàng: {ex.Message}", ex);
             }
         }
+        /// <summary>
+        /// Tìm khách hàng theo số điện thoại (UI dùng khi nhập SĐT).
+        /// </summary>
+        public Khachhang GetKhachhangByPhone(string phoneNumber)
+        {
+            Logger.LogInfo($"Bắt đầu tìm kiếm khách hàng với SĐT: '{phoneNumber}'.");
+            if (string.IsNullOrWhiteSpace(phoneNumber))
+            {
+                Logger.LogDebug("Số điện thoại rỗng khi tìm kiếm.");
+                return null;
+            }
+
+            try
+            {
+                Khachhang foundCustomer = _khachhangDAL.GetKhachhangByPhoneNumber(phoneNumber);
+                if (foundCustomer != null)
+                {
+                    Logger.LogInfo($"Đã tìm thấy khách hàng: '{foundCustomer.Hoten}' (Mã: {foundCustomer.Makhachhang}, SĐT: {foundCustomer.Sodienthoai}).");
+                }
+                else
+                {
+                    Logger.LogInfo($"Không tìm thấy khách hàng với SĐT: '{phoneNumber}'.");
+                }
+                return foundCustomer;
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError($"Lỗi khi tìm kiếm khách hàng theo SĐT '{phoneNumber}'.", ex);
+                throw new Exception($"Lỗi khi tìm khách hàng: {ex.Message}", ex);
+            }
+        }
+
     }
 
     /// <summary>

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Printing; // Dùng để in hóa đơn
+using System.Linq;
 using System.Media;
 using System.Speech.Synthesis; // Dùng để đọc giọng nói khi thanh toán xong
 using System.Threading;
@@ -30,6 +31,7 @@ namespace CoffeeManagementSystem
 
         // Lưu hình thức thanh toán đang chờ xác nhận (tiền mặt / chuyển khoản)
         private string _pendingPaymentMethod = null;
+        private bool _isGuestForCurrentPhone = false;
 
         /// <summary>
         /// Constructor PaymentForm:
@@ -43,7 +45,6 @@ namespace CoffeeManagementSystem
         public PaymentForm(List<Chitietdonhang> dsChiTiet, string manhanvien, string tenNhanVien, string maDonHang)
         {
             InitializeComponent();
-
             // Khởi tạo lớp nghiệp vụ thanh toán với dữ liệu đơn hàng
             _paymentBLL = new PaymentBLL(dsChiTiet, manhanvien, tenNhanVien, maDonHang);
 
@@ -170,33 +171,25 @@ namespace CoffeeManagementSystem
         /// </summary>
         private void XuLyThanhToan(string hinhThucThanhToan)
         {
-            // Ràng buộc: bắt buộc nhập tên khách
-            //string tenKhach = txtKhachHangName.Text.Trim();
-            //if (string.IsNullOrEmpty(tenKhach))
-            //{
-            //    MessageBox.Show(
-            //        "Vui lòng nhập tên khách hàng trước khi xác nhận thanh toán.",
-            //        "Thiếu thông tin khách hàng",
-            //        MessageBoxButtons.OK,
-            //        MessageBoxIcon.Warning);
+            // Lấy SĐT từ textbox
+            string phoneFromTextbox = txtKhachHangName.Text.Trim();
 
-            //    txtKhachHangName.Focus();
-            //    Logger.LogWarning("Thử thanh toán nhưng chưa nhập tên khách hàng.");
-            //    return;
-            //}
-            Logger.LogInfo($"Bắt đầu xử lý thanh toán. Hình thức: {hinhThucThanhToan}");
+            // Nếu là khách vãng lai hoặc không có SĐT → không gửi SĐT xuống BLL
+            string soDienThoaiDeTruyen =
+                (!_isGuestForCurrentPhone && !string.IsNullOrEmpty(phoneFromTextbox))
+                ? phoneFromTextbox
+                : null;
+
+            Logger.LogInfo($"Bắt đầu xử lý thanh toán. Hình thức: {hinhThucThanhToan}, SĐT gửi xuống BLL: {soDienThoaiDeTruyen ?? "Khách vãng lai"}");
 
             try
             {
                 Khachhang customerFromBLL;
-
-                // Lấy mã nhân viên thu ngân từ BLL
                 string manhanvienThuNgan = _paymentBLL.GetManhanvienLapHoaDon();
-                string ghiChu = ""; // Có thể dùng nếu sau này cần lưu ghi chú
+                string ghiChu = "";
 
-                // Gọi tầng BLL xử lý thanh toán + lưu hóa đơn
                 bool success = _paymentBLL.ProcessPayment(
-                    txtKhachHangName.Text.Trim(),
+                    soDienThoaiDeTruyen,  // giờ SĐT có thể là null nếu khách vãng lai
                     hinhThucThanhToan,
                     manhanvienThuNgan,
                     ghiChu,
@@ -219,7 +212,6 @@ namespace CoffeeManagementSystem
                         {
                             Task.Run(() =>
                             {
-                                // PHÁT ÂM THANH WAV KHÔNG CHẶN UI
                                 try
                                 {
                                     using (SoundPlayer player = new SoundPlayer(Properties.Resources.Payment))
@@ -238,105 +230,16 @@ namespace CoffeeManagementSystem
                             Logger.LogError("Lỗi khi khởi chạy Task âm thanh: " + taskEx.Message);
                         }
 
-                        //CODE CŨ 
-                        //// ĐỌC GIỌNG NÓI KHÔNG CHẶN UI (dùng thread STA riêng)
-                        //try
-                        //{
-                        //    Task.Run(() =>
-                        //    {
-                        //        try
-                        //        {
-                        //            var t = new Thread(() =>
-                        //            {
-                        //                try
-                        //                {
-                        //                    //using (SpeechSynthesizer synth = new SpeechSynthesizer())
-                        //                    //{
-                        //                    //    synth.Rate = 1;
-                        //                    //    synth.Volume = 100;
-
-                        //                    //    string formattedTien = string.Format("{0:N0}", tongTien);
-                        //                    //    synth.Speak($"Ding ding! Successful payment. We have received {formattedTien} Viet Nam Dong!");
-                        //                    //}
-                        //                    using (SpeechSynthesizer synth = new SpeechSynthesizer())
-                        //                    {
-                        //                        // Tốc độ bình thường / hơi chậm cho dễ nghe tiếng Việt
-                        //                        synth.Rate = 0;
-                        //                        synth.Volume = 100;
-
-                        //                        // Cố gắng chọn voice tiếng Việt nếu máy có cài (ví dụ: Microsoft An, Microsoft Linh…)
-                        //                        try
-                        //                        {
-                        //                            InstalledVoice vnVoice = null;
-                        //                            foreach (var v in synth.GetInstalledVoices())
-                        //                            {
-                        //                                // Kiểm tra culture bắt đầu bằng "vi" (vi-VN)
-                        //                                if (string.Equals(
-                        //                                        v.VoiceInfo.Culture.TwoLetterISOLanguageName,
-                        //                                        "vi",
-                        //                                        StringComparison.OrdinalIgnoreCase))
-                        //                                {
-                        //                                    vnVoice = v;
-                        //                                    break;
-                        //                                }
-                        //                            }
-
-                        //                            if (vnVoice != null)
-                        //                            {
-                        //                                synth.SelectVoice(vnVoice.VoiceInfo.Name);
-                        //                            }
-                        //                            else
-                        //                            {
-                        //                                // Không có voice tiếng Việt thì log lại, vẫn dùng voice mặc định
-                        //                                Logger.LogWarning("Không tìm thấy voice tiếng Việt, sử dụng voice mặc định của hệ thống.");
-                        //                            }
-                        //                        }
-                        //                        catch (Exception voiceEx)
-                        //                        {
-                        //                            Logger.LogError("Lỗi khi chọn voice tiếng Việt: " + voiceEx.Message);
-                        //                            // Nếu lỗi thì thôi dùng voice mặc định
-                        //                        }
-
-                        //                        string formattedTien = string.Format("{0:N0}", tongTien);
-
-                        //                        // Câu đọc tiếng Việt
-                        //                        synth.Speak($"Ting ting! Đơn hàng đã được thanh toán thành công. Cửa hàng đã nhận {formattedTien} đồng.");
-                        //                    }
-
-                        //                }
-                        //                catch (Exception synthEx)
-                        //                {
-                        //                    Logger.LogError("Lỗi khi đọc giọng nói: " + synthEx.Message);
-                        //                }
-                        //            });
-                        //            t.SetApartmentState(ApartmentState.STA);
-                        //            t.Start();
-                        //        }
-                        //        catch (Exception threadEx)
-                        //        {
-                        //            Logger.LogError("Lỗi khi tạo thread giọng nói STA: " + threadEx.Message);
-                        //        }
-                        //    });
-                        //}
-                        //catch (Exception task2Ex)
-                        //{
-                        //    Logger.LogError("Lỗi khi khởi chạy Task giọng nói: " + task2Ex.Message);
-                        //}
-                        // ĐỌC GIỌNG NÓI KHÔNG CHẶN UI (dùng thread STA riêng)
-                        // ĐỌC GIỌNG NÓI KHÔNG CHẶN UI (dùng thread STA riêng)
-                        // PHÁT ÂM THANH GIỌNG ĐỌC "THANH TOÁN THÀNH CÔNG" KHÔNG CHẶN UI
+                        // PHÁT ÂM THANH "THANH TOÁN THÀNH CÔNG" KHÔNG CHẶN UI
                         try
                         {
                             Task.Run(() =>
                             {
                                 try
                                 {
-                                    // Cho tiếng ting ting phát trước một chút
                                     Thread.Sleep(400);
-
                                     using (SoundPlayer playerVoice = new SoundPlayer(Properties.Resources.ThanhToanThanhCong))
                                     {
-                                        // PlaySync cho nó đọc hết câu, nhưng vì đang ở Task riêng nên không block UI
                                         playerVoice.PlaySync();
                                     }
                                 }
@@ -358,10 +261,8 @@ namespace CoffeeManagementSystem
                         Logger.LogError("Lỗi tổng thể khi phát âm thanh + đọc giọng: " + ex.Message, ex);
                     }
 
-
-
-                // HỎI CÓ IN HÓA ĐƠN KHÔNG
-                DialogResult printConfirm = MessageBox.Show("Bạn có muốn in hóa đơn này không?",
+                    // HỎI CÓ IN HÓA ĐƠN KHÔNG
+                    DialogResult printConfirm = MessageBox.Show("Bạn có muốn in hóa đơn này không?",
                                                                 "In Hóa Đơn",
                                                                 MessageBoxButtons.YesNo,
                                                                 MessageBoxIcon.Question);
@@ -377,66 +278,23 @@ namespace CoffeeManagementSystem
             }
             catch (InvalidOperationException ex)
             {
-                // Lỗi nghiệp vụ (VD: không cho thanh toán trong 1 số trường hợp)
                 MessageBox.Show(ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 Logger.LogError($"Thanh toán thất bại (lỗi nghiệp vụ): {ex.Message}", ex);
             }
-            catch (KhachhangNotFoundException ex)
-            {
-                // Khách hàng không tồn tại trong DB
-                Logger.LogError($"Khách hàng '{txtKhachHangName.Text.Trim()}' không tìm thấy khi thanh toán.", ex);
-
-                DialogResult addCustomer = MessageBox.Show(
-                    ex.Message + Environment.NewLine + "Bạn có muốn thêm mới khách hàng này không?",
-                    "Xác nhận thêm khách hàng",
-                    MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Question
-                );
-
-                if (addCustomer == DialogResult.Yes)
-                {
-                    Logger.LogInfo($"Người dùng muốn thêm mới khách hàng: {txtKhachHangName.Text.Trim()}.");
-                    try
-                    {
-                        // Thêm mới khách hàng vào DB qua BLL
-                        currentSelectedCustomer = _paymentBLL.AddNewKhachhang(txtKhachHangName.Text.Trim());
-                        MessageBox.Show($"Đã thêm mới khách hàng: {txtKhachHangName.Text.Trim()}.",
-                            "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        Logger.LogInfo($"Đã thêm mới khách hàng '{txtKhachHangName.Text.Trim()}' thông qua UI prompt.");
-
-                        // Sau khi thêm khách hàng, thử thanh toán lại với hình thức cũ
-                        XuLyThanhToan(hinhThucThanhToan);
-                    }
-                    catch (Exception addEx)
-                    {
-                        MessageBox.Show($"Lỗi khi thêm mới khách hàng: {addEx.Message}", "Lỗi",
-                            MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        Logger.LogError($"Lỗi khi thêm mới khách hàng '{txtKhachHangName.Text.Trim()}' từ UI.", addEx);
-                        ClearCustomerInfo();
-                    }
-                }
-                else
-                {
-                    // Người dùng không muốn thêm khách → clear
-                    txtKhachHangName.Text = "";
-                    ClearCustomerInfo();
-                    Logger.LogInfo($"Người dùng từ chối thêm mới khách hàng '{txtKhachHangName.Text.Trim()}'.");
-                }
-            }
+            // ⚠️  ĐÃ BỎ catch KhachhangNotFoundException CŨ ở đây
             catch (ArgumentException ex)
             {
-                // Lỗi tham số không hợp lệ
                 MessageBox.Show(ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 Logger.LogError($"Thanh toán thất bại (tham số không hợp lệ): {ex.Message}", ex);
             }
             catch (Exception ex)
             {
-                // Lỗi hệ thống không xác định
                 MessageBox.Show($"Lỗi khi thanh toán đơn hàng: {ex.Message}", "Lỗi",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Logger.LogError($"Lỗi hệ thống không xác định khi thanh toán đơn hàng. Tên khách hàng: '{txtKhachHangName.Text.Trim()}'", ex);
+                Logger.LogError($"Lỗi hệ thống không xác định khi thanh toán đơn hàng. SĐT: '{phoneFromTextbox}'", ex);
             }
         }
+
 
         /// <summary>
         /// Popup thu tiền mặt:
@@ -593,17 +451,118 @@ namespace CoffeeManagementSystem
         /// </summary>
         private void btnThanhToan_Click(object sender, EventArgs e)
         {
-            Logger.LogInfo("Người dùng nhấn nút 'Thanh toán'.");
+            string phone = txtKhachHangName.Text.Trim();
+            Khachhang customer = null;
+            
 
-            // Ràng buộc: phải nhập tên khách trước khi thanh toán
-            //if (string.IsNullOrWhiteSpace(txtKhachHangName.Text))
-            //{
-            //    MessageBox.Show("Vui lòng nhập tên khách hàng trước khi thanh toán.",
-            //                    "Thiếu thông tin",
-            //                    MessageBoxButtons.OK,
-            //                    MessageBoxIcon.Warning);
-            //    return;
-            //}
+            // Reset trạng thái mỗi lần bấm Thanh toán
+            _isGuestForCurrentPhone = false;
+            currentSelectedCustomer = null;
+
+            // ========== BƯỚC 1: XỬ LÝ SỐ ĐIỆN THOẠI & KHÁCH HÀNG ==========
+
+            // 1.1. Nếu KHÔNG nhập SĐT → khách vãng lai, bỏ qua tích điểm
+            if (string.IsNullOrEmpty(phone))
+            {
+                _isGuestForCurrentPhone = true;
+            }
+            else
+            {
+                // 1.2. Có nhập SĐT → tìm trong DB
+                try
+                {
+                    customer = _paymentBLL.GetKhachhangByPhone(phone);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi khi kiểm tra khách hàng: " + ex.Message,
+                                    "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                if (customer != null)
+                {
+                    // ĐÃ CÓ TÀI KHOẢN → thành viên, sẽ được tích điểm
+                    currentSelectedCustomer = customer;
+                    _isGuestForCurrentPhone = false;
+                }
+                else
+                {
+                    // CHƯA CÓ TÀI KHOẢN → hỏi có muốn tạo không
+                    DialogResult rs = MessageBox.Show(
+                        "Số điện thoại này chưa có tài khoản thành viên.\nBạn có muốn tạo mới không?",
+                        "Khách hàng chưa tồn tại",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Question
+                    );
+
+                    if (rs == DialogResult.No)
+                    {
+                        // Không muốn tạo → thanh toán như khách vãng lai
+                        _isGuestForCurrentPhone = true;
+                    }
+                    else
+                    {
+                        // Có → mở FormChitiet để tạo tài khoản
+                        using (var form = new FormChitiet())
+                        {
+                            form.txtSDT.Text = phone;                   // điền sẵn SĐT
+                            form.txtSDT.Enabled = false;                // khóa SĐT, tránh sửa sai
+                            form.dateTimePickerNgayDangKy.Value = DateTime.Now;
+                            form.numericUpDownDiem.Value = 0;
+
+                            var dialogResult = form.ShowDialog(this);
+
+                            if (dialogResult == DialogResult.OK)
+                            {
+                                // Lấy lại khách hàng sau khi tạo
+                                try
+                                {
+                                    customer = _paymentBLL.GetKhachhangByPhone(phone);
+                                    if (customer != null)
+                                    {
+                                        currentSelectedCustomer = customer;
+                                        _isGuestForCurrentPhone = false;   // thành viên
+                                    }
+                                    else
+                                    {
+                                        // Trường hợp hiếm: tạo xong nhưng không lấy được → coi như vãng lai
+                                        _isGuestForCurrentPhone = true;
+                                    }
+                                }
+                                catch (Exception ex)
+                                {
+                                    MessageBox.Show("Lỗi khi lấy lại thông tin khách hàng vừa tạo: " + ex.Message,
+                                                    "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                                }
+                            }
+                            else
+                            {
+                                // User đóng form mà không lưu
+                                DialogResult confirmGuest = MessageBox.Show(
+                                    "Bạn chưa lưu thông tin khách hàng.\nBạn vẫn muốn thanh toán như khách vãng lai chứ?",
+                                    "Xác nhận",
+                                    MessageBoxButtons.YesNo,
+                                    MessageBoxIcon.Question
+                                );
+
+                                if (confirmGuest == DialogResult.Yes)
+                                {
+                                    _isGuestForCurrentPhone = true;   // vãng lai
+                                }
+                                else
+                                {
+                                    // Không muốn vãng lai → hủy luôn quy trình thanh toán
+                                    return;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            // ========== BƯỚC 2: CHỌN HÌNH THỨC THANH TOÁN (SAU KHI XỬ LÝ KHÁCH HÀNG) ==========
 
             // Nhánh CHUYỂN KHOẢN (VNPay)
             if (rdbChuyenKhoan.Checked)
@@ -640,6 +599,7 @@ namespace CoffeeManagementSystem
                                         "Thông báo",
                                         MessageBoxButtons.OK,
                                         MessageBoxIcon.Information);
+                        return;
                     }
                 }
             }
@@ -659,6 +619,7 @@ namespace CoffeeManagementSystem
                 Logger.LogInfo("Thanh toán tiền mặt chưa hoàn tất (hủy hoặc khách đưa thiếu).");
             }
         }
+
 
         /// <summary>
         /// Xử lý khi chọn radio Tiền mặt (hiện tại chỉ log lại).
@@ -740,73 +701,141 @@ namespace CoffeeManagementSystem
         /// </summary>
         private void txtKhachHangName_Leave(object sender, EventArgs e)
         {
-            string customerName = txtKhachHangName.Text.Trim();
-            Logger.LogDebug($"txtKhachHangName_Leave được kích hoạt với tên: '{customerName}'");
+            string phoneNumber = txtKhachHangName.Text.Trim();
 
-            if (string.IsNullOrEmpty(customerName))
+            if (string.IsNullOrEmpty(phoneNumber))
             {
+                // khách vãng lai → không làm gì
                 ClearCustomerInfo();
-                Logger.LogInfo("Tên khách hàng rỗng, thông tin khách hàng đã được xóa.");
                 return;
             }
 
             try
             {
-                // Tìm khách hàng theo tên
-                Khachhang existingCustomer = _paymentBLL.GetKhachhangByName(customerName);
+                Khachhang existingCustomer = _paymentBLL.GetKhachhangByPhone(phoneNumber);
 
-                if (existingCustomer == null)
+                if (existingCustomer != null)
                 {
-                    Logger.LogInfo($"Khách hàng '{customerName}' không tồn tại. Hỏi người dùng có muốn thêm mới.");
-                    DialogResult confirmResult = MessageBox.Show(
-                        $"Khách hàng '{customerName}' chưa tồn tại. Bạn có muốn thêm mới khách hàng này không?",
-                        "Xác nhận thêm khách hàng",
-                        MessageBoxButtons.YesNo,
-                        MessageBoxIcon.Question
+                    currentSelectedCustomer = existingCustomer;
+                    MessageBox.Show(
+                        $"Khách hàng: {existingCustomer.Hoten}\nSĐT: {existingCustomer.Sodienthoai}",
+                        "Tìm thấy khách hàng",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information
                     );
-
-                    if (confirmResult == DialogResult.Yes)
-                    {
-                        Logger.LogInfo($"Người dùng muốn thêm mới khách hàng: {customerName}.");
-                        try
-                        {
-                            currentSelectedCustomer = _paymentBLL.AddNewKhachhang(customerName);
-                            MessageBox.Show($"Đã thêm mới khách hàng: {customerName}", "Thành công",
-                                MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            Logger.LogInfo($"Đã thêm mới khách hàng '{customerName}'.");
-                        }
-                        catch (Exception addEx)
-                        {
-                            MessageBox.Show($"Lỗi khi thêm mới khách hàng: {addEx.Message}", "Lỗi",
-                                MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            Logger.LogError($"Lỗi khi thêm mới khách hàng '{customerName}'.", addEx);
-                            ClearCustomerInfo();
-                        }
-                    }
-                    else
-                    {
-                        txtKhachHangName.Text = "";
-                        ClearCustomerInfo();
-                        Logger.LogInfo($"Người dùng từ chối thêm mới khách hàng '{customerName}'.");
-                    }
                 }
                 else
                 {
-                    // Khách đã tồn tại → chọn khách này
-                    currentSelectedCustomer = existingCustomer;
-                    MessageBox.Show($"Khách hàng '{customerName}' đã tồn tại.", "Thông báo",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    Logger.LogInfo($"Đã tìm thấy và chọn khách hàng '{customerName}' (Mã: {currentSelectedCustomer.Makhachhang}).");
+                    ClearCustomerInfo();
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Lỗi khi xử lý khách hàng: {ex.Message}", "Lỗi",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Logger.LogError($"Lỗi khi xử lý khách hàng '{customerName}' trong PaymentForm.txtKhachHangName_Leave.", ex);
+                MessageBox.Show($"Lỗi xử lý khách hàng: {ex.Message}");
                 ClearCustomerInfo();
             }
         }
+
+
+        /// <summary>
+        /// Hiện một form nhỏ để nhập tên khách hàng mới cho số điện thoại đã cho,
+        /// sau đó gọi BLL để thêm khách hàng mới.
+        /// </summary>
+        private Khachhang CreateNewCustomerWithPhone(string phoneNumber)
+        {
+            // Tạo form nhập tên
+            Form form = new Form
+            {
+                Text = "Thêm khách hàng mới",
+                FormBorderStyle = FormBorderStyle.FixedDialog,
+                StartPosition = FormStartPosition.CenterParent,
+                ClientSize = new Size(400, 180),
+                MinimizeBox = false,
+                MaximizeBox = false,
+                ShowInTaskbar = false
+            };
+
+            Label lblPhone = new Label
+            {
+                AutoSize = true,
+                Text = "Số điện thoại:",
+                Location = new Point(20, 20)
+            };
+            TextBox txtPhone = new TextBox
+            {
+                Location = new Point(150, 17),
+                Width = 200,
+                ReadOnly = true,
+                Text = phoneNumber
+            };
+
+            Label lblName = new Label
+            {
+                AutoSize = true,
+                Text = "Tên khách hàng:",
+                Location = new Point(20, 60)
+            };
+            TextBox txtName = new TextBox
+            {
+                Location = new Point(150, 57),
+                Width = 200
+            };
+
+            Button btnOK = new Button
+            {
+                Text = "Lưu",
+                Location = new Point(190, 110),
+                Width = 80
+            };
+            Button btnCancel = new Button
+            {
+                Text = "Hủy",
+                Location = new Point(280, 110),
+                Width = 80
+            };
+
+            Khachhang newCustomer = null;
+
+            btnOK.Click += (s, e) =>
+            {
+                string name = txtName.Text.Trim();
+                if (string.IsNullOrEmpty(name))
+                {
+                    MessageBox.Show("Vui lòng nhập tên khách hàng.", "Thiếu thông tin",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtName.Focus();
+                    return;
+                }
+
+                try
+                {
+                    newCustomer = _paymentBLL.AddNewKhachhang(name, phoneNumber);
+                    form.DialogResult = DialogResult.OK;
+                    form.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Lỗi khi thêm khách hàng: {ex.Message}", "Lỗi",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            };
+
+            btnCancel.Click += (s, e) =>
+            {
+                form.DialogResult = DialogResult.Cancel;
+                form.Close();
+            };
+
+            form.Controls.Add(lblPhone);
+            form.Controls.Add(txtPhone);
+            form.Controls.Add(lblName);
+            form.Controls.Add(txtName);
+            form.Controls.Add(btnOK);
+            form.Controls.Add(btnCancel);
+
+            var result = form.ShowDialog(this);
+            return result == DialogResult.OK ? newCustomer : null;
+        }
+
 
         /// <summary>
         /// Xóa thông tin khách hàng hiện tại trên form.
@@ -855,7 +884,16 @@ namespace CoffeeManagementSystem
             // Thông tin hóa đơn chung
             graphics.DrawString($"Mã hóa đơn: {lblMaHoaDonValue.Text}", normalFont, Brushes.Black, x, y);
             y += lineHeight;
-            graphics.DrawString($"Khách hàng: {txtKhachHangName.Text}", normalFont, Brushes.Black, x, y);
+            string khachHangText;
+            if (currentSelectedCustomer != null)
+            {
+                khachHangText = $"{currentSelectedCustomer.Hoten} - {currentSelectedCustomer.Sodienthoai}";
+            }
+            else
+            {
+                khachHangText = txtKhachHangName.Text; // chỉ có SĐT
+            }
+            graphics.DrawString($"Khách hàng: {khachHangText}", normalFont, Brushes.Black, x, y);
             y += lineHeight;
             graphics.DrawString($"Người lập: {lblNguoiLapValue.Text}", normalFont, Brushes.Black, x, y);
             y += lineHeight;
@@ -980,6 +1018,27 @@ namespace CoffeeManagementSystem
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void txtKhachHangName_TextChanged(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void txtKhachHangName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Chỉ cho phép chữ số và phím điều khiển (Backspace, Delete, ...)
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+                return;
+            }
+
+            // Đã giới hạn MaxLength = 10, nhưng để chắc ăn có thể chặn luôn ở đây
+            if (!char.IsControl(e.KeyChar) && txtKhachHangName.Text.Length >= 10)
+            {
+                e.Handled = true;
+            }
         }
     }
 
