@@ -14,9 +14,6 @@ namespace CoffeeManagementSystem.DAL
     /// </summary>
     public class DouongDAL : BaseDataAccess
     {
-        // Chuỗi kết nối riêng (đang song song với ConnectionString của BaseDataAccess)
-        private readonly string _connectionString = @"DataSource=QuanLyCaPheDatabase.db;Version=3;";
-
         // Đối tượng DAL cho bảng Giadouong để lấy giá mới nhất của từng đồ uống
         private GiadouongDAL giadouongDAL;
 
@@ -282,7 +279,7 @@ namespace CoffeeManagementSystem.DAL
         {
             List<string> maList = new List<string>();
 
-            using (var conn = new SQLiteConnection(_connectionString))
+            using (var conn = new SQLiteConnection(ConnectionString))
             {
                 conn.Open();
                 var cmd = new SQLiteCommand("SELECT Madouong FROM Douong", conn);
