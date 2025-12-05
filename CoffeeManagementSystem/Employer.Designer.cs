@@ -47,6 +47,7 @@
             this.txtSearch = new Guna.UI2.WinForms.Guna2TextBox();
             this.btnThem = new System.Windows.Forms.Button();
             this.lblSearch = new System.Windows.Forms.Label();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNhanvien)).BeginInit();
             this.guna2Panel1.SuspendLayout();
             this.SuspendLayout();
@@ -63,7 +64,7 @@
             this.dgvNhanvien.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Raised;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.DarkCyan;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("SVN-Gilroy SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DarkCyan;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -170,7 +171,7 @@
             this.Column1.HeaderText = "Địa Chỉ";
             this.Column1.MinimumWidth = 6;
             this.Column1.Name = "Column1";
-            this.Column1.Width = 106;
+            this.Column1.Width = 72;
             // 
             // Column2
             // 
@@ -330,5 +331,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private Guna.UI2.WinForms.Guna2TextBox txtSearch;
         private System.Windows.Forms.Button button2;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }
