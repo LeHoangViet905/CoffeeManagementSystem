@@ -425,6 +425,7 @@
       <DependentUpon>ucProductItem.cs</DependentUpon>
     </Compile>
     <Compile Include="utilities\Logger.cs" />
+    <Compile Include="VietnameseNumberReader.cs" />
     <Compile Include="VNPayConfig.cs" />
     <Compile Include="VNPayLibrary.cs" />
     <EmbeddedResource Include="AddDrink.resx">
@@ -580,6 +581,7 @@
     <None Include="Resources\Thiết kế chưa có tên %2812%29.png" />
     <None Include="Resources\Thiết kế chưa có tên %2813%29 1.png" />
     <None Include="Resources\Thiết kế chưa có tên %2815%29.png" />
+    <None Include="Resources\thanh_toan_thanh_cong_cam_on_quy_khach_0d448f9c-bf0a-40ee-921b-2992d48f45fa.wav" />
     <Content Include="Resources\tiramisu.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

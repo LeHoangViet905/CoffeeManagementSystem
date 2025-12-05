@@ -219,6 +219,7 @@ namespace CoffeeManagementSystem
                         {
                             Task.Run(() =>
                             {
+                                // PHÁT ÂM THANH WAV KHÔNG CHẶN UI
                                 try
                                 {
                                     using (SoundPlayer player = new SoundPlayer(Properties.Resources.Payment))
@@ -237,43 +238,117 @@ namespace CoffeeManagementSystem
                             Logger.LogError("Lỗi khi khởi chạy Task âm thanh: " + taskEx.Message);
                         }
 
+                        //CODE CŨ 
+                        //// ĐỌC GIỌNG NÓI KHÔNG CHẶN UI (dùng thread STA riêng)
+                        //try
+                        //{
+                        //    Task.Run(() =>
+                        //    {
+                        //        try
+                        //        {
+                        //            var t = new Thread(() =>
+                        //            {
+                        //                try
+                        //                {
+                        //                    //using (SpeechSynthesizer synth = new SpeechSynthesizer())
+                        //                    //{
+                        //                    //    synth.Rate = 1;
+                        //                    //    synth.Volume = 100;
+
+                        //                    //    string formattedTien = string.Format("{0:N0}", tongTien);
+                        //                    //    synth.Speak($"Ding ding! Successful payment. We have received {formattedTien} Viet Nam Dong!");
+                        //                    //}
+                        //                    using (SpeechSynthesizer synth = new SpeechSynthesizer())
+                        //                    {
+                        //                        // Tốc độ bình thường / hơi chậm cho dễ nghe tiếng Việt
+                        //                        synth.Rate = 0;
+                        //                        synth.Volume = 100;
+
+                        //                        // Cố gắng chọn voice tiếng Việt nếu máy có cài (ví dụ: Microsoft An, Microsoft Linh…)
+                        //                        try
+                        //                        {
+                        //                            InstalledVoice vnVoice = null;
+                        //                            foreach (var v in synth.GetInstalledVoices())
+                        //                            {
+                        //                                // Kiểm tra culture bắt đầu bằng "vi" (vi-VN)
+                        //                                if (string.Equals(
+                        //                                        v.VoiceInfo.Culture.TwoLetterISOLanguageName,
+                        //                                        "vi",
+                        //                                        StringComparison.OrdinalIgnoreCase))
+                        //                                {
+                        //                                    vnVoice = v;
+                        //                                    break;
+                        //                                }
+                        //                            }
+
+                        //                            if (vnVoice != null)
+                        //                            {
+                        //                                synth.SelectVoice(vnVoice.VoiceInfo.Name);
+                        //                            }
+                        //                            else
+                        //                            {
+                        //                                // Không có voice tiếng Việt thì log lại, vẫn dùng voice mặc định
+                        //                                Logger.LogWarning("Không tìm thấy voice tiếng Việt, sử dụng voice mặc định của hệ thống.");
+                        //                            }
+                        //                        }
+                        //                        catch (Exception voiceEx)
+                        //                        {
+                        //                            Logger.LogError("Lỗi khi chọn voice tiếng Việt: " + voiceEx.Message);
+                        //                            // Nếu lỗi thì thôi dùng voice mặc định
+                        //                        }
+
+                        //                        string formattedTien = string.Format("{0:N0}", tongTien);
+
+                        //                        // Câu đọc tiếng Việt
+                        //                        synth.Speak($"Ting ting! Đơn hàng đã được thanh toán thành công. Cửa hàng đã nhận {formattedTien} đồng.");
+                        //                    }
+
+                        //                }
+                        //                catch (Exception synthEx)
+                        //                {
+                        //                    Logger.LogError("Lỗi khi đọc giọng nói: " + synthEx.Message);
+                        //                }
+                        //            });
+                        //            t.SetApartmentState(ApartmentState.STA);
+                        //            t.Start();
+                        //        }
+                        //        catch (Exception threadEx)
+                        //        {
+                        //            Logger.LogError("Lỗi khi tạo thread giọng nói STA: " + threadEx.Message);
+                        //        }
+                        //    });
+                        //}
+                        //catch (Exception task2Ex)
+                        //{
+                        //    Logger.LogError("Lỗi khi khởi chạy Task giọng nói: " + task2Ex.Message);
+                        //}
                         // ĐỌC GIỌNG NÓI KHÔNG CHẶN UI (dùng thread STA riêng)
+                        // ĐỌC GIỌNG NÓI KHÔNG CHẶN UI (dùng thread STA riêng)
+                        // PHÁT ÂM THANH GIỌNG ĐỌC "THANH TOÁN THÀNH CÔNG" KHÔNG CHẶN UI
                         try
                         {
                             Task.Run(() =>
                             {
                                 try
                                 {
-                                    var t = new Thread(() =>
-                                    {
-                                        try
-                                        {
-                                            using (SpeechSynthesizer synth = new SpeechSynthesizer())
-                                            {
-                                                synth.Rate = 1;
-                                                synth.Volume = 100;
+                                    // Cho tiếng ting ting phát trước một chút
+                                    Thread.Sleep(400);
 
-                                                string formattedTien = string.Format("{0:N0}", tongTien);
-                                                synth.Speak($"Ding ding! Successful payment. We have received {formattedTien} Viet Nam Dong!");
-                                            }
-                                        }
-                                        catch (Exception synthEx)
-                                        {
-                                            Logger.LogError("Lỗi khi đọc giọng nói: " + synthEx.Message);
-                                        }
-                                    });
-                                    t.SetApartmentState(ApartmentState.STA);
-                                    t.Start();
+                                    using (SoundPlayer playerVoice = new SoundPlayer(Properties.Resources.ThanhToanThanhCong))
+                                    {
+                                        // PlaySync cho nó đọc hết câu, nhưng vì đang ở Task riêng nên không block UI
+                                        playerVoice.PlaySync();
+                                    }
                                 }
-                                catch (Exception threadEx)
+                                catch (Exception voiceEx)
                                 {
-                                    Logger.LogError("Lỗi khi tạo thread giọng nói STA: " + threadEx.Message);
+                                    Logger.LogError("Không phát được âm thanh ThanhToanThanhCong: " + voiceEx.Message);
                                 }
                             });
                         }
-                        catch (Exception task2Ex)
+                        catch (Exception taskVoiceEx)
                         {
-                            Logger.LogError("Lỗi khi khởi chạy Task giọng nói: " + task2Ex.Message);
+                            Logger.LogError("Lỗi khi khởi chạy Task giọng đọc ThanhToanThanhCong: " + taskVoiceEx.Message);
                         }
 
                         Logger.LogInfo($"Thanh toán hoàn tất thành công cho hóa đơn: {lblMaHoaDonValue.Text}");
@@ -283,8 +358,10 @@ namespace CoffeeManagementSystem
                         Logger.LogError("Lỗi tổng thể khi phát âm thanh + đọc giọng: " + ex.Message, ex);
                     }
 
-                    // HỎI CÓ IN HÓA ĐƠN KHÔNG
-                    DialogResult printConfirm = MessageBox.Show("Bạn có muốn in hóa đơn này không?",
+
+
+                // HỎI CÓ IN HÓA ĐƠN KHÔNG
+                DialogResult printConfirm = MessageBox.Show("Bạn có muốn in hóa đơn này không?",
                                                                 "In Hóa Đơn",
                                                                 MessageBoxButtons.YesNo,
                                                                 MessageBoxIcon.Question);

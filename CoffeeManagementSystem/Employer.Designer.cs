@@ -48,6 +48,7 @@
             this.btnThem = new System.Windows.Forms.Button();
             this.lblSearch = new System.Windows.Forms.Label();
             this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNhanvien)).BeginInit();
             this.guna2Panel1.SuspendLayout();
             this.SuspendLayout();
@@ -348,5 +349,6 @@
         private Guna.UI2.WinForms.Guna2TextBox txtSearch;
         private System.Windows.Forms.Button button2;
         private Guna.UI2.WinForms.Guna2Button guna2Button2;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }
