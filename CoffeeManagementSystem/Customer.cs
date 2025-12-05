@@ -385,5 +385,24 @@ namespace CoffeeManagementSystem
                 LoadDanhSachKhachHang();
             }
         }
+
+        private void guna2Button3_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "Excel Files|*.xlsx;*.xls|CSV Files|*.csv";
+            sfd.FileName = "KhachHang_Export";
+            if (sfd.ShowDialog() != DialogResult.OK) return;
+            try
+            {
+                //Lấy danh sách khách hàng từ BLL
+                var list = khachhangBLL.GetAllKhachhangs();
+                khachhangBLL.ExportKhachhangToCSV(list, sfd.FileName);
+                MessageBox.Show("Xuất file thành công!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi xuất file: " + ex.Message);
+            }
+        }
     }
 }
