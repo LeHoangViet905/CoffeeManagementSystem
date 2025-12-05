@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Text;
 
 namespace CoffeeManagementSystem.DAL
 {
@@ -371,5 +375,41 @@ namespace CoffeeManagementSystem.DAL
                 }
             }
         }
+        // ============================================================
+        // EXPORT CSV 
+        // ============================================================
+        public void ExportToCSV(List<Douong> list, string filePath)
+        {
+            if (list == null) throw new ArgumentNullException(nameof(list));
+
+            // Lấy property làm header
+            var props = typeof(Douong).GetProperties(BindingFlags.Public | BindingFlags.Instance);
+
+            var encoding = new UTF8Encoding(true); // BOM cho Excel
+
+            using (var sw = new StreamWriter(filePath, false, encoding))
+            {
+                // HEADER
+                sw.WriteLine(string.Join(",", props.Select(p => EscapeCsv(p.Name))));
+
+                // ROWS
+                foreach (var d in list)
+                {
+                    var values = props.Select(p => EscapeCsv(p.GetValue(d)?.ToString() ?? ""));
+                    sw.WriteLine(string.Join(",", values));
+                }
+            }
+        }
+
+        private string EscapeCsv(string s)
+        {
+            if (s == null) return "";
+
+            bool mustQuote = s.Contains(",") || s.Contains("\"") || s.Contains("\n");
+            string escaped = s.Replace("\"", "\"\"");
+
+            return mustQuote ? $"\"{escaped}\"" : escaped;
+        }
     }
 }
+
