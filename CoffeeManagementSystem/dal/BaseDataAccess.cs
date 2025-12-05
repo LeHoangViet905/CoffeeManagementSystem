@@ -1,28 +1,32 @@
 ﻿using System.Configuration;
-// Có thể cần thêm using System.Windows.Forms; nếu bạn muốn hiển thị MessageBox lỗi ngay trong DAL (thường không khuyến khích trong DAL thực tế, nên ném exception)
+using System.Data.SQLite;
 
-
-//Là class cha (base class) – các lớp DAL khác sẽ kế thừa nó để sử dụng chuỗi kết nối (ConnectionString) đến database SQLite.
-public class BaseDataAccess
+namespace CoffeeManagementSystem.DAL
 {
-    public string ConnectionString { get; private set; } // Sử dụng protected để lớp con kế thừa truy cập
-
-    public BaseDataAccess()
+    /// <summary>
+    /// Lớp cha dùng chung cho tất cả DAL.
+    /// Đọc ConnectionString từ App.config và cung cấp hàm tạo SQLiteConnection.
+    /// </summary>
+    public abstract class BaseDataAccess
     {
-        // Lấy chuỗi kết nối từ App.config
-        // Đảm bảo tên "SqliteDbConnection" khớp với tên bạn đặt trong App.config
-        ConnectionString = ConfigurationManager.ConnectionStrings["SqliteDbConnection"].ConnectionString;
+        /// <summary>
+        /// Chuỗi kết nối SQLite đọc từ App.config.
+        /// Lớp con có thể dùng, bên ngoài không cần thấy.
+        /// </summary>
+        protected string ConnectionString { get; }
 
-        if (string.IsNullOrEmpty(ConnectionString))
+        protected BaseDataAccess()
         {
-            // Nên ném exception thay vì MessageBox trong lớp DAL thực tế
-            throw new ConfigurationErrorsException("Connection string 'SqliteDbConnection' not found in App.config.");
-            // Nếu muốn dùng MessageBox cho đơn giản khi phát triển:
-            // MessageBox.Show("Không tìm thấy chuỗi kết nối 'SqliteDbConnection' trong App.config.", "Lỗi cấu hình", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            // throw new ArgumentNullException("Chuỗi kết nối không được tìm thấy.");
+            // Đảm bảo tên "SqliteDbConnection" trùng với App.config
+            var cs = ConfigurationManager.ConnectionStrings["SqliteDbConnection"]?.ConnectionString;
+
+            if (string.IsNullOrWhiteSpace(cs))
+            {
+                throw new ConfigurationErrorsException(
+                    "Connection string 'SqliteDbConnection' not found or empty in App.config.");
+            }
+
+            ConnectionString = cs;
         }
     }
-
-    // Bạn có thể thêm các hàm helper chung ở đây nếu cần, ví dụ:
-    // Protected SQLiteConnection GetConnection() { return new SQLiteConnection(ConnectionString); }
 }
