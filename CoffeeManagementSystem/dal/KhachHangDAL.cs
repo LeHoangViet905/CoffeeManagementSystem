@@ -7,7 +7,6 @@ namespace CoffeeManagementSystem.DAL
 {
     public class KhachhangDAL : BaseDataAccess
     {
-        private readonly string _connectionString = @"DataSource=QuanLyCaPheDatabase.db;Version=3;";
         public KhachhangDAL() : base() { }
 
         /// <summary>
@@ -404,7 +403,7 @@ namespace CoffeeManagementSystem.DAL
         public List<string> GetAllMaKhachhang()
         {
             List<string> maList = new List<string>();
-            using (var conn = new SQLiteConnection(_connectionString))
+            using (var conn = new SQLiteConnection(ConnectionString))
             {
                 conn.Open();
                 var cmd = new SQLiteCommand("SELECT Makhachhang FROM Khachhang", conn);

@@ -474,7 +474,7 @@ namespace CoffeeManagementSystem.DAL
                 SELECT 
                     dh.Madonhang,
                     dh.Thoigiandat,
-                    COALESCE(kh.Hoten, 'Khách lẻ') AS TenKhachhang,
+                    COALESCE(kh.Hoten, 'Khách vãng lai') AS TenKhachhang,
                     dh.Tongtien,
                     dh.Trangthaidon,
                     COALESCE(tt.Hinhthucthanhtoan, '') AS HinhThucThanhToan

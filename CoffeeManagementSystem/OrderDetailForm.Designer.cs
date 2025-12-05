@@ -404,7 +404,7 @@ namespace CoffeeManagementSystem
             this.lblTenKhach.Name = "lblTenKhach";
             this.lblTenKhach.Size = new System.Drawing.Size(81, 24);
             this.lblTenKhach.TabIndex = 1;
-            this.lblTenKhach.Text = "Khách lẻ";
+            this.lblTenKhach.Text = "Khách vãng lai";
             // 
             // label2
             // 

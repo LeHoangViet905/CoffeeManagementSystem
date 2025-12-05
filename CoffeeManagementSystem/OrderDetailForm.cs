@@ -68,12 +68,12 @@ namespace CoffeeManagementSystem
                 }
                 else
                 {
-                    lblTenKhach.Text = "Khách lẻ";
+                    lblTenKhach.Text = "Khách vãng lai";
                 }
             }
             else
             {
-                lblTenKhach.Text = "Khách lẻ";
+                lblTenKhach.Text = "Khách vãng lai";
             }
 
             // 3. Thanh toán (nếu có)

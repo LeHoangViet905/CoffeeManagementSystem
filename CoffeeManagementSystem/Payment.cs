@@ -171,19 +171,19 @@ namespace CoffeeManagementSystem
         private void XuLyThanhToan(string hinhThucThanhToan)
         {
             // Ràng buộc: bắt buộc nhập tên khách
-            string tenKhach = txtKhachHangName.Text.Trim();
-            if (string.IsNullOrEmpty(tenKhach))
-            {
-                MessageBox.Show(
-                    "Vui lòng nhập tên khách hàng trước khi xác nhận thanh toán.",
-                    "Thiếu thông tin khách hàng",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
+            //string tenKhach = txtKhachHangName.Text.Trim();
+            //if (string.IsNullOrEmpty(tenKhach))
+            //{
+            //    MessageBox.Show(
+            //        "Vui lòng nhập tên khách hàng trước khi xác nhận thanh toán.",
+            //        "Thiếu thông tin khách hàng",
+            //        MessageBoxButtons.OK,
+            //        MessageBoxIcon.Warning);
 
-                txtKhachHangName.Focus();
-                Logger.LogWarning("Thử thanh toán nhưng chưa nhập tên khách hàng.");
-                return;
-            }
+            //    txtKhachHangName.Focus();
+            //    Logger.LogWarning("Thử thanh toán nhưng chưa nhập tên khách hàng.");
+            //    return;
+            //}
             Logger.LogInfo($"Bắt đầu xử lý thanh toán. Hình thức: {hinhThucThanhToan}");
 
             try
@@ -596,14 +596,14 @@ namespace CoffeeManagementSystem
             Logger.LogInfo("Người dùng nhấn nút 'Thanh toán'.");
 
             // Ràng buộc: phải nhập tên khách trước khi thanh toán
-            if (string.IsNullOrWhiteSpace(txtKhachHangName.Text))
-            {
-                MessageBox.Show("Vui lòng nhập tên khách hàng trước khi thanh toán.",
-                                "Thiếu thông tin",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Warning);
-                return;
-            }
+            //if (string.IsNullOrWhiteSpace(txtKhachHangName.Text))
+            //{
+            //    MessageBox.Show("Vui lòng nhập tên khách hàng trước khi thanh toán.",
+            //                    "Thiếu thông tin",
+            //                    MessageBoxButtons.OK,
+            //                    MessageBoxIcon.Warning);
+            //    return;
+            //}
 
             // Nhánh CHUYỂN KHOẢN (VNPay)
             if (rdbChuyenKhoan.Checked)
