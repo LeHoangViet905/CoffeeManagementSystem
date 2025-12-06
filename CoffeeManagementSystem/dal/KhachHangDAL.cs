@@ -529,5 +529,52 @@ namespace CoffeeManagementSystem.DAL
 
             return mustQuote ? $"\"{escaped}\"" : escaped;
         }
+
+        // Tìm khách hàng theo số điện thoại (chính xác)
+        public Khachhang GetKhachhangByPhoneNumber(string phoneNumber)
+        {
+            Khachhang khachhang = null;
+
+            using (SQLiteConnection connection = new SQLiteConnection(ConnectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    string selectSql = @"
+                SELECT Makhachhang, Hoten, Sodienthoai, Email, Ngaydangky, Diemtichluy 
+                FROM Khachhang 
+                WHERE Sodienthoai = @Sodienthoai";
+
+                    using (SQLiteCommand command = new SQLiteCommand(selectSql, connection))
+                    {
+                        command.Parameters.AddWithValue("@Sodienthoai", phoneNumber);
+
+                        using (SQLiteDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                khachhang = new Khachhang
+                                {
+                                    Makhachhang = reader["Makhachhang"].ToString(),
+                                    Hoten = reader["Hoten"].ToString(),
+                                    Sodienthoai = reader["Sodienthoai"] != DBNull.Value ? reader["Sodienthoai"].ToString() : null,
+                                    Email = reader["Email"] != DBNull.Value ? reader["Email"].ToString() : null,
+                                    Ngaydangky = DateTime.Parse(reader["Ngaydangky"].ToString()),
+                                    Diemtichluy = Convert.ToInt32(reader["Diemtichluy"])
+                                };
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception($"Lỗi DAL khi tìm khách hàng theo số điện thoại: {ex.Message}", ex);
+                }
+            }
+
+            return khachhang;
+        }
+
+
     }
 }

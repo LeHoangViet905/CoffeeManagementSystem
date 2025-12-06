@@ -96,7 +96,7 @@ namespace CoffeeManagementSystem
         private void btnReport_Click(object sender, EventArgs e)
         {
             PlayClickSound();
-            LoadFormCon(new ReportForm());
+            LoadFormCon(new ReportForm(_loggedInMaNhanVien));
         }
 
       

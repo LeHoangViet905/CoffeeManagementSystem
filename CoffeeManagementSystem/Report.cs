@@ -9,6 +9,7 @@ using System.Data.SQLite;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
@@ -55,16 +56,24 @@ namespace CoffeeManagementSystem
         private string reportTitle = "";
         private string reportDateRange = "";
 
+        private string _signerName;
+        private readonly string logoPath = Path.Combine(Application.StartupPath, "Assets", "Images", "logo.png");
+
+        // ===== THÔNG TIN CÔNG TY =====
+        private const string CompanyName = "CÀ PHÊ HOÀNG VIỆT";
+        private const string CompanySlogan = "Ngon từ hạt, ngọt từ giọt cà phê";
+
+
         /// <summary>
         /// Constructor:
         /// - Khởi tạo BLL, cấu hình chart, formsPlot, đối tượng in.
         /// - Gắn event handler cho TabControl, DateTimePicker.
         /// - Gọi load báo cáo tương ứng với tab đầu tiên.
         /// </summary>
-        public ReportForm()
+        public ReportForm(string maNhanVien, string tenNhanVien)
         {
             InitializeComponent();
-
+            _signerName = tenNhanVien;
             // Chart doanh thu (cột) – dùng sự kiện click để drill-down theo ngày sang biểu đồ theo giờ
             chartDashboard.MouseClick += chartDashboard_MouseClick;
 
@@ -125,29 +134,11 @@ namespace CoffeeManagementSystem
             Font headerFont = new Font("Arial", 16, FontStyle.Bold);     // Tiêu đề chính
             Font subHeaderFont = new Font("Arial", 12, FontStyle.Bold);  // Tiêu đề phụ (khoảng thời gian)
             Pen borderPen = new Pen(Color.Black, 1);       // Viền bảng
-
-            float lineHeight = font.GetHeight() + 5;       // Chiều cao mỗi dòng dữ liệu
+            float y = DrawHeader(graphics, e);
+            DrawFooter(graphics, e);
             float x = e.MarginBounds.Left;
-            float y = e.MarginBounds.Top;
+            float lineHeight = font.GetHeight() + 5;
             float currentX;
-
-            // === 1. Tiêu đề báo cáo ===
-            StringFormat sfCenter = new StringFormat();
-            sfCenter.Alignment = StringAlignment.Center;
-            sfCenter.LineAlignment = StringAlignment.Center;
-            graphics.DrawString(reportTitle, headerFont, Brushes.Black, e.PageBounds.Width / 2, y, sfCenter);
-            y += headerFont.GetHeight() + 15;
-
-            // === 2. Khoảng thời gian (nếu có) ===
-            if (!string.IsNullOrEmpty(reportDateRange))
-            {
-                graphics.DrawString(reportDateRange, subHeaderFont, Brushes.Black, e.PageBounds.Width / 2, y, sfCenter);
-                y += subHeaderFont.GetHeight() + 25;
-            }
-            else
-            {
-                y += 25;
-            }
 
             // === 3. Tính chiều rộng các cột in ra (dựa vào DGV) ===
             List<float> columnWidths = new List<float>();
@@ -311,7 +302,7 @@ namespace CoffeeManagementSystem
                 }
                 currentRowIndex++;
             }
-
+           
             // Hết dữ liệu -> kết thúc in
             e.HasMorePages = false;
             currentRowIndex = 0; // reset cho lần in sau
@@ -744,6 +735,147 @@ namespace CoffeeManagementSystem
                                 "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        private void DrawFooter(Graphics g, PrintPageEventArgs e)
+        {
+            float y = e.MarginBounds.Bottom + 10;
+
+            Font footerFont = new Font("Arial", 9, FontStyle.Italic);
+
+            // ĐƯỜNG KẺ
+            g.DrawLine(Pens.Gray, e.MarginBounds.Left, y, e.MarginBounds.Right, y);
+            y += 5;
+
+            // PHẦN MỀM
+            g.DrawString(
+                "Phần mềm Coffee Management System",
+                footerFont,
+                Brushes.Gray,
+                e.MarginBounds.Left,
+                y
+            );
+
+            // NGÀY IN
+            g.DrawString(
+                $"In ngày {DateTime.Now:dd/MM/yyyy HH:mm}",
+                footerFont,
+                Brushes.Gray,
+                e.MarginBounds.Right - 180,
+                y
+            );
+
+            // CHỮ KÝ
+            float signX = e.MarginBounds.Right - 220;
+            float signY = y + 30;
+
+            g.DrawString(
+                "Người lập báo cáo",
+                footerFont,
+                Brushes.Black,
+                signX,
+                signY
+            );
+
+            signY += 35;
+
+            // FONT CHỮ KÝ (viết tay)
+            Font signatureFont = new Font("Pacifico", 18, FontStyle.Regular);
+
+            g.DrawString(
+                signerName,
+                signatureFont,
+                Brushes.Black,
+                signX,
+                signY
+            );
+
+            g.DrawString(
+                _signerName,
+                new Font("Arial", 10, FontStyle.Bold),
+                Brushes.Black,
+                signX,
+                signY
+            );
+        }
+
+        private float DrawHeader(Graphics g, PrintPageEventArgs e)
+        {
+            float y = e.MarginBounds.Top;
+
+            // ===== LOGO TỪ RESOURCE =====
+            Image logo = Properties.Resources.LogoCompany;
+
+            float logoWidth = 80;
+            float logoHeight = logo.Height * logoWidth / logo.Width;
+
+            g.DrawImage(
+                logo,
+                e.MarginBounds.Left,
+                y,
+                logoWidth,
+                logoHeight
+            );
+
+            // TÊN CÔNG TY
+            g.DrawString(
+               CompanyName,
+                new Font("Arial", 16, FontStyle.Bold),
+                Brushes.Black,
+                e.MarginBounds.Left + logoWidth + 15,
+                y
+            );
+
+            y += 26;
+
+            // SLOGAN
+            g.DrawString(
+               CompanySlogan,
+                new Font("Arial", 9, FontStyle.Italic),
+                Brushes.Gray,
+                e.MarginBounds.Left + logoWidth + 15,
+                y
+            );
+
+            y += logoHeight - 10;
+
+            // ĐƯỜNG KẺ
+            g.DrawLine(Pens.Black, e.MarginBounds.Left, y, e.MarginBounds.Right, y);
+            y += 15;
+
+            // TIÊU ĐỀ BÁO CÁO
+            StringFormat center = new StringFormat { Alignment = StringAlignment.Center };
+
+            g.DrawString(
+                reportTitle,
+                new Font("Arial", 14, FontStyle.Bold),
+                Brushes.Black,
+                e.PageBounds.Width / 2,
+                y,
+                center
+            );
+
+            y += 25;
+
+            // PHỤ ĐỀ
+            if (!string.IsNullOrEmpty(reportDateRange))
+            {
+                g.DrawString(
+                    reportDateRange,
+                    new Font("Arial", 10, FontStyle.Italic),
+                    Brushes.Black,
+                    e.PageBounds.Width / 2,
+                    y,
+                    center
+                );
+                y += 20;
+            }
+            else
+            {
+                y += 10;
+            }
+
+            return y;
+        }
+
 
         /// <summary>
         /// Nút In báo cáo TOP khách hàng tiềm năng.
