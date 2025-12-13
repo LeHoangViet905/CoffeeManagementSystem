@@ -8,8 +8,8 @@ namespace CoffeeManagementSystem
     public partial class MainForm : Form
     {
         // Thêm các biến để lưu trữ mã và tên nhân viên đăng nhập
-        private string _loggedInMaNhanVien;
-        private string _loggedInTenNhanVien;
+        public string _loggedInMaNhanVien;
+        public string _loggedInTenNhanVien;
 
         // Constructor mặc định (đã có sẵn)
         public MainForm()
@@ -96,7 +96,7 @@ namespace CoffeeManagementSystem
         private void btnReport_Click(object sender, EventArgs e)
         {
             PlayClickSound();
-            LoadFormCon(new ReportForm(_loggedInMaNhanVien));
+            LoadFormCon(new ReportForm(_loggedInTenNhanVien));
         }
 
       
