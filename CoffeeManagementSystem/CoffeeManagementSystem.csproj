@@ -535,6 +535,7 @@
     <None Include="Resources\CoffeCover1.png" />
     <Content Include="Resources\coffeeshopLogin.jpg" />
     <None Include="Resources\coffeeshopLogin1.jpg" />
+    <None Include="Resources\CompanyLogo.jpg" />
     <Content Include="Resources\delivery-bike.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
