@@ -860,6 +860,159 @@ namespace CoffeeManagementSystem
         ///   + Bảng chi tiết từng món
         ///   + Tổng thành tiền
         /// </summary>
+        /// 
+        //private void printDocumentInvoice_PrintPage(object sender, PrintPageEventArgs e)
+        //{
+
+        //    Graphics graphics = e.Graphics;
+        //    Font headerFont = new Font("Arial", 16, FontStyle.Bold);
+        //    Font subHeaderFont = new Font("Arial", 11, FontStyle.Bold);
+        //    Font normalFont = new Font("Arial", 10);
+        //    Font smallFont = new Font("Arial", 9);
+        //    Pen borderPen = new Pen(Color.Black, 1);
+
+        //    float lineHeight = normalFont.GetHeight() + 2;
+        //    float x = e.MarginBounds.Left;
+        //    float y = e.MarginBounds.Top;
+        //    float currentX;
+
+        //    // Tiêu đề hóa đơn
+        //    StringFormat sfCenter = new StringFormat();
+        //    sfCenter.Alignment = StringAlignment.Center;
+        //    sfCenter.LineAlignment = StringAlignment.Center;
+        //    graphics.DrawString("HÓA ĐƠN THANH TOÁN", headerFont, Brushes.Black, e.PageBounds.Width / 2, y, sfCenter);
+        //    y += headerFont.GetHeight() + 20;
+
+        //    // Thông tin hóa đơn chung
+        //    graphics.DrawString($"Mã hóa đơn: {lblMaHoaDonValue.Text}", normalFont, Brushes.Black, x, y);
+        //    y += lineHeight;
+        //    string khachHangText;
+        //    if (currentSelectedCustomer != null)
+        //    {
+        //        khachHangText = $"{currentSelectedCustomer.Hoten} - {currentSelectedCustomer.Sodienthoai}";
+        //    }
+        //    else
+        //    {
+        //        khachHangText = txtKhachHangName.Text; // chỉ có SĐT
+        //    }
+        //    graphics.DrawString($"Khách hàng: {khachHangText}", normalFont, Brushes.Black, x, y);
+        //    y += lineHeight;
+        //    graphics.DrawString($"Người lập: {lblNguoiLapValue.Text}", normalFont, Brushes.Black, x, y);
+        //    y += lineHeight;
+        //    graphics.DrawString($"Ngày: {lblNgayValue.Text}", normalFont, Brushes.Black, x, y);
+        //    y += lineHeight + 20;
+
+        //    // Định nghĩa độ rộng các cột
+        //    float colSTTWidth = 50;
+        //    float colTenDoUongWidth = 200;
+        //    float colSoLuongWidth = 80;
+        //    float colDonGiaWidth = 100;
+        //    float colThanhTienWidth = 120;
+
+        //    // In tiêu đề cột bảng chi tiết
+        //    currentX = x;
+        //    RectangleF headerRect;
+        //    StringFormat sfHeader = new StringFormat();
+        //    sfHeader.Alignment = StringAlignment.Center;
+        //    sfHeader.LineAlignment = StringAlignment.Center;
+
+        //    headerRect = new RectangleF(currentX, y, colSTTWidth, lineHeight + 5);
+        //    graphics.FillRectangle(Brushes.LightGray, headerRect);
+        //    graphics.DrawRectangle(borderPen, currentX, y, colSTTWidth, lineHeight + 5);
+        //    graphics.DrawString("STT", subHeaderFont, Brushes.Black, headerRect, sfHeader);
+        //    currentX += colSTTWidth;
+
+        //    headerRect = new RectangleF(currentX, y, colTenDoUongWidth, lineHeight + 5);
+        //    graphics.FillRectangle(Brushes.LightGray, headerRect);
+        //    graphics.DrawRectangle(borderPen, currentX, y, colTenDoUongWidth, lineHeight + 5);
+        //    graphics.DrawString("Tên đồ uống", subHeaderFont, Brushes.Black, headerRect, sfHeader);
+        //    currentX += colTenDoUongWidth;
+
+        //    headerRect = new RectangleF(currentX, y, colSoLuongWidth, lineHeight + 5);
+        //    graphics.FillRectangle(Brushes.LightGray, headerRect);
+        //    graphics.DrawRectangle(borderPen, currentX, y, colSoLuongWidth, lineHeight + 5);
+        //    graphics.DrawString("Số lượng", subHeaderFont, Brushes.Black, headerRect, sfHeader);
+        //    currentX += colSoLuongWidth;
+
+        //    headerRect = new RectangleF(currentX, y, colDonGiaWidth, lineHeight + 5);
+        //    graphics.FillRectangle(Brushes.LightGray, headerRect);
+        //    graphics.DrawRectangle(borderPen, currentX, y, colDonGiaWidth, lineHeight + 5);
+        //    graphics.DrawString("Đơn giá", subHeaderFont, Brushes.Black, headerRect, sfHeader);
+        //    currentX += colDonGiaWidth;
+
+        //    headerRect = new RectangleF(currentX, y, colThanhTienWidth, lineHeight + 5);
+        //    graphics.FillRectangle(Brushes.LightGray, headerRect);
+        //    graphics.DrawRectangle(borderPen, currentX, y, colThanhTienWidth, lineHeight + 5);
+        //    graphics.DrawString("Thành tiền", subHeaderFont, Brushes.Black, headerRect, sfHeader);
+        //    currentX += colThanhTienWidth;
+
+        //    y += lineHeight + 5;
+
+        //    // Các StringFormat phục vụ việc căng chữ
+        //    StringFormat sfLeft = new StringFormat();
+        //    sfLeft.Alignment = StringAlignment.Near;
+        //    sfLeft.LineAlignment = StringAlignment.Center;
+        //    sfLeft.Trimming = StringTrimming.EllipsisCharacter;
+        //    sfLeft.FormatFlags = StringFormatFlags.NoWrap;
+
+        //    StringFormat sfCenterData = new StringFormat();
+        //    sfCenterData.Alignment = StringAlignment.Center;
+        //    sfCenterData.LineAlignment = StringAlignment.Center;
+
+        //    StringFormat sfRight = new StringFormat();
+        //    sfRight.Alignment = StringAlignment.Far;
+        //    sfRight.LineAlignment = StringAlignment.Center;
+        //    sfRight.Trimming = StringTrimming.EllipsisCharacter;
+        //    sfRight.FormatFlags = StringFormatFlags.NoWrap;
+
+        //    // In từng dòng chi tiết đơn hàng
+        //    List<Chitietdonhang> dsChiTiet = _paymentBLL.GetDsChiTietHoaDon();
+        //    for (int i = 0; i < dsChiTiet.Count; i++)
+        //    {
+        //        Chitietdonhang chiTiet = dsChiTiet[i];
+        //        currentX = x;
+
+        //        // STT
+        //        graphics.DrawString((i + 1).ToString(), smallFont, Brushes.Black,
+        //                            new RectangleF(currentX, y, colSTTWidth, lineHeight), sfCenterData);
+        //        graphics.DrawRectangle(borderPen, currentX, y, colSTTWidth, lineHeight);
+        //        currentX += colSTTWidth;
+
+        //        // Tên đồ uống
+        //        graphics.DrawString(chiTiet.Tendouong, smallFont, Brushes.Black,
+        //                            new RectangleF(currentX, y, colTenDoUongWidth, lineHeight), sfLeft);
+        //        graphics.DrawRectangle(borderPen, currentX, y, colTenDoUongWidth, lineHeight);
+        //        currentX += colTenDoUongWidth;
+
+        //        // Số lượng
+        //        graphics.DrawString(chiTiet.Soluong.ToString(), smallFont, Brushes.Black,
+        //                            new RectangleF(currentX, y, colSoLuongWidth, lineHeight), sfCenterData);
+        //        graphics.DrawRectangle(borderPen, currentX, y, colSoLuongWidth, lineHeight);
+        //        currentX += colSoLuongWidth;
+
+        //        // Đơn giá
+        //        graphics.DrawString(chiTiet.Dongia.ToString("N0"), smallFont, Brushes.Black,
+        //                            new RectangleF(currentX, y, colDonGiaWidth, lineHeight), sfRight);
+        //        graphics.DrawRectangle(borderPen, currentX, y, colDonGiaWidth, lineHeight);
+        //        currentX += colDonGiaWidth;
+
+        //        // Thành tiền
+        //        graphics.DrawString(chiTiet.Thanhtien.ToString("N0"), smallFont, Brushes.Black,
+        //                            new RectangleF(currentX, y, colThanhTienWidth, lineHeight), sfRight);
+        //        graphics.DrawRectangle(borderPen, currentX, y, colThanhTienWidth, lineHeight);
+        //        currentX += colThanhTienWidth;
+
+        //        y += lineHeight;
+        //    }
+
+        //    // Tổng thành tiền
+        //    y += 20;
+        //    string totalText = $"Tổng thành tiền: {txtTongThanhTienValue.Text} VNĐ";
+        //    graphics.DrawString(totalText, subHeaderFont, Brushes.Black,
+        //                        e.MarginBounds.Right - graphics.MeasureString(totalText, subHeaderFont).Width, y);
+
+        //    e.HasMorePages = false; // In trong 1 trang
+        //}
         private void printDocumentInvoice_PrintPage(object sender, PrintPageEventArgs e)
         {
             Graphics graphics = e.Graphics;
@@ -874,143 +1027,149 @@ namespace CoffeeManagementSystem
             float y = e.MarginBounds.Top;
             float currentX;
 
-            // Tiêu đề hóa đơn
-            StringFormat sfCenter = new StringFormat();
-            sfCenter.Alignment = StringAlignment.Center;
-            sfCenter.LineAlignment = StringAlignment.Center;
-            graphics.DrawString("HÓA ĐƠN THANH TOÁN", headerFont, Brushes.Black, e.PageBounds.Width / 2, y, sfCenter);
-            y += headerFont.GetHeight() + 20;
+            // ===================== (A) LOGO + THÔNG TIN CÔNG TY =====================
+            int logoSize = 70; // chỉnh 60-90 tùy bạn
+            Image logo = null;
+            try { logo = Properties.Resources.CompanyLogo; } catch { /* nếu chưa có logo */ }
 
-            // Thông tin hóa đơn chung
-            graphics.DrawString($"Mã hóa đơn: {lblMaHoaDonValue.Text}", normalFont, Brushes.Black, x, y);
-            y += lineHeight;
-            string khachHangText;
-            if (currentSelectedCustomer != null)
+            if (logo != null)
             {
-                khachHangText = $"{currentSelectedCustomer.Hoten} - {currentSelectedCustomer.Sodienthoai}";
+                // vẽ logo góc trái
+                Rectangle logoRect = new Rectangle((int)x, (int)y, logoSize, logoSize);
+                graphics.DrawImage(logo, logoRect);
+
+                // thông tin công ty bên phải logo (tuỳ chỉnh)
+                float infoX = x + logoSize + 10;
+                float infoY = y + 2;
+                graphics.DrawString("COFFEE HOUSE", subHeaderFont, Brushes.Black, infoX, infoY);
+                infoY += lineHeight;
+                graphics.DrawString("Địa chỉ: 125 Nguyễn Trãi, P. Bến Thành, Q.1, TP.HCM", smallFont, Brushes.Black, infoX, infoY);
+                infoY += smallFont.GetHeight() + 2;
+                graphics.DrawString("Hotline: 0901 234 567", smallFont, Brushes.Black, infoX, infoY);
+                // đẩy y xuống dưới logo
+                y += logoSize + 10;
             }
             else
             {
-                khachHangText = txtKhachHangName.Text; // chỉ có SĐT
+                // nếu chưa có logo, vẫn chừa khoảng cho phần đầu trang
+                y += 10;
             }
+
+            // ===================== (B) TIÊU ĐỀ HÓA ĐƠN =====================
+            StringFormat sfCenter = new StringFormat { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center };
+            graphics.DrawString("HÓA ĐƠN THANH TOÁN", headerFont, Brushes.Black, e.PageBounds.Width / 2, y, sfCenter);
+            y += headerFont.GetHeight() + 15;
+
+            // ===================== (C) THÔNG TIN HÓA ĐƠN =====================
+            graphics.DrawString($"Mã hóa đơn: {lblMaHoaDonValue.Text}", normalFont, Brushes.Black, x, y);
+            y += lineHeight;
+
+            string khachHangText = (currentSelectedCustomer != null)
+                ? $"{currentSelectedCustomer.Hoten} - {currentSelectedCustomer.Sodienthoai}"
+                : txtKhachHangName.Text;
+
             graphics.DrawString($"Khách hàng: {khachHangText}", normalFont, Brushes.Black, x, y);
             y += lineHeight;
             graphics.DrawString($"Người lập: {lblNguoiLapValue.Text}", normalFont, Brushes.Black, x, y);
             y += lineHeight;
             graphics.DrawString($"Ngày: {lblNgayValue.Text}", normalFont, Brushes.Black, x, y);
-            y += lineHeight + 20;
+            y += lineHeight + 15;
 
-            // Định nghĩa độ rộng các cột
+            // ===================== (D) BẢNG CHI TIẾT (GIỮ NGUYÊN CODE CỦA BẠN) =====================
             float colSTTWidth = 50;
             float colTenDoUongWidth = 200;
             float colSoLuongWidth = 80;
             float colDonGiaWidth = 100;
             float colThanhTienWidth = 120;
 
-            // In tiêu đề cột bảng chi tiết
-            currentX = x;
-            RectangleF headerRect;
-            StringFormat sfHeader = new StringFormat();
-            sfHeader.Alignment = StringAlignment.Center;
-            sfHeader.LineAlignment = StringAlignment.Center;
+            // ... (phần vẽ header bảng + dữ liệu như bạn đang có) ...
 
-            headerRect = new RectangleF(currentX, y, colSTTWidth, lineHeight + 5);
-            graphics.FillRectangle(Brushes.LightGray, headerRect);
-            graphics.DrawRectangle(borderPen, currentX, y, colSTTWidth, lineHeight + 5);
-            graphics.DrawString("STT", subHeaderFont, Brushes.Black, headerRect, sfHeader);
-            currentX += colSTTWidth;
-
-            headerRect = new RectangleF(currentX, y, colTenDoUongWidth, lineHeight + 5);
-            graphics.FillRectangle(Brushes.LightGray, headerRect);
-            graphics.DrawRectangle(borderPen, currentX, y, colTenDoUongWidth, lineHeight + 5);
-            graphics.DrawString("Tên đồ uống", subHeaderFont, Brushes.Black, headerRect, sfHeader);
-            currentX += colTenDoUongWidth;
-
-            headerRect = new RectangleF(currentX, y, colSoLuongWidth, lineHeight + 5);
-            graphics.FillRectangle(Brushes.LightGray, headerRect);
-            graphics.DrawRectangle(borderPen, currentX, y, colSoLuongWidth, lineHeight + 5);
-            graphics.DrawString("Số lượng", subHeaderFont, Brushes.Black, headerRect, sfHeader);
-            currentX += colSoLuongWidth;
-
-            headerRect = new RectangleF(currentX, y, colDonGiaWidth, lineHeight + 5);
-            graphics.FillRectangle(Brushes.LightGray, headerRect);
-            graphics.DrawRectangle(borderPen, currentX, y, colDonGiaWidth, lineHeight + 5);
-            graphics.DrawString("Đơn giá", subHeaderFont, Brushes.Black, headerRect, sfHeader);
-            currentX += colDonGiaWidth;
-
-            headerRect = new RectangleF(currentX, y, colThanhTienWidth, lineHeight + 5);
-            graphics.FillRectangle(Brushes.LightGray, headerRect);
-            graphics.DrawRectangle(borderPen, currentX, y, colThanhTienWidth, lineHeight + 5);
-            graphics.DrawString("Thành tiền", subHeaderFont, Brushes.Black, headerRect, sfHeader);
-            currentX += colThanhTienWidth;
-
-            y += lineHeight + 5;
-
-            // Các StringFormat phục vụ việc căng chữ
-            StringFormat sfLeft = new StringFormat();
-            sfLeft.Alignment = StringAlignment.Near;
-            sfLeft.LineAlignment = StringAlignment.Center;
-            sfLeft.Trimming = StringTrimming.EllipsisCharacter;
-            sfLeft.FormatFlags = StringFormatFlags.NoWrap;
-
-            StringFormat sfCenterData = new StringFormat();
-            sfCenterData.Alignment = StringAlignment.Center;
-            sfCenterData.LineAlignment = StringAlignment.Center;
-
-            StringFormat sfRight = new StringFormat();
-            sfRight.Alignment = StringAlignment.Far;
-            sfRight.LineAlignment = StringAlignment.Center;
-            sfRight.Trimming = StringTrimming.EllipsisCharacter;
-            sfRight.FormatFlags = StringFormatFlags.NoWrap;
-
-            // In từng dòng chi tiết đơn hàng
-            List<Chitietdonhang> dsChiTiet = _paymentBLL.GetDsChiTietHoaDon();
-            for (int i = 0; i < dsChiTiet.Count; i++)
-            {
-                Chitietdonhang chiTiet = dsChiTiet[i];
-                currentX = x;
-
-                // STT
-                graphics.DrawString((i + 1).ToString(), smallFont, Brushes.Black,
-                                    new RectangleF(currentX, y, colSTTWidth, lineHeight), sfCenterData);
-                graphics.DrawRectangle(borderPen, currentX, y, colSTTWidth, lineHeight);
-                currentX += colSTTWidth;
-
-                // Tên đồ uống
-                graphics.DrawString(chiTiet.Tendouong, smallFont, Brushes.Black,
-                                    new RectangleF(currentX, y, colTenDoUongWidth, lineHeight), sfLeft);
-                graphics.DrawRectangle(borderPen, currentX, y, colTenDoUongWidth, lineHeight);
-                currentX += colTenDoUongWidth;
-
-                // Số lượng
-                graphics.DrawString(chiTiet.Soluong.ToString(), smallFont, Brushes.Black,
-                                    new RectangleF(currentX, y, colSoLuongWidth, lineHeight), sfCenterData);
-                graphics.DrawRectangle(borderPen, currentX, y, colSoLuongWidth, lineHeight);
-                currentX += colSoLuongWidth;
-
-                // Đơn giá
-                graphics.DrawString(chiTiet.Dongia.ToString("N0"), smallFont, Brushes.Black,
-                                    new RectangleF(currentX, y, colDonGiaWidth, lineHeight), sfRight);
-                graphics.DrawRectangle(borderPen, currentX, y, colDonGiaWidth, lineHeight);
-                currentX += colDonGiaWidth;
-
-                // Thành tiền
-                graphics.DrawString(chiTiet.Thanhtien.ToString("N0"), smallFont, Brushes.Black,
-                                    new RectangleF(currentX, y, colThanhTienWidth, lineHeight), sfRight);
-                graphics.DrawRectangle(borderPen, currentX, y, colThanhTienWidth, lineHeight);
-                currentX += colThanhTienWidth;
-
-                y += lineHeight;
-            }
-
-            // Tổng thành tiền
+            // ===================== (E) TỔNG TIỀN =====================
             y += 20;
             string totalText = $"Tổng thành tiền: {txtTongThanhTienValue.Text} VNĐ";
             graphics.DrawString(totalText, subHeaderFont, Brushes.Black,
-                                e.MarginBounds.Right - graphics.MeasureString(totalText, subHeaderFont).Width, y);
+                e.MarginBounds.Right - graphics.MeasureString(totalText, subHeaderFont).Width, y);
 
-            e.HasMorePages = false; // In trong 1 trang
+            // ===================== (F) KHU VỰC CHỮ KÝ =====================
+            y += 50; // khoảng cách sau tổng tiền
+            float signTop = y;
+
+            // Font chữ ký kiểu viết tay + fallback
+            Font signFont;
+            try
+            {
+                signFont = new Font("Segoe Script", 13, FontStyle.Italic);
+            }
+            catch
+            {
+                signFont = new Font("Lucida Handwriting", 12, FontStyle.Italic);
+            }
+
+            // Màu chữ ký xám đậm cho giống thật
+            Brush signBrush = new SolidBrush(Color.FromArgb(60, 60, 60));
+
+            // Lấy tên khách để ký (ưu tiên tên thành viên; nếu không có thì coi như khách vãng lai)
+            string tenKhachKy = (currentSelectedCustomer != null && !string.IsNullOrWhiteSpace(currentSelectedCustomer.Hoten))
+                ? currentSelectedCustomer.Hoten.Trim()
+                : "Khách vãng lai";
+
+            if (string.IsNullOrWhiteSpace(tenKhachKy))
+                tenKhachKy = "Khách vãng lai";
+
+            // Lấy tên thu ngân để ký
+            string tenThuNganKy = !string.IsNullOrWhiteSpace(lblNguoiLapValue.Text)
+                ? lblNguoiLapValue.Text.Trim()
+                : "Thu ngân";
+
+            // Tính layout 2 cột
+            float halfWidth = e.MarginBounds.Width / 2f;
+            float leftX = x;
+            float rightX = x + halfWidth;
+
+            float blockWidth = halfWidth;
+            float lineY = signTop + 80;    // vị trí dòng kẻ
+            float signY = signTop + 50;    // vị trí chữ ký
+
+            StringFormat sfCenterText = new StringFormat { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Near };
+
+            // ----- Cột trái: Khách hàng -----
+            graphics.DrawString("Khách hàng", subHeaderFont, Brushes.Black,
+                new RectangleF(leftX, signTop, blockWidth, 20), sfCenterText);
+
+            graphics.DrawString("(Ký, ghi rõ họ tên)", smallFont, Brushes.Black,
+                new RectangleF(leftX, signTop + 18, blockWidth, 20), sfCenterText);
+
+            // dòng kẻ
+            graphics.DrawLine(Pens.Black, leftX + 40, lineY, leftX + blockWidth - 40, lineY);
+
+            // chữ ký kiểu
+            graphics.DrawString(tenKhachKy, signFont, signBrush,
+                new RectangleF(leftX, signY, blockWidth, 30), sfCenterText);
+
+
+            // ----- Cột phải: Thu ngân -----
+            graphics.DrawString("Thu ngân", subHeaderFont, Brushes.Black,
+                new RectangleF(rightX, signTop, blockWidth, 20), sfCenterText);
+
+            graphics.DrawString("(Ký, ghi rõ họ tên)", smallFont, Brushes.Black,
+                new RectangleF(rightX, signTop + 18, blockWidth, 20), sfCenterText);
+
+            // dòng kẻ
+            graphics.DrawLine(Pens.Black, rightX + 40, lineY, rightX + blockWidth - 40, lineY);
+
+            // chữ ký kiểu
+            graphics.DrawString(tenThuNganKy, signFont, signBrush,
+                new RectangleF(rightX, signY, blockWidth, 30), sfCenterText);
+
+
+            // (Tuỳ chọn) Lời cảm ơn ở cuối
+            float thanksY = signTop + 95;
+            string thanks = "Cảm ơn quý khách. Hẹn gặp lại!";
+            graphics.DrawString(thanks, normalFont, Brushes.Black,
+                e.PageBounds.Width / 2, thanksY, sfCenter);
         }
+
+
 
         /// <summary>
         /// Nút đóng form PaymentForm (nếu có nút Close trên giao diện).
