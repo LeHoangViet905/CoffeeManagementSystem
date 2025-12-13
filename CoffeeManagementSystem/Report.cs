@@ -70,10 +70,10 @@ namespace CoffeeManagementSystem
         /// - Gắn event handler cho TabControl, DateTimePicker.
         /// - Gọi load báo cáo tương ứng với tab đầu tiên.
         /// </summary>
-        public ReportForm(string maNhanVien, string tenNhanVien)
+        public ReportForm(string _loggedInTenNhanVien)
         {
             InitializeComponent();
-            _signerName = tenNhanVien;
+            _signerName = _loggedInTenNhanVien;
             // Chart doanh thu (cột) – dùng sự kiện click để drill-down theo ngày sang biểu đồ theo giờ
             chartDashboard.MouseClick += chartDashboard_MouseClick;
 
