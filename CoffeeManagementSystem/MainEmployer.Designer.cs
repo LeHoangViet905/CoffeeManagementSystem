@@ -77,6 +77,37 @@
             // splitContainerNavBar.Panel2
             // 
             this.splitContainerNavBar.Panel2.Controls.Add(this.panelMain);
+            this.splitContainerNavBar.Size = new System.Drawing.Size(2968, 1456);
+            this.splitContainerNavBar.SplitterDistance = 162;
+            this.splitContainerNavBar.SplitterWidth = 5;
+            this.splitContainerNavBar.TabIndex = 21;
+            // 
+            // btnOrder
+            // 
+            this.btnOrder.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnOrder.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnOrder.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnOrder.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnOrder.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnOrder.FillColor = System.Drawing.Color.Empty;
+            this.btnOrder.FillColor2 = System.Drawing.Color.Empty;
+            this.btnOrder.Font = new System.Drawing.Font("Segoe UI Variable Text Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOrder.ForeColor = System.Drawing.Color.LightGray;
+            this.btnOrder.HoverState.Font = new System.Drawing.Font("Segoe UI Variable Display", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOrder.HoverState.ForeColor = System.Drawing.Color.White;
+            this.btnOrder.Image = global::CoffeeManagementSystem.Properties.Resources.DoUong;
+            this.btnOrder.ImageOffset = new System.Drawing.Point(0, -15);
+            this.btnOrder.ImageSize = new System.Drawing.Size(25, 25);
+            this.btnOrder.Location = new System.Drawing.Point(16, 240);
+            this.btnOrder.Margin = new System.Windows.Forms.Padding(2);
+            this.btnOrder.Name = "btnOrder";
+            this.btnOrder.Size = new System.Drawing.Size(134, 74);
+            this.btnOrder.TabIndex = 13;
+            this.btnOrder.Text = "Đặt đồ uống";
+            this.btnOrder.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnOrder.TextOffset = new System.Drawing.Point(0, 10);
+            this.btnOrder.Click += new System.EventHandler(this.btnOrder_Click);
+            // 
             this.splitContainerNavBar.Size = new System.Drawing.Size(1618, 881);
             this.splitContainerNavBar.SplitterDistance = 154;
             this.splitContainerNavBar.SplitterWidth = 5;
@@ -99,10 +130,10 @@
             this.btnDangXuat.Image = global::CoffeeManagementSystem.Properties.Resources.logout;
             this.btnDangXuat.ImageOffset = new System.Drawing.Point(-3, 0);
             this.btnDangXuat.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnDangXuat.Location = new System.Drawing.Point(0, 801);
+            this.btnDangXuat.Location = new System.Drawing.Point(5, 828);
             this.btnDangXuat.Margin = new System.Windows.Forms.Padding(2);
             this.btnDangXuat.Name = "btnDangXuat";
-            this.btnDangXuat.Size = new System.Drawing.Size(154, 80);
+            this.btnDangXuat.Size = new System.Drawing.Size(156, 80);
             this.btnDangXuat.TabIndex = 20;
             this.btnDangXuat.Text = "Đăng xuất";
             this.btnDangXuat.Click += new System.EventHandler(this.btnDangXuat_Click);
@@ -177,10 +208,10 @@
             this.lblNhanVien.BackColor = System.Drawing.Color.Transparent;
             this.lblNhanVien.Font = new System.Drawing.Font("SVN-Gilroy", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNhanVien.ForeColor = System.Drawing.Color.White;
-            this.lblNhanVien.Location = new System.Drawing.Point(40, 102);
+            this.lblNhanVien.Location = new System.Drawing.Point(45, 111);
             this.lblNhanVien.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblNhanVien.Name = "lblNhanVien";
-            this.lblNhanVien.Size = new System.Drawing.Size(80, 20);
+            this.lblNhanVien.Size = new System.Drawing.Size(73, 20);
             this.lblNhanVien.TabIndex = 17;
             this.lblNhanVien.Text = "Nhân viên";
             this.lblNhanVien.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -244,7 +275,7 @@
             // 
             this.guna2CirclePictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("guna2CirclePictureBox2.Image")));
             this.guna2CirclePictureBox2.ImageRotate = 0F;
-            this.guna2CirclePictureBox2.Location = new System.Drawing.Point(41, 18);
+            this.guna2CirclePictureBox2.Location = new System.Drawing.Point(42, 26);
             this.guna2CirclePictureBox2.Margin = new System.Windows.Forms.Padding(2);
             this.guna2CirclePictureBox2.Name = "guna2CirclePictureBox2";
             this.guna2CirclePictureBox2.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
@@ -379,7 +410,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Coffee Management System";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.MainEmployer_Load);
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.splitContainerNavBar.Panel1.ResumeLayout(false);
             this.splitContainerNavBar.Panel1.PerformLayout();
             this.splitContainerNavBar.Panel2.ResumeLayout(false);

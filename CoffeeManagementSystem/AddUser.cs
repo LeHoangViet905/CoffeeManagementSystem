@@ -290,6 +290,7 @@ namespace CoffeeManagementSystem
         /// </summary>
         private void btnClose_Click(object sender, EventArgs e)
         {
+
             MainForm.PlayClickSound();
             this.Close();
         }
