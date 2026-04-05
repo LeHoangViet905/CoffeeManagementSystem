@@ -15,6 +15,7 @@ namespace CoffeeManagementSystem
 
         public string Mota { get; set; }
         public string Hinhanh { get; set; }
+        public decimal Giaban { get; set; }
 
         public Loaidouong Loaidouong { get; set; }
         public ICollection<Giadouong> Giadouongs { get; set; }

@@ -77,7 +77,44 @@ namespace CoffeeManagementSystem.DAL
             }
             return latestId;
         }
+        public Thanhtoan GetLatestByMadonhang(string madonhang)
+        {
+            Thanhtoan result = null;
 
+            string sql = @"
+                SELECT Mathanhtoan, Madonhang, Thoigianthanhtoan,
+                       Hinhthucthanhtoan, Sotienthanhtoan, Manhanvienthu, Ghichu
+                FROM Thanhtoan
+                WHERE Madonhang = @Madonhang
+                ORDER BY Thoigianthanhtoan DESC
+                LIMIT 1";
+
+            using (var conn = new SQLiteConnection(ConnectionString))
+            using (var cmd = new SQLiteCommand(sql, conn))
+            {
+                cmd.Parameters.AddWithValue("@Madonhang", madonhang);
+
+                conn.Open();
+                using (var reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        result = new Thanhtoan
+                        {
+                            Mathanhtoan = reader["Mathanhtoan"].ToString(),
+                            Madonhang = reader["Madonhang"].ToString(),
+                            Thoigianthanhtoan = DateTime.Parse(reader["Thoigianthanhtoan"].ToString()),
+                            Hinhthucthanhtoan = reader["Hinhthucthanhtoan"].ToString(),
+                            Sotienthanhtoan = Convert.ToDecimal(reader["Sotienthanhtoan"]),
+                            Manhanvienthu = reader["Manhanvienthu"].ToString(),
+                            Ghichu = reader["Ghichu"] == DBNull.Value ? null : reader["Ghichu"].ToString()
+                        };
+                    }
+                }
+            }
+
+            return result;
+        }
         // ... (các phương thức khác của ThanhtoanDAL nếu có) ...
     }
 }

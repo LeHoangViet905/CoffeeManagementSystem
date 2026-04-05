@@ -1,6 +1,6 @@
-﻿using System;
+﻿using OfficeOpenXml;
+using System;
 using System.Configuration;
-using System.Data.Entity;
 using System.Data.SQLite;
 using System.IO;
 using System.Windows.Forms;
@@ -15,6 +15,8 @@ namespace CoffeeManagementSystem
         [STAThread]
         static void Main()
         {
+            //Kết nối thư viện EPPlus (Excel)   
+            ExcelPackage.License.SetNonCommercialPersonal("Anonymous");
             // Lấy chuỗi kết nối từ App.config
             string connectionString = ConfigurationManager.ConnectionStrings["SqliteDbConnection"].ConnectionString;
 
@@ -25,7 +27,6 @@ namespace CoffeeManagementSystem
                 return;
             }
 
-            // Phú đẹp trai nhất nhóm
             // --- Test kết nối đến SQLite ---
             using (SQLiteConnection connection = new SQLiteConnection(connectionString))
             {
@@ -60,7 +61,7 @@ namespace CoffeeManagementSystem
             string appRunDirectory = AppDomain.CurrentDomain.BaseDirectory;
             string destinationPath = Path.Combine(appRunDirectory, dbFileName);
             //Nối cái thư mục chạy app ở trên(appRunDirectory) với tên file.db để tạo ra đường dẫn đầy đủ đến file database
-            
+
             // Đường dẫn đến file DB gốc của bạn trong thư mục Data của dự án
             // Dựa trên cấu trúc dự án của bạn (CoffeeManagementSystem/CoffeeManagementSystem/Data/QuanLyCaPheDatabase.db)
             // Khi bạn Build, thư mục Data sẽ được sao chép vào bin\Debug

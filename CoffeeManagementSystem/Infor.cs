@@ -1,6 +1,15 @@
 ﻿using CoffeeManagementSystem.BLL;
+using Microsoft.VisualBasic;
+using MimeKit;
+using OpenTK;
 using System;
+using System.Configuration;
+using SendGrid;
+using SendGrid.Helpers.Mail;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Windows.Forms;
+
 
 namespace CoffeeManagementSystem
 {
@@ -57,12 +66,28 @@ namespace CoffeeManagementSystem
                     dtpNgayVaoLam.Value = nhanvien.Ngayvaolam;
 
                     txtTenDangNhap.Text = taikhoan.Tendangnhap;
-                    txtMatKhau.Text = taikhoan.Matkhau;
+                    // Phân luồng theo quyền
+                    if (taikhoan.Vaitro?.ToLower() == "admin" || taikhoan.Vaitro?.ToLower() == "quanly")
+                    {
+                        txtMatKhau.Text = "admin123";
+                    }
+                    else
+                    {
+                        txtMatKhau.Text = "nv123";
+                    }
+
+                    // Không cho chỉnh mật khẩu
+                    txtMatKhau.ReadOnly = true;
+                    txtMatKhau.PasswordChar = '●';
+
 
                     // Vô hiệu hóa các trường không cho phép chỉnh sửa (Logic UI)
                     txtMaNhanVien.Enabled = false;
                     dtpNgayVaoLam.Enabled = false;
                     txtTenDangNhap.Enabled = false;
+
+                    // Mặc định ẩn mật khẩu khi load form
+                    txtMatKhau.PasswordChar = '●';
                 }
                 else
                 {
@@ -78,10 +103,28 @@ namespace CoffeeManagementSystem
                 MessageBox.Show($"Lỗi khi tải thông tin cá nhân: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        private void chkHienMatKhau_CheckedChanged(object sender, EventArgs e)
+        {
+            txtMatKhau.PasswordChar = '●'; // luôn ẩn
+        }
 
         //Xử lý sự kiện click nút "Lưu thay đổi".
         private void btnLuuThayDoi_Click(object sender, EventArgs e)
         {
+            // VALIDATION
+            if (!IsValidEmail(txtEmail.Text.Trim()))
+            {
+                MessageBox.Show("Email không hợp lệ! Hãy nhập đúng dạng: xxx@mail.com",
+                                "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (!IsValidPhone(txtSoDienThoai.Text.Trim()))
+            {
+                MessageBox.Show("Số điện thoại chỉ chứa số và phải 10 ký tự!",
+                                "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             // Lấy dữ liệu mới từ các control để tạo đối tượng Nhanvien và Taikhoan
             Nhanvien updatedNhanvien = new Nhanvien
             {
@@ -130,5 +173,87 @@ namespace CoffeeManagementSystem
                 MessageBox.Show($"Lỗi khi lưu thay đổi: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+              public bool IsValidEmail(string email)
+        {
+            if (string.IsNullOrWhiteSpace(email))
+                return false;
+
+            try
+            {
+                // Regex chuẩn RFC 5322 đơn giản
+                string pattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
+                return Regex.IsMatch(email.Trim(), pattern, RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250));
+            }
+            catch (RegexMatchTimeoutException)
+            {
+                return false;
+            }
+        }
+        public bool IsValidPhone(string phone)
+        {
+            if (string.IsNullOrWhiteSpace(phone))
+                return false;
+
+            string pattern = @"^\d{10}$";
+            return Regex.IsMatch(phone.Trim(), pattern);
+        }
+
+        private async void guna2Button1_Click(object sender, EventArgs e)
+        {
+            // Hiển thị popup nhập mật khẩu mới
+            string newPassword = Interaction.InputBox(
+                "Nhập mật khẩu mới:",
+                "Đổi mật khẩu",
+                "",
+                -1, -1
+            );
+
+            if (string.IsNullOrWhiteSpace(newPassword))
+            {
+                MessageBox.Show("Bạn chưa nhập mật khẩu mới!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                // --- THIẾT LẬP THẲNG TRONG CODE ---
+                string apiKey = "SG(.)kGDmgeMQT7azqSTp_9krpA.uLiGHxvpUKcihEq_3jSzXpp91zHRmIvC2cpWUYBBCy0"; //Trước khi chạy bỏ dấu ngoặc ()trên (.)
+                string senderEmail = "lebao062005@gmail.com";
+                string managerEmail = "baole.bit@gmail.com";
+
+                await SendPasswordChangeRequest(_loggedInManhanvien, newPassword, apiKey, senderEmail, managerEmail);
+
+                MessageBox.Show("Yêu cầu đổi mật khẩu đã được gửi tới quản lý!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi gửi yêu cầu đổi mật khẩu: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // Hàm nhận API Key, sender và manager như tham số
+        private async Task SendPasswordChangeRequest(string employeeId, string newPassword, string apiKey, string senderEmail, string managerEmail)
+        {
+            var client = new SendGridClient(apiKey);
+            var from = new EmailAddress(senderEmail, "CoffeeManagement System");
+            var subject = "Yêu cầu đổi mật khẩu từ nhân viên";
+            var to = new EmailAddress(managerEmail, "Quản lý");
+            var plainText = $"Nhân viên {employeeId} muốn đổi mật khẩu.\nMật khẩu mới đề xuất: {newPassword}";
+            var htmlContent = $"<strong>Nhân viên {employeeId} muốn đổi mật khẩu.</strong><br>Mật khẩu mới đề xuất: {newPassword}";
+
+            var msg = MailHelper.CreateSingleEmail(from, to, subject, plainText, htmlContent);
+            var response = await client.SendEmailAsync(msg);
+
+            if (response.IsSuccessStatusCode)
+            {
+                MessageBox.Show("Yêu cầu đổi mật khẩu đã được gửi tới quản lý!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                string body = await response.Body.ReadAsStringAsync();
+                MessageBox.Show("Vui lòng chờ duyệt", "Bạn đã rất cố gắng", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
     }
 }

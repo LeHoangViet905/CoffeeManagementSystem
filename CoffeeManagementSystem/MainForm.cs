@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Guna.UI2.WinForms;
+using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace CoffeeManagementSystem
@@ -27,6 +29,20 @@ namespace CoffeeManagementSystem
                 lblName.Text = tenNhanVien;
             }
         }
+        public static void PlayClickSound()
+        {
+            try
+            {
+                using (var player = new System.Media.SoundPlayer(Properties.Resources.click))
+                {
+                    player.Play();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi phát âm thanh: " + ex.Message);
+            }
+        }
 
         private void LoadFormCon(Form formCon)
         {
@@ -47,84 +63,57 @@ namespace CoffeeManagementSystem
         {
 
         }
-
-        private void add1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void guna2GradientPanel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void btnTrangChu_Click(object sender, EventArgs e)
-        {
-            LoadFormCon(new DashboardForm());
-        }
-
         private void btnKhachHang_Click(object sender, EventArgs e)
         {
+            PlayClickSound();
             LoadFormCon(new CustomerForm());
         }
 
         private void btnEmployer_Click(object sender, EventArgs e)
         {
+            PlayClickSound();
             LoadFormCon(new EmployerForm());
         }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
+            PlayClickSound();
             this.Close();
         }
 
         private void btnTrangChu_Click_1(object sender, EventArgs e)
         {
+            PlayClickSound();
             LoadFormCon(new DashboardForm());
         }
 
         private void btnMenu_Click(object sender, EventArgs e)
         {
+            PlayClickSound();
             LoadFormCon(new DrinkForm());
         }
 
         private void btnReport_Click(object sender, EventArgs e)
         {
+            PlayClickSound();
             LoadFormCon(new ReportForm());
         }
 
-        private void btnSalary_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblQuanLy_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panelMain_Paint(object sender, PaintEventArgs e)
-        {
-        
-        }
-
-        private void guna2GradientPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
+      
         private void lblName_Click(object sender, EventArgs e)
         {
-
+            PlayClickSound();
         }
 
         private void btnTaiKhoan_Click(object sender, EventArgs e)
         {
+            PlayClickSound();
             LoadFormCon(new Infor(_loggedInMaNhanVien));
         }
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
+            PlayClickSound();
 
             // 1. Ẩn MainForm hiện tại
             this.Hide();
@@ -137,5 +126,10 @@ namespace CoffeeManagementSystem
             this.Close();
         }
 
+        private void btnOptionManager_Click(object sender, EventArgs e)
+        {
+            PlayClickSound();
+            LoadFormCon(new OptionManagerForm());
+        }
     }
 }

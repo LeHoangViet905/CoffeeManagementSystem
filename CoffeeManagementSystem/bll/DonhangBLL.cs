@@ -1,4 +1,5 @@
-﻿using CoffeeManagementSystem.DAL; // Tham chiếu đến tầng DAL
+﻿using CoffeeManagementSystem.CoffeeManagementSystem;
+using CoffeeManagementSystem.DAL; // Tham chiếu đến tầng DAL
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -182,17 +183,67 @@ namespace CoffeeManagementSystem.BLL
                 throw new Exception($"Lỗi BLL khi lấy báo cáo doanh thu: {ex.Message}", ex);
             }
         }
-        //thêm dashboard cho report
-
+        public DataTable GetDoanhThuTheoLoaiTrongNgay(DateTime day)
+        {
+            return _donhangDAL.GetDoanhThuTheoLoaiTrongNgay(day);
+        }
+        public DataTable GetDoanhThuTheoLoai(DateTime start, DateTime end)
+        {
+            return _donhangDAL.GetDoanhThuTheoLoai(start, end);
+        }
         public DataTable GetRevenueByHour(DateTime date)
         {
             return _donhangDAL.GetRevenueByHour(date);
         }
+        public List<OrderHistoryItem> GetOrderHistory(DateTime from, DateTime to)
+        {
+            // có thể kiểm tra from <= to nếu muốn
+            if (from > to)
+                throw new ArgumentException("Ngày bắt đầu không được lớn hơn ngày kết thúc.");
 
+            return _donhangDAL.GetOrderHistory(from, to);
+        }
         public int GetOrderCount(DateTime start, DateTime end)
         {
             return _donhangDAL.GetOrderCount(start, end);
         }
+        public List<OrderDetailLine> GetOrderDetail(string madonhang)
+        {
+            if (string.IsNullOrWhiteSpace(madonhang))
+                throw new ArgumentException("Mã đơn hàng không được để trống.", nameof(madonhang));
 
+            try
+            {
+                return _donhangDAL.GetOrderDetail(madonhang);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Lỗi BLL khi lấy chi tiết đơn hàng: {ex.Message}", ex);
+            }
+        }
+        public string TaoMaDonHangMoi()
+        {
+            try
+            {
+                string lastCode = _donhangDAL.GetLastMadonhang();
+
+                int nextNumber = 1;
+
+                if (!string.IsNullOrEmpty(lastCode) && lastCode.Length > 2)
+                {
+                    if (int.TryParse(lastCode.Substring(2), out int number))
+                    {
+                        nextNumber = number + 1;
+                    }
+                }
+
+                // DH001, DH002,...
+                return "DH" + nextNumber.ToString("D3"); // hoặc D4 nếu muốn DH0001
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Lỗi BLL khi tạo mã đơn hàng mới: {ex.Message}", ex);
+            }
+        }
     }
 }
